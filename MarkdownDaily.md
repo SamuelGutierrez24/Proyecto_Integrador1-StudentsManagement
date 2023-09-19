@@ -11,7 +11,7 @@
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
-|19/09/23|Nada|Ninguno|Nada|
+|19/09/23|Nada|Como apenas iniciaba el sprint no tuve tiempo para no hacer mas que planearlo|Hoy emepzare con el menu que van a visualizar los usuarios de parte de bienestar universitario.|
 
 ## Santiago Jose Belalcazar
 
