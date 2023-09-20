@@ -17,7 +17,7 @@
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
-|19/09/23|Nada|Ninguno|Nada|
+|19/09/23|Nada|Ninguno|Crear la rama para trabajar las tareas que se me asigno|
 
 ## Luis Fernando Pinillos
 
