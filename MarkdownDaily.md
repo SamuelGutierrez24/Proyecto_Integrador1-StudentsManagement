@@ -23,7 +23,7 @@
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
-|19/09/23|Nada|Ninguno|Nada|
+|19/09/23|Nada|Ninguno|Crear la rama en la que empezaré a desarrollar mis tareas|
 
 ## Kevin Vincent Loachamin
 
