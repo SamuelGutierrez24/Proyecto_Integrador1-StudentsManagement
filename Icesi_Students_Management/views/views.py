@@ -57,5 +57,7 @@ def signin(request):
         else:
             login(request, user)
             return redirect('tasks')
-        
+
+def bu(request):
+    return render(request,'menuBU.html')
     
