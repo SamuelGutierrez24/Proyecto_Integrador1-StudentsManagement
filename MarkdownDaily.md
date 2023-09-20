@@ -26,3 +26,7 @@
 |19/09/23|Nada|Ninguno|Nada|
 
 ## Kevin Vincent Loachamin
+
+|Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|19/09/23|Nada|Ninguno|Crear la rama para trabajar la historia de usuario que se me asigno|
