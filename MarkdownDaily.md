@@ -35,3 +35,4 @@
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Crear la rama para trabajar la historia de usuario que se me asigno|
+|20/09/23|Clone y cree la rama correspondiente a mi HU, tambien colabore en crear la rama Daily y en hacer el .md, tambien colabore en la solucion de errores en commits de mis compañeros|Inicialmente se me dificulto manejar el historial de commits desde la consola|Planeo investigar mas sobre mi Historia de Usuario para tener mas clara la funcionalidad y como se vera graficamente|
