@@ -30,6 +30,7 @@
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Crear la rama en la que empezaré a desarrollar mis tareas|
+|20/09/23|Cree la rama corespondiente a mi HU y solucioné unos errores en los commits junto a mis compañeros|No he podido avanzar mucho debido a la carga de parciales que hay esta semana|Investigar mas información que me ayude a la elaboración de mi HU|
 
 ## Kevin Vincent Loachamin
 
