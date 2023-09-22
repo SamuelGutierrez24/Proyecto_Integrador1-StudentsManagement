@@ -6,6 +6,7 @@
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Nada|
 |20/09/23|Ayer vendí mi computador y no pude hacer ningún avance|no tenía como avanazar|Mañana tengo nuevamente computador para poder comenzar|
+|21/09/23|Nada, seguía sin tener computador|Ninguno|Crearé la branch para comenzar a trabajar en el login e intentaré hacer el css y html para que se vea mejor aunque no tengo mucha fe|
 
 
 
@@ -25,15 +26,21 @@
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Crear la rama para trabajar las tareas que se me asigno|
+|20/09/23|Clone y cree la rama correspondiente a mi HU, tambien colabore en crear la rama Daily, y colabore en la solucion de errores en commits de mis compañeros|Falta de tiempo y que no soy muy bueno en html|Debido a la carga de parciales planeo investigar mas con respecto a html, para poder desarrollar el menu de Filatropia y mi HU de forma acertada|
+|21/09/23|Investigué información para poder realizar de forma correcta mis tareas designadas|Ninguno|Debido a la carga de parciales, no podré hacer mayores avances|
 
 ## Luis Fernando Pinillos
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Crear la rama en la que empezaré a desarrollar mis tareas|
+|20/09/23|Cree la rama corespondiente a mi HU y solucioné unos errores en los commits junto a mis compañeros|No he podido avanzar mucho debido a la carga de parciales que hay esta semana|Investigar mas información que me ayude a la elaboración de mi HU|
+|19/09/23|Investigué información para poder hacer mis HU asignadas|Ninguno|Debido a la carga de parciales, no podré hacer mayores avances|
 
 ## Kevin Vincent Loachamin
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Crear la rama para trabajar la historia de usuario que se me asigno|
+|20/09/23|Clone y cree la rama correspondiente a mi HU, tambien colabore en crear la rama Daily y en hacer el .md, tambien colabore en la solucion de errores en commits de mis compañeros|Inicialmente se me dificulto manejar el historial de commits desde la consola|Planeo investigar mas sobre mi Historia de Usuario para tener mas clara la funcionalidad y como se vera graficamente|
+|21/09/23|Nada|Tuve que dedicar tiempo a estudiar temas de Sistemas Intensivos en Datos para el parcial|Nada con respecto al proyecto debido a que tengo que estudiar para Arquitectura de Software|
