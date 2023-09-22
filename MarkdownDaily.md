@@ -6,6 +6,7 @@
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Nada|
 |20/09/23|Ayer vendí mi computador y no pude hacer ningún avance|no tenía como avanazar|Mañana tengo nuevamente computador para poder comenzar|
+|21/09/23|Nada, seguía sin tener computador|Ninguno|Crearé la branch para comenzar a trabajar en el login e intentaré hacer el css y html para que se vea mejor aunque no tengo mucha fe|
 
 
 
