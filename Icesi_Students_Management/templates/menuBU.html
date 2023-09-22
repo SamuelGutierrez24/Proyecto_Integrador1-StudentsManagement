@@ -1,2 +1,62 @@
-<h1>Menu<h1>
-    
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página</title>
+    <style>
+        body {
+            background-color: rgb(63, 63, 244); /* Fondo de color azul */
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .menu .home {
+            font-size: 24px;
+        }
+        .menu .options {
+            display: flex;
+            gap: 20px;
+        }
+        .menu .notifications {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Menú</h1>
+    </div>
+    <div class="menu">
+        <div class="home">
+            <button><img src="home-icon.png" alt="Home"></button>
+        </div>
+        <div class="options">
+            <button>Opción 1</button>
+            <button>Opción 2</button>
+        </div>
+        <div class="notifications">
+            <div style="overflow: auto; height: 100px;">
+                <!-- Scroll de notificaciones -->
+                <!-- Aquí puedes agregar tus notificaciones -->
+                <div>Notificación 1</div>
+                <div>Notificación 2</div>
+                <div>Notificación 3</div>
+                <!-- Agrega más notificaciones según sea necesario -->
+            </div>
+        </div>
+    </div>
+    <!-- Contenido de la página -->
+</body>
+</html>

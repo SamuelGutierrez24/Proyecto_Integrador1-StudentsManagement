@@ -1,4 +1,4 @@
 from django.shortcuts import render, redirect
 
-def home2(request):
-    return render(request, 'home.html')
+def menu(request):
+    return render(request, 'menuBU.html')

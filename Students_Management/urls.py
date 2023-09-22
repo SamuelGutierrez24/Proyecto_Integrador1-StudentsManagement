@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import Icesi_Students_Management.views.views as views
+import Icesi_Students_Management.views.bumenu as buMenu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,5 @@ urlpatterns = [
     path('tasks/', views.tasks, name='tasks'),
     path('signin/', views.signin, name='singin'),
     path('logout/', views.signout, name='logout'),
-    path('bienestarUniversitario/',views.bu, name='bienestarUniversitario')
+    path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario')
 ]
