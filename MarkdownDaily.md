@@ -25,6 +25,7 @@
 |---|---|---|---|
 |19/09/23|Nada|Ninguno|Crear la rama para trabajar las tareas que se me asigno|
 |20/09/23|Clone y cree la rama correspondiente a mi HU, tambien colabore en crear la rama Daily, y colabore en la solucion de errores en commits de mis compañeros|Falta de tiempo y que no soy muy bueno en html|Debido a la carga de parciales planeo investigar mas con respecto a html, para poder desarrollar el menu de Filatropia y mi HU de forma acertada|
+|21/09/23|Investigué información para poder realizar de forma correcta mis tareas designadas|Ninguno|Debido a la carga de parciales, no podré hacer mayores avances|
 
 ## Luis Fernando Pinillos
 
