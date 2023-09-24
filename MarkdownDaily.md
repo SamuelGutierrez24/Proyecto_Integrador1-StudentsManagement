@@ -38,6 +38,7 @@
 |20/09/23|Cree la rama corespondiente a mi HU y solucioné unos errores en los commits junto a mis compañeros|No he podido avanzar mucho debido a la carga de parciales que hay esta semana|Investigar mas información que me ayude a la elaboración de mi HU|
 |21/09/23|Investigué información para poder hacer mis HU asignadas|Ninguno|Debido a la carga de parciales, no podré hacer mayores avances|
 |22/09/23|No realicé avances debido a parciales|Ninguno|Investigar información para poder desarrollar mis HU|
+|23/09/23|Investigué información para realizar mi HU|Ninguno|Empezar con el desarrollo del frontend de mi HU|
 ## Kevin Vincent Loachamin
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
