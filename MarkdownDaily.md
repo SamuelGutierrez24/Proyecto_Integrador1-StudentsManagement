@@ -8,6 +8,7 @@
 |20/09/23|Ayer vendí mi computador y no pude hacer ningún avance|no tenía como avanazar|Mañana tengo nuevamente computador para poder comenzar|
 |21/09/23|Nada, seguía sin tener computador|Ninguno|Crearé la branch para comenzar a trabajar en el login e intentaré hacer el css y html para que se vea mejor aunque no tengo mucha fe|
 |21/09/23|Cree la clase statica de css y la branch de mi fear pero no pude hacerle commit porque tenia problemas con gi|Necesitaba agregar el token de git al pc por eso no pude hacer push|Hice commit de lo que hice y voy a investigar acerca de bootstrap para mejorar el css del software|
+|22/09/23|Agregué la la branch login he investigue sobre boostrap|No tuve problemas|implementar lo aprendido de bootstrap|
 
 
 
