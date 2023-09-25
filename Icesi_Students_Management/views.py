@@ -34,24 +34,21 @@ def signup(request):
 def tasks(request):
     return render(request, 'tasks.html')
 
-def signin(request):
-    return render(request, 'signin.html')
-
 
 def signout(request):
     logout(request)
-    return redirect('home')
+    return redirect('singin')
 
 def signin(request):
+    print("a")
     if request.method == "GET":
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm()
-        })
+        print("n")
+        return render(request, 'signin.html')
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        print("c")
         if user is None:
             return render(request, 'signin.html', {
-                'form': AuthenticationForm(),
                 'error': 'Usuario y/o contrasena incorrecta'
             })
         else:
