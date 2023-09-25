@@ -41,6 +41,7 @@
 |21/09/23|Investigué información para poder hacer mis HU asignadas|Ninguno|Debido a la carga de parciales, no podré hacer mayores avances|
 |22/09/23|No realicé avances debido a parciales|Ninguno|Investigar información para poder desarrollar mis HU|
 |23/09/23|Investigué información para realizar mi HU|Ninguno|Empezar con el desarrollo del frontend de mi HU|
+|24/09/23|Indagué mas a fondo sobre HTML y css|No tuve ningún problema|Empezar con el desarrollo del front end del menu de contabilidad, aplicando lo aprendido de la indagación de HTML y css|
 ## Kevin Vincent Loachamin
 
 |Fecha|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
