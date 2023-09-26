@@ -52,3 +52,8 @@
 |---|---|---|---|
 |Daniel Escobar|Intentar arreglar el css de la página login|No entendía lo que estaba haciendo|Terminar el css y html de la página login|
 |Luis Fernando Pinillos|Indagué más a fondo sobre HTML y CSS|No tuve ningún problema|Empezar con el desarrollo del frontend del menú de contabilidad, aplicando lo aprendido de la indagación de HTML y CSS|
+## Fecha 25/09/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Samuel Gutierrez |Era fin de seman por lo tanto no hubo cambios | Ninguno | Hoy comenzare a documentarme acerca bootstrap para terminar el menu de BU|
+
