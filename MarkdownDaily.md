@@ -66,3 +66,9 @@
 |---|---|---|---|
 |Kevin Vincent |Investigue acerca de la estrutura HTML y CSS necesaria para el desarrollo front de la HU| Al ser un tema nuevo aun se me complica entender los elementos del HTML y como esos se acomodan y trabajan junto a CSS | Investigar sobre como es el uso de Boostrap para facilitar el trabajo y uso de HTML y CSS|
 |Santiago Jose Belalcazar |Indague mas a fondo el framework bootstrap | La acomodacion de los elementos de HTML, ya que es algo complicado de aprender desde 0 | Creacion de una primera version rustica del menu de filantropia que posteriormente se pulira|
+
+## Fecha 27/09/23
+
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Kevin Vincent |No pude avanzar con mi investigacion| Responsabilidad con otra materia, tenia que trabajar un codigo para una entrega de MatAplicadas3 | Reanudar mi investigacion sobre el uso de Boostrap para implementarlo en el proyecto |
