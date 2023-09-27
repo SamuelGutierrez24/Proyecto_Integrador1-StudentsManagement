@@ -58,6 +58,7 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Samuel Gutierrez |Era fin de seman por lo tanto no hubo cambios | Ninguno | Hoy comenzare a documentarme acerca bootstrap para terminar el menu de BU|
+|Santiago Jose Belalcazar |No se realizaron cambios en el documento e investigue mas a fondo HTML | Ninguno | Hoy comenzare a documentarme acerca de bootstrap para entender como aplicarlo a mis tareas|
 
 ## Fecha 26/09/23
 
