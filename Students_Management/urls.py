@@ -25,4 +25,7 @@ urlpatterns = [
     path('tasks/', views.tasks, name='tasks'),
     path('signin/', views.signin, name='singin'),
     path('logout/', views.signout, name='logout'),
+    path('contabilidad/', views.menuContabilidad, name='menuContabilidad'),
+    path('contabilidad/infoFinanciera.html', views.infoFinanciera, name='infoFinanciera'),
+    path('contabilidad/actInfoFinanciera.html', views.actInfoFinanciera, name='actInfoFinanciera')
 ]

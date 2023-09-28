@@ -57,5 +57,15 @@ def signin(request):
         else:
             login(request, user)
             return redirect('tasks')
-        
+    
+
+def menuContabilidad(request):
+    return render(request, 'menuContabilidad.html')    
+
+
+def infoFinanciera(request):
+    return render(request, 'infoFinanciera.html')
+
+def actInfoFinanciera(request):
+    return render(request, 'actInfoFinanciera.html') 
     

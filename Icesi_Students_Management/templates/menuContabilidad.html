@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/contabilidad.css' %}">
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    <h1 id = 'titulo '>Contabilidad</h1>
+    <div>
+      <a href="infoFinanciera.html" class="btn btn-primary">Registrar información financiera </a>
+      <a href="actInfoFinanciera.html" class="btn btn-primary">Actualizar información financiera </a>
+    </div>
+  </body>
+</html>
+{% endblock %}
