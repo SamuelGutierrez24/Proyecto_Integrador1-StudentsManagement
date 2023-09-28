@@ -73,3 +73,4 @@
 |---|---|---|---|
 |Kevin Vincent |No pude avanzar con mi investigacion| Responsabilidad con otra materia, tenia que trabajar un codigo para una entrega de MatAplicadas3 | Reanudar mi investigacion sobre el uso de Boostrap para implementarlo en el proyecto |
 |Daniel Escobar | Investigar sobre como hacer el register de usuarios para que se guarde en la base de datos  | No entendí muy bien como hacerlo | Completar las carpetas necesarias para el proyecto y avanzar en el register |
+|Luis Pinillos |No tuve el tiempo suficiente para continuar con el desarrollo de mi HU| Ninguno | Reanudar mi estudio de Bootstrap para implementarlo en el HU de mi proyecto |
