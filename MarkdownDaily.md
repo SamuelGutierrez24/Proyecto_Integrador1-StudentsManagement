@@ -72,3 +72,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Kevin Vincent |No pude avanzar con mi investigacion| Responsabilidad con otra materia, tenia que trabajar un codigo para una entrega de MatAplicadas3 | Reanudar mi investigacion sobre el uso de Boostrap para implementarlo en el proyecto |
+|Daniel Escobar | Investigar sobre como hacer el register de usuarios para que se guarde en la base de datos  | No entendí muy bien como hacerlo | Completar las carpetas necesarias para el proyecto y avanzar en el register |
