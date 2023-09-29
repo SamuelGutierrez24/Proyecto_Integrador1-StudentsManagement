@@ -84,4 +84,4 @@
 |Kevin Vincent | Ver videos sobre Django, como es la estructura de views y templates y tambien revise algo de el uso de Boostrap | Ninguna | Ver algo mas sobre Boostrap y empezar con un HTML basico para plantear los elementos principales de la HU |
 |Samuel Gutierrez | Terminar el menu de bienestar y empezar la vista de registrar una actividad | Habian problemas con la base de datos por lo cual toco cambiar unas cosas | Dejare listo el formulario de registro de actividad, ademas de empezar a decorar con la nueva paleta de colores |
 |Santiago Jose Belalcazar |Indague mas a fondo el framework bootstrap | La acomodacion de los elementos de HTML por medio de la grid | Se pulio la primera version del menu de filantropia, aun sin incompleta|
-
+|Luis Pinillos|Avanzar en el HTML de mi HU|Tuve problemas al momento de navegar entre páginas|Seguir avanzando en el HTML de mi HU, especificamente, en el HTML de todo lo que tiene qu ver con el usuario contabilidad|
