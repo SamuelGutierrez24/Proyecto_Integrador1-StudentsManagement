@@ -76,3 +76,9 @@
 |Luis Pinillos |No tuve el tiempo suficiente para continuar con el desarrollo de mi HU| Ninguno | Reanudar mi estudio de Bootstrap para implementarlo en el HU de mi proyecto |
 |Santiago Jose Belalcazar |Creacion de una pimera version rustica del menu de filantropia | La aparicion de muchos metodos nuevos que no habia descubierto, cada uno con su propia dificultad de implementacion | Profundice en mi indagacion acerca de bootstrap para pulir la primera version del menu de filantropia|
 |Samuel Gutierrez|En cuanto al daily anterior termine el menu de bienestar universitario | Fue complicado ubicar cada cosa donde se requeria y ubicarse en html |Hoy tratare de logran linkear una tabla de notificaciones con la base de datos, ademas de empezar la nueva pagina de registro de actividades de Bienestar|      
+
+## Fecha 28/09/23
+
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Kevin Vincent | Ver videos sobre Django, como es la estructura de views y templates y tambien revise algo de el uso de Boostrap | Ninguna | Ver algo mas sobre Boostrap y empezar con un HTML basico para plantear los elementos principales de la HU |
