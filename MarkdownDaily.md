@@ -82,3 +82,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Kevin Vincent | Ver videos sobre Django, como es la estructura de views y templates y tambien revise algo de el uso de Boostrap | Ninguna | Ver algo mas sobre Boostrap y empezar con un HTML basico para plantear los elementos principales de la HU |
+|Samuel Gutierrez | Terminar el menu de bienestar y empezar la vista de registrar una actividad | Habian problemas con la base de datos por lo cual toco cambiar unas cosas | Dejare listo el formulario de registro de actividad, ademas de empezar a decorar con la nueva paleta de colores |
