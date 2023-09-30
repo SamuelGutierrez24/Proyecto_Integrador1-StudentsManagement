@@ -92,3 +92,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Samuel Gutierrez | Deje casi completo el html de el registro de actividades | Una clase container no queria estilizar y aceptar la margen bien |Hoy no realizare grandes avances por lo que tengo clase todo el dia, mas tratare de arreglar el problema de ayer para luego proceder a poder registrar una actividad correctamente |
+|Luis Pinillos|Hice varios avances en el HTML de mi HU|No pude ajustar el margen a unos elemntos de la página, asimismo, tuve problemas para organizar ciertas cosas del HTML|Dejar casi listo el HTML de mi HU|
