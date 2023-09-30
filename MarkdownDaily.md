@@ -85,3 +85,10 @@
 |Samuel Gutierrez | Terminar el menu de bienestar y empezar la vista de registrar una actividad | Habian problemas con la base de datos por lo cual toco cambiar unas cosas | Dejare listo el formulario de registro de actividad, ademas de empezar a decorar con la nueva paleta de colores |
 |Santiago Jose Belalcazar |Indague mas a fondo el framework bootstrap | La acomodacion de los elementos de HTML por medio de la grid | Se pulio la primera version del menu de filantropia, aun sin incompleta|
 |Luis Pinillos|Avanzar en el HTML de mi HU|Tuve problemas al momento de navegar entre páginas|Seguir avanzando en el HTML de mi HU, especificamente, en el HTML de todo lo que tiene qu ver con el usuario contabilidad|
+
+
+## Fecha 29/09/23
+
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Samuel Gutierrez | Deje casi completo el html de el registro de actividades | Una clase container no queria estilizar y aceptar la margen bien |Hoy no realizare grandes avances por lo que tengo clase todo el dia, mas tratare de arreglar el problema de ayer para luego proceder a poder registrar una actividad correctamente |
