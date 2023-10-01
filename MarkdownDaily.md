@@ -99,3 +99,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|Añadí la funcionalidad para no entrar a otras paginas sin hacer login|Tenía conflictos en un archivo|Nada|
+|Luis Pinillos|Avancé en HTML|Ninguno|Investigar el como hacer las funcionalidades de mi HU|
