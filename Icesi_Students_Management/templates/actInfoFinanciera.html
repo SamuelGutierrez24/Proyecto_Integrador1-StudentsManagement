@@ -1,17 +1,50 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
-{% block content %}
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/contabilidad.css' %}">
-    <title>Bootstrap demo</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <style>
+      #titulo{
+        height: 100px;
+        background-color: #0464AC;
+        color: white;
+        font-size: 50px;
+        text-align: left;
+      }
+
+      .btn-custom{
+        background-color: grey;
+        color: white;
+        text-align: center;
+        margin-top: 20%;
+        height: 75px;
+      }
+    </style>
+  
   </head>
   <body>
-    <h1 id = 'titulo '>Actualizar informacion financiera</h1>
-    
+    <div class="container-fluid" id="titulo">
+      <h1>Actualizar Información financiera</h1>
+    </div>
+
+    <div class="container" id="botones">
+
+      <div class="row">
+        <div class="col">
+          <a href="infoFinanciera.html" class="btn btn-custom">Registrar información financiera </a>
+        </div>
+        <div class="col">
+          <a href="actInfoFinanciera.html" class="btn btn-custom">Actualizar información financiera </a>
+        </div>
+      </div>
+
+      <div class="row">
+
+      </div>
+
+    </div>
+
   </body>
 </html>
-{% endblock %}

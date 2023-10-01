@@ -1,5 +1,24 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+
+{% block titulo %}
+<style>
+  h1{
+    font-size: 30;
+  }
+</style>
+<h1>Contabilidad</h1>
+{% endblock %}
+
+{% block botones %}
+<li class="nav-item mr-0">
+  <a href="/" class="nav-link">Home</a>
+</li>
+<li class="nav-item mr-0">
+  <a href="/logout" class="nav-link">Logout</a>
+</li>
+{% endblock %}
+
 {% block content %}
 <html lang="en">
   <head>
@@ -7,14 +26,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/contabilidad.css' %}">
-    <title>Bootstrap demo</title>
+    <title>FASE ALFA</title>
   </head>
   <body>
-    <h1 id = 'titulo '>Contabilidad</h1>
-    <div>
-      <a href="infoFinanciera.html" class="btn btn-primary">Registrar información financiera </a>
-      <a href="actInfoFinanciera.html" class="btn btn-primary">Actualizar información financiera </a>
-    </div>
+
+    <style>
+
+      #btn1{
+          background-color: #BDBDBD;
+          color: #212121;
+          text-align: center;
+          margin-top: 50%;
+          height: 75px;
+          width: 100%;
+      }
+
+      #btn2{
+          background-color: grey;
+          color: white;
+          text-align: center;
+          margin-top: 2%;
+          height: 75px;
+          width: 100%;
+      }
+
+
+    </style>
+
+
+    <div class="container" id="botones">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <a href="infoFinanciera.html" class="btn btn-custom" id="btn1"><b>Registrar información financiera</b></a>
+          <a href="actInfoFinanciera.html" class="btn btn-custom" id="btn2">Actualizar información financiera </a>
+        </div>
+        <div class="col"></div>
+        </div>
+      </div>
+
   </body>
 </html>
-{% endblock %}
+{% endblock %}
