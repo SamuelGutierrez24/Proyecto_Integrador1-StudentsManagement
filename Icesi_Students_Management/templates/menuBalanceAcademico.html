@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaces a Bootstrap 5 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Enlace CSS Local -->
+    <link rel="stylesheet" href="/static/css/BalanceAcademico.css">
+    <title>Balance Academico</title>
+</head>
+<body>
+    <!-- Sección superior -->
+    <header class="bg-primary text-white p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 id="titulo">Título Principal</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/signin" class="btn btn-outline-danger btn-sm" id="botonSuperior">Botón Superior</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cuerpo -->
+    <div class="container mt-4">
+        <section  class="card" id="bodycard">
+            <section class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="textoLabel1">TextoLabel1:</label>
+                        <div>
+                            <a href="registroNotasBA.html" class="btn btn-success" id="botonCuerpo">Botón del Cuerpo</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class = "tableFixHead  ">
+                            <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                            Notificaciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for notificaciones in notificaciones %}
+                                        <tr>
+                                            <td  onclick="" >
+                                                {{notificaciones.title}}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                </div>
+            </section>    
+        </section>
+    </div>
+
+    <!-- Scripts para personalización -->
+  <script>
+      // Cambiar el título de la sección superior
+      document.getElementById('titulo').innerText = 'Balance Academico';
+
+      // Cambiar el texto del label1 en el cuerpo
+      document.getElementById('textoLabel1').innerText = 'Menu';
+
+      // Cambiar el texto del botón del cuerpo
+      document.getElementById('botonCuerpo').innerText = 'Subir balance academico';
+
+      // Cambiar el texto del botón superior
+      document.getElementById('botonSuperior').innerText = 'Cerrar Sesion';
+      
+      // Cambiar el texto del label2 en el cuerpo
+      document.getElementById('textoLabel2').innerText = 'Notificaciones';
+ </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaces a Bootstrap 5 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Registro de Notas</title>
+
+    <style>
+        body {
+            background-color: #EDEDF2;
+        }
+
+        .container-flex{
+            display: flex;
+        }
+
+        .btn#botonSuperior {
+            color: #fff; 
+            margin-left: 100%;
+            width: max-content;
+        }
+
+        .btn#botonCuerpo {
+            margin-top: 15%;
+            margin-left: 20%;
+        }
+
+        header.bg-primary {
+            background-color: #6C788E !important;
+        }
+
+        #textoLabel1 {
+            font-size: 180%;
+        }
+
+        #textoLabel2 {
+            font-size: 180%;
+        }
+
+        #LiNotificaciones {
+            margin-top: 5%;
+        }
+
+        .card {
+            background-color: #cfd5e1;
+            height:fit-content;
+        }
+
+        #añadirM {
+            margin-left: 3%;
+            height: fit-content;
+            width: fit-content;
+        }
+
+        #añadirArc {
+            margin-left: 3%;
+            height: fit-content;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección superior -->
+    <header class="bg-primary text-white p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 id="titulo">Título Principal</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/signin" class="btn btn-outline-danger btn-sm" id="botonSuperior">Cerrar Sesion</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cuerpo -->
+    <div class="container mt-4">
+        <section  class="card" id="bodycard">
+            <section class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="textoLabel1">TextoLabel1:</label>
+                        <div>
+                            <form method="post" style="margin-top: 10%; margin-left: 5%;">
+                                <!-- Campo de texto -->
+                                <label for="nombre">Estudiante:</label>
+                                <br>
+                                <input type="text" id="nombre" name="nombre" required style="width: 70%;">
+                                <br>
+                                <label for="codMateria" style="margin-top: 5%;">Codigo de la materia:</label>
+                                <br>
+                                <input type="text" id="codMateria" name="codMateria" required style="width: 70%;">
+                                <br>
+                                <label for="Nota" style="margin-top: 5%;">Nota:</label>
+                                <br>
+                                <input type="text" id="Nota" name="Nota" required  style="width: 10%;">
+                                <br>
+                                <label for="Añadir nueva materia" style="margin-top: 5%;">Añadir nueva materia</label>
+                                <a href="registroNotasBA.html" class="btn btn-success btn-sm" id="añadirM">+</a>
+                                <br>
+                                <br>
+                                <label for="Añadir archivo">Añadir archivo</label>
+                                <a href="registroNotasBA.html" class="btn btn-success btn-sm" id="añadirArc">+</a>
+                                <br>
+                                <br>
+                                <br>
+                                <a class="btn btn-success btn-sm" id="SubirNotas">Subir</a>
+                                <a href="/BalanceAcademico" class="btn btn-success btn-sm" id="Retroceder" style="margin-left: 10%;">Atras</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>    
+        </section>
+    </div>
+
+    <!-- Scripts para personalización -->
+  <script>
+      // Cambiar el título de la sección superior
+      document.getElementById('titulo').innerText = 'Balance Academico';
+
+      // Cambiar el texto del label1 en el cuerpo
+      document.getElementById('textoLabel1').innerText = 'Informacion del estudiante';
+
+      // Cambiar el texto del botón del cuerpo
+      document.getElementById('botonCuerpo').innerText = 'Subir balance academico';
+
+      // Cambiar el texto del botón superior
+      document.getElementById('botonSuperior').innerText = 'Cerrar Sesion'
+      
+      // Cambiar el texto del label2 en el cuerpo
+      document.getElementById('textoLabel2').innerText = 'Notificaciones';
+ </script>
+</body>
+</html>

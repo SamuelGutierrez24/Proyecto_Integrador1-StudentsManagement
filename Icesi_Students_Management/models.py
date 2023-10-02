@@ -86,11 +86,15 @@ class User(models.Model):
         return self.name
 
 class Alerta(models.Model):
-    alertaID = models.CharField(max_length=20)
-    type = models.CharField(max_length=50)
+    title = models.CharField(max_length=40,default='Notificación')
+    class Type_alert(models.IntegerChoices):
+        SOLICITUD = 0, ('Solicitud de información')
+        UPLOAD = 1, ('Subida de información')
+        NONE = 2, ('ningun tipo')
+
+    type = models.IntegerField(default=Type_alert.NONE, choices=Type_alert.choices)
+    description = models.TextField(blank=True)
     userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.alertaID
 
 class Roles(models.Model):
     STATUS_CHOICES = (
