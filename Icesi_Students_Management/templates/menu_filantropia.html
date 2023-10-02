@@ -4,48 +4,97 @@
 
     {% block content %}
 
-    <style>
-        .divT{
-            background-color: #6C788E;
-            color: white;
-        }
-        
-    </style>
-
-    <main class="container py-10">
-        <section class="mt-5">
-            <section class="card card-body">
-                <div class="row divT">
-                    <h1 class="display-1">Menu</h1>
+    <head>
+        <style>
+            .tableFixHead {
+                overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+                height: 700px; /* gives an initial height of 200px to the table */
+            }
+            .tableFixHead thead th {
+                position: sticky; /* make the table heads sticky */
+                top: 0px; /* table head will be placed from the top of the table and sticks to it */
+            }
+            table {
+                border-collapse: collapse; /* make the table borders collapse to each other */
+                width: 100%;
+            }
+            th,
+            td {
+                padding: 8px 16px;
+                border: 1px solid #ccc;
+            }
+            th {
+                background: #eee;
+            } 
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main class="container py-5">
+            <section class="card" style="background-color: #cfd5e1;height: 40rem;">
+                <div class="card-header" style="background-color: #6C788E;">
+                    <a class="btn" href="/" style="float: right; background-color: #a6aec1">
+                        Log Out
+                    </a>
                 </div>
-                <div class="text-center">
-                    <div class="row">
-                        <div class="col-sm-8 mt-5">
-                            <div class="d-grid gap-2 col-5 mx-auto">
-                                <a class="btn btn-primary" href="/agregar_estudiante/">
-                                    Agregar Estudiante
-                                </a>
-                                <a class="btn btn-primary" href="/generar_reportes/">
-                                    Generar Reportes
-                                </a>
-                                <a class="btn btn-primary" href="/solicitar_informacion/">
-                                    Solicitar Actualizacion de Informacion
-                                </a>
-                                <a class="btn btn-primary" href="/">
-                                    Log Out
-                                </a>
+                <section class="card-body">
+                    <div class="row" style="text-align: start;">
+                        <h1>
+                            Menu
+                        </h1>
+                        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <div class="d-grid gap-2">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="d-grid gap-4 col-5 mx-auto">
+                                    <a class="btn" style="background-color: #a6aec1;" href="/agregar_estudiante/">
+                                        Agregar Estudiante
+                                    </a>
+                                    <a class="btn" style="background-color: #a6aec1;" href="/generar_reportes/">
+                                        Generar Reportes
+                                    </a>
+                                    <a class="btn" style="background-color: #a6aec1;" href="/solicitar_informacion/">
+                                        Solicitar Actualizacion de Informacion
+                                    </a>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
                             </div>
                         </div>
-                        <div class="col-sm-4 mt-5">
-                            <a class="btn btn-primary" href="/agregar_estudiante/">
-                                Notificaciones
-                            </a>
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <br>
+                            <div class = "tableFixHead">
+                                <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                                Notificaciones
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for notificaciones in notificaciones %}
+                                            <tr>
+                                                <td  onclick="" >
+                                                    {{notificaciones.title}}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </section>
-        </section>
-    </main>
+        </main>
+    </body>
 
     {% endblock %}
 </html>
