@@ -100,3 +100,9 @@
 |---|---|---|---|
 |Daniel Escobar|Añadí la funcionalidad para no entrar a otras paginas sin hacer login|Tenía conflictos en un archivo|Nada|
 |Luis Pinillos|Avancé en HTML|Ninguno|Investigar el como hacer las funcionalidades de mi HU|
+
+## Fecha 01/10/23
+
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Santiago Jose Belalcazar |Nada | La acomodacion de los elementos de HTML por medio de flex | Casi finalizacion del menu de filantropia|
