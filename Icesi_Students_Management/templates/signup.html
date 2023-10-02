@@ -16,55 +16,71 @@
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
       
-                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrarse</p>
       
                       <form class="mx-1 mx-md-4" action="/signup/" method="POST">
 
                           {% csrf_token %}
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                              <div class="form-outline flex-fill mb-0">
+                              <h6 style="color: red; font-size: 15px;">
+                                  {{error}}
+                                </h6>
+                              </div>
+                          </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="username" id="nameBox" class="form-control" />
-                            <label class="form-label" for="nameBox">Your Name</label>
+                            <input type="text" id="username" name="username" class="form-control" required="required" placeholder="Nombre"/>
+                          </div>
+                        </div>
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" id="lastName" name="LastName" class="form-control" required="required" placeholder="Apellido"/>
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="form3Example3c" class="form-control" />
-                            <label class="form-label" for="form3Example3c">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required="required" placeholder="Email"/>
+                          </div>
+                        </div>
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required="required" placeholder="Numero Telefónico"/>
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="password1" class="form-control" />
-                            <label class="form-label" for="password2">Password</label>
+                            <input type="password" id="password1"  name="password1" class="form-control" required="required" placeholder="Contraseña"/>
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="password2" class="form-control" />
-                            <label class="form-label" for="password2">Repeat your password</label>
+                            <input type="password" id="password2" name="password2" class="form-control" required="required" placeholder="Confirma Contraseña"/>
                           </div>
                         </div>
       
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button id="registerBtn" type="button" class="btn btn-primary btn-lg">Register</button>
+                          <button id="registerBtn" type="submit" class="btn btn-lg me-1" style="background-color:#6C788E; color:white">Registrarse</button>
+                            <a href="/signin/" class="btn btn-lg me-1" style="background-color:#ededf2; color:black">Regresar</a>
                         </div>
-      
+
                       </form>
-      
-                    </div>
-                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-      
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                        class="img-fluid" alt="Sample image">
+
+
       
                     </div>
                   </div>
@@ -77,16 +93,16 @@
 </body>
 </html>
 
-<script>
-    const registerBtn = document.getElementById('registerBtn');
-
-    const nameBox = document.getElementById('nameBox');
-    const emailBox = document.getElementById('emailBox');
-  
-    registerBtn.addEventListener('click', function(){
-        if(nameBox.addEventListener!=null){
-            location.href = '/signin';
-        }
-    });
-  
-  </script>
+{#<script>#}
+{#    const registerBtn = document.getElementById('registerBtn');#}
+{##}
+{#    const nameBox = document.getElementById('nameBox');#}
+{#    const emailBox = document.getElementById('emailBox');#}
+{#  #}
+{#    registerBtn.addEventListener('click', function(){#}
+{#        if(nameBox.addEventListener!=null){#}
+{#            location.href = '/signin';#}
+{#        }#}
+{#    });#}
+{#  #}
+{#  </script>#}
