@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
@@ -21,6 +22,7 @@ def signup(request):
                                                     password=request.POST['password1'])
                     user.save()
                     login(request, user)
+                    messages.success(request, 'Cuenta creada satisfactoriamente! (espera a que sea activada)')
                     return redirect('signin')
                 except IntegrityError:
                     return render(request, 'signup.html', {
