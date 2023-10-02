@@ -106,3 +106,10 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Santiago Jose Belalcazar |Nada | La acomodacion de los elementos de HTML por medio de flex | Casi finalizacion del menu de filantropia|
+
+# Fecha 02/10/23
+
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar |Agregar la carpeta test e investigar sobre como hacer el register | Tenía un error en el codigo y no sabia como arreglarlo | Arreglar el error para finalizar con el login y conectarla con la base de datos|
+
