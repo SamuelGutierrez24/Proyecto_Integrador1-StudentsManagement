@@ -51,12 +51,13 @@
             {% block content %}
 
             <form action="/bienestarUniversitario/registroActividades" method="post" style="border-radius: 25px;">
+                {% csrf_token %}
+                {{ error }}
                 {{form.as_p}}
                 <br>
                 <br>
-
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" name="Chk" type="checkbox" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                         ¿Desea registrar otra Actividad?
                         </label>
@@ -64,10 +65,9 @@
                     <br>
                     <br>
                     <br>
-                <button>
+                <button style="align-items: center;">
                     Registrar
                 </button>
-
             </form>
 
             {% endblock %}

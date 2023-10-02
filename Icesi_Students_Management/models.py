@@ -6,7 +6,7 @@ class Student(models.Model):
     code = models.CharField(max_length=15)
     email = models.CharField(max_length=40)
     def __str__(self):
-        return self.name
+        return self.code
 
 class Semester(models.Model):
     semesterID = models.CharField(max_length=10)
@@ -22,7 +22,7 @@ class Becas(models.Model):
     description = models.TextField(blank=True)
     studentCode = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
     def __str__(self):
-        return self.type
+       return self.type
 
 class Donante(models.Model):
     donanteID = models.CharField(max_length=20)
@@ -69,7 +69,7 @@ class SeguimientoActividades(models.Model):
 
 
 class Actividad(models.Model):
-    student = models.CharField(max_length=9,blank=True)
+    student = models.ForeignKey(Student,on_delete = models.CASCADE, default=None)
     name = models.CharField(max_length=20)
     assists = models.PositiveIntegerField()
     def __str__(self):
@@ -85,7 +85,6 @@ class User(models.Model):
         return self.name
 
 class Alerta(models.Model):
-
     title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
         SOLICITUD = 0, ('Solicitud de información')
