@@ -112,4 +112,5 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar |Agregar la carpeta test e investigar sobre como hacer el register | Tenía un error en el codigo y no sabia como arreglarlo | Arreglar el error para finalizar con el login y conectarla con la base de datos|
+|Luis Pinillos|Investigar como conectar un formulario con la Base de datos|ninguno|Mostrar las notificaciones que se generen en la pantalla de contabilidad|
 
