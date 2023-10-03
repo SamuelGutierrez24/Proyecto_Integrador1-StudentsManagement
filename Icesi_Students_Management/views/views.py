@@ -64,6 +64,3 @@ def signin(request):
         else:
             login(request, user)
             return redirect('tasks')
-
-def menu_filantropia(request):
-    return render(request, 'menu_filantropia.html')

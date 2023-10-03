@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Icesi_Students_Management import views
+from Icesi_Students_Management.views import views
+import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
+import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +27,6 @@ urlpatterns = [
     path('tasks/', views.tasks, name='tasks'),
     path('signin/', views.signin, name='singin'),
     path('logout/', views.signout, name='logout'),
-    path('menu_filantropia/', views.menu_filantropia, name='menu filantropia'),
+    path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
+    path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
 ]

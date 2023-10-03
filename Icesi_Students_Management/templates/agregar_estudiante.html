@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <head>
+        <style>
+            .tableFixHead {
+                overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+                height: 500px; /* gives an initial height of 200px to the table */
+            }
+            .tableFixHead thead th {
+                position: sticky; /* make the table heads sticky */
+                top: 0px; /* table head will be placed from the top of the table and sticks to it */
+            }
+            table {
+                border-collapse: collapse; /* make the table borders collapse to each other */
+                width: 100%;
+            }
+            th,
+            td {
+                padding: 8px 16px;
+                border: 1px solid #ccc;
+            }
+            th {
+                background: #eee;
+            } 
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main class="container py-5">
+            <section class="card" style="background-color: #cfd5e1;height: 40rem;">
+                <div class="card-header" style="background-color: #6C788E;">
+                </div>
+                <form method="POST" class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <div style="text-align: start;">
+                                <h1>
+                                    Agregar Estudiante
+                                </h1>
+                            </div>
+                            {{error}}
+                
+                            {% csrf_token %}
+
+                            <div class="d-grid gap-2">
+                                <br>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="Nombre"><b>Nombre:</b></label>
+                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el nombre del estudiante">
+                                </div>
+                    
+                                <div class="mb-3">
+                                    <label for="Apellido"><b>Apellido:</b></label>
+                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el apellido del estudiante">
+                                </div>
+                    
+                                <div class="mb-3">
+                                    <label for="Email"><b>Email:</b></label>
+                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el email del estudiante">
+                                </div>
+                    
+                                <div class="mb-3">
+                                    <label for="Codigo"><b>Codigo:</b></label>
+                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el codigo del estudiante">
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <br>
+                            <div class = "tableFixHead">
+                                <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                                Donadores
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <select class="form-select" multiple aria-label="Multiple select example">
+                                            {% for donador in donadores %}
+                                                <tr>
+                                                    <td  onclick="" >
+                                                        {{donador.name}}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </select>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-center">
+                            <a class="btn" style="background-color: #a6aec1; margin-right: 10px;" href="/menu_filantropia/">
+                                <b>Cancelar</b>
+                            </a>
+                    
+                            <a class="btn" style="background-color: #a6aec1; margin-left: 10px;" href="/menu_filantropia/">
+                                <b>Confirmar</b>
+                            </a>
+                        </div>        
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+
+    {% endblock %}
+</html>
