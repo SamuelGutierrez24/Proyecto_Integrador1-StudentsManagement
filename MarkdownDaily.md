@@ -115,4 +115,5 @@
 |Daniel Escobar |Agregar la carpeta test e investigar sobre como hacer el register | Tenía un error en el codigo y no sabia como arreglarlo | Arreglar el error para finalizar con el login y conectarla con la base de datos|
 |Luis Pinillos|Investigar como conectar un formulario con la Base de datos|ninguno|Mostrar las notificaciones que se generen en la pantalla de contabilidad|
 |Samuel Gutierrez | Deje listo el registro de Actividades de un estudiante con todas las verificaciones excepto la opción de registrar una nueva actividad  | El checkbox no lo podia verificar ya que si no se registraba no llegaba en el metodo POST |  Hoy despues de la clase dejare listo el pop up de envio de alerta de que se registro el reporte de actividades y arreglar el error del checkbox|
+|Santiago Jose Belalcazar |Casi finalizacion del menu de filantropia | La seleccion de notificaciones | 95% de finalizacion del menu de filantropia y gran avance de la opcion de agregar usuario|
 
