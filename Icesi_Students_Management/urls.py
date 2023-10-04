@@ -7,5 +7,5 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('logout/', views.signout, name='logout'),
     path('BalanceAcademico/', views.BAMenu.menu, name='menuBalanceAcademico'),
-    path('BalanceAcademico/registroNotasBA.html', views.registroNotasBA, name='registroNotasBA')
+    path('BalanceAcademico/registroNotasBA.html', views.RegMateria, name='registroNotasBA')
 ]

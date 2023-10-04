@@ -13,35 +13,14 @@
             background-color: #EDEDF2;
         }
 
-        .container-flex{
-            display: flex;
-        }
-
         .btn#botonSuperior {
             color: #fff; 
             margin-left: 100%;
             width: max-content;
         }
 
-        .btn#botonCuerpo {
-            margin-top: 15%;
-            margin-left: 20%;
-        }
-
         header.bg-primary {
             background-color: #6C788E !important;
-        }
-
-        #textoLabel1 {
-            font-size: 180%;
-        }
-
-        #textoLabel2 {
-            font-size: 180%;
-        }
-
-        #LiNotificaciones {
-            margin-top: 5%;
         }
 
         .card {
@@ -68,7 +47,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 id="titulo">Título Principal</h1>
+                    <h1 id="titulo">Balance Academico</h1>
                 </div>
                 <div class="col-md-6 text-right">
                     <a href="/signin" class="btn btn-outline-danger btn-sm" id="botonSuperior">Cerrar Sesion</a>
@@ -83,24 +62,29 @@
             <section class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <label id="textoLabel1">TextoLabel1:</label>
+                        <h1>Informacion del estudiante:</h1>
                         <div>
-                            <form method="post" style="margin-top: 10%; margin-left: 5%;">
-                                <!-- Campo de texto -->
-                                <label for="nombre">Estudiante:</label>
+                            <form method="post" action="./registroNotasBA.html" style="margin-top: 10%; margin-left: 5%;" id="formularioBA">
+                                {% csrf_token %}
+                                {{ error }}
+                                <label for="codigo">Codigo del estudiante:</label>
                                 <br>
-                                <input type="text" id="nombre" name="nombre" required style="width: 70%;">
+                                <input type="text" id="codigo" name="codigo" required style="width: 70%;">
                                 <br>
-                                <label for="codMateria" style="margin-top: 5%;">Codigo de la materia:</label>
-                                <br>
-                                <input type="text" id="codMateria" name="codMateria" required style="width: 70%;">
-                                <br>
-                                <label for="Nota" style="margin-top: 5%;">Nota:</label>
-                                <br>
-                                <input type="text" id="Nota" name="Nota" required  style="width: 10%;">
-                                <br>
+                                <div id="materias">
+                                    <div>
+                                        <label for="codMateria1" style="margin-top: 5%;">Codigo de la materia:</label>
+                                        <br>
+                                        <input type="text" id="codMateria1" name="codMateria1" required style="width: 70%;">
+                                        <br>
+                                        <label for="Nota1" style="margin-top: 5%;">Nota:</label>
+                                        <br>
+                                        <input type="text" id="Nota1" name="Nota1" required  style="width: 10%;">
+                                        <br>
+                                    </div>
+                                </div>
                                 <label for="Añadir nueva materia" style="margin-top: 5%;">Añadir nueva materia</label>
-                                <a href="registroNotasBA.html" class="btn btn-success btn-sm" id="añadirM">+</a>
+                                <a class="btn btn-success btn-sm" id="añadirM" onclick="agregarMateria()">+</a>
                                 <br>
                                 <br>
                                 <label for="Añadir archivo">Añadir archivo</label>
@@ -108,7 +92,7 @@
                                 <br>
                                 <br>
                                 <br>
-                                <a class="btn btn-success btn-sm" id="SubirNotas">Subir</a>
+                                <button type="submit" class="btn btn-success btn-sm" id="SubirNotas">Subir</button>
                                 <a href="/BalanceAcademico" class="btn btn-success btn-sm" id="Retroceder" style="margin-left: 10%;">Atras</a>
                             </form>
                         </div>
@@ -118,22 +102,7 @@
         </section>
     </div>
 
-    <!-- Scripts para personalización -->
-  <script>
-      // Cambiar el título de la sección superior
-      document.getElementById('titulo').innerText = 'Balance Academico';
-
-      // Cambiar el texto del label1 en el cuerpo
-      document.getElementById('textoLabel1').innerText = 'Informacion del estudiante';
-
-      // Cambiar el texto del botón del cuerpo
-      document.getElementById('botonCuerpo').innerText = 'Subir balance academico';
-
-      // Cambiar el texto del botón superior
-      document.getElementById('botonSuperior').innerText = 'Cerrar Sesion'
-      
-      // Cambiar el texto del label2 en el cuerpo
-      document.getElementById('textoLabel2').innerText = 'Notificaciones';
- </script>
+    <!-- Scripts -->
+    <script src="/static/js/RegistroNotasBA.js"></script>
 </body>
 </html>

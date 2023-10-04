@@ -40,13 +40,11 @@ class BalanceAcademico(models.Model):
         return self.program
 
 class Materia(models.Model):
-    materiaID = models.CharField(max_length=20)
-    name = models.CharField(max_length=20)
-    scheduale = models.DateTimeField(null=True)
-    assists = models.PositiveIntegerField()
-    balanceAcademicoID = models.ForeignKey(BalanceAcademico, on_delete=models.CASCADE, default=None)
+    student = models.ForeignKey(Student,on_delete = models.CASCADE, default=None)
+    codMateria = models.CharField(max_length=20)
+    nota = models.FloatField(default=0.0)
     def __str__(self):
-        return self.name
+        return self.codMateria
 
 class Status(models.Model):
     STATUS_CHOICES = (
@@ -95,6 +93,8 @@ class Alerta(models.Model):
     type = models.IntegerField(default=Type_alert.NONE, choices=Type_alert.choices)
     description = models.TextField(blank=True)
     userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    def strBA(self):
+        return f"Nombre: {self.userID} | Desc: {self.description}"
 
 class Roles(models.Model):
     STATUS_CHOICES = (
