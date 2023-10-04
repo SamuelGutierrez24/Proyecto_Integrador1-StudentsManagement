@@ -108,7 +108,7 @@
 |Santiago Jose Belalcazar |Nada | La acomodacion de los elementos de HTML por medio de flex | Casi finalizacion del menu de filantropia|
 |Samuel Gutierrez | El sabado fue un dia ocupado por lo cual no trabaje | Ninguno | Hoy dejare hecho el registro con todas sus verificaciones para poder hacer pull request |
 
-# Fecha 02/10/23
+## Fecha 02/10/23
 
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
@@ -116,4 +116,7 @@
 |Luis Pinillos|Investigar como conectar un formulario con la Base de datos|ninguno|Mostrar las notificaciones que se generen en la pantalla de contabilidad|
 |Samuel Gutierrez | Deje listo el registro de Actividades de un estudiante con todas las verificaciones excepto la opción de registrar una nueva actividad  | El checkbox no lo podia verificar ya que si no se registraba no llegaba en el metodo POST |  Hoy despues de la clase dejare listo el pop up de envio de alerta de que se registro el reporte de actividades y arreglar el error del checkbox|
 |Santiago Jose Belalcazar |Casi finalizacion del menu de filantropia | La seleccion de notificaciones | 95% de finalizacion del menu de filantropia y gran avance de la opcion de agregar usuario|
-
+## Fecha 03/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Samuel Gutierrez |Arregle los problemas de checkbox, agregue el pop up de que se envio la alerta a filantropia y deje lista la HU | El if de jinja para el pop up tenia un error de comparación que resolvi hoy en la mañana | Hoy verificare que todo este listo y acomodare algo del html para hacer el pull request hoy |
