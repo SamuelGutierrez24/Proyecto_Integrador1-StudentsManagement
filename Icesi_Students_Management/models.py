@@ -1,10 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+class Beca(models.Model):
+    type = models.CharField(max_length=30)
+    description = models.TextField(blank=True)
+
+
 class Student(models.Model):
+    id = models.IntegerField(
+        primary_key=True,auto_created=True,serialize=True,unique=True, default=0
+    )
     name = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    code = models.CharField(max_length=15)
+    code = models.CharField(max_length=15,unique=True)
     email = models.CharField(max_length=40)
+    beca = models.ForeignKey(Beca, related_name="BecaType", on_delete= models.CASCADE, default= None)
     def __str__(self):
         return self.code
 
@@ -17,19 +27,11 @@ class Semester(models.Model):
     def __str__(self):
         return self.name
 
-class Becas(models.Model):
-    type = models.CharField(max_length=30)
-    description = models.TextField(blank=True)
-    studentCode = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-       return self.type
-
 class Donante(models.Model):
-    donanteID = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     email = models.CharField(max_length=30)
-    typeBecas = models.ForeignKey(Becas, on_delete=models.CASCADE, default=None)
+    typeBecas = models.ForeignKey(Beca, on_delete=models.CASCADE, default=None)
     def __str__(self):
         return self.name
 
@@ -76,7 +78,6 @@ class Actividad(models.Model):
         return self.name
 
 class User(models.Model):
-    userID = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     email = models.CharField(max_length=30)
@@ -90,6 +91,8 @@ class Alerta(models.Model):
         SOLICITUD = 0, ('Solicitud de información')
         UPLOAD = 1, ('Subida de información')
         NONE = 2, ('ningun tipo')
+        FILANTROPIA_UPLOAD_ACTIVITY =  3,('Actualización de actividades no academicas de un estudiante')
+
 
     type = models.IntegerField(default=Type_alert.NONE, choices=Type_alert.choices)
     description = models.TextField(blank=True)
