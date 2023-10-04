@@ -85,15 +85,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <select class="form-select" multiple aria-label="Multiple select example">
-                                            {% for donador in donadores %}
-                                                <tr>
-                                                    <td  onclick="" >
-                                                        {{donador.name}}
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                        </select>
+                                        {% for donador in donadores %}
+                                            <tr>
+                                                <td  onclick="" >
+                                                    {{donador.name}}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
