@@ -116,6 +116,7 @@
 |Luis Pinillos|Investigar como conectar un formulario con la Base de datos|ninguno|Mostrar las notificaciones que se generen en la pantalla de contabilidad|
 |Samuel Gutierrez | Deje listo el registro de Actividades de un estudiante con todas las verificaciones excepto la opción de registrar una nueva actividad  | El checkbox no lo podia verificar ya que si no se registraba no llegaba en el metodo POST |  Hoy despues de la clase dejare listo el pop up de envio de alerta de que se registro el reporte de actividades y arreglar el error del checkbox|
 |Santiago Jose Belalcazar |Casi finalizacion del menu de filantropia | La seleccion de notificaciones | 95% de finalizacion del menu de filantropia y gran avance de la opcion de agregar usuario|
+
 ## Fecha 03/10/23
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
@@ -123,3 +124,8 @@
 |Kevin Vincent |Hice las 2 paginas HTML completas de mi HU (Menu Balance Academico y Registro de Notas Balance Academico), complete la estructura, implemente el estilo CSS similar al de las demas paginas y complete la caracteristica de mostrar las notificaciones en la pantalla del menu | Inicialmente fue dificil entender las etiquetas que añade Boostrap, debido a ello preferi usar en parte mi propio CSS y JS, tambien tuve problemas para que el archivo HTML se conectara con el CSS local, tambien tuve problemas en la seleccion de elementos del HTML en el CSS | Agregar la posibilidad de añadir mas materias en el registro de notas he intentar hacer que el forms guarde la informacion ingresada en la base de datos de la aplicacion |
 |Santiago Jose Belalcazar |95% de finalizacion del menu de filantropia y gran avance de la opcion de agregar usuario | La seleccion de donadores | Creare el archivo de forms en donde creare los informes a llenar para que se me facilite guardar a los estudiantes agregados, ademas de investigar como seleccionar los donadores que se les asignara a los estudiantes|
 |Luis Pinillos|Agregué la funcionalidad para que se puedan ver las notificaciones en la pantalla de contabilidad|No me aparecían las notificaciones, pero a la final se solucionó|Agregaré la funcionalidad de registro de estudiantes y la conectare con la base de datos|
+
+## Fecha 04/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Kevin Vincent |Añadi la posibilidad de expandir el formulario de registro de notas, ahora el boton de añadir hace aparecer mas campos para la digitacion de la materia y su nota | Ninguno | Conectare el formulario a la base de datos para que se guarde la informacion ingresada a la base de datos he investigare sobre como leer archivos externos |
