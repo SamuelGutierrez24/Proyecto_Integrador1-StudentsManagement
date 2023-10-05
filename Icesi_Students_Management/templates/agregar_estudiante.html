@@ -42,35 +42,17 @@
                                     Agregar Estudiante
                                 </h1>
                             </div>
-                            {{error}}
-                
-                            {% csrf_token %}
-
-                            <div class="d-grid gap-2">
-                                <br>
-                                <br>
-                                <div class="mb-3">
-                                    <label for="Nombre"><b>Nombre:</b></label>
-                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el nombre del estudiante">
+                            <form action="/menu_filantropia/agregar_estudiante/" method="post" style="border-radius: 25px; margin: 0 auto; display: block;">
+                                <div class="d-grid gap-2">
+                                    {% csrf_token %}
+                                    {{ error }}
+                                    <br>
+                                    <br>
+                                    {{form.as_p}}
+                                    <br>
+                                    <br>
                                 </div>
-                    
-                                <div class="mb-3">
-                                    <label for="Apellido"><b>Apellido:</b></label>
-                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el apellido del estudiante">
-                                </div>
-                    
-                                <div class="mb-3">
-                                    <label for="Email"><b>Email:</b></label>
-                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el email del estudiante">
-                                </div>
-                    
-                                <div class="mb-3">
-                                    <label for="Codigo"><b>Codigo:</b></label>
-                                    <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Ingrese el codigo del estudiante">
-                                </div>
-                                <br>
-                                <br>
-                            </div>
+                            </form>
                         </div>
 
                         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -85,10 +67,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for donador in donadores %}
+                                        {% csrf_token %}
+                                        {% for field in Donantes %}
                                             <tr>
-                                                <td  onclick="" >
-                                                    {{donador.name}}
+                                                <td  onclick="">
+                                                    {{field.label_tag}}
+                                                    {{field}}
                                                 </td>
                                             </tr>
                                         {% endfor %}
@@ -113,5 +97,5 @@
         </main>
     </body>
 
-    {% endblock %}
+    {% endblock %}
 </html>
