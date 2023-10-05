@@ -129,3 +129,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Kevin Vincent |Añadi la posibilidad de expandir el formulario de registro de notas, ahora el boton de añadir hace aparecer mas campos para la digitacion de la materia y su nota | Ninguno | Conectare el formulario a la base de datos para que se guarde la informacion ingresada a la base de datos he investigare sobre como leer archivos externos |
+|Santiago Jose Belalcazar |Creare el archivo de forms en donde creare los informes a llenar para que se me facilite guardar a los estudiantes agregados, ademas de investigar como seleccionar los donadores que se les asignara a los estudiantes | La utilizacion de dos forms, los cuales me lanzan un error y guardar la informacion de un form en otro | Aplicacion de el archivo forms al html, e intentar dejar listo los metodos y clases para que la informacion se guarde en la base de datos |
