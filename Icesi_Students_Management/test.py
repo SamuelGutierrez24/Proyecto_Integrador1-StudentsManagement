@@ -24,5 +24,15 @@ class registroActividadTestCase(TestCase):
         print(response)
         self.assertEquals(response.status_code,200)
 
-   
+    def test_valid_Activity_form(self):
+        beca = Beca.objects.create(id = 1, type = 'Completa', description = 'Ejemplo')
+        estudiante = Student.objects.create(id= 1, name = 'Luis', lastName = 'Pinillos', code = 'A00301045', email='luis@gmail.com', beca_id=1)
+        data = {
+            'student':estudiante,
+            'name': 'Voley',
+            'assists': 6
+        }
+        form = ActivityForm(data=data)
+        
+        self.assertTrue(form.is_valid())
 
