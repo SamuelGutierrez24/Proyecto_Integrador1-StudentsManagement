@@ -137,3 +137,4 @@
 |---|---|---|---|
 |Kevin Vincent | El formulario registra las materias en la base de datos, tambien se toma en cuenta la funcionalidad de añadir materia en el formulario la cual genera mas campos por medio de JS para el registro en la base de datos| Fue algo dificil entender como por medio de JS podia solicitar los campos del formulario y mas cuando el formulario era generativo y toca tomar en cuenta los posibles nuevos campos | Investigare como hacer la lectura de archivos y tambien probare si hay errores fatales en la digitacion del formulario |
 |Daniel Escobar|Ayer no hice nada| Ninguno |Asignarme una nueva HU|
+|Santiago Jose Belalcazar |Aplicacion de el archivo forms al html, e intentar dejar listo los metodos y clases para que la informacion se guarde en la base de datos | La correcta documentacion de python | Reunion con el profesor para solucionar unas cuantas dudas, e investigar lo que hayamos acordado |
