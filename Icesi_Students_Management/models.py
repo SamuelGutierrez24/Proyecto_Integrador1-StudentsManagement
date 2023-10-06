@@ -1,12 +1,22 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class Beca(models.Model):
+    type = models.CharField(max_length=30)
+    description = models.TextField(blank=True)
+
 
 class Student(models.Model):
+    id = models.IntegerField(
+        primary_key=True,auto_created=True,serialize=True,unique=True, default=0
+    )
     name = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    code = models.CharField(max_length=15)
+    code = models.CharField(max_length=15,unique=True)
     email = models.CharField(max_length=40)
+    beca = models.ForeignKey(Beca, related_name="BecaType", on_delete= models.CASCADE, default= None)
     def __str__(self):
-        return self.name
+        return self.code
 
 class Semester(models.Model):
     semesterID = models.CharField(max_length=10)
@@ -17,19 +27,11 @@ class Semester(models.Model):
     def __str__(self):
         return self.name
 
-class Becas(models.Model):
-    type = models.CharField(max_length=30)
-    description = models.TextField(blank=True)
-    studentCode = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.type
-
 class Donante(models.Model):
-    donanteID = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     email = models.CharField(max_length=30)
-    typeBecas = models.ForeignKey(Becas, on_delete=models.CASCADE, default=None)
+    typeBecas = models.ForeignKey(Beca, on_delete=models.CASCADE, default=None)
     def __str__(self):
         return self.name
 
@@ -69,15 +71,13 @@ class SeguimientoActividades(models.Model):
 
 
 class Actividad(models.Model):
-    actividadID = models.CharField(max_length=20)
+    student = models.ForeignKey(Student,on_delete = models.CASCADE, default=None)
     name = models.CharField(max_length=20)
     assists = models.PositiveIntegerField()
-    seguimientoActividadesID = models.ForeignKey(SeguimientoActividades, on_delete=models.CASCADE, default=None)
     def __str__(self):
         return self.name
 
 class User(models.Model):
-    userID = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     email = models.CharField(max_length=30)
@@ -86,11 +86,19 @@ class User(models.Model):
         return self.name
 
 class Alerta(models.Model):
-    alertaID = models.CharField(max_length=20)
-    type = models.CharField(max_length=50)
+    title = models.CharField(max_length=40,default='Notificación')
+    class Type_alert(models.IntegerChoices):
+        SOLICITUD = 0, ('Solicitud de información')
+        UPLOAD = 1, ('Subida de información')
+        NONE = 2, ('ningun tipo')
+        FILANTROPIA_UPLOAD_ACTIVITY =  3,('Actualización de actividades no academicas de un estudiante')
+
+
+    type = models.IntegerField(default=Type_alert.NONE, choices=Type_alert.choices)
+    description = models.TextField(blank=True)
     userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.alertaID
+    #def __str__(self):
+       # return self
 
 class Roles(models.Model):
     STATUS_CHOICES = (

@@ -15,18 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-# from Icesi_Students_Management.views.home import home
-# from Icesi_Students_Management.views.signin import Signin
-# from Icesi_Students_Management.views.signout import Signout
-
+from django.urls import path
+import Icesi_Students_Management.views.views as views
+import Icesi_Students_Management.views.bumenu as buMenu
+import Icesi_Students_Management.views.registroActividades as registroA
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Icesi_Students_Management.urls'))
-    # path('', home, name='home'),
-    # path('signup/', signup, name='signup'),
-    # path('tasks/', Views.tasks, name='tasks'),
-    # path('signin/', Signin.as_view , name='singin'),
-    # path('logout/', signout, name='logout'),
+    path('', views.home, name='home'),
+    path('signup/', views.signup, name='signup'),
+    path('tasks/', views.tasks, name='tasks'),
+    path('signin/', views.signin, name='singin'),
+    path('logout/', views.signout, name='logout'),
+    path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
+    path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades')
+    //path('', include('Icesi_Students_Management.urls'))
 ]

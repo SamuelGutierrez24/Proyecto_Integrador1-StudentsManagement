@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+        <style>
+            .tableFixHead {
+            overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+            height: 700px; /* gives an initial height of 200px to the table */
+            }
+            .tableFixHead thead th {
+            position: sticky; /* make the table heads sticky */
+            top: 0px; /* table head will be placed from the top of the table and sticks to it */
+            }
+            table {
+            border-collapse: collapse; /* make the table borders collapse to each other */
+            width: 100%;
+            }
+            th,
+            td {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            }
+            th {
+            background: #eee;
+            }
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bienestar Universitario</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- Option 1: Include in HTML -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    </head>
+    <body style="background-color: #fcfdff;">
+        <nav class="navbar navbar-dark" style="background-color: #6c788e;" style="height: max-content;" >
+            <div class="container-fluid">
+            <a class="navbar-brand ms-1 " href="#">
+                <img src="{% static './icesi-dark.png'%}" alt="" width="200" height="70" class="d-inline-block align-text-top">
+            </a>
+            <a class="navbar-brand ms-3">
+                <b>Bienestar Universitario</b>
+            </a>          
+            <a class="navbar-brand ms-auto">
+                <i class="bi bi-door-closed" onclick=""></i>    
+            </a>
+            </div>
+        </nav>
+        <div class="container my-5" style="background-color: #cfd5e1; border-radius: 25px;">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                    <div class="d-grid gap-2">
+                        <br>
+                        <h1 style="text-align: center;">Menú</h1>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button class="btn" type="button" style="background-color: #a6aec1;"> <b> Reportar una Cancelación </b></button>
+                        <br>
+                        <br>
+                        <button class="btn" type="button" style="background-color: #a6aec1;" onclick="location.href='registroActividades'" > <b>Registrar Actividad no academica</b></button>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <br>
+                    <div class = "tableFixHead  ">
+                        <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                        Notificaciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for notificaciones in notificaciones %}
+                                    <tr>
+                                        <td  onclick="" >
+                                            {{notificaciones.title}}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

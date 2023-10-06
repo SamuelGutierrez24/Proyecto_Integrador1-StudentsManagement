@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Student
 from .models import Semester
-from .models import Becas
+from .models import Beca
 from .models import Donante
 from .models import BalanceAcademico
 from .models import Materia
@@ -19,7 +19,7 @@ from .models import SeguimientoBeca
 
 admin.site.register(Student)
 admin.site.register(Semester)
-admin.site.register(Becas)
+admin.site.register(Beca)
 admin.site.register(Donante)
 admin.site.register(BalanceAcademico)
 admin.site.register(Materia)
