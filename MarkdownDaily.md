@@ -139,3 +139,7 @@
 |Daniel Escobar|Ayer no hice nada| Ninguno |Asignarme una nueva HU|
 |Santiago Jose Belalcazar |Aplicacion de el archivo forms al html, e intentar dejar listo los metodos y clases para que la informacion se guarde en la base de datos | La correcta documentacion de python | Reunion con el profesor para solucionar unas cuantas dudas, e investigar lo que hayamos acordado |
 |Luis Pinillos|Agregar la funcionalidad de registro de estudiante|Tuve problemas con la generación del informe ID y con el ingreso de las variables de dinero|Aplicar los cambios acordados con el profesor|
+## Fecha 06/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Samuel Gutierrez | No me habian aprobado mi pull request | Ninguno | Hoy despues de que aceptaron mi pull request en la mañana resolvi un problemo que pude ver que genero el merge con develop y empezare a mejorar cosas del html de mi hu ya terminada de manera funcional |
