@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Icesi_Students_Management import views
+from Icesi_Students_Management.views import menuConta
+from Icesi_Students_Management.views import views
+from Icesi_Students_Management.views import infoFinanciera
+from Icesi_Students_Management.views import buscarEstud
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +29,8 @@ urlpatterns = [
     path('tasks/', views.tasks, name='tasks'),
     path('signin/', views.signin, name='singin'),
     path('logout/', views.signout, name='logout'),
-    path('contabilidad/', views.menuContabilidad, name='menuContabilidad'),
-    path('contabilidad/infoFinanciera.html', views.infoFinanciera, name='infoFinanciera'),
-    path('contabilidad/actInfoFinanciera.html', views.actInfoFinanciera, name='actInfoFinanciera')
+    path('contabilidad/', menuConta.menu, name='menuContabilidad'),
+    path('contabilidad/infoFinanciera.html', infoFinanciera.infoFinanciera, name='infoFinanciera'),
+    path('contabilidad/buscarEstud.html', buscarEstud.menuBuscar, name='buscarEstud')
+
 ]

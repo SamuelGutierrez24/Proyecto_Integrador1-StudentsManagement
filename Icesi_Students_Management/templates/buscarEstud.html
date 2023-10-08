@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block titulo %}
+<style>
+    h1 {
+        font-size: 30;
+    }
+</style>
+<h1>Buscar Estudiante</h1>
+{% endblock %}
+
+{% block botones %}
+<style>
+    li {
+        margin-right: 50%;
+    }
+</style>
+<li class="nav-item mr-0">
+    <a href="/contabilidad" class="nav-link">Home</a>
+</li>
+<li class="nav-item mr-0">
+    <a href="/logout" class="nav-link">Logout</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/contabilidad.css' %}">
+
+    <title>FASE ALFA</title>
+</head>
+
+<body style="background-color: #fcfdff;">
+
+    <style>
+        .d-flex {
+            margin-top: 5%;
+            width: 90%;
+            margin-left: 5%;
+        }
+
+        #searchBtn:hover {
+            background-color: #6c788e;
+            color: white;
+        }
+
+        #searchBtn {
+            background-color: #FFFFFF;
+            color: black;
+            border-color: #a6aec1;
+        }
+
+        #menu {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+
+    <div class="container" style="background-color: #cfd5e1; border-radius: 25px;">
+        <div class="row">
+            <div class="col-md-12 search">
+                <form method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input class="form-control me-2" type="text" placeholder="Buscar Código de Estudiante"
+                                name="buscar" value="{{ request.GET.buscar}}">
+                            <span class="input-group-list">
+                                <i class="icon icon-search">
+                                    <button class="btn btn-outline-info" type="submit" id="searchBtn">Buscar</button>
+                                </i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <table class="table table-striped" style="background-color: #cfd5e1; height: 10cm;">
+                    <tbody style="overflow: scroll;">
+                        {% for infoFinan in infoFinan %}
+                        <tr>
+                            <td onclick="">
+                                {{infoFinan}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}
