@@ -153,3 +153,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Samuel Gutierrez | Ayer resolvi el error en develop y modifique la base de datos a un valor que debia cambiar | ninguno | Hoy iniciare una nueva rama donde agregare ciertas funcionalidades secundarias y mejoras a el menu de bienestar universitario |
+|Santiago Jose Belalcazar | Investigue como realizar el select del tipo de beca para los estudiantes | ninguno | Intentare terminar el HU |
