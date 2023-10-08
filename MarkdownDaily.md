@@ -148,3 +148,8 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|Estuve ocupado todo el dia, por ende no realicé mayores avances|Ninguno|Agregar la funcionalidad de busqueda a la barra de busqueda que tengo y hacer que las notificaciones sean clickables para poder acceder a su información|
+
+## Fecha 07/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Samuel Gutierrez | Ayer resolvi el error en develop y modifique la base de datos a un valor que debia cambiar | ninguno | Hoy iniciare una nueva rama donde agregare ciertas funcionalidades secundarias y mejoras a el menu de bienestar universitario |
