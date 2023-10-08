@@ -154,3 +154,8 @@
 |---|---|---|---|
 | Samuel Gutierrez | Ayer resolvi el error en develop y modifique la base de datos a un valor que debia cambiar | ninguno | Hoy iniciare una nueva rama donde agregare ciertas funcionalidades secundarias y mejoras a el menu de bienestar universitario |
 |Santiago Jose Belalcazar | Investigue como realizar el select del tipo de beca para los estudiantes | ninguno | Intentare terminar el HU |
+
+## Fecha 08/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Samuel Gutierrez | Ayer inicie una nueva rama en donde intente agregar la visualización de la tabla de notiificaciónes del menú de filantropia | Se enfermo mi perro y me toco ir a urgencias veterinarias | Hoy terminare la parte de la notificación y verificare que mas puedo avanzar en temas de diseños |
