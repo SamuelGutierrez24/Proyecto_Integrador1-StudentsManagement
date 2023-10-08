@@ -143,3 +143,6 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Samuel Gutierrez | No me habian aprobado mi pull request | Ninguno | Hoy despues de que aceptaron mi pull request en la mañana resolvi un problemo que pude ver que genero el merge con develop y empezare a mejorar cosas del html de mi hu ya terminada de manera funcional |
+
+## Fecha 06/10/23
+|Luis Pinillos|Estuve ocupado todo el dia, por ende no realicé mayores avances|Ninguno|Agregar la funcionalidad de busqueda a la barra de busqueda que tengo y hacer que las notificaciones sean clickables para poder acceder a su información|
