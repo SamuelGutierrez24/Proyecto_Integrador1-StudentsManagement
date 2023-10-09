@@ -159,3 +159,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Samuel Gutierrez | Ayer inicie una nueva rama en donde intente agregar la visualización de la tabla de notiificaciónes del menú de filantropia | Se enfermo mi perro y me toco ir a urgencias veterinarias | Hoy terminare la parte de la notificación y verificare que mas puedo avanzar en temas de diseños |
+|Daniel Escobar|Nada|Ninguno|Hice el taller de la anterior calse|
