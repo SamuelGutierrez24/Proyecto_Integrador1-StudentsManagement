@@ -160,3 +160,8 @@
 |---|---|---|---|
 | Samuel Gutierrez | Ayer inicie una nueva rama en donde intente agregar la visualización de la tabla de notiificaciónes del menú de filantropia | Se enfermo mi perro y me toco ir a urgencias veterinarias | Hoy terminare la parte de la notificación y verificare que mas puedo avanzar en temas de diseños |
 |Daniel Escobar|Nada|Ninguno|Hice el taller de la anterior calse|
+
+## Fecha 09/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar|El taller de la memoria cache para que los otros integrantes del grupo se concentraran en su HU|Ninguno|Voy a organizar en el models.py la clase user para poder usar un el usuario abstracto de Django|
