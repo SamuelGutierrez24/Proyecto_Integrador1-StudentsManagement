@@ -2,7 +2,10 @@ from django.db import models
 
 class Becas(models.Model):
     type = models.CharField(max_length=30)
+    percentage = models.IntegerField(default=None)
     description = models.TextField(blank=True)
+    alimentacion = models.BooleanField(default=None)
+    transporte = models.BooleanField(default=None)
     def __str__(self):
         return self.type
 

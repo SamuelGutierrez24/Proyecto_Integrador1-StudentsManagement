@@ -24,10 +24,15 @@
             }
             th {
                 background: #eee;
-            } 
+            }
+            .buttonSelect{
+                padding: 8px 16px;
+                width: 100%;
+            }
         </style>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
         <main class="container py-5">
@@ -48,8 +53,8 @@
                                     {{ error }}
                                     <br>
                                     <br>
-                                    {{form.as_p}}
                                     <br>
+                                    {{form}}
                                     <br>
                                 </div>
                             </form>
@@ -62,17 +67,26 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
-                                                Donadores
+                                                Becas
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% csrf_token %}
-                                        {% for field in Donantes %}
+                                        {% for becas in Becas %}
                                             <tr>
                                                 <td  onclick="">
-                                                    {{field.label_tag}}
-                                                    {{field}}
+                                                    <button class="buttonSelect" value="{{ becas.id }}">
+                                                        {{ becas.type }} 
+                                                        &nbsp; &nbsp; &nbsp;
+                                                        {{becas.percentage}}% <i class="fas fa-money-bill"></i>
+                                                        {% if becas.alimentacion %}
+                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
+                                                        {% endif %}
+                                                        {% if becas.transporte %}
+                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
+                                                        {% endif %}
+                                                    </button>
                                                 </td>
                                             </tr>
                                         {% endfor %}

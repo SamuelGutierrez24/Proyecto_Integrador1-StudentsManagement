@@ -6,16 +6,21 @@ from django.forms import ModelForm
 from django import forms
 from .models import *
 
-class searchDonator(Form):
-    donator = forms.ModelChoiceField(label = "Name", queryset=Donante.objects.all(), initial=3, widget=forms.Select(attrs={"class":"input"}))
 
-class addStudent(Form):
-    Nombre = forms.CharField(label="Nombre:", max_length=100)
-    Apellido = forms.CharField(label="Apellido:", max_length=100)
-    Email = forms.CharField(label="Email:", max_length=200)
-    Codgio = forms.CharField(label="Codigo", max_length=100)
-    Beca = searchDonator
+class addStudent(forms.Form):
+    Nombre = forms.CharField(label="Nombre:",
+                            max_length=100,
+                            widget=forms.TextInput(attrs={'placeholder': 'Ingrese el nombre del estudiante', 'col': '10', 'size': '50'}))
+    Apellido = forms.CharField(label="Apellido:",
+                               max_length=100,
+                               widget=forms.TextInput(attrs={'placeholder': 'Ingrese el apellido del estudiante', 'col': '10', 'size': '50'}))
+    Email = forms.EmailField(label="Email:",
+                            max_length=200,
+                            widget=forms.TextInput(attrs={'placeholder': 'Ingrese el email del estudiante', 'col': '10', 'size': '50'}))
+    Codgio = forms.CharField(label="Codigo:",
+                            max_length=100,
+                            widget=forms.TextInput(attrs={'placeholder': 'Ingrese el codigo del estudiante', 'col': '10', 'size': '50'}))
     
     class Meta:
         model = Student
-        fields = ['Nombre', 'Apellido', 'Email', 'Codigo', 'Beca']
+        fields = ['Nombre', 'Apellido', 'Email', 'Codigo']
