@@ -1,83 +1,111 @@
 <!DOCTYPE html>
 <html>
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-    {% block content %}
-    <head>
-        <style>
-            .tableFixHead {
-                overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
-                height: 500px; /* gives an initial height of 200px to the table */
-            }
-            .tableFixHead thead th {
-                position: sticky; /* make the table heads sticky */
-                top: 0px; /* table head will be placed from the top of the table and sticks to it */
-            }
-            table {
-                border-collapse: collapse; /* make the table borders collapse to each other */
-                width: 100%;
-            }
-            th,
-            td {
-                padding: 8px 16px;
-                border: 1px solid #ccc;
-            }
-            th {
-                background: #eee;
-            }
-            .buttonSelect{
-                padding: 8px 16px;
-                width: 100%;
-            }
-        </style>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    </head>
-    <body>
-        <main class="container py-5">
-            <section class="card" style="background-color: #cfd5e1;height: 40rem;">
-                <div class="card-header" style="background-color: #6C788E;">
-                </div>
-                <form method="POST" class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                            <div style="text-align: start;">
-                                <h1>
-                                    Agregar Estudiante
-                                </h1>
-                            </div>
-                            <form action="/menu_filantropia/agregar_estudiante/" method="post" style="border-radius: 25px; margin: 0 auto; display: block;">
-                                <div class="d-grid gap-2">
-                                    {% csrf_token %}
-                                    {{ error }}
-                                    <br>
-                                    <br>
-                                    <br>
-                                    {{form}}
-                                    <br>
-                                </div>
-                            </form>
+{% block content %}
+
+<head>
+    <style>
+        .tableFixHead {
+            overflow-y: auto;
+            /* make the table scrollable if height is more than 200 px  */
+            height: 500px;
+            /* gives an initial height of 200px to the table */
+        }
+
+        .tableFixHead thead th {
+            position: sticky;
+            /* make the table heads sticky */
+            top: 0px;
+            /* table head will be placed from the top of the table and sticks to it */
+        }
+
+        table {
+            border-collapse: collapse;
+            /* make the table borders collapse to each other */
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background: #eee;
+        }
+
+        .buttonSelect {
+            padding: 8px 16px;
+            width: 100%;
+        }
+
+        .selected {
+            background-color: #6c788e; /* Color de fondo cuando está seleccionado */
+            color: white; /* Color del texto cuando está seleccionado */
+            padding: 8px 16px;
+            width: 100%;
+        }
+
+        #boton:hover{
+            background-color: #6c788e; /* Color de fondo cuando está seleccionado */
+            color: white; /* Color del texto cuando está seleccionado */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <main class="container py-5">
+        <section class="card" style="background-color: #cfd5e1;height: 40rem;">
+            <div class="card-header" style="background-color: #6C788E;">
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <div style="text-align: start;">
+                            <h1>
+                                Agregar Estudiante
+                            </h1>
                         </div>
+                        <form action="/menu_filantropia/agregar_estudiante/" method="post"
+                            style="border-radius: 25px; margin: 0 auto; display: block;">
+                            <div class="d-grid gap-2">
+                                {% csrf_token %}
+                                {{ error }}
+                                <br>
+                                <br>
+                                <br>
+                                {{form}}
+                                <br>
+                            </div>
+                        </form>
+                    </div>
 
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                            <br>
-                            <div class = "tableFixHead">
-                                <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
-                                                Becas
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <br>
+                        <div class="tableFixHead">
+                            <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                            Becas
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <form method="POST" action="{% url 'agregar estudiante' %}">
                                         {% csrf_token %}
                                         {% for becas in Becas %}
-                                            <tr>
-                                                <td  onclick="">
-                                                    <button class="buttonSelect" value="{{ becas.id }}">
-                                                        {{ becas.type }} 
+                                        <tr>
+                                            <td>
+
+                                                {% if becas.id  == boton_seleccionado %}
+                                                    <button type="submit" class = "selected" name="selected_button" value="{{ becas.id }}" id="boton">
+                                                        {{ becas.type }}
                                                         &nbsp; &nbsp; &nbsp;
                                                         {{becas.percentage}}% <i class="fas fa-money-bill"></i>
                                                         {% if becas.alimentacion %}
@@ -86,30 +114,48 @@
                                                         {% if becas.transporte %}
                                                         &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
                                                         {% endif %}
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                                    </button> 
+                                                {% else %}
+                                                    <button type="submit" class = "buttonSelect" name="selected_button" value="{{ becas.id }}" id="boton">
+                                                        {{ becas.type }}
+                                                        &nbsp; &nbsp; &nbsp;
+                                                        {{becas.percentage}}% <i class="fas fa-money-bill"></i>
+                                                        {% if becas.alimentacion %}
+                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
+                                                        {% endif %}
+                                                        {% if becas.transporte %}
+                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
+                                                        {% endif %}
+                                                    </button> 
+                                                {% endif %}
+
+                                                
+                                            </td>
+                                        </tr>
                                         {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </form>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-center">
-                            <a class="btn" style="background-color: #a6aec1; margin-right: 10px;" href="/menu_filantropia/">
+                            <a class="btn" style="background-color: #a6aec1; margin-right: 10px;"
+                                href="/menu_filantropia/">
                                 <b>Cancelar</b>
                             </a>
-                    
-                            <a class="btn" style="background-color: #a6aec1; margin-left: 10px;" href="/menu_filantropia/">
+
+                            <a class="btn" style="background-color: #a6aec1; margin-left: 10px;"
+                                href="/menu_filantropia/">
                                 <b>Confirmar</b>
                             </a>
-                        </div>        
+                        </div>
                     </div>
-                </form>
-            </section>
-        </main>
-    </body>
+                </div>
+        </section>
+    </main>
+</body>
 
-    {% endblock %}
+{% endblock %}
+
 </html>

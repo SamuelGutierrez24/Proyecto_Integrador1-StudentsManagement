@@ -1,12 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Icesi_Students_Management.models import Donante
 from Icesi_Students_Management.forms import *
 
+
 def agregar(request):
-    if request.method == 'GET':
-        print('enviando formulario')
-        
-        becas = Becas.objects.all()
-        #Investigar como confirmar que los campos se encuentren llenos para guardar la informacion
-        #Averiguar porque hay un error a la hora de incluir el forms para seleccionar donador
-        return render(request, 'agregar_estudiante.html',{'form': addStudent, 'Becas': becas})
+
+    becas = Becas.objects.all()
+
+    if request.method == 'POST':
+        selected_button = request.POST.get('selected_button')
+        request.session['boton_seleccionado'] = int(selected_button)
+        return redirect('agregar estudiante')
+    
+
+    boton_seleccionado = request.session.get('boton_seleccionado', None)
+    return render(request, 'agregar_estudiante.html', {'form': addStudent, 'Becas': becas, 'boton_seleccionado': boton_seleccionado})
