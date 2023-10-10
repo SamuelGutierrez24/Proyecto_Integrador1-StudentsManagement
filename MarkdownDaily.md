@@ -139,6 +139,7 @@
 |Daniel Escobar|Ayer no hice nada| Ninguno |Asignarme una nueva HU|
 |Santiago Jose Belalcazar |Aplicacion de el archivo forms al html, e intentar dejar listo los metodos y clases para que la informacion se guarde en la base de datos | La correcta documentacion de python | Reunion con el profesor para solucionar unas cuantas dudas, e investigar lo que hayamos acordado |
 |Luis Pinillos|Agregar la funcionalidad de registro de estudiante|Tuve problemas con la generación del informe ID y con el ingreso de las variables de dinero|Aplicar los cambios acordados con el profesor|
+
 ## Fecha 06/10/23
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
@@ -165,3 +166,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|El taller de la memoria cache para que los otros integrantes del grupo se concentraran en su HU|Ninguno|Voy a organizar en el models.py la clase user para poder usar un el usuario abstracto de Django|
+|Kevin Vincent|Cambie completamente la forma en que se hacia el formulario, ya no se registran materias sino balances academicos por estudiante, ahora hay una pagina intermedia entre el menu y el registro para poder buscar al estudiante y ver si existe, ahora la pagina de registro permite visualizar a que estudiante se le asignan las materias y tambien carga las que ya tiene en caso de existir, se modifico nuevamente el Models.py para actualizar la base de datos, otros cambios menores...|Demasiados, entre los problemas mas pesados fue el cambio constante de la base de datos, tambien el tener que decidir como manejar los datos para enviarlos de una pagina a otra, otros problemas menores con el models.py, el JS, el HTML y el .py de la pagina de registro|Investigar como solucionar la actualizacion de informacion, actualmente el programa no actualiza sino que crea nuevas entradas con la informacion dada|
