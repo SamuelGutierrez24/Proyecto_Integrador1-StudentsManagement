@@ -174,3 +174,4 @@
 |---|---|---|---|
 |Daniel Escobar|Investrigue sobre el abstractuser para poder usar la tabla nativa de django para agregar usuarios|No me funciona el register user, me tira una exception en los roles|Arreglar la exception para terminar las historias de usuario|
 |Samuel Gutierrez | Reorganizamos con todo el equipo el models para ya tener la base de datos fija sin cambios  | Ninguno | Hoy dejare terminada sin los test la funcionalidad de la selección de Notificaciones eh intentare arregla mi HU de Seguimiento de actividades de las cosas que debo corregir segun como se planteo nuevamente |
+|Luis Pinillos|Añadi la funcion de eliminar y editar usuarios|Tuve problemas con makemigrations y con la conexión de la pantalla editar con la pantalla de menu, pues me daba un error al regresar|Modificar mis pantallas para ajustarlas a las recomendaciones dadas por el profesor|
