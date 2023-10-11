@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponse
 from Icesi_Students_Management.models import User
 from django.contrib.auth import login
 from django.db import IntegrityError
