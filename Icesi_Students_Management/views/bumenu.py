@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from Icesi_Students_Management.models import Alerta
+from ..models import *
 
 def menu(request):
 
@@ -10,9 +10,18 @@ def menu(request):
         notifi = []
 
         for noti in notificaciones:
-            if(noti.type==0):
+            if(noti.type==2):
                 notifi.append(noti)
-        
+
+        return render(request, 'menuBU.html', {'notificaciones': notifi})
+    
+    else:
+
+        id = request.POST["noti"]
+        print(id)
+        noti = Alerta.objects.all().filter(id =  id).first()
+
+        return render(request, 'notification.html', {'noti': noti})
 
 
-    return render(request, 'menuBU.html', {'notificaciones': notifi})
+    
