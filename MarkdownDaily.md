@@ -181,4 +181,5 @@
 |---|---|---|---|
 |Daniel Escobar|Organizar el register de usuarios para que accediera al usuario abstracto y completar la clase models.py|En general no tuve casi problemas|Hacer los test para hacer pull request|
 | Samuel Gutierrez | Ayer no solo termine la HU de notificaciones si no que también termine mi HU de el seguimiento a actividades, pero cabe decir que sin hacer test | Ninguno |
-Agregare una mejora al registro de actividades quie me recomendo domiciano| 
+Agregare una mejora al registro de actividades quie me recomendo domiciano|
+|Santiago Jose Belalcazar | Intente que se guarde la informacion del form de inputs y el form de seleccion y se cree el objeto estudiante | El guardado de informacion utilizando dos forms | Separar los procesos de guardado de cada uno de los forms |
