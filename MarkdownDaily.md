@@ -180,3 +180,5 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|Organizar el register de usuarios para que accediera al usuario abstracto y completar la clase models.py|En general no tuve casi problemas|Hacer los test para hacer pull request|
+| Samuel Gutierrez | Ayer no solo termine la HU de notificaciones si no que también termine mi HU de el seguimiento a actividades, pero cabe decir que sin hacer test | Ninguno |
+Agregare una mejora al registro de actividades quie me recomendo domiciano| 
