@@ -29,4 +29,5 @@ urlpatterns = [
     path('logout/', views.signout, name='logout'),
     path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
     path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades')
+    #path('', include('Icesi_Students_Management.urls'))
 ]
