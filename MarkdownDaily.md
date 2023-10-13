@@ -191,3 +191,7 @@ Agregare una mejora al registro de actividades quie me recomendo domiciano|
 |Luis Pinillos|Organice el HTML de HU y me deshice de cosas que ya no me eran útiles|ninguno|Agregar la funcion de ver notificaciones, el autocompletado de información y agregar el historial de registro de información|
 |Samuel Gutierrez | Ayer aguegue la nueva funcionalidad de busqueda de los estudiantes antes de registrar la actividad | ninguno | Tenia sustentación de aplicadas por lo cual no tuve tiempo de hacer los ultimos test |
 
+## Fecha 12/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Kevin Vincent | Encontre la razón de mis registros duplicados y busque nuevas formas de abordar las actualizaciones | tuve que probar muchas cosas para poder encontrar la condicion que fallaba | Preparar y ajustar completamente el registro para que aparte de registrar las entradas por usuario, tambien pueda ser ejecutado cuando se lea el archivo |
