@@ -189,3 +189,5 @@ Agregare una mejora al registro de actividades quie me recomendo domiciano|
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|Organice el HTML de HU y me deshice de cosas que ya no me eran útiles|ninguno|Agregar la funcion de ver notificaciones, el autocompletado de información y agregar el historial de registro de información|
+|Samuel Gutierrez | Ayer aguegue la nueva funcionalidad de busqueda de los estudiantes antes de registrar la actividad | ninguno | Tenia sustentación de aplicadas por lo cual no tuve tiempo de hacer los ultimos test |
+
