@@ -184,3 +184,8 @@
 Agregare una mejora al registro de actividades quie me recomendo domiciano|
 |Santiago Jose Belalcazar | Intente que se guarde la informacion del form de inputs y el form de seleccion y se cree el objeto estudiante | El guardado de informacion utilizando dos forms | Separar los procesos de guardado de cada uno de los forms |
 |Kevin Vincent| Intente registrar las notas y las materias, etc sin que se generaran problemas en la base de datos añadiendo condiciones para distinguir la creacion de la actualizacion | Los registros se duplican al entrar en las nuevas condiciones | Preguntar sobre como solucionar los registros duplicados y establecer que libreria utlizar para la lectura del archivo Excel |
+
+## Fecha 12/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|Organice el HTML de HU y me deshice de cosas que ya no me eran útiles|ninguno|Agregar la funcion de ver notificaciones, el autocompletado de información y agregar el historial de registro de información|
