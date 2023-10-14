@@ -196,3 +196,4 @@ Agregare una mejora al registro de actividades quie me recomendo domiciano|
 |---|---|---|---|
 | Kevin Vincent | Encontre la razón de mis registros duplicados y busque nuevas formas de abordar las actualizaciones | tuve que probar muchas cosas para poder encontrar la condicion que fallaba | Preparar y ajustar completamente el registro para que aparte de registrar las entradas por usuario, tambien pueda ser ejecutado cuando se lea el archivo |
 |Santiago Jose Belalcazar | Debido a la carga de parciales no realize ninguna modificacion | Ninguno | Terminar la separacion de los procesos de guardado de cada uno de los forms, ademas de acomodar los botones del html |
+|Luis Pinillos|Agregar la función de ver notificaciones y conectar correctamente el estudiante con la información financiera y el seguimiento de beca|No me dejaba registrar la informacion financiera en la base de datos, pero ya lo arreglé|El autocompletado y el historial de cambios|
