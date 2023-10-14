@@ -31,6 +31,7 @@ class Student(models.Model):
     def __str__(self):
         return self.code
 
+
 class Materia(models.Model):
     materia_code = models.CharField(max_length=20, default="None")
     nombre = models.CharField(max_length=20, default="None")
@@ -39,11 +40,12 @@ class Materia(models.Model):
         return self.nombre
 
 
+
 class Status(models.Model):
     STATUS_CHOICES = (
-        ('Materia Cancelada','Materia Cancelada'),
-        ('Materia en Curso','Materia en Curso'),
-        ('Materia completada','Materia completada'),
+        ('Materia Cancelada', 'Materia Cancelada'),
+        ('Materia en Curso', 'Materia en Curso'),
+        ('Materia completada', 'Materia completada'),
     )
     type = models.CharField(max_length=20, choices=STATUS_CHOICES)
     def str(self):
@@ -124,6 +126,7 @@ class User(AbstractUser):
     rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
     
 
+
 class Alerta(models.Model):
     title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
@@ -157,3 +160,5 @@ class Alerta(models.Model):
        #return self.consultaID
 
 
+    def __str__(self):
+        return self.reporteBecaID
