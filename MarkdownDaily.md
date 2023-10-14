@@ -180,8 +180,7 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|Organizar el register de usuarios para que accediera al usuario abstracto y completar la clase models.py|En general no tuve casi problemas|Hacer los test para hacer pull request|
-| Samuel Gutierrez | Ayer no solo termine la HU de notificaciones si no que también termine mi HU de el seguimiento a actividades, pero cabe decir que sin hacer test | Ninguno |
-Agregare una mejora al registro de actividades quie me recomendo domiciano|
+| Samuel Gutierrez | Ayer no solo termine la HU de notificaciones si no que también termine mi HU de el seguimiento a actividades, pero cabe decir que sin hacer test | Ninguno |Agregare una mejora al registro de actividades quie me recomendo domiciano|
 |Santiago Jose Belalcazar | Intente que se guarde la informacion del form de inputs y el form de seleccion y se cree el objeto estudiante | El guardado de informacion utilizando dos forms | Separar los procesos de guardado de cada uno de los forms |
 |Kevin Vincent| Intente registrar las notas y las materias, etc sin que se generaran problemas en la base de datos añadiendo condiciones para distinguir la creacion de la actualizacion | Los registros se duplican al entrar en las nuevas condiciones | Preguntar sobre como solucionar los registros duplicados y establecer que libreria utlizar para la lectura del archivo Excel |
 
@@ -191,9 +190,10 @@ Agregare una mejora al registro de actividades quie me recomendo domiciano|
 |Luis Pinillos|Organice el HTML de HU y me deshice de cosas que ya no me eran útiles|ninguno|Agregar la funcion de ver notificaciones, el autocompletado de información y agregar el historial de registro de información|
 |Samuel Gutierrez | Ayer aguegue la nueva funcionalidad de busqueda de los estudiantes antes de registrar la actividad | ninguno | Tenia sustentación de aplicadas por lo cual no tuve tiempo de hacer los ultimos test |
 
-## Fecha 12/10/23
+## Fecha 13/10/23
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Kevin Vincent | Encontre la razón de mis registros duplicados y busque nuevas formas de abordar las actualizaciones | tuve que probar muchas cosas para poder encontrar la condicion que fallaba | Preparar y ajustar completamente el registro para que aparte de registrar las entradas por usuario, tambien pueda ser ejecutado cuando se lea el archivo |
 |Santiago Jose Belalcazar | Debido a la carga de parciales no realize ninguna modificacion | Ninguno | Terminar la separacion de los procesos de guardado de cada uno de los forms, ademas de acomodar los botones del html |
 |Luis Pinillos|Agregar la función de ver notificaciones y conectar correctamente el estudiante con la información financiera y el seguimiento de beca|No me dejaba registrar la informacion financiera en la base de datos, pero ya lo arreglé|El autocompletado y el historial de cambios|
+|Samuel Gutierrez | Nada | ninguno | Lo que me de tiempo de testeos antes de hacer PR |
