@@ -88,6 +88,9 @@ class AsistenciasActividad(models.Model):
     seguimientoID = models.ForeignKey(SeguimientoBeca,on_delete=models.CASCADE,)
     ActividadID = models.ForeignKey(Actividad,on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.ActividadID.nombre
+
 class BalanceAcademico(models.Model):
     BalanceAcademicoID = models.AutoField(primary_key=True, default=None)
     statusID = models.ForeignKey(Status, on_delete=models.CASCADE, default=None)
