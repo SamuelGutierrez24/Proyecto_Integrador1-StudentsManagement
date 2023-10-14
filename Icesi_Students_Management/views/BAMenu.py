@@ -7,7 +7,7 @@ def menu(request):
     notifi = []
 
     for noti in notificaciones:
-        if(noti.type==0 or noti.type==1):
+        if(noti.type==3):
             notifi.append(noti)
         
     return render(request, 'menuBalanceAcademico.html', {'notificaciones': notifi})

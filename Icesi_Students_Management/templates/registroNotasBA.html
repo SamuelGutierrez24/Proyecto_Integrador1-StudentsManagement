@@ -64,24 +64,73 @@
                     <div class="col-md-6">
                         <h1>Informacion del estudiante:</h1>
                         <div>
+                            <h3>Nombre: {{ nombre }}</h3>
+                            <h3>Apellido: {{ apellido }}</h3>
+                            <h3>Codigo: {{ codigo }}</h3>
                             <form method="post" action="./registroNotasBA.html" style="margin-top: 10%; margin-left: 5%;" id="formularioBA">
                                 {% csrf_token %}
                                 {{ error }}
-                                <label for="codigo">Codigo del estudiante:</label>
-                                <br>
-                                <input type="text" id="codigo" name="codigo" required style="width: 70%;">
-                                <br>
+                                <p>Llene los campos para matricular el estudiante a dicha materia, o reescriba los datos de los campos para actualizar la informacion dado el caso de existir registros previos</p>
                                 <div id="materias">
-                                    <div>
-                                        <label for="codMateria1" style="margin-top: 5%;">Codigo de la materia:</label>
-                                        <br>
-                                        <input type="text" id="codMateria1" name="codMateria1" required style="width: 70%;">
-                                        <br>
-                                        <label for="Nota1" style="margin-top: 5%;">Nota:</label>
-                                        <br>
-                                        <input type="text" id="Nota1" name="Nota1" required  style="width: 10%;">
-                                        <br>
-                                    </div>
+                                    {% if detalles|length == 0 %}
+                                        <div>
+                                            <label for="codMateria{{ ultimoContador }}" style="margin-top: 5%;">Codigo de la materia:</label>
+                                            <br>
+                                            <input type="text" id="codMateria{{ ultimoContador }}" name="codMateria{{ ultimoContador }}" required style="width: 70%;">
+                                            <br>
+                                            <label for="nombreMateria{{ ultimoContador }}" style="margin-top: 5%;">Nombre de la materia:</label>
+                                            <br>
+                                            <input type="text" id="nombreMateria{{ ultimoContador }}" name="nombreMateria{{ ultimoContador }}" required style="width: 70%;">
+                                            <br>
+                                            <label for="creditosMateria{{ ultimoContador }}" style="margin-top: 5%;">Creditos de la materia:</label>
+                                            <br>
+                                            <input type="number" id="creditosMateria{{ ultimoContador }}" name="creditosMateria{{ ultimoContador }}" required min="0" step="1" style="width: 10%;">
+                                            <br>
+                                            <label for="estatusMateria{{ ultimoContador }}" style="margin-top: 5%;">Estatus de la materia:</label>
+                                            <br>
+                                            <select id="estatusMateria{{ ultimoContador }}" name="estatusMateria{{ ultimoContador }}" required style="width: 70%;">
+                                                <option value="" disabled selected>Selecciona una opción</option>
+                                                <option value="Materia Cancelada">Materia Cancelada</option>
+                                                <option value="Materia en Curso">Materia en Curso</option>
+                                                <option value="Materia completada">Materia completada</option>
+                                            </select>
+                                            <br>
+                                            <label for="Nota{{ ultimoContador }}" style="margin-top: 5%;">Nota final:</label>
+                                            <br>
+                                            <input type="number" id="Nota{{ ultimoContador }}" name="Nota{{ ultimoContador }}" required min="0.0" max="5.0" step="0.1" style="width: 10%;">
+                                            <br>
+                                        </div>
+                                    {% else %}
+                                        {% for detalle in detalles %}
+                                            <div>
+                                                <label for="codMateria{{ forloop.counter }}" style="margin-top: 5%;">Codigo de la materia:</label>
+                                                <br>
+                                                <input type="text" id="codMateria{{ forloop.counter }}" name="codMateria{{ forloop.counter }}" required style="width: 70%;" value="{{ detalle.CodigoMateria }}">
+                                                <br>
+                                                <label for="nombreMateria{{ forloop.counter }}" style="margin-top: 5%;">Nombre de la materia:</label>
+                                                <br>
+                                                <input type="text" id="nombreMateria{{ forloop.counter }}" name="nombreMateria{{ forloop.counter }}" required style="width: 70%;" value="{{ detalle.NombreMateria }}">
+                                                <br>
+                                                <label for="creditosMateria{{ forloop.counter }}" style="margin-top: 5%;">Creditos de la materia:</label>
+                                                <br>
+                                                <input type="number" id="creditosMateria{{ forloop.counter }}" name="creditosMateria{{ forloop.counter }}" required min="0" step="1" style="width: 10%;" value="{{ detalle.CreditosMateria }}">
+                                                <br>
+                                                <label for="estatusMateria{{ forloop.counter }}" style="margin-top: 5%;">Estatus de la materia:</label>
+                                                <br>
+                                                <select id="estatusMateria{{ forloop.counter }}" name="estatusMateria{{ forloop.counter }}" required style="width: 70%;" data-estatus="{{ detalle.EstatusMateria }}">
+                                                    <option value="" disabled selected>Selecciona una opción</option>
+                                                    <option value="Materia Cancelada">Materia Cancelada</option>
+                                                    <option value="Materia en Curso">Materia en Curso</option>
+                                                    <option value="Materia completada">Materia completada</option>
+                                                </select>
+                                                <br>
+                                                <label for="Nota{{ forloop.counter }}" style="margin-top: 5%;">Nota final:</label>
+                                                <br>
+                                                <input type="number" id="Nota{{ forloop.counter }}" name="Nota{{ forloop.counter }}" required min="0.0" max="5.0" step="0.1" style="width: 10%;" value="{{ detalle.NotaFinal }}">
+                                                <br>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <label for="Añadir nueva materia" style="margin-top: 5%;">Añadir nueva materia</label>
                                 <a class="btn btn-success btn-sm" id="añadirM" onclick="agregarMateria()">+</a>
@@ -104,5 +153,24 @@
 
     <!-- Scripts -->
     <script src="/static/js/RegistroNotasBA.js"></script>
+
+    <script>
+        let ultimoContador = parseInt("{{ ultimoContador }}");
+        let contador = ultimoContador;
+        
+        for (let i = 1; i <= ultimoContador; i++) {
+            const estatusSelect = document.getElementById(`estatusMateria${i}`);
+            const detalleMateriaEstatus = estatusSelect.getAttribute("data-estatus");
+
+            // Encuentra la opción que coincide con el detalleMateriaEstatus y la selecciona
+            for (let j = 0; j < estatusSelect.options.length; j++) {
+                console.log(estatusSelect.options[j].value);
+                if (estatusSelect.options[j].value === detalleMateriaEstatus) {
+                    estatusSelect.options[j].selected = true;
+                    break; // Rompe el bucle una vez que encuentres la opción correspondiente
+                }
+            }
+        }
+    </script>
 </body>
 </html>

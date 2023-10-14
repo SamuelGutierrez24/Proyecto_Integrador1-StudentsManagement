@@ -1,50 +1,43 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Student(models.Model):
-    name = models.CharField(max_length=30)
-    lastName = models.CharField(max_length=30)
-    code = models.CharField(max_length=15)
-    email = models.CharField(max_length=40)
-    def __str__(self):
+
+
+class Carrera(models.Model):
+    nameCarrera = models.CharField(max_length=50)
+    carreraID = models.CharField(primary_key=True, max_length=15, default="0")
+    precioMatricula = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
+    def str(self):
         return self.name
-
-class Semester(models.Model):
-    semesterID = models.CharField(max_length=10)
-    name = models.CharField(max_length=200)
-    faculty = models.CharField(max_length=25)
-    description = models.TextField(blank=True)
-    studentCode = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.name
-
+    
 class Becas(models.Model):
     type = models.CharField(max_length=30)
+    percentage = models.IntegerField(default=None)
     description = models.TextField(blank=True)
-    studentCode = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
-    def __str__(self):
+    alimentacion = models.BooleanField(default=None)
+    transporte = models.BooleanField(default=None)
+    def str(self):
         return self.type
 
-class Donante(models.Model):
-    donanteID = models.CharField(max_length=20)
-    name = models.CharField(max_length=20)
-    lastName = models.CharField(max_length=20)
-    email = models.CharField(max_length=30)
-    typeBecas = models.ForeignKey(Becas, on_delete=models.CASCADE, default=None)
+class Student(models.Model):
+    id = models.IntegerField(
+        primary_key=True,auto_created=True,serialize=True,unique=True, default=0
+    )
+    name = models.CharField(max_length=30)
+    lastName = models.CharField(max_length=30)
+    code = models.CharField(max_length=15,unique=True)
+    email = models.CharField(max_length=40)
+    beca = models.ForeignKey(Becas, related_name="BecaType", on_delete= models.CASCADE, default= None)
     def __str__(self):
-        return self.name
-
-class BalanceAcademico(models.Model):
-    balanceAcademicoID = models.CharField(max_length=20)
-    program = models.CharField(max_length=20)
-    def __str__(self):
-        return self.program
+        return self.code
 
 class Materia(models.Model):
-    student = models.ForeignKey(Student,on_delete = models.CASCADE, default=None)
-    codMateria = models.CharField(max_length=20)
-    nota = models.FloatField(default=0.0)
-    def __str__(self):
-        return self.codMateria
+    materia_code = models.CharField(max_length=20, default="None")
+    nombre = models.CharField(max_length=20, default="None")
+    creditos =models.PositiveIntegerField(default=0)
+    def str(self):
+        return self.nombre
+
 
 class Status(models.Model):
     STATUS_CHOICES = (
@@ -53,94 +46,112 @@ class Status(models.Model):
         ('Materia completada','Materia completada'),
     )
     type = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    materiaID = models.ForeignKey(Materia, on_delete=models.CASCADE, default=None)
-
-    def __str__(self):
+    def str(self):
         return self.type
 
-
-class SeguimientoActividades(models.Model):
-    seguimientoActividadesID = models.CharField(max_length=20)
-    actividadID = models.CharField(max_length=20)
-    def __str__(self):
-        return self.actividadID
-
-
-class Actividad(models.Model):
-    actividadID = models.CharField(max_length=20)
-    name = models.CharField(max_length=20)
-    assists = models.PositiveIntegerField()
-    seguimientoActividadesID = models.ForeignKey(SeguimientoActividades, on_delete=models.CASCADE, default=None)
+class Semester(models.Model):
+    name = models.CharField(max_length=200)
     def __str__(self):
         return self.name
 
-class User(models.Model):
-    userID = models.CharField(max_length=20)
+class SeguimientoBeca(models.Model):
+    testimonio = models.CharField(max_length=100, default= "")
+    studentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
+    SemesterID = models.ForeignKey(Semester,on_delete=models.CASCADE,default=None)
+
+
+class InformacionFinanciera(models.Model):
+    informeID = models.AutoField(primary_key=True)
+    studentID = models.CharField(max_length=15, default='')
+    STATUS_CHOICES = (
+        ('Alimentaci贸n', 'Alimientaci贸n'),
+        ('Matricula', 'Matricula'),
+        ('Transporte', 'Transporte'),
+    )
+    type = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    dineroAsignado = models.DecimalField(max_digits=30, decimal_places=2)
+    gasto = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
+    fecha = models.DateField()
+    seguimientoBecaID = models.ForeignKey(SeguimientoBeca, on_delete=models.CASCADE, default=None)
+
+    def str(self):
+        return self.studentID
+
+class Actividad(models.Model):
+    nombre = models.CharField(max_length=35, unique=True)
+    def str(self):
+        return self.nombre
+
+class AsistenciasActividad(models.Model):
+    seguimientoID = models.ForeignKey(SeguimientoBeca,on_delete=models.CASCADE,)
+    ActividadID = models.ForeignKey(Actividad,on_delete=models.CASCADE)
+
+class BalanceAcademico(models.Model):
+    BalanceAcademicoID = models.AutoField(primary_key=True, default=None)
+    statusID = models.ForeignKey(Status, on_delete=models.CASCADE, default=None)
+    materiaID = models.ForeignKey(Materia, on_delete=models.CASCADE, default=None)
+    SeguimientoBecaID = models.ForeignKey(SeguimientoBeca, on_delete=models.CASCADE, default=None)
+
+class Nota(models.Model):
+    BalanceAcademicoID = models.ForeignKey(BalanceAcademico, on_delete=models.CASCADE, default=None)
+    notaFinal = models.FloatField(default=0.0)
+
+
+class Donante(models.Model):
     name = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     email = models.CharField(max_length=30)
-    phone = models.CharField(max_length=15)
+    typeBecas = models.ForeignKey(Becas, on_delete=models.CASCADE, default=None)
     def __str__(self):
         return self.name
+    
+class User(AbstractUser):
+    userID = models.CharField(max_length=20)
+    phone = models.CharField(max_length=15)
+    class Role(models.IntegerChoices):
+        RNULL = 0, ('None')
+        ADMIN = 1,('Administrador')
+        FILANTROPIA = 2, ('Filantropia')
+        BU = 3, ('Bienestar Universitario')
+        CONTABILIDAD = 4, ('Contabilidad')
+        DIRECTOR = 5, ('Director del programa')
+
+    rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
+    
 
 class Alerta(models.Model):
-    title = models.CharField(max_length=40,default='Notificación')
+    title = models.CharField(max_length=40,default='Notificaci贸n')
     class Type_alert(models.IntegerChoices):
-        SOLICITUD = 0, ('Solicitud de información')
-        UPLOAD = 1, ('Subida de información')
-        NONE = 2, ('ningun tipo')
+        NNULL = 0, ('None')
+        ACTUALIZE_CONTA = 1, ('Actualizacion de informacion contabilidad')
+        ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
+        ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
+        FILANTROPIA =  4,('Actualizaci贸n de actividades no academicas de un estudiante')
 
-    type = models.IntegerField(default=Type_alert.NONE, choices=Type_alert.choices)
+
+    type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)
-    userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.title
+    
     def strBA(self):
-        return f"Nombre: {self.userID} | Desc: {self.description}"
+        return (self.title + " | " + self.description)
 
-class Roles(models.Model):
-    STATUS_CHOICES = (
-        ('Filantropia','Filantropia'),
-        ('Bienestar','Bienestar'),
-        ('Contabilidad','Contabilidad'),
-        ('Director de Programa','Director de Programa'),
-    )
-    type = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-
-    def __str__(self):
-        return self.type
-
-class SeguimientoCREA(models.Model):
-    seguimientoCreaID = models.CharField(max_length=20)
-    userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.seguimientoCreaID
+#class SeguimientoCREA(models.Model):
+    #seguimientoCreaID = models.CharField(max_length=20)
+    #userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    #def __str__(self):
+      #  return self.seguimientoCreaID
 
 
-class Consulta(models.Model):
-    consultaID = models.CharField(max_length=20)
-    date = models.DateField()
-    hour = models.TimeField()
-    reason = models.CharField(max_length=50)
-    result = models.CharField(max_length=20)
-    seguimientoCreaID = models.ForeignKey(SeguimientoCREA, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.consultaID
-
-class InformacionFinanciera(models.Model):
-    informeID = models.CharField(max_length=20)
-    dineroAsignado = models.DecimalField(max_digits=10, decimal_places=2)
-    dineroUsado = models.DecimalField(max_digits=10, decimal_places=2) 
-    def __str__(self):
-        return self.informeID
-
-class SeguimientoBeca(models.Model):
-    reporteBecaID = models.CharField(max_length=20)
-    testimonio = models.CharField(max_length=100)
-    informacionFinancieraID = models.ForeignKey(InformacionFinanciera, on_delete=models.CASCADE, default=None)
-    SeguimientoActividadesID = models.ForeignKey(SeguimientoActividades, on_delete=models.CASCADE, default=None)
-    balanceAcademicoID = models.ForeignKey(BalanceAcademico, on_delete=models.CASCADE, default=None)
-    userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    studentCode = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
-    def __str__(self):
-        return self.reporteBecaID 
+#class Consulta(models.Model):
+   # consultaID = models.CharField(max_length=20)
+    #date = models.DateField()
+    #hour = models.TimeField()
+    #reason = models.CharField(max_length=50)
+    #result = models.CharField(max_length=20)
+    #seguimientoCreaID = models.ForeignKey(SeguimientoCREA, on_delete=models.CASCADE, default=None)
+    #def __str__(self):
+       #return self.consultaID
 
