@@ -204,3 +204,8 @@
 |Santiago Jose Belalcazar | Intente terminar la separacion de los procesos de guardado de cada uno de los forms | La utilizacion del session de Django | Hacer los tests de mi HU |
 |Luis Pinillos|Agregue el autocompletado y arregle ciertos errores|No me guardaba correctamente al usuario|El historial y el poder subir comprobante de pago de matricula|
 |Kevin Vincent|Añadi las nuevas validaciones|encontrar el error fue un infierno|añadir la funcionalidad de subir archivo|
+
+## Fecha 15/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Kevin Vincent | Arregle unos bugs que tenian las nuevas condiciones para evitar los registros duplicados y instale la libreria "Pandas" mas "openpyxl" para poder leer archivos excel y poder acomodar la informacion para ser leida y registrada en la base de datos | Fue dificil no perderme entre las varias condiciones que tenia que hacer para evitar elementos duplicados | Registrar la informacion que ingresa por el archivo excel y evitar conflictos con los datos ya puestos en el formulario (si existe) |
