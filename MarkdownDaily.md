@@ -202,3 +202,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Santiago Jose Belalcazar | Intente terminar la separacion de los procesos de guardado de cada uno de los forms | La utilizacion del session de Django | Hacer los tests de mi HU |
+|Luis Pinillos|Agregue el autocompletado y arregle ciertos errores|No me guardaba correctamente al usuario|El historial y el poder subir comprobante de pago de matricula|
