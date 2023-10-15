@@ -9,6 +9,18 @@
 <body>
   {% load static %}
     <section class="h-100 gradient-form" style="background-color: #eee;">
+
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="alert-{{ forloop.counter }}">
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close" onclick="dismissAlert({{ forloop.counter }})">
+                    <span aria-hidden="true">×</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
@@ -16,15 +28,15 @@
                 <div class="row g-0">
                   <div class="col-lg-6">
                     <div class="card-body p-md-5 mx-md-4">
-      
+
                       <div class="text-center mb-5">
                         <img src="{% static 'logo_icesi_grispng.png' %}"
-                          style="width: 300px;" alt="logo">
+                          style="width: 250px;" alt="logo">
                       </div>
                       <div class="text-center">
                         <h4 class="mt-1 mb-5 pb-1">STUDENT MANAGEMENT</h4>
                       </div>
-      
+
                       <form action="/signin/" method="POST">
                         {% csrf_token %}
                         
@@ -35,31 +47,31 @@
                                   {{error}}
                                 </h6>
                           </div>
-                        
+
                         <p>Porfavor ingresa a tu cuenta</p>
-      
+
                         <div class="form-outline mb-4">
                           <input type="username" id="form2Example11" class="form-control"
                             placeholder="Usuario"  name="username"/>
                         </div>
-      
+
                         <div class="form-outline mb-4">
-                          <input type="password" id="form2Example22" class="form-control" 
+                          <input type="password" id="form2Example22" class="form-control"
                             placeholder="Contraseña" name="password"/>
                         </div>
-      
+
                         <div class="text-center pt-1 mb-5 pb-1">
                           <button class="btn btn-block fa-lg gradient-custom-2 mb-3" type="submit" style="background-color:#6C788E; color:white">Ingresar</button>
                           <a class="text-muted" href="#!"></a>
                         </div>
-      
+
                         <div class="d-flex align-items-center justify-content-center pb-4">
                           <p class="mb-0 me-2">¿No tienes una cuenta?</p>
                          <button id="signupBtn" type="button" class="btn btn-outline-danger">Crear cuenta</button>
                         </div>
-      
+
                       </form>
-      
+
                     </div>
                   </div>
                   <div class="col-lg-6 align-items-center">
@@ -82,5 +94,10 @@
   signupBtn.addEventListener('click', function(){
     location.href = '/signup';
   });
+
+
+  function dismissAlert(alertId) {
+      document.getElementById('alert-' + alertId).style.display = 'none';
+  }
 
 </script>
