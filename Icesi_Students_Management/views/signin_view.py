@@ -7,11 +7,10 @@ def signin(request):
         print("Sapa")
         return render(request, 'signin.html')
     else:
-        print(request.POST)
-        print('malparido')
+        
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         print(user.rol)
-        if user is None
+        if user is None:
             return render(request, 'signin.html', {
                 'error': 'Usuario y/o contrasena incorrecta'
             })
