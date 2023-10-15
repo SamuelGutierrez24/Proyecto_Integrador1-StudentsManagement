@@ -40,6 +40,7 @@ class Materia(models.Model):
 
 
 class Status(models.Model):
+    StatusID = models.AutoField(primary_key=True, default=None)
     STATUS_CHOICES = (
         ('Materia Cancelada','Materia Cancelada'),
         ('Materia en Curso','Materia en Curso'),

@@ -9,5 +9,6 @@ def menu(request):
     for noti in notificaciones:
         if(noti.type==3):
             notifi.append(noti)
-        
+    
+    notifi.reverse()    
     return render(request, 'menuBalanceAcademico.html', {'notificaciones': notifi})
