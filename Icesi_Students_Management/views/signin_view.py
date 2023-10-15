@@ -13,6 +13,9 @@ def signin(request):
             if user.rol == 0:
                 login(request, user)
                 return redirect('home')
+            elif user.rol == 3:
+                login(request, user)
+                return redirect('home')
             else:
                 print("No puede entrear")
         else:
