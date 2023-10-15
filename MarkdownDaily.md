@@ -203,3 +203,4 @@
 |---|---|---|---|
 |Santiago Jose Belalcazar | Intente terminar la separacion de los procesos de guardado de cada uno de los forms | La utilizacion del session de Django | Hacer los tests de mi HU |
 |Luis Pinillos|Agregue el autocompletado y arregle ciertos errores|No me guardaba correctamente al usuario|El historial y el poder subir comprobante de pago de matricula|
+|Kevin Vincent|Añadi las nuevas validaciones|encontrar el error fue un infierno|añadir la funcionalidad de subir archivo|
