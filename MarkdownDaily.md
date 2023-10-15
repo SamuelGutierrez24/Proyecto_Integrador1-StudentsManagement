@@ -199,4 +199,6 @@
 |Samuel Gutierrez | Nada | ninguno | Lo que me de tiempo de testeos antes de hacer PR |
 
 ## Fecha 14/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
 |Santiago Jose Belalcazar | Intente terminar la separacion de los procesos de guardado de cada uno de los forms | La utilizacion del session de Django | Hacer los tests de mi HU |
