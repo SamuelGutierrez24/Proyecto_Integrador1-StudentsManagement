@@ -197,3 +197,6 @@
 |Santiago Jose Belalcazar | Debido a la carga de parciales no realize ninguna modificacion | Ninguno | Terminar la separacion de los procesos de guardado de cada uno de los forms, ademas de acomodar los botones del html |
 |Luis Pinillos|Agregar la función de ver notificaciones y conectar correctamente el estudiante con la información financiera y el seguimiento de beca|No me dejaba registrar la informacion financiera en la base de datos, pero ya lo arreglé|El autocompletado y el historial de cambios|
 |Samuel Gutierrez | Nada | ninguno | Lo que me de tiempo de testeos antes de hacer PR |
+
+## Fecha 14/10/23
+|Santiago Jose Belalcazar | Intente terminar la separacion de los procesos de guardado de cada uno de los forms | La utilizacion del session de Django | Hacer los tests de mi HU |
