@@ -1,20 +1,22 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Actividad
+from .models import AsistenciasActividad
 
 class ActivityForm(ModelForm):
 
     student = forms.CharField(
         label='Codigo de estudiante', max_length=9, widget=forms.TextInput(attrs={"class":"input"})
     )
-    name = forms.CharField(
-        label='Nombre de la actividad', max_length=20,widget=forms.TextInput(attrs={"class":"input"})
+
+    activity = forms.ModelChoiceField(
+        queryset=Actividad.objects.all(),  # Esto recupera todas las actividades de la base de datos
+        label='Selecciona una actividad',
+        empty_label='Selecciona una actividad',  # Etiqueta para la opción vacía
+        widget=forms.Select(attrs={"class": "input"})  # Utiliza un widget de selección
     )
     
-    assists = forms.CharField(
-        label='Asistencias'
-    )
 
     class Meta:
-        model = Actividad
-        fields = ['student', 'name', 'assists']
+        model = AsistenciasActividad
+        fields = ['student', 'activity']

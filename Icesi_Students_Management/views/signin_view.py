@@ -4,9 +4,10 @@ from django.contrib.auth import authenticate, login
 
 def signin(request):
     if request.method == "GET":
+        print("Sapa")
         return render(request, 'signin.html')
     else:
-        print(request.POST)
+        
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         print(user.rol)
         if user is not None:
@@ -15,11 +16,10 @@ def signin(request):
                 return redirect('home')
             elif user.rol == 3:
                 login(request, user)
-                return redirect('home')
+                return redirect('bienestarUniversitario')
             else:
                 print("No puede entrear")
         else:
             return render(request, 'signin.html', {
                 'error': 'Usuario y/o contrasena incorrecta'
             })
-
