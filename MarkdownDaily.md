@@ -212,3 +212,9 @@
 |Samuel Gutierrez | Cree los test he hice pull request | ninguno | Hoy acepte hice el procedimiento y correcciones de errores antes de aceptar el PR de mi compañero Daniel, pero git no me deja aceptar el pull por haber hecholas modificaciones, ademas de que ayude todo el dia a mis compañeros a que terminaran sus HU |
 |Santiago Jose Belalcazar | Intente terminar la separacion de los procesos de guardado de cada uno de los forms | La utilizacion del session de Django | Terminar la HU para realizar el Pull Request |
 
+## Fecha 16/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Kevin Vincent | HU Finalizada, Agrege nuevas validaciones para que el formulario soporte la carga de un archivo XLSX. Añadi una medida de prevencion de errores en el form ahora si se sube un archivo los demas label he inputs de bloquean. Arregle el orden de las notificaciones, ahora la primera es el cambio mas reciente. Añadi los test | Fue algo enredado hacer que el form soporte la carga del archivo porque las condicionales se expandian | HU Finalizada, espero no desarrollar mas en el codigo de mi rama, asistire a mis compañeros si es necesario, subire mi Pull Request y/o aceptare la que falte si es necesario |
+
+
