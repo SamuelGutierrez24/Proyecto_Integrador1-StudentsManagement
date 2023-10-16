@@ -25,6 +25,8 @@ from Icesi_Students_Management.views import buscarEstud
 from Icesi_Students_Management.views import modificar
 import Icesi_Students_Management.views.bumenu as buMenu
 import Icesi_Students_Management.views.registroActividades as registroA
+import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
+import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
 
 
 urlpatterns = [
@@ -43,6 +45,7 @@ urlpatterns = [
     path('contabilidad/eliminar-estudiante/<str:code>/', buscarEstud.eliminar_estudiante, name='eliminar_estudiante'),
     path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
     path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
+    path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
+    path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
     path('', include('Icesi_Students_Management.urls'))
-
 ]

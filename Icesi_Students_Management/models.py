@@ -22,7 +22,7 @@ class Becas(models.Model):
 
 class Student(models.Model):
     id = models.IntegerField(
-        primary_key=True, auto_created=True, serialize=True, unique=True, default=0
+        primary_key=True, auto_created=True, serialize=True, unique=True
     )
     name = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
@@ -126,7 +126,6 @@ class BalanceAcademico(models.Model):
 class Nota(models.Model):
     BalanceAcademicoID = models.ForeignKey(BalanceAcademico, on_delete=models.CASCADE, default=None)
     notaFinal = models.FloatField(default=0.0)
-
 
 class Donante(models.Model):
     name = models.CharField(max_length=20)

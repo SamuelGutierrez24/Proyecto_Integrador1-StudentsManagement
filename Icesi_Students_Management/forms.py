@@ -4,6 +4,7 @@ from django import forms
 from .models import Actividad
 from .models import AsistenciasActividad
 from .models import *
+from django.forms import Form
 
 class RegNotasBAForm(forms.ModelForm):
     class Meta:
@@ -141,3 +142,22 @@ class HistorialGastosForm(forms.ModelForm):
     class Meta:
         model = HistorialGastos
         fields = ['comprobantePago']
+
+
+class addStudent(forms.Form):
+    Nombre = forms.CharField(label="Nombre:",
+                            max_length=100,
+                            widget=forms.TextInput(attrs={'placeholder': 'Ingrese el nombre del estudiante', 'col': '10', 'size': '50'}))
+    Apellido = forms.CharField(label="Apellido:",
+                               max_length=100,
+                               widget=forms.TextInput(attrs={'placeholder': 'Ingrese el apellido del estudiante', 'col': '10', 'size': '50'}))
+    Email = forms.EmailField(label="Email:",
+                            max_length=200,
+                            widget=forms.TextInput(attrs={'placeholder': 'Ingrese el email del estudiante', 'col': '10', 'size': '50'}))
+    Codigo = forms.CharField(label="Codigo:",
+                            max_length=100,
+                            widget=forms.TextInput(attrs={'placeholder': 'Ingrese el codigo del estudiante', 'col': '10', 'size': '50'}))
+    
+    class Meta:
+        model = Student
+        fields = ['Nombre', 'Apellido', 'Email', 'Codigo']
