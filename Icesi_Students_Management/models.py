@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
 class Carrera(models.Model):
     nameCarrera = models.CharField(max_length=50)
     carreraID = models.CharField(primary_key=True, max_length=15, default="0")
@@ -40,6 +39,7 @@ class Materia(models.Model):
 
 
 class Status(models.Model):
+    StatusID = models.AutoField(primary_key=True, default=None)
     STATUS_CHOICES = (
         ('Materia Cancelada','Materia Cancelada'),
         ('Materia en Curso','Materia en Curso'),
@@ -95,7 +95,7 @@ class BalanceAcademico(models.Model):
     BalanceAcademicoID = models.AutoField(primary_key=True, default=None)
     statusID = models.ForeignKey(Status, on_delete=models.CASCADE, default=None)
     materiaID = models.ForeignKey(Materia, on_delete=models.CASCADE, default=None)
-    SeguimientoBecaID = models.ForeignKey(SeguimientoBeca, on_delete=models.CASCADE, default=None, null=True)
+    SeguimientoBecaID = models.ForeignKey(SeguimientoBeca, on_delete=models.CASCADE, default=None)
 
 class Nota(models.Model):
     BalanceAcademicoID = models.ForeignKey(BalanceAcademico, on_delete=models.CASCADE, default=None)
@@ -138,6 +138,9 @@ class Alerta(models.Model):
     description = models.TextField(blank=True)
     def __str__(self):
         return self.title
+    
+    def strBA(self):
+        return (self.title + " | " + self.description)
 
 #class SeguimientoCREA(models.Model):
     #seguimientoCreaID = models.CharField(max_length=20)
@@ -155,5 +158,4 @@ class Alerta(models.Model):
     #seguimientoCreaID = models.ForeignKey(SeguimientoCREA, on_delete=models.CASCADE, default=None)
     #def __str__(self):
        #return self.consultaID
-
 

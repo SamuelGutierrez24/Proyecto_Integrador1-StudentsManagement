@@ -1,7 +1,13 @@
+from .models import Materia
 from django.forms import ModelForm
 from django import forms
 from .models import Actividad
 from .models import AsistenciasActividad
+
+class RegNotasBAForm(forms.ModelForm):
+    class Meta:
+        model = Materia
+        fields = ['materia_code', 'nombre', 'creditos']
 
 class ActivityForm(ModelForm):
 

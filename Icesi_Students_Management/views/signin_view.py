@@ -17,6 +17,9 @@ def signin(request):
             elif user.rol == 3:
                 login(request, user)
                 return redirect('bienestarUniversitario')
+            elif user.rol == 5:
+                login(request, user)
+                return redirect('menuBalanceAcademico')
             else:
                 print("No puede entrear")
         else:
