@@ -17,8 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 #import Icesi_Students_Management.views.views as views
+from django.conf import settings
+from django.conf.urls.static import static
+from Icesi_Students_Management.views import menuConta
+from Icesi_Students_Management.views import infoFinanciera
+from Icesi_Students_Management.views import buscarEstud
+from Icesi_Students_Management.views import modificar
 import Icesi_Students_Management.views.bumenu as buMenu
 import Icesi_Students_Management.views.registroActividades as registroA
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +34,15 @@ urlpatterns = [
     #path('tasks/', views.tasks, name='tasks'),
     #path('signin/', views.signin, name='singin'),
     #path('logout/', views.signout, name='logout'),
+    path('contabilidad/', menuConta.menu, name='menuContabilidad'),
+    path('contabilidad/eliminar-noti/<id>/', menuConta.eliminar_noti, name='eliminar_noti'),
+    path('contabilidad/ver-noti/<int:id>/', menuConta.ver_noti, name='ver_noti'),
+    path('contabilidad/infoFinanciera.html', infoFinanciera.infoFinanciera, name='infoFinanciera'),
+    path('contabilidad/buscarEstud.html', buscarEstud.menuBuscar, name='buscarEstud'),
+    path('contabilidad/modificar.html/<str:code>/', modificar.modificarInfo, name='modificarInfo'),
+    path('contabilidad/eliminar-estudiante/<str:code>/', buscarEstud.eliminar_estudiante, name='eliminar_estudiante'),
     path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
     path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
     path('', include('Icesi_Students_Management.urls'))
+
 ]

@@ -15,20 +15,25 @@ class Becas(models.Model):
     description = models.TextField(blank=True)
     alimentacion = models.BooleanField(default=None)
     transporte = models.BooleanField(default=None)
+
     def str(self):
         return self.type
 
+
 class Student(models.Model):
     id = models.IntegerField(
-        primary_key=True,auto_created=True,serialize=True,unique=True, default=0
+        primary_key=True, auto_created=True, serialize=True, unique=True, default=0
     )
     name = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    code = models.CharField(max_length=15,unique=True)
+    code = models.CharField(max_length=15, unique=True)
     email = models.CharField(max_length=40)
-    beca = models.ForeignKey(Becas, related_name="BecaType", on_delete= models.CASCADE, default= None)
+    beca = models.ForeignKey(
+        Becas, related_name="BecaType", on_delete=models.CASCADE, default=None)
+
     def __str__(self):
         return self.code
+
 
 class Materia(models.Model):
     materia_code = models.CharField(max_length=20, default="None")
@@ -41,9 +46,9 @@ class Materia(models.Model):
 class Status(models.Model):
     StatusID = models.AutoField(primary_key=True, default=None)
     STATUS_CHOICES = (
-        ('Materia Cancelada','Materia Cancelada'),
-        ('Materia en Curso','Materia en Curso'),
-        ('Materia completada','Materia completada'),
+        ('Materia Cancelada', 'Materia Cancelada'),
+        ('Materia en Curso', 'Materia en Curso'),
+        ('Materia completada', 'Materia completada'),
     )
     type = models.CharField(max_length=20, choices=STATUS_CHOICES)
     def str(self):
@@ -54,29 +59,50 @@ class Semester(models.Model):
     def __str__(self):
         return self.name
 
+
 class SeguimientoBeca(models.Model):
-    testimonio = models.CharField(max_length=100, default= "")
-    studentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
-    SemesterID = models.ForeignKey(Semester,on_delete=models.CASCADE,default=None)
+    testimonio = models.CharField(max_length=100, default="")
+    studentID = models.ForeignKey(
+        Student, on_delete=models.CASCADE, default=None)
+    SemesterID = models.ForeignKey(
+        Semester, on_delete=models.CASCADE, default=None)
+    carreraID = models.ForeignKey(
+        Carrera, on_delete=models.CASCADE, default=None)
 
 
 class InformacionFinanciera(models.Model):
     informeID = models.AutoField(primary_key=True)
     studentID = models.CharField(max_length=15, default='')
-    STATUS_CHOICES = (
-        ('Alimentación', 'Alimientación'),
-        ('Matricula', 'Matricula'),
-        ('Transporte', 'Transporte'),
-    )
-    type = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
+    type = models.CharField(max_length=20, default='')
+    # Gasto almuerzo: -10.000$ Fecha: 12/02/23
     dineroAsignado = models.DecimalField(max_digits=30, decimal_places=2)
+
+    matriculaBeca = models.DecimalField(
+        max_digits=30, decimal_places=2, default=0.0)
+    transporteBeca = models.DecimalField(
+        max_digits=30, decimal_places=2, default=0.0)
+    alimentacionBeca = models.DecimalField(
+        max_digits=30, decimal_places=2, default=0.0)
     gasto = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     fecha = models.DateField()
-    seguimientoBecaID = models.ForeignKey(SeguimientoBeca, on_delete=models.CASCADE, default=None)
-
+    seguimientoBecaID = models.ForeignKey(
+        SeguimientoBeca, on_delete=models.CASCADE, default=None)
     def str(self):
         return self.studentID
+
+
+class HistorialGastos(models.Model):
+    informacion_financiera = models.ForeignKey(
+        InformacionFinanciera, on_delete=models.CASCADE)
+
+    descripcion = models.CharField(max_length=255)
+    fecha = models.DateField(auto_now_add=True)
+    comprobantePago = models.FileField(upload_to='uploads/', null=True, blank=True)
+
+    def _str_(self):
+        return self.descripcion
+
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=35, unique=True)
@@ -122,7 +148,7 @@ class User(AbstractUser):
         DIRECTOR = 5, ('Director del programa')
 
     rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
-    
+
 
 class Alerta(models.Model):
     title = models.CharField(max_length=40,default='Notificación')
