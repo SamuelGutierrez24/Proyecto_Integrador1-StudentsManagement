@@ -16,19 +16,10 @@ def signin(request):
                 return redirect('home')
             elif user.rol == 3:
                 login(request, user)
-                return redirect('home')
+                return redirect('bienestarUniversitario')
             else:
                 print("No puede entrear")
         else:
             return render(request, 'signin.html', {
                 'error': 'Usuario y/o contrasena incorrecta'
             })
-        else:
-            if(user.rol == 3 ):
-                login(request, user)
-                return redirect('bienestarUniversitario')    
-            
-            else:
-                if user.rol == 0:
-                    login(request, user)
-                    return redirect('home')
