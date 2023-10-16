@@ -2,6 +2,8 @@
 
 import django.contrib.auth.models
 import django.contrib.auth.validators
+import django.contrib.auth.models
+import django.contrib.auth.validators
 from django.db import migrations, models
 import django.db.models.deletion
 import django.utils.timezone
@@ -13,10 +15,19 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('auth', '0012_alter_user_first_name_max_length'),
+        ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
     operations = [
         migrations.CreateModel(
+            name='Actividad',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('nombre', models.CharField(max_length=35, unique=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Alerta',
             name='Actividad',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -36,6 +47,15 @@ class Migration(migrations.Migration):
             name='BalanceAcademico',
             fields=[
                 ('BalanceAcademicoID', models.AutoField(default=None, primary_key=True, serialize=False)),
+                ('title', models.CharField(default='Notificación', max_length=40)),
+                ('type', models.IntegerField(choices=[(0, 'None'), (1, 'Actualizacion de informacion contabilidad'), (2, 'Actualizacion de informacion Bienestar Universitario'), (3, 'Actualizacion de informacion Director de programa'), (4, 'Actualización de actividades no academicas de un estudiante')], default=0)),
+                ('description', models.TextField(blank=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='BalanceAcademico',
+            fields=[
+                ('BalanceAcademicoID', models.AutoField(default=None, primary_key=True, serialize=False)),
             ],
         ),
         migrations.CreateModel(
@@ -44,12 +64,16 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('type', models.CharField(max_length=30)),
                 ('percentage', models.IntegerField(default=None)),
+                ('percentage', models.IntegerField(default=None)),
                 ('description', models.TextField(blank=True)),
+                ('alimentacion', models.BooleanField(default=None)),
+                ('transporte', models.BooleanField(default=None)),
                 ('alimentacion', models.BooleanField(default=None)),
                 ('transporte', models.BooleanField(default=None)),
             ],
         ),
         migrations.CreateModel(
+            name='Carrera',
             name='Carrera',
             fields=[
                 ('nameCarrera', models.CharField(max_length=50)),
@@ -64,19 +88,26 @@ class Migration(migrations.Migration):
                 ('materia_code', models.CharField(default='None', max_length=20)),
                 ('nombre', models.CharField(default='None', max_length=20)),
                 ('creditos', models.PositiveIntegerField(default=0)),
+                ('materia_code', models.CharField(default='None', max_length=20)),
+                ('nombre', models.CharField(default='None', max_length=20)),
+                ('creditos', models.PositiveIntegerField(default=0)),
             ],
         ),
         migrations.CreateModel(
             name='Semester',
+            name='Semester',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=200)),
                 ('name', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Status',
+            name='Status',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('type', models.CharField(choices=[('Materia Cancelada', 'Materia Cancelada'), ('Materia en Curso', 'Materia en Curso'), ('Materia completada', 'Materia completada')], max_length=20)),
                 ('type', models.CharField(choices=[('Materia Cancelada', 'Materia Cancelada'), ('Materia en Curso', 'Materia en Curso'), ('Materia completada', 'Materia completada')], max_length=20)),
             ],
         ),
@@ -181,7 +212,14 @@ class Migration(migrations.Migration):
             model_name='balanceacademico',
             name='materiaID',
             field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.materia'),
+            model_name='balanceacademico',
+            name='materiaID',
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.materia'),
         ),
+        migrations.AddField(
+            model_name='balanceacademico',
+            name='statusID',
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.status'),
         migrations.AddField(
             model_name='balanceacademico',
             name='statusID',
@@ -189,8 +227,11 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='AsistenciasActividad',
+            name='AsistenciasActividad',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('ActividadID', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.actividad')),
+                ('seguimientoID', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.seguimientobeca')),
                 ('ActividadID', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.actividad')),
                 ('seguimientoID', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Icesi_Students_Management.seguimientobeca')),
             ],
