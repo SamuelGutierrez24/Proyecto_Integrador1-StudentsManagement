@@ -7,7 +7,7 @@ from .models import AsistenciasActividad
 class RegNotasBAForm(forms.ModelForm):
     class Meta:
         model = Materia
-        fields = ['student', 'codMateria', 'nota']
+        fields = ['materia_code', 'nombre', 'creditos']
 
 class ActivityForm(ModelForm):
 
