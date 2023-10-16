@@ -16,8 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#import Icesi_Students_Management.views.views as views
+import Icesi_Students_Management.views.bumenu as buMenu
+import Icesi_Students_Management.views.registroActividades as registroA
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('', views.home, name='home'),
+    #path('signup/', views.signup, name='signup'),
+    #path('tasks/', views.tasks, name='tasks'),
+    #path('signin/', views.signin, name='singin'),
+    #path('logout/', views.signout, name='logout'),
+    path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
+    path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
     path('', include('Icesi_Students_Management.urls'))
 ]

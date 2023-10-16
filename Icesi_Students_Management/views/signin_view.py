@@ -1,21 +1,25 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, login
+
 
 def signin(request):
     if request.method == "GET":
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm()
-        })
+        print("Sapa")
+        return render(request, 'signin.html')
     else:
+        
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        if user is None:
+        print(user.rol)
+        if user is not None:
+            if user.rol == 0:
+                login(request, user)
+                return redirect('home')
+            elif user.rol == 3:
+                login(request, user)
+                return redirect('bienestarUniversitario')
+            else:
+                print("No puede entrear")
+        else:
             return render(request, 'signin.html', {
-                'form': AuthenticationForm(),
                 'error': 'Usuario y/o contrasena incorrecta'
             })
-        else:
-            login(request, user)
-            return redirect('tasks')
-        

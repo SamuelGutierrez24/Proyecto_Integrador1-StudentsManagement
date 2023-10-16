@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
 class Carrera(models.Model):
     nameCarrera = models.CharField(max_length=50)
     carreraID = models.CharField(primary_key=True, max_length=15, default="0")
@@ -65,7 +64,7 @@ class InformacionFinanciera(models.Model):
     informeID = models.AutoField(primary_key=True)
     studentID = models.CharField(max_length=15, default='')
     STATUS_CHOICES = (
-        ('Alimentaci贸n', 'Alimientaci贸n'),
+        ('Alimentación', 'Alimientación'),
         ('Matricula', 'Matricula'),
         ('Transporte', 'Transporte'),
     )
@@ -81,12 +80,16 @@ class InformacionFinanciera(models.Model):
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=35, unique=True)
-    def str(self):
+
+    def __str__(self):
         return self.nombre
 
 class AsistenciasActividad(models.Model):
     seguimientoID = models.ForeignKey(SeguimientoBeca,on_delete=models.CASCADE,)
     ActividadID = models.ForeignKey(Actividad,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.ActividadID.nombre
 
 class BalanceAcademico(models.Model):
     BalanceAcademicoID = models.AutoField(primary_key=True, default=None)
@@ -122,13 +125,13 @@ class User(AbstractUser):
     
 
 class Alerta(models.Model):
-    title = models.CharField(max_length=40,default='Notificaci贸n')
+    title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
         NNULL = 0, ('None')
         ACTUALIZE_CONTA = 1, ('Actualizacion de informacion contabilidad')
         ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
         ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
-        FILANTROPIA =  4,('Actualizaci贸n de actividades no academicas de un estudiante')
+        FILANTROPIA =  4,('Actualización de actividades no academicas de un estudiante')
 
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
