@@ -10,7 +10,16 @@ def signin(request):
         
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         print(user.rol)
-        if user is None:
+        if user is not None:
+            if user.rol == 0:
+                login(request, user)
+                return redirect('home')
+            elif user.rol == 3:
+                login(request, user)
+                return redirect('home')
+            else:
+                print("No puede entrear")
+        else:
             return render(request, 'signin.html', {
                 'error': 'Usuario y/o contrasena incorrecta'
             })
