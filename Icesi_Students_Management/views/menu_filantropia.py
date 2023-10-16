@@ -7,7 +7,7 @@ def menu(request):
     notifi = []
 
     for noti in notificaciones:
-        if(noti.type==0):
+        if(noti.type==4):
             notifi.append(noti)
 
     return render(request, 'menu_filantropia.html', {'notificaciones': notifi})

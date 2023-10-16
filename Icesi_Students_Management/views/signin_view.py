@@ -13,6 +13,9 @@ def signin(request):
             if user.rol == 0:
                 login(request, user)
                 return redirect('home')
+            elif user.rol == 2:
+                login(request, user)
+                return redirect('menu filantropia')
             elif user.rol == 3:
                 login(request, user)
                 return redirect('bienestarUniversitario')
