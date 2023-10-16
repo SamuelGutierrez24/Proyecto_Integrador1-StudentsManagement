@@ -148,6 +148,7 @@
           <a href="/contabilidad/buscarEstud.html" class="btn btn-custom custom-btn" id="btn1"><b>Regresar</b></a>
           <br>
           <br>
+          <label>Subir comprobante de pago <b>(Opcional)</b></label>
           <input type="file" name="comprobantePago" accept=".pdf">
         </form>
         <div class="modal fade" id="mensaje" role="dialog">
@@ -162,19 +163,19 @@
           <label for="{{ form.dineroAsignado.id_for_label }}"
             style="display: inline-block; margin-right: 2px;"><b>Nombre de la beca:</b></label>
           <label style="display: inline-block;">{{ form.type.value }}</label>
-
+          <br>
           <label for="{{ form.dineroAsignado.id_for_label }}"
             style="display: inline-block; margin-right: 2px;"><b>Dinero total beca:</b></label>
           <label style="display: inline-block;">{{ form.dineroAsignado.value }}</label>
-
+          <br>
           <label for="{{ form.matriculaBeca.id_for_label }}" style="display: inline-block; margin-right: 2px;"><b>Dinero
-              de destinado a matricula:</b></label>
+              destinado a matricula:</b></label>
           <label style="display: inline-block;">{{ form.matriculaBeca.value }}</label>
-
+          <br>
           <label for="{{ form.transporteBeca.id_for_label }}"
             style="display: inline-block; margin-right: 2px;"><b>Dinero destinado a transporte:</b></label>
           <label style="display: inline-block;">{{ form.transporteBeca.value }}</label>
-
+          <br>
           <label for="{{ form.alimentacionBeca.id_for_label }}"
             style="display: inline-block; margin-right: 2px;"><b>Dinero destinado a alimentación:</b></label>
           <label style="display: inline-block;">{{ form.alimentacionBeca.value }}</label>

@@ -104,7 +104,7 @@ class HistorialGastos(models.Model):
 
     descripcion = models.CharField(max_length=255)
     fecha = models.DateField(auto_now_add=True)
-    comprobantePago = models.FileField(upload_to='', null=True, blank=True)
+    comprobantePago = models.FileField(upload_to='uploads/', null=True, blank=True)
 
     def _str_(self):
         return self.descripcion

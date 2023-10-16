@@ -20,27 +20,28 @@ class registrarInfoFinanciera(forms.ModelForm):
         required=False
     )
     type = forms.CharField(label="Tipo de beca",
-                           max_length=20)
+                           max_length=20,
+                           widget=forms.HiddenInput())
 
     matriculaBeca = forms.DecimalField(label="Dinero para la matricula",
                                        max_digits=10,
                                        decimal_places=2,
-                                       widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+                                        widget=forms.HiddenInput())
 
     transporteBeca = forms.DecimalField(label="Dinero para el transporte",
                                         max_digits=10,
                                         decimal_places=2,
-                                        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+                                        widget=forms.HiddenInput())
 
     alimentacionBeca = forms.DecimalField(label="Dinero para la alimentación",
                                           max_digits=10,
                                           decimal_places=2,
-                                          widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+                                        widget=forms.HiddenInput())
 
     dineroAsignado = forms.DecimalField(label="Dinero total de la beca",
                                         max_digits=10,
                                         decimal_places=2,
-                                        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+                                        widget=forms.HiddenInput())
 
     gasto = forms.DecimalField(label="Gasto a registrar",
                                max_digits=10,
@@ -107,15 +108,8 @@ class registrarInfoFinancieraModificar(forms.ModelForm):
         fields = ['studentID', 'type', 'matriculaBeca','transporteBeca','alimentacionBeca','dineroAsignado', 'gasto','categoriaGasto']
 
 
-class enviarMensaje(forms.ModelForm):
-
-    title = forms.CharField(label="Titulo del mensaje", max_length=50)
-
-    type = forms.CharField(label="Dirección del mensaje", max_length=50)
-
-    descripcion = forms.CharField(widget=forms.Textarea(), label="Descripción")
-
-
+class HistorialGastosForm(forms.ModelForm):
+    comprobantePago = forms.FileField(label="Comprobante de Pago", required=False)
     class Meta:
-        model = Alerta
-        fields = ['title','type','description']
+        model = HistorialGastos
+        fields = ['comprobantePago']
