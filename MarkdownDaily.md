@@ -216,5 +216,6 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Kevin Vincent | HU Finalizada, Agrege nuevas validaciones para que el formulario soporte la carga de un archivo XLSX. Añadi una medida de prevencion de errores en el form ahora si se sube un archivo los demas label he inputs de bloquean. Arregle el orden de las notificaciones, ahora la primera es el cambio mas reciente. Añadi los test | Fue algo enredado hacer que el form soporte la carga del archivo porque las condicionales se expandian | HU Finalizada, espero no desarrollar mas en el codigo de mi rama, asistire a mis compañeros si es necesario, subire mi Pull Request y/o aceptare la que falte si es necesario |
+|Luis Pinillos|Solucionar varios bugs, agregar la funcionalidad de enviar alerta apenas se realice el cambio en la actualizacion financiera|Estuve un tiempo intentando usar modales, pero no funcinaba correctamente y también existieron problemas con la subida de archivos, pero ya todo solucionado|Terminar las HU por completo|
 
 
