@@ -8,21 +8,16 @@
     <style>
         .tableFixHead {
             overflow-y: auto;
-            /* make the table scrollable if height is more than 200 px  */
-            height: 500px;
-            /* gives an initial height of 200px to the table */
+            height: 425px;
         }
 
         .tableFixHead thead th {
             position: sticky;
-            /* make the table heads sticky */
             top: 0px;
-            /* table head will be placed from the top of the table and sticks to it */
         }
 
         table {
             border-collapse: collapse;
-            /* make the table borders collapse to each other */
             width: 100%;
         }
 
@@ -42,15 +37,15 @@
         }
 
         .selected {
-            background-color: #6c788e; /* Color de fondo cuando está seleccionado */
-            color: white; /* Color del texto cuando está seleccionado */
+            background-color: #6c788e;
+            color: white;
             padding: 8px 16px;
             width: 100%;
         }
 
         #boton:hover{
-            background-color: #6c788e; /* Color de fondo cuando está seleccionado */
-            color: white; /* Color del texto cuando está seleccionado */
+            background-color: #6c788e;
+            color: white;
         }
     </style>
     <meta charset="UTF-8">
@@ -62,98 +57,88 @@
     <main class="container py-5">
         <section class="card" style="background-color: #cfd5e1;height: 40rem;">
             <div class="card-header" style="background-color: #6C788E;">
+                <a class="btn" style="background-color: #a6aec1; float: left;" href="/menu_filantropia/">
+                    <b>Volver</b>
+                </a>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                         <div style="text-align: start;">
                             <h1>
                                 Agregar Estudiante
                             </h1>
                         </div>
-                        <form action="/menu_filantropia/agregar_estudiante/" method="post"
-                            style="border-radius: 25px; margin: 0 auto; display: block;">
-                            <div class="d-grid gap-2">
-                                {% csrf_token %}
-                                {{ error }}
-                                <br>
-                                <br>
-                                <br>
-                                {{form}}
-                                <br>
+                        <form action="/menu_filantropia/agregar_estudiante/" method="post" style="border-radius: 25px; margin: 0 auto; display: block;" id="primer_formulario">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                    <div class="d-grid gap-2">
+                                        {% csrf_token %}
+                                        <i style="color: red;">{{ error }}</i>
+                                        <br>
+                                        <br>
+                                        {{ form }}
+                                        <br>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                    <br>
+                                    <div class="tableFixHead">
+                                        <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                                        Becas
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for becas in Becas %}
+                                                    <tr>
+                                                        <td>
+                                                            <button type="submit" class="buttonSelect" name="selected_button" value="{{ becas.id }}" id="boton" onclick="handleButtonClick(this)">
+                                                                {{ becas.type }}
+                                                                &nbsp; &nbsp; &nbsp;
+                                                                {{ becas.percentage }}% <i class="fas fa-money-bill"></i>
+                                                                {% if becas.alimentacion %}
+                                                                &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
+                                                                {% endif %}
+                                                                {% if becas.transporte %}
+                                                                &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
+                                                                {% endif %}
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </form>
-                    </div>
-
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <br>
-                        <div class="tableFixHead">
-                            <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
-                                            Becas
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <form method="POST" action="{% url 'agregar estudiante' %}">
-                                        {% csrf_token %}
-                                        {% for becas in Becas %}
-                                        <tr>
-                                            <td>
-
-                                                {% if becas.id  == boton_seleccionado %}
-                                                    <button type="submit" class = "selected" name="selected_button" value="{{ becas.id }}" id="boton">
-                                                        {{ becas.type }}
-                                                        &nbsp; &nbsp; &nbsp;
-                                                        {{becas.percentage}}% <i class="fas fa-money-bill"></i>
-                                                        {% if becas.alimentacion %}
-                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
-                                                        {% endif %}
-                                                        {% if becas.transporte %}
-                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
-                                                        {% endif %}
-                                                    </button> 
-                                                {% else %}
-                                                    <button type="submit" class = "buttonSelect" name="selected_button" value="{{ becas.id }}" id="boton">
-                                                        {{ becas.type }}
-                                                        &nbsp; &nbsp; &nbsp;
-                                                        {{becas.percentage}}% <i class="fas fa-money-bill"></i>
-                                                        {% if becas.alimentacion %}
-                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
-                                                        {% endif %}
-                                                        {% if becas.transporte %}
-                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
-                                                        {% endif %}
-                                                    </button> 
-                                                {% endif %}
-
-                                                
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </form>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <a class="btn" style="background-color: #a6aec1; margin-right: 10px;"
-                                href="/menu_filantropia/">
-                                <b>Cancelar</b>
-                            </a>
-
-                            <a class="btn" style="background-color: #a6aec1; margin-left: 10px;"
-                                href="/menu_filantropia/">
-                                <b>Confirmar</b>
-                            </a>
-                        </div>
-                    </div>
                 </div>
         </section>
     </main>
+    <input type="hidden" id="selected_button_input" name="selected_button" value="{% if request.session.selected_button %}{{ request.session.selected_button }}{% endif %}">
+    <script>
+    // Función para manejar el clic en los botones
+    function handleButtonClick(button) {
+        // Eliminar la clase "selected" de cualquier otro botón
+        var buttons = document.querySelectorAll(".buttonSelect");
+        buttons.forEach(function (btn) {
+            btn.classList.remove("selected");
+        });
+
+        // Agregar la clase "selected" al botón clickeado
+        button.classList.add("selected");
+
+        // Actualizar el valor en el campo oculto
+        var selectedButtonValue = button.value;
+        document.querySelector("#selected_button_input").value = selectedButtonValue;
+
+        // Agregar una línea para imprimir el valor del botón en la consola
+        console.log("Valor del botón seleccionado: " + selectedButtonValue);
+    }
+    </script>
 </body>
 
 {% endblock %}

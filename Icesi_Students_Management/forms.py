@@ -17,7 +17,7 @@ class addStudent(forms.Form):
     Email = forms.EmailField(label="Email:",
                             max_length=200,
                             widget=forms.TextInput(attrs={'placeholder': 'Ingrese el email del estudiante', 'col': '10', 'size': '50'}))
-    Codgio = forms.CharField(label="Codigo:",
+    Codigo = forms.CharField(label="Codigo:",
                             max_length=100,
                             widget=forms.TextInput(attrs={'placeholder': 'Ingrese el codigo del estudiante', 'col': '10', 'size': '50'}))
     
