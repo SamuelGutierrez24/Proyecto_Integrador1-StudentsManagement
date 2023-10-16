@@ -15,18 +15,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from Icesi_Students_Management.views import views
+from django.urls import path, include
+#import Icesi_Students_Management.views.views as views
+from django.conf import settings
+from django.conf.urls.static import static
+from Icesi_Students_Management.views import menuConta
+from Icesi_Students_Management.views import infoFinanciera
+from Icesi_Students_Management.views import buscarEstud
+from Icesi_Students_Management.views import modificar
+import Icesi_Students_Management.views.bumenu as buMenu
+import Icesi_Students_Management.views.registroActividades as registroA
 import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('signup/', views.signup, name='signup'),
-    path('tasks/', views.tasks, name='tasks'),
-    path('signin/', views.signin, name='singin'),
-    path('logout/', views.signout, name='logout'),
+    #path('', views.home, name='home'),
+    #path('signup/', views.signup, name='signup'),
+    #path('tasks/', views.tasks, name='tasks'),
+    #path('signin/', views.signin, name='singin'),
+    #path('logout/', views.signout, name='logout'),
+    path('contabilidad/', menuConta.menu, name='menuContabilidad'),
+    path('contabilidad/eliminar-noti/<id>/', menuConta.eliminar_noti, name='eliminar_noti'),
+    path('contabilidad/ver-noti/<int:id>/', menuConta.ver_noti, name='ver_noti'),
+    path('contabilidad/infoFinanciera.html', infoFinanciera.infoFinanciera, name='infoFinanciera'),
+    path('contabilidad/buscarEstud.html', buscarEstud.menuBuscar, name='buscarEstud'),
+    path('contabilidad/modificar.html/<str:code>/', modificar.modificarInfo, name='modificarInfo'),
+    path('contabilidad/eliminar-estudiante/<str:code>/', buscarEstud.eliminar_estudiante, name='eliminar_estudiante'),
+    path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
+    path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
     path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
     path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
+    path('', include('Icesi_Students_Management.urls'))
 ]

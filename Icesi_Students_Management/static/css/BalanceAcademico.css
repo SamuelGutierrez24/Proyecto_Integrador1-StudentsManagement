@@ -1,0 +1,39 @@
+body {
+    background-color: #EDEDF2;
+}
+
+.container-flex{
+    display: flex;
+}
+
+.btn#botonSuperior {
+    color: #fff; 
+    margin-left: 100%;
+    width: max-content;
+}
+
+.btn#botonCuerpo {
+    margin-top: 15%;
+    margin-left: 20%;
+}
+
+header.bg-primary {
+    background-color: #6C788E !important;
+}
+
+#textoLabel1 {
+    font-size: 180%;
+}
+
+#textoLabel2 {
+    font-size: 180%;
+}
+
+#LiNotificaciones {
+    margin-top: 5%;
+}
+
+.card {
+    background-color: #cfd5e1;
+    height: fit-content;
+}

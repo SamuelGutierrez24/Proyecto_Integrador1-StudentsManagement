@@ -1,0 +1,87 @@
+#custom-search-input .input-group {
+    display: flex;
+    align-items: center;
+}
+
+#bBusqueda {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    width: 70%;
+}
+
+#searchBtn:hover {
+    background-color: #6c788e;
+    color: white;
+}
+
+#searchBtn {
+    margin-left: 10px;
+    background-color: #FFFFFF;
+    color: black;
+    border-color: #a6aec1;
+}
+
+#tabla {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    width: 100%;
+
+}
+
+.tableFixHead::-webkit-scrollbar {
+    width: 12px;
+}
+
+.tableFixHead::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.tableFixHead::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
+
+.tableFixHead {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#tabla th,
+#tabla td {
+    text-align: center;
+}
+
+#tabla button {
+    text-align: center;
+    width: 25%;
+}
+
+#editarbtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 50px;
+}
+
+#editarbtn:hover {
+    background-color: #1e7e34;
+    color: white;
+}
+
+#eliminarbtn {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 50px;
+}
+
+#eliminarbtn:hover {
+    background-color: #cc0000;
+    color: white;
+}
