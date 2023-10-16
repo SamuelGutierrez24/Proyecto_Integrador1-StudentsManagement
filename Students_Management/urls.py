@@ -19,9 +19,7 @@ from django.urls import path, include
 #import Icesi_Students_Management.views.views as views
 from django.conf import settings
 from django.conf.urls.static import static
-import Icesi_Students_Management.views.views as views
 from Icesi_Students_Management.views import menuConta
-from Icesi_Students_Management.views import views
 from Icesi_Students_Management.views import infoFinanciera
 from Icesi_Students_Management.views import buscarEstud
 from Icesi_Students_Management.views import modificar

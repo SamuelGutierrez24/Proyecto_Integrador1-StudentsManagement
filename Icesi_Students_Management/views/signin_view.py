@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate, login
 
 def signin(request):
     if request.method == "GET":
-        print("Sapa")
         return render(request, 'signin.html')
     else:
         
@@ -17,6 +16,9 @@ def signin(request):
             elif user.rol == 3:
                 login(request, user)
                 return redirect('bienestarUniversitario')
+            elif user.rol == 4:
+                login(request, user)
+                return redirect('menuContabilidad')
             elif user.rol == 5:
                 login(request, user)
                 return redirect('menuBalanceAcademico')
