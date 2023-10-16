@@ -1,15 +1,121 @@
 from django import forms
 from .models import *
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
-class registrarInfoFinanciera(forms.Form):
-    studentID = forms.CharField(label="Código de Estudiante", max_length=20, required=False)
-    studentName = forms.CharField(label="Nombre del Estudiante", max_length=20)
-    dineroAsignado = forms.DecimalField(label="Dinero Asignado al Estudiante", max_digits=10, decimal_places=2)
-    dineroUsado = forms.DecimalField(label="Dinero Usado por el Estudiante", max_digits=10, decimal_places=2)
-    financialNote = forms.CharField(label="Nota financiera", widget=forms.Textarea)
-    extraInfo = forms.CharField(label="Información extra", widget=forms.Textarea)
+
+class registrarInfoFinanciera(forms.ModelForm):
+
+    CATEGORIA_CHOICES = [
+        ('matricula', 'Matrícula'),
+        ('transporte', 'Transporte'),
+        ('alimentacion', 'Alimentación'),
+    ]
+
+    categoriaGasto = forms.ChoiceField(label='Categoría del Gasto', choices=CATEGORIA_CHOICES)
+
+    studentID = forms.CharField(
+        label="Codigo Estudiante",
+        max_length=20,
+        required=False
+    )
+    type = forms.CharField(label="Tipo de beca",
+                           max_length=20)
+
+    matriculaBeca = forms.DecimalField(label="Dinero para la matricula",
+                                       max_digits=10,
+                                       decimal_places=2,
+                                       widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+
+    transporteBeca = forms.DecimalField(label="Dinero para el transporte",
+                                        max_digits=10,
+                                        decimal_places=2,
+                                        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+
+    alimentacionBeca = forms.DecimalField(label="Dinero para la alimentación",
+                                          max_digits=10,
+                                          decimal_places=2,
+                                          widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+
+    dineroAsignado = forms.DecimalField(label="Dinero total de la beca",
+                                        max_digits=10,
+                                        decimal_places=2,
+                                        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+
+    gasto = forms.DecimalField(label="Gasto a registrar",
+                               max_digits=10,
+                               decimal_places=2)
+    fecha = forms.DateField(label="Fecha",
+                            widget=DateInput)
 
     class Meta:
         model = InformacionFinanciera
-        fields = ['studentID','studentName','dineroAsignado','dineroUsado','financialNote','extraInfo']
+        widgets = {'fecha': DateInput()}
+        fields = ['studentID', 'type', 'matriculaBeca','transporteBeca','alimentacionBeca','dineroAsignado', 'gasto','categoriaGasto']
 
+
+class registrarInfoFinancieraModificar(forms.ModelForm):
+
+    CATEGORIA_CHOICES = [
+        ('matricula', 'Matrícula'),
+        ('transporte', 'Transporte'),
+        ('alimentacion', 'Alimentación'),
+    ]
+
+    categoriaGasto = forms.ChoiceField(label='Categoría del Gasto', choices=CATEGORIA_CHOICES)
+
+
+    studentID = forms.CharField(
+        label="Codigo Estudiante",
+        max_length=20,
+        required=False,
+        widget=forms.TextInput(attrs={'readonly': 'readonly'})
+    )
+    type = forms.CharField(label="Tipo de beca",
+                           max_length=20,
+                           widget=forms.HiddenInput())
+
+    matriculaBeca = forms.DecimalField(label="Dinero para la matricula",
+                                       max_digits=10,
+                                       decimal_places=2,
+                                       widget=forms.HiddenInput())
+
+    transporteBeca = forms.DecimalField(label="Dinero para el transporte",
+                                        max_digits=10,
+                                        decimal_places=2,
+                                        widget=forms.HiddenInput())
+
+    alimentacionBeca = forms.DecimalField(label="Dinero para la alimentación",
+                                          max_digits=10,
+                                          decimal_places=2,
+                                          widget=forms.HiddenInput())
+
+    dineroAsignado = forms.DecimalField(label="Dinero Asignado al Estudiante",
+                                        max_digits=10,
+                                        decimal_places=2,
+                                        widget=forms.HiddenInput())
+    
+    gasto = forms.DecimalField(label="Cantidad de gasto que se va a registrar",
+                               max_digits=10,
+                               decimal_places=2)
+    fecha = forms.DateField(label="Fecha",
+                            widget=DateInput)
+
+    class Meta:
+        model = InformacionFinanciera
+        widgets = {'fecha': DateInput()}
+        fields = ['studentID', 'type', 'matriculaBeca','transporteBeca','alimentacionBeca','dineroAsignado', 'gasto','categoriaGasto']
+
+
+class enviarMensaje(forms.ModelForm):
+
+    title = forms.CharField(label="Titulo del mensaje", max_length=50)
+
+    type = forms.CharField(label="Dirección del mensaje", max_length=50)
+
+    descripcion = forms.CharField(widget=forms.Textarea(), label="Descripción")
+
+
+    class Meta:
+        model = Alerta
+        fields = ['title','type','description']

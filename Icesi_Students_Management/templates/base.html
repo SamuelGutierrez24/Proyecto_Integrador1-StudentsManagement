@@ -1,73 +1,72 @@
+{% load static %}
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block tituloPagina %}
     <title>Student Managment</title>
+    {% endblock %}
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
 </head>
 <body style="background-color: #FFFFFF;">
-    
     <style>
         .navbar.bg-dark {
             background-color: #6c788e !important;
         }
-
-        .navbar{
+        .navbar {
             height: 100px;
-            overflow: hidden;   
+            overflow: hidden;
             margin-left: 0px;
 
         }
-
-        #icesi{
+        #icesi {
             width: 198.8px;
             height: 62.4px;
         }
-
-        ul{
+        ul {
             margin-right: -25%;
         }
-
-
-
-
     </style>
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container ms-0 mr-0">
-          <img src="{% static './Images/icesi.png'%}" alt="Logo de la Icesi" id="icesi">
-          <a class="navbar-brand ms-5" href="#">{% block titulo %}Universidad Icesi{% endblock %}</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {% block botones%}
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/tasks" class="nav-link">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/signup" class="nav-link">Signup</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/signin" class="nav-link">Signin</a>
-                </li class="nav-item">
-                {% endblock %}
-            </ul>
-          </div>
+            <img src="{% static './Images/icesi.png'%}" alt="Logo de la Icesi" id="icesi">
+            <a class="navbar-brand ms-5" href="#">{% block titulo %}Universidad Icesi{% endblock %}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% block botones%}
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/tasks" class="nav-link">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/signup" class="nav-link">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/signin" class="nav-link">Signin</a>
+                    </li class="nav-item">
+                    {% endblock %}
+                </ul>
+            </div>
         </div>
-      </nav>
-    
+    </nav>
     {% block content %}
     {% endblock %}
 
 </body>
+
 </html>

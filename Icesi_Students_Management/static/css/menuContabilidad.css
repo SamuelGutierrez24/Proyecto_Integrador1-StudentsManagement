@@ -1,0 +1,59 @@
+#btn1:hover {
+    background-color: #6c788e;
+    color: white;
+}
+
+#btn2:hover {
+    background-color: #6c788e;
+    color: white;
+}
+
+#btn1 {
+    background-color: #a6aec1;
+    color: #212121;
+    text-align: center;
+    margin-top: 20%;
+    height: 75px;
+    width: 80%;
+    margin-left: 6%;
+
+}
+
+#btn2 {
+    background-color: #a6aec1;
+    color: #212121;
+    text-align: center;
+    margin-top: 10%;
+    height: 75px;
+    width: 80%;
+    margin-left: 6%;
+}
+
+#menu {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableFixHead::-webkit-scrollbar {
+    width: 12px;
+}
+
+.tableFixHead::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.tableFixHead::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
+
+.tableFixHead {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}

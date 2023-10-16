@@ -1,5 +1,7 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+>>>>>>> Stashed changes
 
 {% block titulo %}
 <style>
@@ -22,74 +24,59 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/contabilidad.css' %}">
-
-    <title>FASE ALFA</title>
+    <link rel="stylesheet" href="{% static 'css/menuContabilidad.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block tituloPagina %}
+    <title>Contabilidad</title>
+    {% endblock %}
 </head>
 
 <body style="background-color: #fcfdff;">
-
     <style>
-        #btn1:hover {
-            background-color: #6c788e;
+        #tabla th,
+        #tabla td {
+            text-align: center;
+        }
+
+        #tabla button {
+            text-align: center;
+            width: 20%;
+        }
+
+        #verbtn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 3px 6px;
+            border-radius: 50px;
+        }
+
+        #verbtn:hover {
+            background-color: #0056b3;
             color: white;
         }
 
-        #btn1 {
-            background-color: #a6aec1;
-            color: #212121;
-            text-align: center;
-            margin-top: 30%;
-            height: 75px;
-            width: 80%;
-            margin-left: 6%;
-
-        }
-
-        .d-flex {
-            margin-top: 5%;
-            width: 100%;
-            margin-left: 3%;
-        }
-
-        #searchBtn:hover {
-            background-color: #6c788e;
+        #eliminarbtn {
+            background-color: #ff0000;
             color: white;
+            border: none;
+            padding: 3px 6px;
+            border-radius: 50px;
         }
 
-        #searchBtn {
-            background-color: #FFFFFF;
-            color: black;
-            border-color: #a6aec1;
-        }
-
-        #menu {
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
+        #eliminarbtn:hover {
+            background-color: #cc0000;
+            color: white;
         }
     </style>
-
     <div class="container my-5" style="background-color: #cfd5e1; border-radius: 25px;">
         <div class="row">
 
             <div class="col" id="menu">
                 Menú
                 <div class="d-grid gap-2">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Buscar Código de Estudiante" name="buscar" value="">
-                        <button class="btn btn-outline-info" type="submit" id="searchBtn">Buscar</button>
-                    </form>
 
                     <a href="buscarEstud.html" class="btn btn-custom custom-btn" id="btn1"><b>Buscar Estudiante</b></a>
-                    <a href="infoFinanciera.html" class="btn btn-custom custom-btn" id="btn1"><b>Registrar información
-                            financiera</b></a>
                 </div>
             </div>
 
@@ -98,12 +85,24 @@
                     style="background-color: #cfd5e1; font-size: 30px; text-align: center; font-weight: bold; margin-top: 1%;">
                     Notificaciones</h1>
                 <div class="tableFixHead" style="overflow: scroll; height: 450px;">
-                    <table class="table table-striped" style="background-color: #cfd5e1; height: 10cm;">
+                    <table class="table table-striped" style="background-color: #cfd5e1; height: 10cm;" id="tabla">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th></th>
+                            </tr>
+                        </thead>
                         <tbody style="overflow: scroll;">
                             {% for notificaciones in notificaciones %}
                             <tr>
-                                <td onclick="">
-                                    {{notificaciones.title}}
+                                <td>{{notificaciones.title}}</td>
+                                <td>
+                                    <a href="{% url 'ver_noti' notificaciones.id %}">
+                                        <button class="editar-btn" id="verbtn"><i class="fas fa-eye"></i></button>
+                                    </a>
+                                    <a href="{% url 'eliminar_noti' notificaciones.id %}">
+                                        <button class="editar-btn" id="eliminarbtn"><i
+                                                class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             {% endfor %}
