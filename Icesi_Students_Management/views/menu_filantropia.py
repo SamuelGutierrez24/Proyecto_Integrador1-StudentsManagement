@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Icesi_Students_Management.models import Alerta
+from ..forms import envioMensaje
 
 def menu(request):
 
@@ -11,3 +12,6 @@ def menu(request):
             notifi.append(noti)
 
     return render(request, 'menu_filantropia.html', {'notificaciones': notifi})
+
+
+

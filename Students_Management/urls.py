@@ -27,6 +27,7 @@ import Icesi_Students_Management.views.bumenu as buMenu
 import Icesi_Students_Management.views.registroActividades as registroA
 import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
+from Icesi_Students_Management.views import envioAlerta
 
 
 urlpatterns = [
@@ -47,5 +48,7 @@ urlpatterns = [
     path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
     path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
     path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
-    path('', include('Icesi_Students_Management.urls'))
+    path('', include('Icesi_Students_Management.urls')),
+    path('menu_filantropia/envioAlerta.html', envioAlerta.enviarMensaje, name='enviarMensaje'),
+
 ]
