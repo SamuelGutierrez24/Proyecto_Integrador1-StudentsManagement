@@ -18,7 +18,7 @@ from .models import Alerta
 
 admin.site.register(Student)
 admin.site.register(Semester)
-admin.site.register(Beca)
+admin.site.register(Becas)
 admin.site.register(Donante)
 admin.site.register(BalanceAcademico)
 admin.site.register(Materia)
