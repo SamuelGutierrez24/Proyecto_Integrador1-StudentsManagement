@@ -223,4 +223,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|Ayer comenzamos el nuevo sprin y asigné mi nieva historia de usuario|Ninguna|Corregir mi error en los test de login e investigar como hacer mi HU|
-
+|Santiago Jose Belalcazar | Nada | Ninguno | Investigar como realizar mi HU |
