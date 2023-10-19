@@ -219,4 +219,8 @@
 |Luis Pinillos|Solucionar varios bugs, agregar la funcionalidad de enviar alerta apenas se realice el cambio en la actualizacion financiera|Estuve un tiempo intentando usar modales, pero no funcinaba correctamente y también existieron problemas con la subida de archivos, pero ya todo solucionado|Terminar las HU por completo|
 |Santiago Jose Belalcazar | Termine casi todo, quedo faltando 1 test | Los forms | Realizar el Pull Request |
 
+## Fecha 18/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar|Ayer comenzamos el nuevo sprin y asigné mi nieva historia de usuario|Ninguna|Corregir mi error en los test de login e investigar como hacer mi HU|
 
