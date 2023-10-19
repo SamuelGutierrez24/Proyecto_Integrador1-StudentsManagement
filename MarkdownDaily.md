@@ -225,3 +225,4 @@
 |Daniel Escobar|Ayer comenzamos el nuevo sprin y asigné mi nieva historia de usuario|Ninguna|Corregir mi error en los test de login e investigar como hacer mi HU|
 |Santiago Jose Belalcazar | Nada | Ninguno | Investigar como realizar mi HU |
 |Samuel Gutierrez | Empezar el Sprint, la planeacion y distribucion de tareas | Ninguno | Dejar lista y planeada mi HU y empezzar con la autenticacion del login para los usuarios del CREA |
+|Luis Pinillos |Ayer se asignaron las tareas y se comenzo el nuevo sprint| Ninguno|Empezar la subtask de envio de correo electronico a los donantes desde la pagina web |
