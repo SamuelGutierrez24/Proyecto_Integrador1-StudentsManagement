@@ -40,6 +40,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block tituloPagina %}
+    <title>Filantropia</title>
+    {% endblock %}
 </head>
 
 <body>
@@ -87,7 +90,7 @@
                                     href="/menu_filantropia/agregar_estudiante/">
                                     <b>Agregar Estudiante</b>
                                 </a>
-                                <a class="btn" style="background-color: #a6aec1;" href="/generar_reportes/">
+                                <a class="btn" style="background-color: #a6aec1;" href="envioReportes.html">
                                     <b>Generar Reportes</b>
                                 </a>
                                 <a class="btn" style="background-color: #a6aec1;" href="envioAlerta.html">

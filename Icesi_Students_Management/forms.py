@@ -181,3 +181,12 @@ class envioMensaje(forms.ModelForm):
         model = Alerta
         fields = ['title', 'type', 'description']
 
+
+class enviarReporte(forms.Form):
+    title = forms.CharField(label="Titulo", max_length=70, required=False)
+    email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(attrs={'placeholder':'ejemplo@gmail.com'}))
+    description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+    seguimientoBeca = forms.FileField(label="Seguimiento de beca", required=False)
+
+    class Meta:
+        fields = ['title', 'email', 'description','seguimientoBeca']
