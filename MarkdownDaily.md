@@ -226,3 +226,8 @@
 |Santiago Jose Belalcazar | Nada | Ninguno | Investigar como realizar mi HU |
 |Samuel Gutierrez | Empezar el Sprint, la planeacion y distribucion de tareas | Ninguno | Dejar lista y planeada mi HU y empezzar con la autenticacion del login para los usuarios del CREA |
 |Luis Pinillos |Ayer se asignaron las tareas y se comenzo el nuevo sprint| Ninguno|Empezar la subtask de envio de correo electronico a los donantes desde la pagina web |
+
+## Fecha 19/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar|Por falta de tiempo no pude comenzar|Ninguno| Crear la branch de mi HU y planear como la voy a hacer |
