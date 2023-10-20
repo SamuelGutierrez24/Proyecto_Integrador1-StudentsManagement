@@ -231,3 +231,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|Por falta de tiempo no pude comenzar|Ninguno| Crear la branch de mi HU y planear como la voy a hacer |
+|Samuel Gutierrez | Agregar el usuario del CREA | Por hacer otro trabajo no pude editar el html que necesito| La verdad es que tengo otros trabajos, por lo cual hoy no podre avanzar |
