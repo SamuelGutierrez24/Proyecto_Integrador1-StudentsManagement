@@ -233,3 +233,8 @@
 |Daniel Escobar|Por falta de tiempo no pude comenzar|Ninguno| Crear la branch de mi HU y planear como la voy a hacer |
 |Samuel Gutierrez | Agregar el usuario del CREA | Por hacer otro trabajo no pude editar el html que necesito| La verdad es que tengo otros trabajos, por lo cual hoy no podre avanzar |
 |Santiago Jose Belalcazar | Revisar algunos conceptos e ideas en mente, para resolver posteriormente | Ninguno | No podre avanzar mucho, pero intentare crear la branch de mi HU y revisar un boceto inicial |
+
+## Fecha 20/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|Investigue como generar un pdf|Ninguno|Implementar la funcionalidad de generacion de pdf|
