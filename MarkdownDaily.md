@@ -240,3 +240,8 @@
 |Luis Pinillos|Investigue como generar un pdf|Ninguno|Implementar la funcionalidad de generacion de pdf|
 |Kevin Vincent|Nada|Ninguno|Actualizar el estado de mi HU en el Jira y revisar como filantropia maneja las notificaciones para porder enviarle actualizaciones de estado y/o cancelacion de alguna materia|
 |Santiago Jose Belalcazar | No adelante mucho | Ninguno | Crear mi branch |
+
+## Fecha 21/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Santiago Jose Belalcazar | Cree mi branch | Ninguno | Implementare el primer boceto en html para realizar mi HU |
