@@ -238,3 +238,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|Investigue como generar un pdf|Ninguno|Implementar la funcionalidad de generacion de pdf|
+|Kevin Vincent|Nada|Ninguno|Actualizar el estado de mi HU en el Jira y revisar como filantropia maneja las notificaciones para porder enviarle actualizaciones de estado y/o cancelacion de alguna materia|
