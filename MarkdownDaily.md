@@ -246,3 +246,4 @@
 |---|---|---|---|
 |Santiago Jose Belalcazar | Cree mi branch | Ninguno | Implementare el primer boceto en html para realizar mi HU |
 |Kevin Vincent| Acomode mi HU en el Jira, tambien hice las grabaciones del funcionamiento del programa tras el primer sprint | Ninguno | Culminar la edicion del video y crear la rama para empezar el desarrollo de mi HU |
+| Daniel Escobar | No pude avanzar | Nada | Empezar con el HTML |
