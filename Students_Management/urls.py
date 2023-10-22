@@ -29,7 +29,6 @@ import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
 from Icesi_Students_Management.views import envioAlerta
 from Icesi_Students_Management.views import envioReportes
-from Icesi_Students_Management.views import createPDF
 
 
 urlpatterns = [
@@ -53,6 +52,5 @@ urlpatterns = [
     path('', include('Icesi_Students_Management.urls')),
     path('menu_filantropia/envioAlerta.html', envioAlerta.enviarMensaje, name='enviarMensaje'),
     path('menu_filantropia/envioReportes.html', envioReportes.envioReporte, name='envioReportes'),
-    path('menu_filantropia/creacionPDF', createPDF.seguimientoBecaPDF.as_view(), name='crearPDF'),
 
 ]

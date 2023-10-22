@@ -5,6 +5,12 @@
 {% block content %}
 
 <head>
+    <style>
+        .readonly-field {
+            background-color: #f2f2f2; /* Cambia el color de fondo a gris claro */
+            color: #666; /* Cambia el color del texto a un tono más oscuro */
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -12,6 +18,23 @@
     {% block tituloPagina %}
     <title>Envio Reportes</title>
     {% endblock %}
+    <script>
+        $(document).ready(function () {
+            // Maneja el cambio en el checkbox "todosDonantes"
+            $('#id_todosDonantes').change(function () {
+                var emailField = $('#id_email');
+                if ($(this).prop('checked')) {
+                    // Si todosDonantes está marcado, oculta el campo de correo electrónico
+                    $('#id_email').prop('readonly',true);
+                    emailField.addClass('readonly-field');
+                } else {
+                    // Si todosDonantes no está marcado, muestra el campo de correo electrónico
+                    $('#id_email').prop('readonly',false);
+                    emailField.removeClass('readonly-field');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>

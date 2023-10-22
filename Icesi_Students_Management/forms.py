@@ -175,7 +175,7 @@ class addStudent(forms.Form):
 class envioMensaje(forms.ModelForm):
     title = forms.CharField(label="Titulo", max_length=20, required=False)
     type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, required=False)
-    description = forms.CharField(label="Mensaje", max_length=20, required=False, widget=forms.Textarea)
+    description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
 
     class Meta:
         model = Alerta
@@ -184,9 +184,8 @@ class envioMensaje(forms.ModelForm):
 
 class enviarReporte(forms.Form):
     title = forms.CharField(label="Titulo", max_length=70, required=False)
-    email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(attrs={'placeholder':'ejemplo@gmail.com'}))
+    todosDonantes = forms.BooleanField(label="Enviar seguimiento de beca a todos los donadores?",required=False)
+    email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(attrs={'placeholder':'ejemplo@gmail.com'}),required=False)
     description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
-    seguimientoBeca = forms.FileField(label="Seguimiento de beca", required=False)
-
     class Meta:
-        fields = ['title', 'email', 'description','seguimientoBeca']
+        fields = ['title', 'todosDonantes','email', 'description']
