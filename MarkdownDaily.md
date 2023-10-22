@@ -248,4 +248,4 @@
 |Kevin Vincent| Acomode mi HU en el Jira, tambien hice las grabaciones del funcionamiento del programa tras el primer sprint | Ninguno | Culminar la edicion del video y crear la rama para empezar el desarrollo de mi HU |
 | Daniel Escobar | No pude avanzar | Nada | Empezar con el HTML |
 |Samuel Gutierrez | Nada, ayer no trabaje en el proyecto |Ninguno | hoy terminare el login para que autentique a el usuario de crea y dejare la base del menu en el registro |
-
+|Luis Pinillos|Termine en un 90% mi HU, tengo que esperar a la clase para preguntarle unas cosas al profesor|Tuve problemas en la personalizacion de los pdfs para cada correo, sin embargo, lo solucioné|Hoy comenzaré mi otra HU y aprovecharé a arreglar un poco el css del programa|
