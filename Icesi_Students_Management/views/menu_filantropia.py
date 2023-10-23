@@ -4,14 +4,23 @@ from ..forms import envioMensaje
 
 def menu(request):
 
-    notificaciones = Alerta.objects.all()
-    notifi = []
+    if request.method == 'GET':
+        
+        notificaciones = Alerta.objects.all()
+        notifi = []
 
-    for noti in notificaciones:
-        if(noti.type==4):
-            notifi.append(noti)
+        for noti in notificaciones:
+            if(noti.type==4):
+                notifi.append(noti)
 
-    return render(request, 'menu_filantropia.html', {'notificaciones': notifi})
+        return render(request, 'menu_filantropia.html', {'notificaciones': notifi})
+    else:
+        
+        id = request.POST["noti"]
+        print(id)
+        noti = Alerta.objects.all().filter(id =  id).first()
+
+        return render(request, 'notificacionEditable.html', {'noti': noti})
 
 
 
