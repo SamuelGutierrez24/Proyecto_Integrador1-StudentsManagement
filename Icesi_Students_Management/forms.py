@@ -187,5 +187,10 @@ class enviarReporte(forms.Form):
     todosDonantes = forms.BooleanField(label="Enviar seguimiento de beca a todos los donadores?",required=False)
     email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(attrs={'placeholder':'ejemplo@gmail.com'}),required=False)
     description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+    todosLosCampos = forms.BooleanField(label="Enviar todos los campos", required=False)
+    informacionAcademica = forms.BooleanField(label="Informacion academica", required=False)
+    informacionFinanciera = forms.BooleanField(label="Informacion financiera", required=False)
+    informacionNoAcademica = forms.BooleanField(label="Informacion no academica", required=False)
+    testimonioEstudiante = forms.BooleanField(label="Testimonio del estudiante", required=False)
     class Meta:
-        fields = ['title', 'todosDonantes','email', 'description']
+        fields = ['title', 'todosDonantes','email', 'description', 'todosLosCampos', 'informacionAcademica', 'informacionFinanciera', 'informacionNoAcademica', 'testimonioEstudiante']

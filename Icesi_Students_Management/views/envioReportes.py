@@ -44,7 +44,7 @@ def envioReporte(request):
 
                     emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
                     emailMessage.send(fail_silently=False)
-                    messages.success(request, 'Correo enviado con éxito')
+                messages.success(request, 'Correo enviado con éxito')
             
             else:
                 donante = Donante.objects.filter(email=email)

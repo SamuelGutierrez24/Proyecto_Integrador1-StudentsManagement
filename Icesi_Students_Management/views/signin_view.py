@@ -6,9 +6,7 @@ def signin(request):
     if request.method == "GET":
         return render(request, 'signin.html')
     else:
-        
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        print(user.rol)
         if user is not None:
             if user.rol == 0:
                 login(request, user)
@@ -26,7 +24,9 @@ def signin(request):
                 login(request, user)
                 return redirect('menuBalanceAcademico')
             else:
-                print("No puede entrear")
+                return render(request, 'signin.html', {
+                    'error': 'Rol de usuario no valido'
+                })
         else:
             return render(request, 'signin.html', {
                 'error': 'Usuario y/o contrasena incorrecta'
