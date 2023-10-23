@@ -254,3 +254,5 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|Arreglé el css del programa y estuve intentando agregar la informacion financiera del estudiante en el pdf|No puedo acceder a la informacion financiera del estudiante debido a que se me crea un queryset y no puedo acceder a sus atributos desde ahi. El dia de mañana le voy a preguntar al profesor para ver si me ayuda a solucionar el problema|Seguir viendo como puedo solucionar el problema|
+|Samuel Gutierrez | Deje terminado el login, hice cambios en la base de datos para poder conectar las actividades y registros de asistencia del CREA con la base de datos y inicie modificando los HTML |Ninguno | Hoy trabajare en los html |
+
