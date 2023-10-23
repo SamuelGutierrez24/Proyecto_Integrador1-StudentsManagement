@@ -249,3 +249,8 @@
 | Daniel Escobar | No pude avanzar | Nada | Empezar con el HTML |
 |Samuel Gutierrez | Nada, ayer no trabaje en el proyecto |Ninguno | hoy terminare el login para que autentique a el usuario de crea y dejare la base del menu en el registro |
 |Luis Pinillos|Termine en un 90% mi HU, tengo que esperar a la clase para preguntarle unas cosas al profesor|Tuve problemas en la personalizacion de los pdfs para cada correo, sin embargo, lo solucioné|Hoy comenzaré mi otra HU y aprovecharé a arreglar un poco el css del programa|
+
+## Fecha 22/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|Arreglé el css del programa y estuve intentando agregar la informacion financiera del estudiante en el pdf|No puedo acceder a la informacion financiera del estudiante debido a que se me crea un queryset y no puedo acceder a sus atributos desde ahi. El dia de mañana le voy a preguntar al profesor para ver si me ayuda a solucionar el problema|Seguir viendo como puedo solucionar el problema|
