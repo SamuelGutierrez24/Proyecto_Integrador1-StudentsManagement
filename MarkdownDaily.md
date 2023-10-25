@@ -268,3 +268,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Kevin Vincent | No realice avances en el proyecto | Ninguno | Publicar mi rama al github, repartir mi HU en incidencias, empezar a desarrollar cada incidencia |
+| Daniel Escobar | Intentar volver funcional lo que agregue al HTML | Ya que el boton está como tipo submit no he podido saber como agregar una condición para que no siempre se suba | Seguir con lo de ayer |
