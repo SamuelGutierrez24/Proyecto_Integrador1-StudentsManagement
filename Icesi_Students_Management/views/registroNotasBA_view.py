@@ -85,6 +85,7 @@ def RegMateria(request):
                         if materiaCode == cod_materiaXLS and materiaNombre == nombreMateriaXLS and materiaCreditos == creditosMateriaXLS and materiaEstatus != estatusMateriaXLS or materiNota != notaXLS:
                             #Existe un cambio en la informacion de una materia
                             print("Actualiza la materia")
+                            
                             #Actualizacion de los campos de Materia
                             Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).update(creditos = creditosMateriaXLS)
                                         
@@ -95,9 +96,15 @@ def RegMateria(request):
                             #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
                             Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
                                         
-                            #Creacion de la alerta    
-                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
+                            #Creacion de la alerta
+                            
+                            #Alerta para el menu de Balance Academico    
+                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
                             alerta.save()
+                            
+                            #Alerta para el menu de Filantropia
+                            alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                            alerta2.save()
                                             
                             continue
                         elif materiaCode == cod_materiaXLS and materiaNombre == nombreMateriaXLS and materiaCreditos == creditosMateriaXLS and materiaEstatus == estatusMateriaXLS and materiNota == notaXLS:                          
@@ -107,8 +114,12 @@ def RegMateria(request):
                         else:
                             #No existe una materia en la base de datos con la informacion proporcionada. Se registra la nueva materia y su balance
                             print("Crea una materia")
-                            #Creacion de la alerta
-                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                            
+                            #Alerta para el menu de Balance Academico
+                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                            
+                            #Alerta para el menu de Filantropia
+                            alerta2 = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia añadida: \n" + nombreMateriaXLS)
                                         
                             #Creacion de la materia, balance academico y demas
                             statusMateria = Status.objects.create(type=estatusMateriaXLS)
@@ -116,6 +127,7 @@ def RegMateria(request):
                             balanceAcademico = BalanceAcademico.objects.create(statusID = statusMateria, materiaID = materia, SeguimientoBecaID = segBeca)   
                             notaFinal = Nota.objects.create(BalanceAcademicoID = balanceAcademico, notaFinal = notaXLS)
                             alerta.save()
+                            alerta2.save()
                             materia.save()
                             statusMateria.save()
                             balanceAcademico.save()
@@ -125,14 +137,21 @@ def RegMateria(request):
                         #En caso de no existir ningun Balance Academico
                         #Crea la materia y el Balance academico para el estudainte
                         print("Crea una materia inexistente")
+                        
                         #Creacion de la alerta para el menu de Balance Academico
-                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
-                                    
+                        
+                        #Alerta para el menu de Balance Academico
+                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                        
+                        #Alerta para el menu de Filantropia
+                        alerta2 = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia añadida: \n" + nombreMateriaXLS)
+                                   
                         statusMateria = Status.objects.create(type=estatusMateriaXLS)
                         materia = Materia.objects.create(materia_code = cod_materiaXLS, nombre= nombreMateriaXLS, creditos= creditosMateriaXLS)
                         balanceAcademico = BalanceAcademico.objects.create(statusID = statusMateria, materiaID = materia, SeguimientoBecaID = segBeca)   
                         notaFinal = Nota.objects.create(BalanceAcademicoID = balanceAcademico, notaFinal = notaXLS)
                         alerta.save()
+                        alerta2.save()
                         materia.save()
                         statusMateria.save()
                         balanceAcademico.save()
@@ -198,9 +217,13 @@ def RegMateria(request):
                                         #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
                                         Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
                                         
-                                        #Creacion de la alerta    
-                                        alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
+                                        #Creacion de la alerta para Balance Academico   
+                                        alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
                                         alerta.save()
+                                        
+                                        #Creacion de la alerta para Filantropia
+                                        alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                        alerta2.save()
                                             
                                         continue
                                     elif materiaCode == cod_materia and materiaCode == cod_materiaXLS and materiaNombre == nombreMateria and materiaNombre == nombreMateriaXLS and materiaCreditos == creditosMateria and materiaCreditos == creditosMateriaXLS and materiaEstatus == estatusMateria and materiaEstatus == estatusMateriaXLS and materiNota == nota and materiNota == notaXLS:                          
@@ -210,8 +233,12 @@ def RegMateria(request):
                                     else:
                                         #No existe una materia en la base de datos con la informacion proporcionada. Se registra la nueva materia y su balance
                                         print("Crea una materia")
-                                        #Creacion de la alerta
+                                        
+                                        #Creacion de la alerta para Balance Academico
                                         alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                                        
+                                        #Creacion de la alerta para Filantropia
+                                        alerta2 = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 4, description = "Materia añadida: \n" + nombreMateriaXLS)
                                         
                                         #Creacion de la materia, balance academico y demas
                                         statusMateria = Status.objects.create(type=estatusMateriaXLS)
@@ -219,6 +246,7 @@ def RegMateria(request):
                                         balanceAcademico = BalanceAcademico.objects.create(statusID = statusMateria, materiaID = materia, SeguimientoBecaID = segBeca)   
                                         notaFinal = Nota.objects.create(BalanceAcademicoID = balanceAcademico, notaFinal = notaXLS)
                                         alerta.save()
+                                        alerta2.save()
                                         materia.save()
                                         statusMateria.save()
                                         balanceAcademico.save()
@@ -228,14 +256,19 @@ def RegMateria(request):
                                     #En caso de no existir ningun Balance Academico
                                     #Crea la materia y el Balance academico para el estudainte
                                     print("Crea una materia inexistente")
+                                    
                                     #Creacion de la alerta para el menu de Balance Academico
-                                    alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                                    alerta = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                                    
+                                    #Creacion de la alerta para el menu de Filantropia
+                                    alerta2 = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia añadida: \n" + nombreMateriaXLS)
                                     
                                     statusMateria = Status.objects.create(type=estatusMateriaXLS)
                                     materia = Materia.objects.create(materia_code = cod_materiaXLS, nombre= nombreMateriaXLS, creditos= creditosMateriaXLS)
                                     balanceAcademico = BalanceAcademico.objects.create(statusID = statusMateria, materiaID = materia, SeguimientoBecaID = segBeca)   
                                     notaFinal = Nota.objects.create(BalanceAcademicoID = balanceAcademico, notaFinal = notaXLS)
                                     alerta.save()
+                                    alerta2.save()
                                     materia.save()
                                     statusMateria.save()
                                     balanceAcademico.save()
@@ -268,9 +301,13 @@ def RegMateria(request):
                             #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
                             Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = nota)
                             
-                            #Creacion de la alerta    
-                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria)
+                            #Creacion de la alerta para Balance Academico
+                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria)
                             alerta.save()
+                            
+                            #Creacion de la alerta para Filantropia
+                            alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + nota)
+                            alerta2.save()
                                 
                             continue
                         elif materiaCode == cod_materia and materiaNombre == nombreMateria and materiaCreditos == creditosMateria and materiaEstatus == estatusMateria and materiNota == nota:                          
@@ -280,8 +317,12 @@ def RegMateria(request):
                         else:
                             #No existe una materia en la base de datos con la informacion proporcionada. Se registra la nueva materia y su balance
                             print("Crea una materia")
-                            #Creacion de la alerta
-                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria)
+                            
+                            #Creacion de la alerta para Balance Academico
+                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria)
+                            
+                            #Creacion de la alerta para Filantropia
+                            alerta2 = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia añadida: \n" + nombreMateria)
                             
                             #Creacion de la materia, balance academico y demas
                             statusMateria = Status.objects.create(type=estatusMateria)
@@ -289,6 +330,7 @@ def RegMateria(request):
                             balanceAcademico = BalanceAcademico.objects.create(statusID = statusMateria, materiaID = materia, SeguimientoBecaID = segBeca)   
                             notaFinal = Nota.objects.create(BalanceAcademicoID = balanceAcademico, notaFinal = nota)
                             alerta.save()
+                            alerta2.save()
                             materia.save()
                             statusMateria.save()
                             balanceAcademico.save()
@@ -298,14 +340,19 @@ def RegMateria(request):
                         #En caso de no existir ningun Balance Academico
                         #Crea la materia y el Balance academico para el estudainte
                         print("Crea una materia inexistente")
+                        
                         #Creacion de la alerta para el menu de Balance Academico
-                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria)
+                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria)
+                        
+                        #Creacion de la alerta para el menu de Filantropia
+                        alerta2 = Alerta.objects.create(title = "Creacion de Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia añadida: \n" + nombreMateria)
                         
                         statusMateria = Status.objects.create(type=estatusMateria)
                         materia = Materia.objects.create(materia_code = cod_materia, nombre= nombreMateria, creditos= creditosMateria)
                         balanceAcademico = BalanceAcademico.objects.create(statusID = statusMateria, materiaID = materia, SeguimientoBecaID = segBeca)   
                         notaFinal = Nota.objects.create(BalanceAcademicoID = balanceAcademico, notaFinal = nota)
                         alerta.save()
+                        alerta2.save()
                         materia.save()
                         statusMateria.save()
                         balanceAcademico.save()
