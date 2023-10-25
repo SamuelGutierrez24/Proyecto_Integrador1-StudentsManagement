@@ -263,3 +263,8 @@
 | Daniel Escobar | Agregar funcionalidad al HTML de filantropia para enviar un reporte donde se puede elegir que tipo de informacion quiero que tenga el reporte | No se si deberia poder editar toda la informacion del reporte | Volver funcional lo agregado al HTML |
 |Luis Pinillos|Ayer intente solucionar el problema que tenia al momento de generar pdfs|no pude solucionar el problema|Hablar con el profesor acerca de como puedo solucionar el problema que estoy presentando|
 |Samuel Gutierrez | Trabaje en los HTML |Habian 2 columnas que no querian acomodarse de manera correcta | Avanzare en lo que mas pueda para terminar el registro, ademas de arreglar esas columnas|
+
+## Fecha 24/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Kevin Vincent | No realice avances en el proyecto | Ninguno | Publicar mi rama al github, repartir mi HU en incidencias, empezar a desarrollar cada incidencia |
