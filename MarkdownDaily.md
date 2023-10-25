@@ -271,3 +271,8 @@
 | Daniel Escobar | Intentar volver funcional lo que agregue al HTML | Ya que el boton está como tipo submit no he podido saber como agregar una condición para que no siempre se suba | Seguir con lo de ayer |
 |Luis Pinillos|Ayer no hice mayores avances|Ninguno|Arreglar el nombre de las variables del codigo y continuar con mis HU|
 |Santiago Jose Belalcazar | No realice mayores avances con respecto a mi HU | Ninguno | Realize el select de tipo de notificacion e investigue como realizar para que aparezca el correo del donador |
+
+## Fecha 25/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Daniel Escobar | No pude avanzar, tuve otros trabajos que hacer | Ninguno | Terminar la funcionalidad de seleccionar el tipo de informacion que se le va a enviar al donante |
