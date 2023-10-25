@@ -7,6 +7,7 @@ def signin(request):
         return render(request, 'signin.html')
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        print(user)
         if user is not None:
             if user.rol == 0:
                 login(request, user)
