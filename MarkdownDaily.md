@@ -269,3 +269,4 @@
 |---|---|---|---|
 | Kevin Vincent | No realice avances en el proyecto | Ninguno | Publicar mi rama al github, repartir mi HU en incidencias, empezar a desarrollar cada incidencia |
 | Daniel Escobar | Intentar volver funcional lo que agregue al HTML | Ya que el boton está como tipo submit no he podido saber como agregar una condición para que no siempre se suba | Seguir con lo de ayer |
+|Luis Pinillos|Ayer no hice mayores avances|Ninguno|Arreglar el nombre de las variables del codigo y continuar con mis HU|
