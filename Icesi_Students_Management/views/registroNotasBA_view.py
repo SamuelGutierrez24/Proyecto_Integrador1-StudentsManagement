@@ -88,12 +88,19 @@ def RegMateria(request):
                             
                             if estatusMateriaXLS == "Materia Cancelada":
                                 #Alerta para el menu de Filantropia Informando Cancelacion
-                                alerta2 = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                alerta2 = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateriaXLS + " Por el estudiante: " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + str(notaXLS))
                                 alerta2.save()
                                 
                                 #Alerta para el menu de Balance Academico Informando Cancelacion
-                                alerta = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                alerta = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateriaXLS + " Por el estudiante: " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + str(notaXLS))
                                 alerta.save()
+                                
+                                balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materiaXLS)).first()
+                                Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).delete()
+                                Nota.objects.filter(BalanceAcademicoID = balanceVerf).delete()
+                                Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).delete()
+                                balanceUpdate.delete()
+                                
                             else:
                                 #Creacion de la alerta
                                 
@@ -102,19 +109,19 @@ def RegMateria(request):
                                 alerta.save()
                                 
                                 #Alerta para el menu de Filantropia
-                                alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + str(notaXLS))
                                 alerta2.save()
-                            
-                            #Actualizacion de los campos de Materia
-                            Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).update(creditos = creditosMateriaXLS)
-                                        
-                            #Actualizacion del estatus de la materia
-                            balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materiaXLS)).first()
-                            Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).update(type = estatusMateriaXLS)
-                                        
-                            #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
-                            Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
+                                
+                                #Actualizacion de los campos de Materia
+                                Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).update(creditos = creditosMateriaXLS)
                                             
+                                #Actualizacion del estatus de la materia
+                                balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materiaXLS)).first()
+                                Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).update(type = estatusMateriaXLS)
+                                            
+                                #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
+                                Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
+                                                
                             continue
                         elif materiaCode == cod_materiaXLS and materiaNombre == nombreMateriaXLS and materiaCreditos == creditosMateriaXLS and materiaEstatus == estatusMateriaXLS and materiNota == notaXLS:                          
                             #Existe una materia pero esta no tiene ningun cambio con respecto a la base de datos. No se registran actualizaciones ni registros nuevos
@@ -219,31 +226,38 @@ def RegMateria(request):
                                         
                                         if estatusMateriaXLS == "Materia Cancelada" or estatusMateria == "Materia Cancelada":
                                             #Alerta para el menu de Filantropia Informando Cancelacion
-                                            alerta2 = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                            alerta2 = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + str(notaXLS))
                                             alerta2.save()
                                             
                                             #Alerta para el menu de Balance Academico Informando Cancelacion
-                                            alerta = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                            alerta = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + str(notaXLS))
                                             alerta.save()
+                                            
+                                            balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materiaXLS)).first()
+                                            Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).delete()
+                                            Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).delete()
+                                            Nota.objects.filter(BalanceAcademicoID = balanceVerf).delete()
+                                            balanceUpdate.delete()
+                                            
                                         else:
                                             #Alerta para el menu de Filantropia
-                                            alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + notaXLS)
+                                            alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateriaXLS + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateriaXLS + "\n" + "Nueva Nota: " + str(notaXLS))
                                             alerta2.save()
                                             
                                             #Creacion de la alerta para Balance Academico   
                                             alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
                                             alerta.save()
+                                            
+                                            #Actualizacion de los campos de Materia
+                                            Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).update(creditos = creditosMateriaXLS)
+                                            
+                                            #Actualizacion del estatus de la materia   
+                                            balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materiaXLS)).first()
+                                            Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).update(type = estatusMateriaXLS)
+                                            
+                                            #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
+                                            Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
                                         
-                                        #Actualizacion de los campos de Materia
-                                        Materia.objects.filter(materia_code = cod_materiaXLS, nombre = nombreMateriaXLS).update(creditos = creditosMateriaXLS)
-                                        
-                                        #Actualizacion del estatus de la materia   
-                                        balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materiaXLS)).first()
-                                        Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).update(type = estatusMateriaXLS)
-                                        
-                                        #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
-                                        Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
-                                          
                                         continue
                                     elif materiaCode == cod_materia and materiaCode == cod_materiaXLS and materiaNombre == nombreMateria and materiaNombre == nombreMateriaXLS and materiaCreditos == creditosMateria and materiaCreditos == creditosMateriaXLS and materiaEstatus == estatusMateria and materiaEstatus == estatusMateriaXLS and materiNota == nota and materiNota == notaXLS:                          
                                         #Existe una materia pero esta no tiene ningun cambio con respecto a la base de datos. No se registran actualizaciones ni registros nuevos
@@ -313,31 +327,38 @@ def RegMateria(request):
                             
                             if estatusMateria == "Materia Cancelada":
                                 #Alerta para el menu de Filantropia Informando Cancelacion
-                                alerta2 = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + nota)
+                                alerta2 = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + str(nota))
                                 alerta2.save()
                                 
                                 #Alerta para el menu de Balance Academico
-                                alerta = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + nota)
+                                alerta = Alerta.objects.create(title = "Cancelacion de la materia " + nombreMateria + " Por el estudiante: " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + str(nota))
                                 alerta.save()
+                                
+                                balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materia)).first()
+                                Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).delete()
+                                Materia.objects.filter(materia_code = cod_materia, nombre = nombreMateria).delete()                  
+                                Nota.objects.filter(BalanceAcademicoID = balanceVerf).delete()
+                                balanceUpdate.delete()
+                                
                             else:
                                 #Alerta para el menu de Filantropia
-                                alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + nota)
+                                alerta2 = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 4, description = "Materia afectada: \n" + nombreMateria + "\n" + "Cambios realizados: \n" + "Nuevo Status: " + estatusMateria + "\n" + "Nueva Nota: " + str(nota))
                                 alerta2.save()
                                 
                                 #Creacion de la alerta para Balance Academico
                                 alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria)
                                 alerta.save()
-                            
-                            #Actualizacion de los campos de Materia
-                            Materia.objects.filter(materia_code = cod_materia, nombre = nombreMateria).update(creditos = creditosMateria)
-                            
-                            #Actualizacion del estatus de la materia                   
-                            balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materia)).first()
-                            Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).update(type = estatusMateria)
-                            
-                            #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
-                            Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = nota)
-                              
+                                
+                                #Actualizacion de los campos de Materia
+                                Materia.objects.filter(materia_code = cod_materia, nombre = nombreMateria).update(creditos = creditosMateria)
+                                
+                                #Actualizacion del estatus de la materia                   
+                                balanceUpdate = BalanceAcademico.objects.filter(SeguimientoBecaID = segBeca, materiaID = Materia.objects.get(materia_code = cod_materia)).first()
+                                Status.objects.filter(StatusID = balanceUpdate.statusID.StatusID).update(type = estatusMateria)
+                                
+                                #Actualizo las notas que tengan el mismo Balance Academico con la nueva nota dijitada
+                                Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = nota)
+                               
                             continue
                         elif materiaCode == cod_materia and materiaNombre == nombreMateria and materiaCreditos == creditosMateria and materiaEstatus == estatusMateria and materiNota == nota:                          
                             #Existe una materia pero esta no tiene ningun cambio con respecto a la base de datos. No se registran actualizaciones ni registros nuevos
