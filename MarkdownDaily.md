@@ -278,3 +278,4 @@
 | Daniel Escobar | No pude avanzar, tuve otros trabajos que hacer | Ninguno | Terminar la funcionalidad de seleccionar el tipo de informacion que se le va a enviar al donante |
 |Samuel Gutierrez |Nada, pero el lunes basicamente termine el html y deje a mitad el codigo de back del feat del CREA | Ninguno | Hoy terminare el feat e intentare dejar listos los test para hacer el PR |
 |Kevin Vincent | Cree las insidencias en el Jira, cree y publique la rama y complete 2 de las 3 incidencias de mi HU | Ninguno | Hoy terminare la incidencia faltante para culminar con el funcionamiento de mi HU |
+|Santiago Jose Belalcazar | Realize el select de tipo de notificacion e investigue como realizar para que aparezca el correo del donador | Ninguno | Intentare implementar las querys para obtener el email del donante |
