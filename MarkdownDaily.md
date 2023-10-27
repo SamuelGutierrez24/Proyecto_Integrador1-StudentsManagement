@@ -280,7 +280,9 @@
 |Kevin Vincent | Cree las insidencias en el Jira, cree y publique la rama y complete 2 de las 3 incidencias de mi HU | Ninguno | Hoy terminare la incidencia faltante para culminar con el funcionamiento de mi HU |
 |Santiago Jose Belalcazar | Realize el select de tipo de notificacion e investigue como realizar para que aparezca el correo del donador | Ninguno | Intentare implementar las querys para obtener el email del donante |
 
-## Fecha 25/10/23
+## Fecha 26/10/23
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Santiago Jose Belalcazar | Intente implementar las querys para obtener el email del donante | Las conexiones entre tablas | No adelantare nada por unas tareas |
+| Samuel Gutierrez | Deje terminado la funcionalidad en el bakend del registro de una actividad del CREA | La base de datos no dejaba rastrear el seguimiento y tiraba error al momento de guardar la actividad | Arreglare el error y coregire una parte del HTML que no termino de encajar bien |
+
