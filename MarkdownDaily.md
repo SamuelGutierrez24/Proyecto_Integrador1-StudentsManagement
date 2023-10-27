@@ -285,4 +285,4 @@
 |---|---|---|---|
 |Santiago Jose Belalcazar | Intente implementar las querys para obtener el email del donante | Las conexiones entre tablas | No adelantare nada por unas tareas |
 | Samuel Gutierrez | Deje terminado la funcionalidad en el bakend del registro de una actividad del CREA | La base de datos no dejaba rastrear el seguimiento y tiraba error al momento de guardar la actividad | Arreglare el error y coregire una parte del HTML que no termino de encajar bien |
-
+|Luis Pinillos|Intentar arreglar el error de que estoy teniendo|No pude solucionar el error, pues me sigue mostrando la informacion financiera de forma repetida|Seguir viendo como puedo solucionar el error|
