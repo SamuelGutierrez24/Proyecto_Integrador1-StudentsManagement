@@ -291,3 +291,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|Intentar arreglar el problema de mi HU|No pude arreglar el problema|Iniciar mi otra HU|
+|Santiago Jose Belalcazar | Nada | Nada | Intente arreglar el problema de las querys |
