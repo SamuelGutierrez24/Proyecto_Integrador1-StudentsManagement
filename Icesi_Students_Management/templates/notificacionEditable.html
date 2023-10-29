@@ -25,59 +25,23 @@
             </div>
         </div>
         
-        <div class="row my-2"> 
-            <div class="col">
-                <br>
-                <p>
-                    <strong style="font-size: 28px;">
-                        Título:
-                    </strong>
-                    <br> 
-                    <input style="font-size: 20px;" value="{{ noti.title }}">
-                    </input>
-                </p>
-                <br>
-                <p>
-                    <strong style="font-size: 28px;">
-                        Tipo:
-                    </strong>
-                    <br>
-                    <select style="font-size: 20px;">
-                        <option value="">
-                            {% if noti.type == 0 %}
-                                Solicitud de información
-                            {% elif noti.type == 1 %}
-                                Subida de información
-                            {% elif noti.type == 2 %}
-                                Subida de información
-                            {% else %}
-                                Actualización de actividades no académicas de un estudiante
-                            {% endif %}
-                        </option>
-                    </select>
-                </p>
-                <br>
-                <br>
-                <p>
-                    <strong style="font-size: 28px;">
-                        Descripción:
-                    </strong>
-                    <br> 
-                    <input style="font-size: 20px;" value="{{ noti.description }}" size="fill">
-                    </input>
-                </p>
-                <br>
-                <br>
-                <p>
-                    <div style="text-align: center;">
-                        <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/">
-                            <b>Enviar informe</b>
-                        </a>
-                    </div>
-                </p>
-            </div>           
-        </div>
+        <form method="POST">
+            <div class="row my-2">
+                <div class="col">
+                    {% csrf_token %}
+
+                    {{ form }}
+
+                    <p>
+                        <div style="text-align: center;">
+                            <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/">
+                                <b>Enviar informe</b>
+                            </a>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </form>
     </div>
-    
 </body>
 </html>

@@ -96,7 +96,7 @@ def RegMateria(request):
                             Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
                                         
                             #Creacion de la alerta    
-                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
+                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                             alerta.save()
                                             
                             continue
@@ -108,7 +108,7 @@ def RegMateria(request):
                             #No existe una materia en la base de datos con la informacion proporcionada. Se registra la nueva materia y su balance
                             print("Crea una materia")
                             #Creacion de la alerta
-                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                                         
                             #Creacion de la materia, balance academico y demas
                             statusMateria = Status.objects.create(type=estatusMateriaXLS)
@@ -126,7 +126,7 @@ def RegMateria(request):
                         #Crea la materia y el Balance academico para el estudainte
                         print("Crea una materia inexistente")
                         #Creacion de la alerta para el menu de Balance Academico
-                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                                     
                         statusMateria = Status.objects.create(type=estatusMateriaXLS)
                         materia = Materia.objects.create(materia_code = cod_materiaXLS, nombre= nombreMateriaXLS, creditos= creditosMateriaXLS)
@@ -199,7 +199,7 @@ def RegMateria(request):
                                         Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = notaXLS)
                                         
                                         #Creacion de la alerta    
-                                        alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS)
+                                        alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateriaXLS, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                                         alerta.save()
                                             
                                         continue
@@ -211,7 +211,7 @@ def RegMateria(request):
                                         #No existe una materia en la base de datos con la informacion proporcionada. Se registra la nueva materia y su balance
                                         print("Crea una materia")
                                         #Creacion de la alerta
-                                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                                         
                                         #Creacion de la materia, balance academico y demas
                                         statusMateria = Status.objects.create(type=estatusMateriaXLS)
@@ -229,7 +229,7 @@ def RegMateria(request):
                                     #Crea la materia y el Balance academico para el estudainte
                                     print("Crea una materia inexistente")
                                     #Creacion de la alerta para el menu de Balance Academico
-                                    alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS)
+                                    alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateriaXLS, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                                     
                                     statusMateria = Status.objects.create(type=estatusMateriaXLS)
                                     materia = Materia.objects.create(materia_code = cod_materiaXLS, nombre= nombreMateriaXLS, creditos= creditosMateriaXLS)
@@ -269,7 +269,7 @@ def RegMateria(request):
                             Nota.objects.filter(BalanceAcademicoID = balanceVerf).update(notaFinal = nota)
                             
                             #Creacion de la alerta    
-                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria)
+                            alerta = Alerta.objects.create(title = "Actualizacion del Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia afectada: \n" + nombreMateria, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                             alerta.save()
                                 
                             continue
@@ -281,7 +281,7 @@ def RegMateria(request):
                             #No existe una materia en la base de datos con la informacion proporcionada. Se registra la nueva materia y su balance
                             print("Crea una materia")
                             #Creacion de la alerta
-                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria)
+                            alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                             
                             #Creacion de la materia, balance academico y demas
                             statusMateria = Status.objects.create(type=estatusMateria)
@@ -299,7 +299,7 @@ def RegMateria(request):
                         #Crea la materia y el Balance academico para el estudainte
                         print("Crea una materia inexistente")
                         #Creacion de la alerta para el menu de Balance Academico
-                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria)
+                        alerta = Alerta.objects.create(title = "Creacion de Balance Academico(s) de " + estudName + " - " + estudCode, type = 3, description = "Materia añadida: \n" + nombreMateria, StudentID = SeguimientoBeca.objects.all().get(code = estudCode))
                         
                         statusMateria = Status.objects.create(type=estatusMateria)
                         materia = Materia.objects.create(materia_code = cod_materia, nombre= nombreMateria, creditos= creditosMateria)
