@@ -292,3 +292,9 @@
 |---|---|---|---|
 |Luis Pinillos|Intentar arreglar el problema de mi HU|No pude arreglar el problema|Iniciar mi otra HU|
 |Santiago Jose Belalcazar | Nada | Nada | Intente arreglar el problema de las querys |
+
+## Fecha 28/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Samuel Gutierrez | Ayer nada, pero el jueves deje lista la funcionalidad sin los test y la subi a la rama | Ninguno | Dejar el PR con los test ya, y mirar un error de un compañero |
+
