@@ -298,3 +298,7 @@
 |---|---|---|---|
 | Samuel Gutierrez | Ayer nada, pero el jueves deje lista la funcionalidad sin los test y la subi a la rama | Ninguno | Dejar el PR con los test ya, y mirar un error de un compañero |
 
+## Fecha 29/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Daniel Escobar | Intentar arreglar los test del login | No encontre como solucionar el error | Hoy no avanzare en el proyecto |
