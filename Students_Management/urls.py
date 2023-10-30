@@ -24,7 +24,9 @@ from Icesi_Students_Management.views import infoFinanciera
 from Icesi_Students_Management.views import buscarEstud
 from Icesi_Students_Management.views import modificar
 import Icesi_Students_Management.views.bumenu as buMenu
-import Icesi_Students_Management.views.registroActividades as registroA
+import Icesi_Students_Management.views.registroActividades as registerA
+import Icesi_Students_Management.views.creaMenu as crea
+import Icesi_Students_Management.views.registroCREA as registerC
 import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
 from Icesi_Students_Management.views import envioAlerta
@@ -45,7 +47,9 @@ urlpatterns = [
     path('contabilidad/modificar.html/<str:code>/', modificar.modificarInfo, name='modificarInfo'),
     path('contabilidad/eliminar-estudiante/<str:code>/', buscarEstud.eliminar_estudiante, name='eliminar_estudiante'),
     path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
-    path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
+    path('bienestarUniversitario/registroActividades',registerA.registroA, name='registroActividades'),
+    path('Crea/',crea.CreaMenu, name='crea'),
+    path('Crea/register',registerC.registerC, name='registerCrea'),
     path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
     path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
     path('', include('Icesi_Students_Management.urls')),
