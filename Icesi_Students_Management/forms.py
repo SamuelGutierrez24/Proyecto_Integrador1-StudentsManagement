@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django import forms
 from .models import Actividad
 from .models import AsistenciasActividad
+from .models import AsistenciaCREA
 from .models import *
 from django.forms import Form
 
@@ -12,16 +13,37 @@ class RegNotasBAForm(forms.ModelForm):
         model = Materia
         fields = ['materia_code', 'nombre', 'creditos']
 
+class CreaForm(ModelForm):
+
+    student = forms.CharField(
+        label='Codigo del estudiante', max_length=9, widget=forms.TextInput(attrs={"class":"input"},)
+    )
+
+    activity = forms.ModelChoiceField(
+        queryset=Actividad.objects.all().filter(tipo=2),  # Esto recupera todas las actividades de la base de datos
+        label='Selecciona una actividad',
+        empty_label='Selecciona una actividad',  # Etiqueta para la opción vacía
+        widget=forms.Select(attrs={"class": "input"})  # Utiliza un widget de selección
+    )
+    reason = forms.CharField(
+        label='Motivo',
+        max_length=50,  # Elige una longitud máxima adecuada
+        widget=forms.Textarea(attrs={"class": "input"})
+    )
+
+    class Meta:
+        model = AsistenciaCREA
+        fields = ['student', 'activity', 'reason']
 
 class ActivityForm(ModelForm):
 
     student = forms.CharField(
-        label='Codigo de estudiante', max_length=9, widget=forms.TextInput(attrs={"class": "input"})
+        label= 'Codigo de estudiante', max_length=9, widget=forms.TextInput(attrs={"class":"input"},)
     )
 
     activity = forms.ModelChoiceField(
-        # Esto recupera todas las actividades de la base de datos
-        queryset=Actividad.objects.all(),
+        queryset=Actividad.objects.all().filter(tipo=1),  # Esto recupera todas las actividades de la base de datos
+
         label='Selecciona una actividad',
         empty_label='Selecciona una actividad',  # Etiqueta para la opción vacía
         # Utiliza un widget de selección

@@ -8,7 +8,8 @@ class Carrera(models.Model):
     precioMatricula = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     def str(self):
         return self.name
-    
+
+
 class Becas(models.Model):
     type = models.CharField(max_length=30)
     percentage = models.IntegerField(default=None)
@@ -103,7 +104,13 @@ class HistorialGastos(models.Model):
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=35, unique=True)
+    
+    class Tipo(models.IntegerChoices):
+        TNULL = 0, ('None')
+        BU = 1,('Actividad Bienestar')
+        CR = 2, ('Actividad CREA')
 
+    tipo = models.IntegerField(default=Tipo.TNULL,choices=Tipo.choices)
     def __str__(self):
         return self.nombre
 
@@ -142,6 +149,7 @@ class User(AbstractUser):
         BU = 3, ('Bienestar Universitario')
         CONTABILIDAD = 4, ('Contabilidad')
         DIRECTOR = 5, ('Director del programa')
+        CREA = 6, ('Usuario del CREA')
 
     rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
 
@@ -163,18 +171,14 @@ class Alerta(models.Model):
     def strBA(self):
         return (self.title + " | " + self.description)
 
-#class SeguimientoCREA(models.Model):
-    #seguimientoCreaID = models.CharField(max_length=20)
-    #userID = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    #def __str__(self):
-      #  return self.seguimientoCreaID
+class AsistenciaCREA(models.Model):
+    activity= models.ForeignKey(Actividad,on_delete=models.CASCADE,default=None)
+    seguimiento = models.ForeignKey(SeguimientoBeca, on_delete=models.CASCADE, default=None)
+    reason = models.TextField()
+    date = models.DateField(auto_now=True)
 
-#class Consulta(models.Model):
-   # consultaID = models.CharField(max_length=20)
-    #date = models.DateField()
-    #hour = models.TimeField()
-    #reason = models.CharField(max_length=50)
-    #result = models.CharField(max_length=20)
-    #seguimientoCreaID = models.ForeignKey(SeguimientoCREA, on_delete=models.CASCADE, default=None)
-    #def __str__(self):
-       #return self.consultaID
+    def __str__(self):
+        return self.activity
+
+
+
