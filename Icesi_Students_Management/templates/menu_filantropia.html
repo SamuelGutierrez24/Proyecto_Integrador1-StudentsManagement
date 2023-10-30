@@ -90,7 +90,7 @@
                                 <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/generar_reportes/">
                                     <b>Generar Reportes</b>
                                 </a>
-                                <a class="btn" style="background-color: #a6aec1;" href="envioAlerta.html">
+                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/solicitudInformacion/">
                                     <b>Solicitar Actualizacion de Informacion</b>
                                 </a>
                             </div>
@@ -119,14 +119,14 @@
                                                 <div style="display: flex;">
                                                     <td style="border: none; ">
                                                         {{notificaciones.title}}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                                                        <button name="noti" value={{notificaciones.id}} style="border: none;">
+                                                        <button name="noti" value={{notificaciones.id}} style="border: none; float: right;">
                                                             <i class="bi bi-eye"></i>  
                                                         </button>
                                                     </td>
                                                 </div>
                                             </tr>
                                         </form>
-                                {% endfor %}
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>

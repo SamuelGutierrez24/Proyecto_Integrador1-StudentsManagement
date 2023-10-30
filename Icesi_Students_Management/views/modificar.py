@@ -67,7 +67,7 @@ def modificarInfo(request, code):
                     descripcionAlerta = f"Gasto {request.POST['categoriaGasto']}: -{instancia.gasto} Fecha: {request.POST['fecha']}"
                     titleAlerta = f"Nuevo gasto registrado para el estudiante con código: {code}"
                     typeAlerta = 4
-                    alertaGenerada = Alerta(title=titleAlerta, type=typeAlerta, description=descripcionAlerta)
+                    alertaGenerada = Alerta(title=titleAlerta, type=typeAlerta, description=descripcionAlerta, StudentID = Student.objects.get(code=code))
                     alertaGenerada.save()
 
                     instancia.gasto = 0

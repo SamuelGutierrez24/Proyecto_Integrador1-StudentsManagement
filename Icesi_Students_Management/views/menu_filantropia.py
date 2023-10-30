@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from Icesi_Students_Management.models import Alerta
 from ..forms import envioMensaje
+from ..forms import modificarAlerta
 
 def menu(request):
 
@@ -18,9 +20,5 @@ def menu(request):
         
         id = request.POST["noti"]
         print(id)
-        noti = Alerta.objects.all().filter(id =  id).first()
 
-        return render(request, 'notificacionEditable.html', {'noti': noti})
-
-
-
+        return redirect(reverse('envioAlerta', kwargs={'noti_id': id}))

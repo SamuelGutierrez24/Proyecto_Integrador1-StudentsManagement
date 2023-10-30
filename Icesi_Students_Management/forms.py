@@ -171,13 +171,21 @@ class addStudent(forms.Form):
         model = Student
         fields = ['Nombre', 'Apellido', 'Email', 'Codigo']
 
-
 class envioMensaje(forms.ModelForm):
-    title = forms.CharField(label="Titulo", max_length=20, required=False)
-    type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, required=False)
-    description = forms.CharField(label="Mensaje", max_length=20, required=False, widget=forms.Textarea)
+    title = forms.CharField(label="Titulo", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, widget=forms.Select)
+    description = forms.CharField(label="Mensaje", max_length=20, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
 
     class Meta:
         model = Alerta
         fields = ['title', 'type', 'description']
 
+class modificarAlerta(forms.ModelForm):
+    Title = forms.CharField(label="Titulo", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    Type = forms.ChoiceField(label="Tipo", choices=Alerta.Type_alert.choices, widget=forms.Select)
+    Description = forms.CharField(label="Descripcion", widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
+    Email = forms.EmailField(label="Correo Donante", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+
+    class Meta:
+        model = Alerta
+        fields = ['Title', 'Type', 'Description', 'Email']
