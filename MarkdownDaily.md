@@ -302,3 +302,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Daniel Escobar | Intentar arreglar los test del login | No encontre como solucionar el error | Hoy no avanzare en el proyecto |
+|Santiago Jose Belalcazar | Intente cambiar los campos a formato form | No aparecia el form en la vista | Corregire el problema y dejare casi lista mi HU |
