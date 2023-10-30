@@ -303,3 +303,8 @@
 |---|---|---|---|
 | Daniel Escobar | Intentar arreglar los test del login | No encontre como solucionar el error | Hoy no avanzare en el proyecto |
 |Santiago Jose Belalcazar | Intente cambiar los campos a formato form | No aparecia el form en la vista | Corregire el problema y dejare casi lista mi HU |
+
+## Fecha 30/10/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Kevin Vincent | Intente solucionar los Test correspondientes a Balance Acadmico para luego añadir el mio, La funcionalidad de la HU esta terminada por completo | Se me duplicaban los estudiantes y al tener ID como UNIQUE me estaba dando un error el cual no podia solucionar | Buscar la solucion a los test, añadir uno extra para cubrir la nueva HU y hacer el PR |
