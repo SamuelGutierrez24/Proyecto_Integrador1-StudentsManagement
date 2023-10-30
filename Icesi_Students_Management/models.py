@@ -69,7 +69,6 @@ class SeguimientoBeca(models.Model):
     carreraID = models.ForeignKey(
         Carrera, on_delete=models.CASCADE, default=None)
 
-
 class InformacionFinanciera(models.Model):
     informeID = models.AutoField(primary_key=True)
     studentID = models.CharField(max_length=15, default='')
@@ -91,7 +90,6 @@ class InformacionFinanciera(models.Model):
     def str(self):
         return self.studentID
 
-
 class HistorialGastos(models.Model):
     informacion_financiera = models.ForeignKey(
         InformacionFinanciera, on_delete=models.CASCADE)
@@ -102,7 +100,6 @@ class HistorialGastos(models.Model):
 
     def _str_(self):
         return self.descripcion
-
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=35, unique=True)
@@ -172,7 +169,6 @@ class Alerta(models.Model):
     #def __str__(self):
       #  return self.seguimientoCreaID
 
-
 #class Consulta(models.Model):
    # consultaID = models.CharField(max_length=20)
     #date = models.DateField()
@@ -182,4 +178,3 @@ class Alerta(models.Model):
     #seguimientoCreaID = models.ForeignKey(SeguimientoCREA, on_delete=models.CASCADE, default=None)
     #def __str__(self):
        #return self.consultaID
-

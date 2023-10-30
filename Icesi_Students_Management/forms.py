@@ -181,10 +181,10 @@ class envioMensaje(forms.ModelForm):
         fields = ['title', 'type', 'description']
 
 class modificarAlerta(forms.ModelForm):
-    Title = forms.CharField(label="Titulo", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    Title = forms.CharField(label="Titulo", widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
     Type = forms.ChoiceField(label="Tipo", choices=Alerta.Type_alert.choices, widget=forms.Select)
     Description = forms.CharField(label="Descripcion", widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
-    Email = forms.EmailField(label="Correo Donante", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    Email = forms.EmailField(label="Correo Donante", widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
 
     class Meta:
         model = Alerta
