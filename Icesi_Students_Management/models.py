@@ -148,7 +148,6 @@ class User(AbstractUser):
 
     rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
 
-
 class Alerta(models.Model):
     title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
@@ -157,7 +156,6 @@ class Alerta(models.Model):
         ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
         ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
         FILANTROPIA =  4,('Actualización de actividades no academicas de un estudiante')
-
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)
