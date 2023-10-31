@@ -308,3 +308,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Kevin Vincent | Intente solucionar los Test correspondientes a Balance Acadmico para luego añadir el mio, La funcionalidad de la HU esta terminada por completo | Se me duplicaban los estudiantes y al tener ID como UNIQUE me estaba dando un error el cual no podia solucionar | Buscar la solucion a los test, añadir uno extra para cubrir la nueva HU y hacer el PR |
+|Luis Pinillos|Intentar arreglar mi HU|No pude arreglarla|Le pregunte al profesor como puedo resolverlo y me voy a dedicar a aplicar lo que me comentó|
