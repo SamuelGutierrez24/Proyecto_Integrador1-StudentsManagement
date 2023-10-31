@@ -15,6 +15,7 @@ from .models import Donante
 from .models import User
 from .models import Alerta
 from .models import AsistenciaCREA
+from .models import HistoryActivityAssistance
 
 
 admin.site.register(Student)
@@ -33,3 +34,4 @@ admin.site.register(SeguimientoBeca)
 admin.site.register(AsistenciasActividad)
 admin.site.register(Nota)
 admin.site.register(AsistenciaCREA)
+admin.site.register(HistoryActivityAssistance)
