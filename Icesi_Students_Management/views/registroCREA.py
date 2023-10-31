@@ -5,7 +5,7 @@ from Icesi_Students_Management.models import Actividad
 from Icesi_Students_Management.models import AsistenciaCREA
 from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Alerta
-from Icesi_Students_Management.models import User
+from Icesi_Students_Management.models import HistoryActivityAssistance
 from Icesi_Students_Management.forms import CreaForm
 
 def registerC(request):
@@ -28,6 +28,8 @@ def registerC(request):
                 reason = request.POST['reason']
                 assistance = AsistenciaCREA.objects.create( activity= activity, seguimiento= followUp, reason = reason)
                 assistance.save()
+                history = HistoryActivityAssistance.objects.create(student=student,activity=activity)
+                history.save()
                 form = CreaForm(initial={'student': studentCode})
                 if('Chk' in request.POST):
                     print('Si esta')
