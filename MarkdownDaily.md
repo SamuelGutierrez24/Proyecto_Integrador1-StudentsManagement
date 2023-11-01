@@ -315,3 +315,10 @@
 |---|---|---|---|
 | Kevin Vincent | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
 |Santiago Jose Belalcazar | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
+| Samuel Gutierrez | Ayer hicimos daily en clase y ademas termine el historial en el menu del CREA | Ninguno | Comprobar que no genera errores |
+
+
+## Fecha 1/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Samuel Gutierrez | Me di cuenta que a pesar de que ya estaba el historial no se estaba actualizando los cambios, por lo cual lo corregi | ninguno | Dejare el Pr listo, ya que estaba esperando al de mis compañeros que ya algunos terminaron sus HU, ademas iniciare mejoras en el html de bienestar universitario para que quede igual el diseño que el del CREA|
