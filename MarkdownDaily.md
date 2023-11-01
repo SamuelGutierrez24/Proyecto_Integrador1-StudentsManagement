@@ -314,3 +314,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Kevin Vincent | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
+|Santiago Jose Belalcazar | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
