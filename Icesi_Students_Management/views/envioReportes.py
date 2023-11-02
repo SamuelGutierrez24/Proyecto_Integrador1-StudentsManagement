@@ -23,7 +23,6 @@ def envioReporte(request):
             testomonyStudent = request.POST.get('testimonioEstudiante', False)
 
             arrayFields = [allFields, academicInfo, finantialInfo, noAcademicInfo, testomonyStudent]
-            print(arrayFields)
 
             if arrayFields.__contains__('on'):
                 if todosDonantes:
