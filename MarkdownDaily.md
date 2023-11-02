@@ -322,3 +322,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Samuel Gutierrez | Me di cuenta que a pesar de que ya estaba el historial no se estaba actualizando los cambios, por lo cual lo corregi | ninguno | Dejare el Pr listo, ya que estaba esperando al de mis compañeros que ya algunos terminaron sus HU, ademas iniciare mejoras en el html de bienestar universitario para que quede igual el diseño que el del CREA|
+| Daniel Escobar | Revisar el pull request de mi compañero | Ninguno | Aceptar pull request y hacer pull request de mi HU |
