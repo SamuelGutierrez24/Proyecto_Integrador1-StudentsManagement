@@ -329,3 +329,4 @@
 |---|---|---|---|
 | Daniel Escobar | Despues de hablar con mi compañero Luis Fernando me di cuenta que aun no debo hacer pull request de lo mio porque el tiene que cambiar el metodo donde esta incluida mi funcionalidad | Que debo esperar a que mi compañero termine lo de él | Arreglar los test de login |
 |Luis Pinillos|No pude avanzar debido a que era el cumpleaños de mi abuela|Ninguno|Re estructurar el metodo de envio de reporte para que pueda funcionar como tengo pensado|
+| Samuel Gutierrez | Al final ayer solo movi el html de bienestar universitario, mas no lo commitee | ninguno | Tengo mucho trabajo acomulado de otras materias, pero intentare ya commitear y dejar listos mis ultimos 2 pr ya montados |
