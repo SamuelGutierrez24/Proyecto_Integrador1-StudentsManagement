@@ -184,8 +184,8 @@ class envioMensaje(forms.ModelForm):
 
 class enviarReporte(forms.Form):
     title = forms.CharField(label="Titulo", max_length=70, required=False)
-    todosDonantes = forms.BooleanField(label="Enviar seguimiento de beca a todos los donadores?",required=False)
+    allDonor = forms.BooleanField(label="Enviar seguimiento de beca a todos los donadores?",required=False)
     email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(attrs={'placeholder':'ejemplo@gmail.com'}),required=False)
     description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
     class Meta:
-        fields = ['title', 'todosDonantes','email', 'description']
+        fields = ['title', 'allDonor','email', 'description']

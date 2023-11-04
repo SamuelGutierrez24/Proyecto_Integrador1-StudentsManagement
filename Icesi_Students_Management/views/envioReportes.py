@@ -6,72 +6,69 @@ from django.conf import settings
 from django.core.files.base import ContentFile
 from .utils import createPDF
 from ..models import *
-
-def envioReporte(request):
+   
+def sendReport(request):
     if request.method == 'POST':
         form = enviarReporte(request.POST, request.FILES)
         if form.is_valid():
             title = request.POST['title']
             email = request.POST['email']
             description = request.POST['description']
-            todosDonantes = request.POST.get('todosDonantes', False)
+            allDonor = request.POST.get('allDonor', False)
             seguimientoBeca = request.FILES.get('seguimientoBeca')
-
-            if todosDonantes:
-                donantes = Donante.objects.all()
+            #PARA TODOS LOS DONANTES
+            if allDonor:
+                donors = Donante.objects.all()
                 emailArray = []
-                pdfs = []
+                for donor in donors:
+                    emailArray.append(donor.email)
+                    students = Student.objects.filter(beca=donor.typeBecas)
+                    for student in students:
+                        scholarship = SeguimientoBeca.objects.get(studentID = student.id)
+                        finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        data = {
+                            'student': student,
+                            'finanInfo': finanInfo
+                        }
+                        pdf = createPDF('estiloSB.html', data)
+                        emailMessage = EmailMessage(
+                                subject=title,
+                                body=description,
+                                from_email=settings.EMAIL_HOST_USER,
+                                to=[donor.email],
+                            )
+                        pdfContent = pdf.content
+                        seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
 
-                for donante in donantes:
-                    emailArray.append(donante.email)
-                    estudiante = Student.objects.filter(beca=donante.typeBecas)
-                    data = {
-                        'estudiante': estudiante
-                    }
-                    pdf = createPDF('estiloSB.html', data)
-                    pdfs.append(pdf)
-                
-                for i, email in enumerate(emailArray):
-                    emailMessage = EmailMessage(
-                        subject=title,
-                        body=description,
-                        from_email=settings.EMAIL_HOST_USER,
-                        to=[email],
-                    )
-                    pdf = pdfs[i]
-                    pdfContent = pdf.content
-                    seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
-
-                    emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
-                    emailMessage.send(fail_silently=False)
-                    messages.success(request, 'Correo enviado con éxito')
-            
+                        emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
+                        emailMessage.send(fail_silently=False)
+                messages.success(request, 'Correo enviado con éxito')
             else:
-                donante = Donante.objects.filter(email=email)
-                if donante.exists():
-                    donante = Donante.objects.get(email=email)
-                    estudiante = Student.objects.filter(beca=donante.typeBecas)
-                    
-                    data = {
-                        'estudiante': estudiante
-                    }
-                    pdf = createPDF('estiloSB.html', data)
-                    pdfContent = pdf.content
-                    
-                    seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca')
+                #PARA UN SOLO DONANTE
+                donor = Donante.objects.filter(email=email)
+                if donor.exists():
+                    donor = Donante.objects.get(email=email)
+                    students = Student.objects.filter(beca=donor.typeBecas)
+                    for student in students:
+                        scholarship = SeguimientoBeca.objects.get(studentID = student.id)
+                        finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        data = {
+                            'student': student,
+                            'finanInfo': finanInfo
+                        }
+                        pdf = createPDF('estiloSB.html', data)
+                        emailMessage = EmailMessage(
+                                subject=title,
+                                body=description,
+                                from_email=settings.EMAIL_HOST_USER,
+                                to=[donor.email],
+                            )
+                        pdfContent = pdf.content
+                        seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
 
-                    #En esta parte se crea el correo
-                    emailMessage = EmailMessage(
-                        subject=title,
-                        body=description,
-                        from_email=settings.EMAIL_HOST_USER,
-                        to=[email],
-                    )
-                    #Aqui se le añade el pdf al correo
-                    emailMessage.attach('Seguimiento_beca', seguimientoBeca.read(), 'application/pdf')
-
-                    #En esta parte se envia el correo
-                    emailMessage.send(fail_silently=False)
+                        emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
+                        emailMessage.send(fail_silently=False)
+                        
                     messages.success(request, 'Correo enviado con éxito')
                 else:
                     messages.error(request, 'El correo del donador no se encuentra registrado!')
@@ -80,4 +77,6 @@ def envioReporte(request):
     else:
         return render(request, 'envioReportes.html', {
             'form': enviarReporte
-        })
+        })                 
+                    
+                    
