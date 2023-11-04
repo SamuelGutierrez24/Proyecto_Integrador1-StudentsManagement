@@ -331,3 +331,8 @@
 |Luis Pinillos|No pude avanzar debido a que era el cumpleaños de mi abuela|Ninguno|Re estructurar el metodo de envio de reporte para que pueda funcionar como tengo pensado|
 | Samuel Gutierrez | Al final ayer solo movi el html de bienestar universitario, mas no lo commitee | ninguno | Tengo mucho trabajo acomulado de otras materias, pero intentare ya commitear y dejar listos mis ultimos 2 pr ya montados |
 |Santiago Jose Belalcazar | Nada | Ninguno | Por problemas de salud de realizare ningun avance |
+
+## Fecha 4/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|No hice avances debido a un compromiso que tenia|ninguno|Arreglar el problema de mi HU|
