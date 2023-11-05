@@ -336,3 +336,5 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|No hice avances debido a un compromiso que tenia|ninguno|Arreglar el problema de mi HU|
+|Luis Pinillos|Solo un pequeño cambio en el html pero nada mas|ninguno|Aceptar el pr de feat-Edicion de notificaciones|
+
