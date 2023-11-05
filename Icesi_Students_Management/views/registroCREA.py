@@ -39,7 +39,7 @@ def registerC(request):
                     })
                 else:
                     print('No esta')
-                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del CREA del estudiante' + request.POST['student'])
+                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del CREA del estudiante' + request.POST['student'], StudentID = Student.objects.all().get(code = studentCode))
                     alert.save()
                     return render(request, 'registroCREA.html',{
                     'form': CreaForm,

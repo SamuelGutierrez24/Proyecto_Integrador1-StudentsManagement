@@ -29,6 +29,7 @@ import Icesi_Students_Management.views.creaMenu as crea
 import Icesi_Students_Management.views.registroCREA as registerC
 import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
+from Icesi_Students_Management.views import notificacionEditable
 from Icesi_Students_Management.views import envioAlerta
 
 
@@ -53,6 +54,6 @@ urlpatterns = [
     path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
     path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
     path('', include('Icesi_Students_Management.urls')),
-    path('menu_filantropia/envioAlerta.html', envioAlerta.enviarMensaje, name='enviarMensaje'),
-
+    path('menu_filantropia/solicitudInformacion/', envioAlerta.enviarMensaje, name='solicitudInformacion'),
+    path('menu_filantropia/envioAlerta/<int:noti_id>/', notificacionEditable.alerta, name='envioAlerta')
 ]

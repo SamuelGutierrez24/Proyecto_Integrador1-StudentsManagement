@@ -70,7 +70,6 @@ class SeguimientoBeca(models.Model):
     carreraID = models.ForeignKey(
         Carrera, on_delete=models.CASCADE, default=None)
 
-
 class InformacionFinanciera(models.Model):
     informeID = models.AutoField(primary_key=True)
     studentID = models.CharField(max_length=15, default='')
@@ -92,7 +91,6 @@ class InformacionFinanciera(models.Model):
     def str(self):
         return self.studentID
 
-
 class HistorialGastos(models.Model):
     informacion_financiera = models.ForeignKey(
         InformacionFinanciera, on_delete=models.CASCADE)
@@ -103,7 +101,6 @@ class HistorialGastos(models.Model):
 
     def _str_(self):
         return self.descripcion
-
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=35, unique=True)
@@ -156,7 +153,6 @@ class User(AbstractUser):
 
     rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
 
-
 class Alerta(models.Model):
     title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
@@ -165,11 +161,10 @@ class Alerta(models.Model):
         ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
         ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
         FILANTROPIA =  4,('Actualización de actividades no academicas de un estudiante')
-        CREA =  5,('Actualización de actividades del CREA')
-
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)
+    StudentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
     def __str__(self):
         return self.title
     

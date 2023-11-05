@@ -40,6 +40,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -83,14 +84,13 @@
                             <br>
                             <br>
                             <div class="d-grid gap-4 col-5 mx-auto">
-                                <a class="btn" style="background-color: #a6aec1;"
-                                    href="/menu_filantropia/agregar_estudiante/">
+                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/agregar_estudiante/">
                                     <b>Agregar Estudiante</b>
                                 </a>
-                                <a class="btn" style="background-color: #a6aec1;" href="/generar_reportes/">
+                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/generar_reportes/">
                                     <b>Generar Reportes</b>
                                 </a>
-                                <a class="btn" style="background-color: #a6aec1;" href="envioAlerta.html">
+                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/solicitudInformacion/">
                                     <b>Solicitar Actualizacion de Informacion</b>
                                 </a>
                             </div>
@@ -113,11 +113,19 @@
                                 </thead>
                                 <tbody>
                                     {% for notificaciones in notificaciones %}
-                                    <tr>
-                                        <td onclick="">
-                                            {{notificaciones.title}}
-                                        </td>
-                                    </tr>
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <tr>
+                                                <div style="display: flex;">
+                                                    <td style="border: none; ">
+                                                        {{notificaciones.title}}
+                                                        <button name="noti" value={{notificaciones.id}} style="border: none; float: right;">
+                                                            <i class="bi bi-eye"></i>  
+                                                        </button>
+                                                    </td>
+                                                </div>
+                                            </tr>
+                                        </form>
                                     {% endfor %}
                                 </tbody>
                             </table>

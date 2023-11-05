@@ -64,7 +64,7 @@ def registroA(request):
                     })
                 else:
                     print('No esta')
-                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del estudiante' + request.POST['student'])
+                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del estudiante' + request.POST['student'], StudentID = Student.objects.all().get(code = Vstudent))
                     alert.save()
                     return render(request, 'registroActividad.html',{
                     'form': ActivityForm,
