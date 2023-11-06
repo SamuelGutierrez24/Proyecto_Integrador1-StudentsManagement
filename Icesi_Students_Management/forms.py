@@ -167,15 +167,47 @@ class addStudent(forms.Form):
                              max_length=100,
                              widget=forms.TextInput(attrs={'placeholder': 'Ingrese el codigo del estudiante', 'col': '10', 'size': '50'}))
 
+    SEMESTER_CHOICES = [
+        ('1', 'Primer Semestre'),
+        ('2', 'Segundo Semestre'),
+        ('3', 'Tercer Semestre'),
+        ('4', 'Cuarto Semestre'),
+        ('5', 'Quinto Semestre'),
+        ('6', 'Sexto Semestre'),
+        ('7', 'Septimo Semestre'),
+        ('8', 'Octavo Semestre'),
+        ('9', 'Noveno Semestre'),
+        ('10', 'Decimo Semestre'),
+        ('11', 'Onceavo Semestre'),
+        ('12', 'Doceavo Semestre'),
+    ]
+
+    semester = forms.ChoiceField(
+        label='Semestre en el que se encuentra', choices=SEMESTER_CHOICES)
+    
+    careers = Carrera.objects.all()
+    print("ESTAS SON TODAS LAS CARRERASSSSSSSSSSSS: ",careers)
+    careerOption = [(career.carreraID, career.nameCarrera) for career in careers]
+    print("ESTO ES CAREER OPTIONNNNNNNNNNNNNNN: ",careerOption)
+
+    # Agregar el campo de selección de carrera
+    career = forms.ChoiceField(
+        label='Carrera:',
+        choices=careerOption,
+        widget=forms.Select(attrs={'placeholder': 'Seleccione la carrera del estudiante'})
+    )
+
     class Meta:
         model = Student
-        fields = ['Nombre', 'Apellido', 'Email', 'Codigo']
+        fields = ['Nombre', 'Apellido', 'Email', 'Codigo','semester','career']
 
 
 class envioMensaje(forms.ModelForm):
     title = forms.CharField(label="Titulo", max_length=20, required=False)
-    type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, required=False)
-    description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+    type = forms.ChoiceField(label="Destinatario",
+                             choices=Alerta.Type_alert.choices, required=False)
+    description = forms.CharField(
+        label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
 
     class Meta:
         model = Alerta
@@ -184,8 +216,12 @@ class envioMensaje(forms.ModelForm):
 
 class enviarReporte(forms.Form):
     title = forms.CharField(label="Titulo", max_length=70, required=False)
-    allDonor = forms.BooleanField(label="Enviar seguimiento de beca a todos los donadores?",required=False)
-    email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(attrs={'placeholder':'ejemplo@gmail.com'}),required=False)
-    description = forms.CharField(label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+    allDonor = forms.BooleanField(
+        label="Enviar seguimiento de beca a todos los donadores?", required=False)
+    email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(
+        attrs={'placeholder': 'ejemplo@gmail.com'}), required=False)
+    description = forms.CharField(
+        label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+
     class Meta:
-        fields = ['title', 'allDonor','email', 'description']
+        fields = ['title', 'allDonor', 'email', 'description']

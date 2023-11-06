@@ -26,9 +26,11 @@ def sendReport(request):
                     for student in students:
                         scholarship = SeguimientoBeca.objects.get(studentID = student.id)
                         finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        academicBalance = BalanceAcademico.objects.get(SeguimientoBecaID = scholarship.id)
                         data = {
                             'student': student,
-                            'finanInfo': finanInfo
+                            'finanInfo': finanInfo,
+                            'academicBalance':academicBalance
                         }
                         pdf = createPDF('estiloSB.html', data)
                         emailMessage = EmailMessage(
@@ -52,9 +54,11 @@ def sendReport(request):
                     for student in students:
                         scholarship = SeguimientoBeca.objects.get(studentID = student.id)
                         finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        academicBalance = BalanceAcademico.objects.get(SeguimientoBecaID = scholarship.id)
                         data = {
                             'student': student,
-                            'finanInfo': finanInfo
+                            'finanInfo': finanInfo,
+                            'academicBalance':academicBalance
                         }
                         pdf = createPDF('estiloSB.html', data)
                         emailMessage = EmailMessage(
