@@ -28,7 +28,7 @@ def signin(request):
                 return redirect('crea')
             else:
                 return render(request, 'signin.html', {
-                    'error': 'No puede entrear'
+                    'error': 'No puede entregar'
                 })
         else:
             return render(request, 'signin.html', {
