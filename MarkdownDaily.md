@@ -343,4 +343,9 @@
 |---|---|---|---|
 |Luis Pinillos|Porfin solucione el problema de mi HU, ya funciona correctamente, solo queda afinarle unos detalles, como lo es el diseño del pdf|ninguno|Arreglar el diseño del pdf y hacer que al momento de que se cree un estudiante, se cree su informacion financiera, su seguimiento de beca y su balance academico|
 
+## Fecha 6/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar|No pude avanzar, estuve descansando de la semana|Ninguno|Hacer pull request de mi rama login que corrigui los test y return y hice pull request a la rama de Luis Fernando para unir las funcionalidades|
+
 
