@@ -336,5 +336,11 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Luis Pinillos|No hice avances debido a un compromiso que tenia|ninguno|Arreglar el problema de mi HU|
-|Luis Pinillos|Solo un pequeño cambio en el html pero nada mas|ninguno|Aceptar el pr de feat-Edicion de notificaciones|
+|Samuel Gutierrez|Solo un pequeño cambio en el html pero nada mas|ninguno|Aceptar el pr de feat-Edicion de notificaciones|
+
+## Fecha 5/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|Porfin solucione el problema de mi HU, ya funciona correctamente, solo queda afinarle unos detalles, como lo es el diseño del pdf|ninguno|Arreglar el diseño del pdf y hacer que al momento de que se cree un estudiante, se cree su informacion financiera, su seguimiento de beca y su balance academico|
+
 
