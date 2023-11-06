@@ -28,7 +28,7 @@ def signin(request):
                 return redirect('crea')
             else:
                 return render(request, 'signin.html', {
-                    'error': 'No puede entregar'
+                    'error': 'No puede ingresar. Su usuario no tiene un rol asignado'
                 })
         else:
             return render(request, 'signin.html', {
