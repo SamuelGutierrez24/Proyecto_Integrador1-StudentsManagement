@@ -348,4 +348,7 @@
 |---|---|---|---|
 |Daniel Escobar|No pude avanzar, estuve descansando de la semana|Ninguno|Hacer pull request de mi rama login que corrigui los test y return y hice pull request a la rama de Luis Fernando para unir las funcionalidades|
 
-
+## Fecha 7/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar|Hacer dos pull request, uno de los test de login y otro hacia la rama de Luis Fernando|Ninguno|Reunirme con Luisfernando para unir ambas ramas y sus funcionalidades|
