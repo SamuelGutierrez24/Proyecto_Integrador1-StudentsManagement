@@ -178,7 +178,15 @@ class AsistenciaCREA(models.Model):
     date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.activity
+        return self.activity.nombre
+    
+class HistoryActivityAssistance(models.Model):
+    date = models.DateField(auto_now=True)
+    student = models.ForeignKey(Student,on_delete=models.CASCADE,default=None)
+    activity = models.ForeignKey(Actividad, on_delete=models.CASCADE,default=None)
+    
+    def __str__(self):
+        return "Cambios en:" + self.student.name
 
 
 
