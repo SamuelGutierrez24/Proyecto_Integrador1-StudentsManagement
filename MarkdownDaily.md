@@ -357,3 +357,4 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|No hice nada|Ninguno|Voy a resolver el pull request con mi compañero Luis Fernando para asi unir nuestras dos ramas|
+|Luis Pinillos|No hice mayores avances|Ninguno|Voy a resolver el pull request con mi compañero Daniel Escobar Vacaflor para asi unir nuestras dos ramas|
