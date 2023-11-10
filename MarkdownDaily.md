@@ -352,3 +352,8 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 |Daniel Escobar|Hacer dos pull request, uno de los test de login y otro hacia la rama de Luis Fernando|Ninguno|Reunirme con Luisfernando para unir ambas ramas y sus funcionalidades|
+
+## Fecha 9/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Daniel Escobar|No hice nada|Ninguno|Voy a resolver el pull request con mi compañero Luis Fernando para asi unir nuestras dos ramas|
