@@ -53,15 +53,23 @@
             <span class="student-name">{{student.name}} {{student.lastName}}</span>
             <span class="student-code"> {{student.code}}</span>
         </div>
-        <h2>Información Académica</h2>
-        <p>{{academicBalance.materiaID}}.</p>
-        <h2>Información Financiera</h2>
-        <span>{{finanInfo.studentID}}</span>
-        <span> {{finanInfo.type}}</span>
-        <h2>Información de Actividades No Académicas</h2>
-        <p>Aquí va el contenido de la información de actividades no académicas del estudiante.</p>
-        <h2>Testimonio del Estudiante</h2>
-        <p>Aquí va el contenido del testimonio del estudiante.</p>
+        {% if academicInfo %}
+            <h2>Información Académica</h2>
+            <p>{{academicBalance.materiaID}}.</p>
+        {% endif %}
+        {% if finantialInfo %}
+            <h2>Información Financiera</h2>
+            <span>{{finanInfo.studentID}}</span>
+            <span> {{finanInfo.type}}</span>
+        {% endif %}
+        {% if noAcademicInfo %}
+            <h2>Información de Actividades No Académicas</h2>
+            <p>Aquí va el contenido de la información de actividades no académicas del estudiante.</p>
+        {% endif %}
+        {% if testomonyStudent %}
+            <h2>Testimonio del Estudiante</h2>
+            <p>Aquí va el contenido del testimonio del estudiante.</p>
+        {% endif %}
     </div>
 </body>
 

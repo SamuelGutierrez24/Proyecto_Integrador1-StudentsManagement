@@ -35,13 +35,40 @@
                     emailField.removeClass('readonly-field');
                 }
             });
+            $('#id_todosLosCampos').change(function () {
+            var academico = $('#id_informacionAcademica');
+            if ($(this).prop('checked')) {
+                $('#id_informacionAcademica').prop('checked', true);
+                $('#id_informacionFinanciera').prop('checked', true);
+                $('#id_informacionNoAcademica').prop('checked', true);
+                $('#id_testimonioEstudiante').prop('checked', true);
+                academico.addClass('readonly-field');
+            } else {
+                academico.removeClass('readonly-field');
+            }
+        });
+            $('#id_informacionAcademica, #id_informacionFinanciera, #id_informacionNoAcademica, #id_testimonioEstudiante').change(function () {
+            if ($('#id_informacionAcademica').prop('checked') &&
+                $('#id_informacionFinanciera').prop('checked') &&
+                $('#id_informacionNoAcademica').prop('checked') &&
+                $('#id_testimonioEstudiante').prop('checked')) {
+                $('#id_todosLosCampos').prop('checked', true);
+            } else {
+                $('#id_todosLosCampos').prop('checked', false);
+            }
+        });
+            $('#id_informacionAcademica').change(function () {
+            if (!$(this).prop('checked') && $('#id_todosLosCampos').prop('checked')) {
+                $('#id_todosLosCampos').prop('checked', false);
+            }
+        });
         });
     </script>
 </head>
 
 <body>
     <main class="container my-5">
-        <section class="card" style="background-color: #cfd5e1;height: 40rem;">
+        <section class="card" style="background-color: #cfd5e1;height: 53rem;">
             <div class="card-header" style="background-color: #6C788E;">
                 <a class="btn" style="background-color: #a6aec1; float: left;" href="/menu_filantropia/">
                     <b>Volver</b>
@@ -72,7 +99,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <form method="POST" action="{% url 'envioReportes'%}" enctype="multipart/form-data">
+                        <form method="POST" action="{% url 'envioReportes'%}" enctype="multipart/form-data" >
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="{{ form.email.id_for_label }}"><strong style="font-size: 22px;">Correo destino:</strong></label>

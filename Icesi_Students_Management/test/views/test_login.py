@@ -7,7 +7,7 @@ class LoginTestCase(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username='test', password='test')
+        self.user = User.objects.create_user(username='test', password='test', rol=1)
         self.user.save()
 
     def test_login(self):
@@ -37,5 +37,5 @@ class LoginTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signin.html')
         self.assertEqual(response.context['error'], 'Usuario y/o contrasena incorrecta')
-
+#
 

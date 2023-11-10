@@ -222,6 +222,9 @@ class enviarReporte(forms.Form):
         attrs={'placeholder': 'ejemplo@gmail.com'}), required=False)
     description = forms.CharField(
         label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
-
+    informacionAcademica = forms.BooleanField(label="Informacion academica", required=False)
+    informacionFinanciera = forms.BooleanField(label="Informacion financiera", required=False)
+    informacionNoAcademica = forms.BooleanField(label="Informacion no academica", required=False)
+    testimonioEstudiante = forms.BooleanField(label="Testimonio del estudiante", required=False)
     class Meta:
-        fields = ['title', 'allDonor', 'email', 'description']
+        fields = ['title', 'allDonor','email', 'description', 'informacionAcademica', 'informacionFinanciera', 'informacionNoAcademica', 'testimonioEstudiante']
