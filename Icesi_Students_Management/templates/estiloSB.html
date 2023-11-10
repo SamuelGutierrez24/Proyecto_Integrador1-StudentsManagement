@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
+
         h1 {
             text-align: center;
             color: #333333;
             font-size: 30px;
         }
+
         h2 {
             color: #666666;
         }
+
         .container {
             width: 80%;
             margin: auto;
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .student-info {
             display: flex;
             align-items: center;
         }
+
         .student-name {
             font-size: 20px;
             font-weight: bold;
             margin-right: 20px;
         }
+
         .student-code {
             font-size: 16px;
             color: #999999;
         }
     </style>
 </head>
+
 <body>
-    {% for estudiante in estudiante %}
     <div class="container">
-        <h1><img src="{% static './Images/icesi.png'%}" class="logo">Seguimiento de Beca</h1>
+        <h1>Seguimiento de Beca</h1>
         <div class="student-info">
-            <span class="student-name">{{estudiante.name}} {{estudiante.lastName}}</span>
-            <span class="student-code"> {{estudiante.code}}</span>
+            <span class="student-name">{{student.name}} {{student.lastName}}</span>
+            <span class="student-code"> {{student.code}}</span>
         </div>
         {% if academicInfo %}
-            <h1>AAAAAAAA</h1>
             <h2>Información Académica</h2>
-            <p>Aquí va el contenido de la información académica del estudiante.</p>
+            <p>{{academicBalance.materiaID}}.</p>
         {% endif %}
-        {% if financialInfo %}
+        {% if finantialInfo %}
             <h2>Información Financiera</h2>
-            <p>Aquí va el contenido de la información financiera del estudiante.</p>
+            <span>{{finanInfo.studentID}}</span>
+            <span> {{finanInfo.type}}</span>
         {% endif %}
         {% if noAcademicInfo %}
             <h2>Información de Actividades No Académicas</h2>
@@ -64,8 +71,6 @@
             <p>Aquí va el contenido del testimonio del estudiante.</p>
         {% endif %}
     </div>
-    {% endfor %}
 </body>
+
 </html>
-
-

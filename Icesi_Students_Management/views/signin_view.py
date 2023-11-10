@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 def signin(request):
@@ -7,7 +8,6 @@ def signin(request):
         return render(request, 'signin.html')
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        print(user)
         if user is not None:
             if user.rol == 0:
                 login(request, user)
@@ -29,6 +29,5 @@ def signin(request):
                     'error': 'Rol de usuario no valido'
                 })
         else:
-            return render(request, 'signin.html', {
-                'error': 'Usuario y/o contrasena incorrecta'
-            })
+            messages.error(request,"Usuario y/o contrasena incorrecta")
+            return render(request, 'signin.html')
