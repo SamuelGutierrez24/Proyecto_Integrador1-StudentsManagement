@@ -359,3 +359,8 @@
 |Daniel Escobar|No hice nada|Ninguno|Voy a resolver el pull request con mi compañero Luis Fernando para asi unir nuestras dos ramas|
 |Luis Pinillos|No hice mayores avances|Ninguno|Voy a resolver el pull request con mi compañero Daniel Escobar Vacaflor para asi unir nuestras dos ramas|
 |Samuel Gutierrez | Nada |Estoy enfermo desde hace 2 dias por lo cual se me ha hecho dificil trabajar en los testing de selenium, solo he estado apoyando a los otros integrantes para que terminen sus HU | Intentare tener algunos test ya hechos |
+
+## Fecha 9/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|Ajuste unas cosas de mi historia de usuario|ninguno|Elaboracion de test de mi historia de usuario|
