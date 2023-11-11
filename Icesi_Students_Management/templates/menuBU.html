@@ -64,6 +64,31 @@
                         <br>
                         <br>
                         <button class="btn" type="button" style="background-color: #a6aec1;" onclick="location.href='registroActividades'" > <b>Registrar Actividad no academica</b></button>
+                        <br>
+                        <form>
+                            <div class="tableFixHead" style="overflow: scroll; height: 450px;">
+                              <table class="table table-striped" style=" height: 3cm;" id="tabla">
+                                <thead>
+                                    <tr>
+                                        <th style="background-color: #6c788e;">
+                                            <h2 style="font-size: 20px; text-align: center; font-weight: bold; margin-top: 1%;">
+                                                Historial
+                                            </h2>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow: scroll;">
+                                  {% for historial in history %}
+                                  <tr>
+                                    <div style="display: flex; "> 
+                                        <td>Se agrego asistencia del estudiante {{historial.student.name}} en {{historial.activity.nombre}}</td>
+                                    </div>
+                                  </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            </div>
+                          </form>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 " style="background-color: #6c788e; border-radius: 25px;" >
