@@ -12,13 +12,24 @@ class testActivityBUForm(LiveServerTestCase):
 
       self.driver = webdriver.Chrome()
 
-      self.driver.get('http://127.0.0.1:8000/bienestarUniversitario/')
+      self.driver.get('http://127.0.0.1:8000/signin/')
 
   def testActivityBUForm(self):
+
+    user = self.driver.find_element(by=By.ID,value='form2Example11')
+    password = self.driver.find_element(by=By.ID,value='form2Example22')
+   
+    submit = self.driver.find_element(by=By.ID, value='submit-button')
+
+    #populate the form with data
+    user.send_keys('samu')
+    password.send_keys('1234567')
+
+    #submit form
+    submit.click()
      
     regist = self.driver.find_element(by=By.ID,value='BtnRegistAct')
     regist.click()
-
 
     student = self.driver.find_element(by=By.ID,value='id_student')
     search = self.driver.find_element(by=By.ID,value='search')
@@ -45,9 +56,21 @@ class testActivityCreForm(LiveServerTestCase):
 
       self.driver = webdriver.Chrome()
 
-      self.driver.get('http://127.0.0.1:8000/Crea/')
+      self.driver.get('http://127.0.0.1:8000/signin/')
 
   def testActivityCreaForm(self):
+
+    user = self.driver.find_element(by=By.ID,value='form2Example11')
+    password = self.driver.find_element(by=By.ID,value='form2Example22')
+   
+    submit = self.driver.find_element(by=By.ID, value='submit-button')
+
+    #populate the form with data
+    user.send_keys('crea')
+    password.send_keys('crea')
+
+    #submit form
+    submit.click()
      
     regist = self.driver.find_element(by=By.ID,value='BtnRegistC')
     regist.click()

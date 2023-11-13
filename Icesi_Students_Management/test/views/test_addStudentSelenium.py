@@ -12,9 +12,21 @@ class testAddStudentForm(LiveServerTestCase):
 
       self.driver = webdriver.Chrome()
 
-      self.driver.get('http://127.0.0.1:8000/menu_filantropia/')
+      self.driver.get('http://127.0.0.1:8000/signin/')
 
   def testAddStudentForm(self):
+
+    user = self.driver.find_element(by=By.ID,value='form2Example11')
+    password = self.driver.find_element(by=By.ID,value='form2Example22')
+   
+    submit = self.driver.find_element(by=By.ID, value='submit-button')
+
+    #populate the form with data
+    user.send_keys('filantropia')
+    password.send_keys('filantropia')
+
+    #submit form
+    submit.click()
      
     btnAdd = self.driver.find_element(by=By.ID,value='add_student')
     btnAdd.click()
