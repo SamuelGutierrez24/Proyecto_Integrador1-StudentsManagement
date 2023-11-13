@@ -60,7 +60,7 @@
         </div>
     </nav>
     {% if alert is True %}
-    <div class="alert">
+    <div class="alert" id="alertBU">
         <span class="closebtn" onclick="location.href='./'">&times;</span>
         <strong>Notificación Enviada</strong> Se registro el reporte de información.
     </div>
@@ -84,7 +84,7 @@
                     style="border-radius: 25px; margin: 0 auto; display: block;">
                     {% csrf_token %}
                     {{ error }}
-                    <div class="form-group">
+                    <div class="form-group" id="Codigo">
                         <label for="{{ form.student.id_for_label }}"><strong style="font-size: 22px;">Codigo del estudiante:</strong></label>
                         <br>
                         {{ form.student }}
@@ -92,7 +92,7 @@
                         <br>
                     </div>
                     
-                    <button type="submit" name='action' value="buscar"> <b>Buscar</button>
+                    <button type="submit" id="search" name='action' value="buscar"> <b>Buscar</button>
                     <br>
                     <br>
                 </form>
@@ -136,7 +136,7 @@
                         <br>
                         <br>
                         <br>
-                        <button type="submit" name='action' value="registrar"> <b> Registrar</button>
+                        <button type="submit" id="BtnRegist" name='action' value="registrar"> <b> Registrar</button>
                     </form>
                     <br>
                     <br>

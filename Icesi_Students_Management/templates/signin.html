@@ -23,7 +23,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% elif message.tags == 'success' %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id ='alert'>
       {{ message }}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-block fa-lg gradient-custom-2 mb-3" type="submit"
+                      <button class="btn btn-block fa-lg gradient-custom-2 mb-3" type="submit" id = "submit-button"
                         style="background-color:#6C788E; color:white">Ingresar</button>
                       <a class="text-muted" href="#!"></a>
                     </div>
