@@ -104,4 +104,4 @@ class SigninTestCase(TestCase):
         response = self.client.post(reverse('signin'), data)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signin.html')
-        self.assertContains(response, 'No puede entrear')
+        self.assertContains(response, 'No puede ingresar. Su usuario no tiene un rol asignado')
