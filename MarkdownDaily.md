@@ -378,3 +378,7 @@
 | Samuel Gutierrez | Resolver un error que me estaban dando los test que ya estaban listos | No encontraba la causa del error | Terminar los test como debi hacer ayer y reunirme con el equipo a revisar que falta porque el sprint acaba mañana y nos faltan pequeños detalles para pulir el proyecto|
 | Santiago Jose Belalcazar | Nada | Ninguno | Acomodare unas cosas e intentare crear el archivo de inicializacion |
 
+## Fecha 13/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+|Luis Pinillos|Hice pull request de mi HU y ayude a mis compañeros a corregir unos errores|No me servian unos condicionales|Hoy voy a terminar la otra HU que tengo asignada, arreglar unos fallos existentes con respecto a las alertas y arreglar el CSS del proyecto|
