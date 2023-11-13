@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from Icesi_Students_Management.models import Student
 from Icesi_Students_Management.models import Actividad
+from Icesi_Students_Management.models import HistoryActivityAssistance
 from Icesi_Students_Management.models import AsistenciasActividad
 from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Alerta
@@ -34,8 +35,8 @@ def registroA(request):
             if(action=='buscar'):
                 Vstudent = request.POST['student']
                 student = Student.objects.all().get(code=Vstudent)
-                actividad = Actividad.objects.all().get(id=request.POST['activity'])
-                form = ActivityForm(initial={'student': student,'activity': actividad})
+                #actividad = Actividad.objects.all().get(id=request.POST['activity'])
+                form = ActivityForm(initial={'student': student})
                 return render(request, 'registroActividad.html',{
                     'form': form,
                     "studentInfo": "true",
@@ -53,6 +54,8 @@ def registroA(request):
 
                 asistencia = AsistenciasActividad.objects.create(seguimientoID = seguimiento, ActividadID = actividad )
                 asistencia.save()
+                history = HistoryActivityAssistance.objects.create(student=student,activity=actividad)
+                history.save()
                 form = ActivityForm(initial={'student': session})
                 if('Chk' in request.POST):
                     print('Si esta')

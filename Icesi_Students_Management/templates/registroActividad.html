@@ -84,7 +84,13 @@
                     style="border-radius: 25px; margin: 0 auto; display: block;">
                     {% csrf_token %}
                     {{ error }}
-                    <p><strong style="font-size: 18px;">{{form.as_p}}</strong></p>
+                    <div class="form-group">
+                        <label for="{{ form.student.id_for_label }}"><strong style="font-size: 22px;">Codigo del estudiante:</strong></label>
+                        <br>
+                        {{ form.student }}
+                        <br>
+                        <br>
+                    </div>
                     
                     <button type="submit" name='action' value="buscar"> <b>Buscar</button>
                     <br>
@@ -107,9 +113,20 @@
                         style="border-radius: 25px; margin: 0 auto; display: block;">
                         {% csrf_token %}
                         {{ error }}
-                        <p><strong style="font-size: 18px;">{{form.as_p}}</strong></p>
-                        <br>
-                        <br>
+                        <div class="form-group">
+                            <label for="{{ form.student.id_for_label }}"><strong style="font-size: 18px;">Codigo del estudiante:</strong></label>
+                            <br>
+                            <br>
+                            {{ form.student }}
+                            <br>
+                            <br>
+                            <label for="{{ form.activity.id_for_label }}">Selecciona una actividad:</label>
+                            <br>
+                            <br>
+                            {{ form.activity }}
+                            <br>
+                            <br>
+                        </div>
                         <div class="form-check">
                             <input class="form-check-input" name="Chk" type="checkbox" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
