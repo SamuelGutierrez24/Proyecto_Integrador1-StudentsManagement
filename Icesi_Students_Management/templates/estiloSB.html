@@ -54,8 +54,10 @@
             <span class="student-code"> {{student.code}}</span>
         </div>
         {% if academicInfo %}
-            <h2>Información Académica</h2>
-            <p>{{academicBalance.materiaID}}.</p>
+        <h2>Información Académica</h2>
+        {% for academicBalance in academicBalance %}
+            <p>{{academicBalance.materiaID.str}}.</p>
+        {% endfor %}
         {% endif %}
         {% if finantialInfo %}
             <h2>Información Financiera</h2>
@@ -63,12 +65,14 @@
             <span> {{finanInfo.type}}</span>
         {% endif %}
         {% if noAcademicInfo %}
-            <h2>Información de Actividades No Académicas</h2>
-            <p>Aquí va el contenido de la información de actividades no académicas del estudiante.</p>
+        <h2>Información de Actividades No Académicas</h2>
+        {% for noAcademicActivities in noAcademicActivity %}
+            <span>{{noAcademicActivities.ActividadID.nombre}}</span>
+        {% endfor %}
         {% endif %}
         {% if testomonyStudent %}
             <h2>Testimonio del Estudiante</h2>
-            <p>Aquí va el contenido del testimonio del estudiante.</p>
+            <p>{{scholarship.testimonio}}</p>
         {% endif %}
     </div>
 </body>

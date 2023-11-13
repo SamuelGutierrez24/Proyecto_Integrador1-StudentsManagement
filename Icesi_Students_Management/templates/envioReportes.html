@@ -101,17 +101,10 @@
                     <div class="col">
                         <form method="POST" action="{% url 'envioReportes'%}" enctype="multipart/form-data" >
                             {% csrf_token %}
-                            <div class="form-group">
-                                <label for="{{ form.email.id_for_label }}"><strong style="font-size: 22px;">Correo destino:</strong></label>
-                                <br>
-                                {{ form.email }}
-                                <br>
-                                <br>
-                                <label for="{{ form.title.id_for_label }}"><strong style="font-size: 22px;">Titulo del correo</strong></label>
-                                <br>
-                                {{ form.title }}
-                            </div>
+                            {{form.as_p}}
                             <button type="submit">Enviar</button>
+                            </div>
+                            
                         </form>
                     </div>
                     <div class="col"></div>

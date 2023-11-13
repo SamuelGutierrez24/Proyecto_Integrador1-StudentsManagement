@@ -34,67 +34,115 @@ def sendReport(request):
                       emailArray.append(donor.email)
                       students = Student.objects.filter(beca=donor.typeBecas)
                       for student in students:
-                          scholarship = SeguimientoBeca.objects.get(studentID = student.id)
-                          finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
-                          academicBalance = BalanceAcademico.objects.get(SeguimientoBecaID = scholarship.id)
-                          data = {
-                              'student': student,
-                              'finanInfo': finanInfo,
-                              'academicBalance':academicBalance,
-                              'academicInfo': academicInfo,
-                              'finantialInfo': finantialInfo,
-                              'noAcademicInfo': noAcademicInfo,
-                              'testomonyStudent': testomonyStudent
-                          }
-                          pdf = createPDF('estiloSB.html', data)
-                          emailMessage = EmailMessage(
-                                  subject=title,
-                                  body=description,
-                                  from_email=settings.EMAIL_HOST_USER,
-                                  to=[donor.email],
-                              )
-                          pdfContent = pdf.content
-                          seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
+                        scholarship = SeguimientoBeca.objects.get(studentID = student.id)
+                        finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        
+                        if academicInfo != False:
+                            try:
+                                academicBalance = BalanceAcademico.objects.filter(SeguimientoBecaID=scholarship.id)
+                            except BalanceAcademico.DoesNotExist:
+                                messages.error(request, 'El estudiante no tiene la información académica registrada')
+                                return redirect('envioReportes.html')
+                        else:
+                            academicBalance = BalanceAcademico.objects.filter(SeguimientoBecaID=scholarship.id)
+                        
+                        if noAcademicInfo != False:
+                            try:
+                                noAcademicActivity = AsistenciasActividad.objects.filter(seguimientoID=scholarship.id)
+                            except AsistenciasActividad.DoesNotExist:
+                                messages.error(request, 'El estudiante no tiene la información no académica registrada')
+                                return redirect('envioReportes.html')
+                        else:
+                            noAcademicActivity = AsistenciasActividad.objects.filter(seguimientoID=scholarship.id)
 
-                          emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
-                          emailMessage.send(fail_silently=False)
+
+                        data = {
+                        'student': student,
+                        'finanInfo': finanInfo,
+                        'academicBalance':academicBalance,
+                        'academicInfo': academicInfo,
+                        'finantialInfo': finantialInfo,
+                        'noAcademicInfo': noAcademicInfo,
+                        'noAcademicActivity':noAcademicActivity,
+                        'testomonyStudent': testomonyStudent,
+                        'scholarship':scholarship
+                                }
+                    
+                        pdf = createPDF('estiloSB.html', data)
+                        emailMessage = EmailMessage(
+                                subject=title,
+                                body=description,
+                                from_email=settings.EMAIL_HOST_USER,
+                                to=[donor.email],
+                            )
+                        pdfContent = pdf.content
+                        seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
+
+                        emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
+                        emailMessage.send(fail_silently=False)
                   messages.success(request, 'Correo enviado con éxito')
+                  return redirect('envioReportes.html')
               else:
                   #PARA UN SOLO DONANTE
+                  balancesArray = []
+                  noAcademicArray = []
                   donor = Donante.objects.filter(email=email)
                   if donor.exists():
                       donor = Donante.objects.get(email=email)
                       students = Student.objects.filter(beca=donor.typeBecas)
                       for student in students:
-                          scholarship = SeguimientoBeca.objects.get(studentID = student.id)
-                          finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
-                          academicBalance = BalanceAcademico.objects.get(SeguimientoBecaID = scholarship.id)
-                          data = {
-                              'student': student,
-                              'finanInfo': finanInfo,
-                              'academicBalance':academicBalance,
-                              'academicInfo': academicInfo,
-                              'finantialInfo': finantialInfo,
-                              'noAcademicInfo': noAcademicInfo,
-                              'testomonyStudent': testomonyStudent
-                          }
-                          pdf = createPDF('estiloSB.html', data)
-                          emailMessage = EmailMessage(
-                                  subject=title,
-                                  body=description,
-                                  from_email=settings.EMAIL_HOST_USER,
-                                  to=[donor.email],
-                              )
-                          pdfContent = pdf.content
-                          seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
+                        scholarship = SeguimientoBeca.objects.get(studentID = student.id)
+                        finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        
+                        if academicInfo != False:
+                            try:
+                                academicBalance = BalanceAcademico.objects.filter(SeguimientoBecaID=scholarship.id)
+                            except BalanceAcademico.DoesNotExist:
+                                messages.error(request, 'El estudiante no tiene la información académica registrada')
+                                return redirect('envioReportes.html')
+                        else:
+                            academicBalance = BalanceAcademico.objects.filter(SeguimientoBecaID=scholarship.id)
+                        
+                        if noAcademicInfo != False:
+                            try:
+                                noAcademicActivity = AsistenciasActividad.objects.filter(seguimientoID=scholarship.id)
+                            except AsistenciasActividad.DoesNotExist:
+                                messages.error(request, 'El estudiante no tiene la información no académica registrada')
+                                return redirect('envioReportes.html')
+                        else:
+                            noAcademicActivity = AsistenciasActividad.objects.filter(seguimientoID=scholarship.id)
 
-                          emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
-                          emailMessage.send(fail_silently=False)
+
+                        data = {
+                        'student': student,
+                        'finanInfo': finanInfo,
+                        'academicBalance':academicBalance,
+                        'academicInfo': academicInfo,
+                        'finantialInfo': finantialInfo,
+                        'noAcademicInfo': noAcademicInfo,
+                        'noAcademicActivity':noAcademicActivity,
+                        'testomonyStudent': testomonyStudent,
+                        'scholarship':scholarship
+                                }
+                    
+                        pdf = createPDF('estiloSB.html', data)
+                        emailMessage = EmailMessage(
+                                subject=title,
+                                body=description,
+                                from_email=settings.EMAIL_HOST_USER,
+                                to=[donor.email],
+                            )
+                        pdfContent = pdf.content
+                        seguimientoBeca = ContentFile(pdfContent, name='Seguimiento_beca.pdf')
+
+                        emailMessage.attach('Seguimiento_beca.pdf', seguimientoBeca.read(), 'application/pdf')
+                        emailMessage.send(fail_silently=False)
 
                       messages.success(request, 'Correo enviado con éxito')
+                      return redirect('envioReportes.html')
                   else:
                       messages.error(request, 'El correo del donador no se encuentra registrado!')
-              return redirect('envioReportes.html')
+                      return redirect('envioReportes.html')
             else:
                 messages.error(request, 'Debe seleccionar alguno de los campos para enviar el informe!')
                 return redirect('envioReportes.html')
