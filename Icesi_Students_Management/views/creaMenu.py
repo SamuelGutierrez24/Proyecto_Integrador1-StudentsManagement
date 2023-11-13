@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from ..models import *
 
-def menu(request):
+def CreaMenu(request):
 
 
     if request.method == 'GET':
@@ -12,14 +12,17 @@ def menu(request):
         histo = []
 
         for noti in notificaciones:
-            if(noti.type==2):
+            if(noti.type==5):
                 notifi.append(noti)
         
+        
+        
         for histor in history:
-            if(histor.activity.tipo==1):
+            if(histor.activity.tipo==2):
                 histo.append(histor)
 
-        return render(request, 'menuBU.html', {'notificaciones': reversed(notifi), 'history': histo})
+
+        return render(request, 'menuCREA.html', {'notificaciones': reversed(notifi), 'history': histo} )
     
     else:
 

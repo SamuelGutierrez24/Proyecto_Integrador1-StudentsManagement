@@ -4,6 +4,7 @@ from django.contrib import messages
 
 
 def signin(request):
+
     if request.method == "GET":
         return render(request, 'signin.html')
     else:
@@ -24,6 +25,8 @@ def signin(request):
             elif user.rol == 5:
                 login(request, user)
                 return redirect('menuBalanceAcademico')
+            elif user.rol == 6:
+                return redirect('crea')
             else:
                 return render(request, 'signin.html', {
                     'error': 'Rol de usuario no valido'

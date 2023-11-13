@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from Icesi_Students_Management.models import Alerta
 from django.contrib.auth.decorators import user_passes_test, login_required
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from Icesi_Students_Management.models import Alerta
+from ..forms import envioMensaje
+from ..forms import modificarAlerta
 
 
 def rol_check(user):
@@ -10,11 +15,19 @@ def rol_check(user):
 # @login_required
 # @user_passes_test(rol_check)
 def menu(request):
-    notificaciones = Alerta.objects.all()
-    notifi = []
+    if request.method == 'GET':
+        
+        notificaciones = Alerta.objects.all()
+        notifi = []
 
-    for noti in notificaciones:
-        if (noti.type == 4):
-            notifi.append(noti)
+        for noti in notificaciones:
+            if(noti.type==4):
+                notifi.append(noti)
 
-    return render(request, 'menu_filantropia.html', {'notificaciones': notifi})
+        return render(request, 'menu_filantropia.html', {'notificaciones': notifi})
+    else:
+        
+        id = request.POST["noti"]
+        print(id)
+
+        return redirect(reverse('envioAlerta', kwargs={'noti_id': id}))

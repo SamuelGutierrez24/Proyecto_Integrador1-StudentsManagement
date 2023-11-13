@@ -41,7 +41,7 @@
                 <img src="{% static './icesi-dark.png'%}" alt="" width="200" height="70" class="d-inline-block align-text-top">
             </a>
             <a class="navbar-brand ms-3">
-                <b>Bienestar Universitario</b>
+                <b> CREA </b>
             </a>          
             <a class="navbar-brand ms-auto">
                 <i class="bi bi-door-closed" onclick="location.href='/logout'"></i>    
@@ -57,13 +57,8 @@
                         <br>
                         <br>
                         <br>
+                        <button class="btn" type="button" style="background-color: #a6aec1;" onclick="location.href='register'" > <b>Registrar Actividad del CREA</b></button>
                         <br>
-                        <br>
-                        <br>
-                        <button class="btn" type="button" style="background-color: #a6aec1;"> <b> Reportar una Cancelación </b></button>
-                        <br>
-                        <br>
-                        <button class="btn" type="button" style="background-color: #a6aec1;" onclick="location.href='registroActividades'" > <b>Registrar Actividad no academica</b></button>
                         <br>
                         <form>
                             <div class="tableFixHead" style="overflow: scroll; height: 450px;">
@@ -109,7 +104,7 @@
                                         <tr>
                                             <div style="display: flex;">
                                                 <td style="border: none; ">
-                                                    {{notificaciones.title}}   
+                                                    {{notificaciones.title}}  
                                                     <button name="noti" value={{notificaciones.id}} style="border: none; float: right;">
                                                         <i class="bi bi-eye"></i>  
                                                     </button>
@@ -126,6 +121,3 @@
         </div>
     </body>
 </html>
-<script>
-
-</script>

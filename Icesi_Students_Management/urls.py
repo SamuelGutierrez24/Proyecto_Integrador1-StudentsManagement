@@ -8,5 +8,6 @@ urlpatterns = [
     path('logout/', views.signout, name='logout'),
     path('BalanceAcademico/', views.BAMenu.menu, name='menuBalanceAcademico'),
     path('BalanceAcademico/buscarEstudiante.html', views.buscarEstudiante_view.buscarEstudiante, name='buscarEstudiante'),
-    path('BalanceAcademico/registroNotasBA.html', views.RegMateria, name='registroNotasBA')
+    path('BalanceAcademico/registroNotasBA.html', views.RegMateria, name='registroNotasBA'),
+    #path('Crea/', views.creaMenu.CreaMenu, name='menuCREA')
 ]

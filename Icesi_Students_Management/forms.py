@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django import forms
 from .models import Actividad
 from .models import AsistenciasActividad
+from .models import AsistenciaCREA
 from .models import *
 from django.forms import Form
 
@@ -12,16 +13,37 @@ class RegNotasBAForm(forms.ModelForm):
         model = Materia
         fields = ['materia_code', 'nombre', 'creditos']
 
+class CreaForm(ModelForm):
+
+    student = forms.CharField(
+        label='Codigo del estudiante', max_length=9, widget=forms.TextInput(attrs={"class":"input"},)
+    )
+
+    activity = forms.ModelChoiceField(
+        queryset=Actividad.objects.all().filter(tipo=2),  # Esto recupera todas las actividades de la base de datos
+        label='Selecciona una actividad',
+        empty_label='Selecciona una actividad',  # Etiqueta para la opción vacía
+        widget=forms.Select(attrs={"class": "input"})  # Utiliza un widget de selección
+    )
+    reason = forms.CharField(
+        label='Motivo',
+        max_length=50,  # Elige una longitud máxima adecuada
+        widget=forms.Textarea(attrs={"class": "input"})
+    )
+
+    class Meta:
+        model = AsistenciaCREA
+        fields = ['student', 'activity', 'reason']
 
 class ActivityForm(ModelForm):
 
     student = forms.CharField(
-        label='Codigo de estudiante', max_length=9, widget=forms.TextInput(attrs={"class": "input"})
+        label= 'Codigo de estudiante', max_length=9, widget=forms.TextInput(attrs={"class":"input"},)
     )
 
     activity = forms.ModelChoiceField(
-        # Esto recupera todas las actividades de la base de datos
-        queryset=Actividad.objects.all(),
+        queryset=Actividad.objects.all().filter(tipo=1),  # Esto recupera todas las actividades de la base de datos
+
         label='Selecciona una actividad',
         empty_label='Selecciona una actividad',  # Etiqueta para la opción vacía
         # Utiliza un widget de selección
@@ -201,18 +223,14 @@ class addStudent(forms.Form):
         model = Student
         fields = ['Nombre', 'Apellido', 'Email', 'Codigo','semester','career']
 
-
 class envioMensaje(forms.ModelForm):
-    title = forms.CharField(label="Titulo", max_length=20, required=False)
-    type = forms.ChoiceField(label="Destinatario",
-                             choices=Alerta.Type_alert.choices, required=False)
-    description = forms.CharField(
-        label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+    title = forms.CharField(label="Titulo", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, widget=forms.Select)
+    description = forms.CharField(label="Mensaje", max_length=20, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
 
     class Meta:
         model = Alerta
         fields = ['title', 'type', 'description']
-
 
 class enviarReporte(forms.Form):
     title = forms.CharField(label="Titulo", max_length=70, required=False)
@@ -228,3 +246,13 @@ class enviarReporte(forms.Form):
     testimonioEstudiante = forms.BooleanField(label="Testimonio del estudiante", required=False)
     class Meta:
         fields = ['title', 'allDonor','email', 'description', 'informacionAcademica', 'informacionFinanciera', 'informacionNoAcademica', 'testimonioEstudiante']
+
+class modificarAlerta(forms.ModelForm):
+    Title = forms.CharField(label="Titulo", widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    Type = forms.ChoiceField(label="Tipo", choices=Alerta.Type_alert.choices, widget=forms.Select)
+    Description = forms.CharField(label="Descripcion", widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
+    Email = forms.EmailField(label="Correo Donante", widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+
+    class Meta:
+        model = Alerta
+        fields = ['Title', 'Type', 'Description', 'Email']
