@@ -366,3 +366,12 @@
 |Luis Pinillos|Ajuste unas cosas de mi historia de usuario|ninguno|Elaboracion de test de mi historia de usuario|
 |Samuel Gutierrez|Investigar selenium para poder ejecutar los test|ninguno|Escribir los test y dejar una parte de ellos terminada|
 
+## Fecha 11/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Samuel Gutierrez | Ayer avance y logre terminar el 50% de los test  | Estuve muy enfermo y me demore demasiado haciendolos | Intentare terminar los test |
+## Fecha 12/11/23
+|Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
+|---|---|---|---|
+| Samuel Gutierrez | Resolver un error que me estaban dando los test que ya estaban listos | No encontraba la causa del error | Terminar los test como debi hacer ayer y reunirme con el equipo a revisar que falta porque el sprint acaba mañana y nos faltan pequeños detalles para pulir el proyecto|
+
