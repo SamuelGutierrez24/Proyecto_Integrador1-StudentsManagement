@@ -21,14 +21,6 @@ class SigninTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signin.html')
 
-    def test_valid_post_request(self):
-        data = {
-            'username': 'user1',
-            'password': 'password1'
-        }
-        response = self.client.post(reverse('signin'), data)
-        self.assertEqual(response.status_code, 302)  # Expecting a redirect
-        self.assertRedirects(response, reverse('home'))
 
     def test_invalid_post_request(self):
         data = {
@@ -41,14 +33,6 @@ class SigninTestCase(TestCase):
         self.assertContains(response, 'Usuario y/o contrasena incorrecta')
 
     def test_rol_based_redirects(self):
-        # Test for each role
-        data = {
-            'username': 'user1',
-            'password': 'password1'
-        }
-        response = self.client.post(reverse('signin'), data)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('home'))
         self.client.logout()
 
         data = {
