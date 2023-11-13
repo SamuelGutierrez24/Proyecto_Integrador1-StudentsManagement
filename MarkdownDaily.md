@@ -314,7 +314,7 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Kevin Vincent | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
-|Santiago Jose Belalcazar | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
+| Santiago Jose Belalcazar | Termine mi HU con los TEST y subi mi PR | Ninguno | No tengo algo asignado/planeado para hoy |
 | Samuel Gutierrez | Ayer hicimos daily en clase y ademas termine el historial en el menu del CREA | Ninguno | Comprobar que no genera errores |
 
 
@@ -370,8 +370,11 @@
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Samuel Gutierrez | Ayer avance y logre terminar el 50% de los test  | Estuve muy enfermo y me demore demasiado haciendolos | Intentare terminar los test |
+| Santiago Jose Belalcazar | Nada | Ninguno | No realizare ningun cambio |
+
 ## Fecha 12/11/23
 |Nombre|¿Que hice ayer?|¿Que Problemas Tuve?|¿Que haré hoy?|
 |---|---|---|---|
 | Samuel Gutierrez | Resolver un error que me estaban dando los test que ya estaban listos | No encontraba la causa del error | Terminar los test como debi hacer ayer y reunirme con el equipo a revisar que falta porque el sprint acaba mañana y nos faltan pequeños detalles para pulir el proyecto|
+| Santiago Jose Belalcazar | Nada | Ninguno | Acomodare unas cosas e intentare crear el archivo de inicializacion |
 
