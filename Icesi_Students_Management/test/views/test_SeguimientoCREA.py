@@ -20,10 +20,10 @@ class registroActividadTestCase(TestCase):
         semester = Semester.objects.create(name='2023-1')
         carrera = Carrera.objects.create(nameCarrera = 'Ingenieria de sistemas', carreraID = '1', precioMatricula= 10000000)
         seguimientoBeca = SeguimientoBeca.objects.create(testimonio = 'Agradecido', studentID = estudiante, SemesterID = semester, carreraID=carrera)
-        activity = Actividad.objects.create(nombre='Centro LEO', tipo = 2)
-        asistencia = AsistenciaCREA.objects.create(seguimientoID=seguimientoBeca,ActividadID=activity, reason='I dont know how read')
-        self.assertEquals(asistencia.ActividadID,activity)
-        self.assertEqual(asistencia.seguimientoID,seguimientoBeca)
+        activity = Actividad.objects.create(nombre='Centro LEO')
+        asistencia = AsistenciaCREA.objects.create(activity=activity,seguimiento=seguimientoBeca,reason='I dont know how read')
+        self.assertEquals(asistencia.activity,activity)
+        self.assertEqual(asistencia.seguimiento,seguimientoBeca)
 
     def test_vista_registrarActividad(self):
         response = self.client.get(reverse('registerCrea'))
