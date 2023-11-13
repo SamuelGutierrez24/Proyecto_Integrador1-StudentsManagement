@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from Icesi_Students_Management.models import *
 from ..forms import registrarInfoFinanciera, registrarInfoFinancieraModificar
 from django.contrib import messages
+from django.urls import reverse
 
 def modificarInfo(request, code):
     tieneInfo = InformacionFinanciera.objects.filter(
@@ -75,8 +76,8 @@ def modificarInfo(request, code):
 
                     messages.success(request, 'Gastos registrados correctamente!')
                     messages.success(request, 'Actualización enviada a filantropía!')
-
-                    return redirect('/contabilidad/buscarEstud.html')
+                    url = reverse('modificarInfo', args=[code])
+                    return redirect(url)
             data["form"] = formulario
     else:
         messages.error(request, 'No se ha registrado la Información Financiera del estudiante')

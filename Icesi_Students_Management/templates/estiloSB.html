@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            font-size: 30px;
+        }
+
+        h2 {
+            color: #666666;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .student-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .student-code {
+            font-size: 16px;
+            color: #999999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Seguimiento de Beca</h1>
+        <div class="student-info">
+            <span class="student-name">{{student.name}} {{student.lastName}}</span>
+            <span class="student-code"> {{student.code}}</span>
+        </div>
+        {% if academicInfo %}
+        <h2>Información Académica</h2>
+        {% for academicBalance in academicBalance %}
+            <p>{{academicBalance.materiaID.str}}.</p>
+        {% endfor %}
+        {% endif %}
+        {% if finantialInfo %}
+            <h2>Información Financiera</h2>
+            <span>{{finanInfo.studentID}}</span>
+            <span> {{finanInfo.type}}</span>
+        {% endif %}
+        {% if noAcademicInfo %}
+        <h2>Información de Actividades No Académicas</h2>
+        {% for noAcademicActivities in noAcademicActivity %}
+            <span>{{noAcademicActivities.ActividadID.nombre}}</span>
+        {% endfor %}
+        {% endif %}
+        {% if testomonyStudent %}
+            <h2>Testimonio del Estudiante</h2>
+            <p>{{scholarship.testimonio}}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
