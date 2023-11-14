@@ -164,7 +164,7 @@ class Alerta(models.Model):
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)
-    StudentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None)
+    StudentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None, null=True, blank=True)
     def __str__(self):
         return self.title
     
