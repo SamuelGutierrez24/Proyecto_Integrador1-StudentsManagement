@@ -36,7 +36,8 @@ def sendReport(request):
                       for student in students:
                         scholarship = SeguimientoBeca.objects.get(studentID = student.id)
                         finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
-                        
+                        infoFinanHisto = HistorialGastos.objects.filter(informacion_financiera = finanInfo.informeID)
+
                         if academicInfo != False:
                             try:
                                 academicBalance = BalanceAcademico.objects.filter(SeguimientoBecaID=scholarship.id)
@@ -59,6 +60,7 @@ def sendReport(request):
                         data = {
                         'student': student,
                         'finanInfo': finanInfo,
+                        'infoFinanHisto':infoFinanHisto,
                         'academicBalance':academicBalance,
                         'academicInfo': academicInfo,
                         'finantialInfo': finantialInfo,
@@ -84,8 +86,6 @@ def sendReport(request):
                   return redirect('envioReportes.html')
               else:
                   #PARA UN SOLO DONANTE
-                  balancesArray = []
-                  noAcademicArray = []
                   donor = Donante.objects.filter(email=email)
                   if donor.exists():
                       donor = Donante.objects.get(email=email)
@@ -93,6 +93,7 @@ def sendReport(request):
                       for student in students:
                         scholarship = SeguimientoBeca.objects.get(studentID = student.id)
                         finanInfo = InformacionFinanciera.objects.get(seguimientoBecaID = scholarship.id)
+                        infoFinanHisto = HistorialGastos.objects.filter(informacion_financiera = finanInfo.informeID)
                         
                         if academicInfo != False:
                             try:
@@ -116,6 +117,7 @@ def sendReport(request):
                         data = {
                         'student': student,
                         'finanInfo': finanInfo,
+                        'infoFinanHisto':infoFinanHisto,
                         'academicBalance':academicBalance,
                         'academicInfo': academicInfo,
                         'finantialInfo': finantialInfo,

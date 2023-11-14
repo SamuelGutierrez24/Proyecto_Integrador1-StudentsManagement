@@ -56,23 +56,33 @@
         {% if academicInfo %}
         <h2>Información Académica</h2>
         {% for academicBalance in academicBalance %}
-            <p>{{academicBalance.materiaID.str}}.</p>
+        <p>{{academicBalance.materiaID.str}}.</p>
         {% endfor %}
         {% endif %}
         {% if finantialInfo %}
-            <h2>Información Financiera</h2>
-            <span>{{finanInfo.studentID}}</span>
-            <span> {{finanInfo.type}}</span>
+        <h2>Información Financiera</h2>
+        <th><b>Nombre de la beca:</b></th>
+        <span>{{finanInfo.type}}</span>
+        <br>
+        <th><b>Historial de Gasto:</b></th>
+        <br>
+        {% for infoFinanHisto in infoFinanHisto %}
+        <td>{{infoFinanHisto.descripcion}}</td>
+        <br>
+        {% endfor %}
         {% endif %}
         {% if noAcademicInfo %}
         <h2>Información de Actividades No Académicas</h2>
         {% for noAcademicActivities in noAcademicActivity %}
-            <span>{{noAcademicActivities.ActividadID.nombre}}</span>
+        <th><b>Actividades no academicas realizadas:</b></th>
+        <br>
+        <span>{{noAcademicActivities.ActividadID.nombre}}</span>
+        <br>
         {% endfor %}
         {% endif %}
         {% if testomonyStudent %}
-            <h2>Testimonio del Estudiante</h2>
-            <p>{{scholarship.testimonio}}</p>
+        <h2>Testimonio del Estudiante</h2>
+        <p>{{scholarship.testimonio}}</p>
         {% endif %}
     </div>
 </body>

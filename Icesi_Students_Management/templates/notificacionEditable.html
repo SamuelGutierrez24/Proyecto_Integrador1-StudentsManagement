@@ -26,7 +26,7 @@
             </div>
         </div>
         
-        <form method="POST">
+        <form method="POST" action="{% url 'sendMessageToDonor' noti.id %}">
             <div class="row my-2">
                 <div class="col">
                     <div class="d-grid gap-2">
@@ -54,9 +54,9 @@
                         </div>
                         <p>
                             <div style="text-align: center;">
-                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/">
-                                    <b>Enviar informe</b>
-                                </a>
+                                <button type="submit">
+                                    Enviar Informe
+                                </button>
                             </div>
                         </p>
                     </div>

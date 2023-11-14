@@ -5,6 +5,7 @@ from Icesi_Students_Management.forms import addStudent
 from Icesi_Students_Management.models import InformacionFinanciera
 from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Carrera, Semester
+from django.contrib import messages
 import datetime
 
 def agregar(request):
@@ -15,7 +16,6 @@ def agregar(request):
         if form.is_valid():
             # Almacenar los datos del formulario en la sesión
             request.session['form_data'] = form.cleaned_data
-            print(request.POST.get("selected_button"))
             request.session['selected_button'] = request.POST.get('selected_button')
 
             # Verificar si el código ya existe en la base de datos
@@ -35,7 +35,6 @@ def agregar(request):
                 selected_button = request.session['selected_button']
                 beca = Becas.objects.all().get(id=selected_button)
                 Student.objects.create(name=student_data['Nombre'], lastName=student_data['Apellido'], email=student_data['Email'], code=codigo, beca=beca)
-                print("ESTE ES EL ID DEL ESTUDIANTEEEEEEEEEEEEEEEE: ",Student.objects.get(code=codigo).id)
                 
                 #Creacion del seguimiento de beca del estudiante
                 SeguimientoBeca.objects.create(studentID=Student.objects.get(code=codigo),SemesterID=Semester.objects.get(name=semester),carreraID=careerSelected)
@@ -78,7 +77,8 @@ def agregar(request):
 
                 # Limpiar la sesión
                 request.session.clear()
-                
+                messages.success(request, 'Estudiante creado con exito!')
                 return redirect('menu filantropia')
+            
             
     return render(request, 'agregar_estudiante.html', {'form': addStudent, 'Becas': becas})
