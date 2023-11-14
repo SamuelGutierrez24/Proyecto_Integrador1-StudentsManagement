@@ -208,9 +208,7 @@ class addStudent(forms.Form):
         label='Semestre en el que se encuentra', choices=SEMESTER_CHOICES)
     
     careers = Carrera.objects.all()
-    print("ESTAS SON TODAS LAS CARRERASSSSSSSSSSSS: ",careers)
     careerOption = [(career.carreraID, career.nameCarrera) for career in careers]
-    print("ESTO ES CAREER OPTIONNNNNNNNNNNNNNN: ",careerOption)
 
     # Agregar el campo de selección de carrera
     career = forms.ChoiceField(
@@ -224,9 +222,9 @@ class addStudent(forms.Form):
         fields = ['Nombre', 'Apellido', 'Email', 'Codigo','semester','career']
 
 class envioMensaje(forms.ModelForm):
-    title = forms.CharField(label="Titulo", max_length=20, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    title = forms.CharField(label="Titulo", max_length=400, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
     type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, widget=forms.Select)
-    description = forms.CharField(label="Mensaje", max_length=20, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
+    description = forms.CharField(label="Mensaje", max_length=10000, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
 
     class Meta:
         model = Alerta
