@@ -7,7 +7,6 @@ def buscarEstudiante(request):
 
         # Buscar al estudiante por su nombre en la base de datos
         estudiante = Student.objects.all().filter(code=codigo_estudiante).exists()
-        print(estudiante)
         
         if estudiante == False:
             return  render(request, 'buscarEstudiante.html',{

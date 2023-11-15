@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from Icesi_Students_Management.models import User
 from django.contrib.auth import login
 from django.db import IntegrityError
+from django.contrib import messages
 
 
 def signup(request):
@@ -26,16 +27,14 @@ def signup(request):
                     messages.success(request, 'Cuenta creada satisfactoriamente! (espera a que sea activada)')
                     return redirect('signin')
                 except IntegrityError:
-                    return render(request, 'signup.html', {
-                        "error": 'Usuario ya existe'
-                    })
-            return render(request, 'signup.html', {
-                "error": 'Contrasenas son distintas'
-            })
+                    messages.error(request,"Usuario ya existe")
+                    return render(request, 'signup.html')
+            messages.error(request,"Contraseñas son distintas")
+            return render(request, 'signup.html')
         else:
+            messages.error(request,"Todos los campos son requeridos")
             return render(request, 'signup.html', {
-                'form': UserCreationForm,
-                "error": 'Todos los campos son requeridos'
+                'form': UserCreationForm
             })
     else:
         return render(request, 'signup.html', {
