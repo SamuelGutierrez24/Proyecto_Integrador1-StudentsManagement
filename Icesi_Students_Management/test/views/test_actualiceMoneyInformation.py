@@ -16,10 +16,10 @@ class testActualice(LiveServerTestCase):
 
   def testActualice(self):
 
-    user = self.driver.find_element(by=By.ID,value='form2Example11')
-    password = self.driver.find_element(by=By.ID,value='form2Example22')
+    user = self.driver.find_element(by=By.ID,value='mail')
+    password = self.driver.find_element(by=By.ID,value='password')
    
-    submit = self.driver.find_element(by=By.ID, value='submit-button')
+    submit = self.driver.find_element(by=By.ID, value='ingresar')
 
     #populate the form with data
     user.send_keys('contabilidad')
@@ -28,22 +28,19 @@ class testActualice(LiveServerTestCase):
     #submit form
     submit.click()
      
-    regist = self.driver.find_element(by=By.ID,value='BtnRegistAct')
+    regist = self.driver.find_element(by=By.ID,value='btn1')
     regist.click()
 
-    student = self.driver.find_element(by=By.ID,value='id_student')
-    search = self.driver.find_element(by=By.ID,value='search')
-    student.send_keys('A00381035')
-    search.click()
-
-    activity = self.driver.find_element(by=By.ID,value='id_activity')
-    select = Select(activity)
-
-    registActivity = self.driver.find_element(by=By.ID,value='BtnRegist')
-    select.select_by_visible_text("Atletismo")
+    student = self.driver.find_element(by=By.ID,value='editarbtn')
+    student.click()
+    gasto = self.driver.find_element(by=By.ID,value='id_gasto')
+    date = self.driver.find_element(by=By.ID,value='id_fecha')
+    gasto.send_keys('1000000')
+    date.send_keys('2023-11-14')
+    regist = self.driver.find_element(by=By.ID,value='edit')
     
-    registActivity.send_keys(Keys.RETURN)
-    popup =self.driver.find_element(by=By.ID,value='alertBU')
+    regist.send_keys(Keys.RETURN)
+    popup =self.driver.find_element(by=By.ID,value='send')
 
-    self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/bienestarUniversitario/registroActividades' )
+    self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/contabilidad/modificar.html/A00231010/' )
     assert popup.is_displayed()

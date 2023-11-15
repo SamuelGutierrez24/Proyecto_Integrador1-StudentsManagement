@@ -16,10 +16,10 @@ class testNotificationForSend(LiveServerTestCase):
 
   def testNotificationForSend(self):
 
-    user = self.driver.find_element(by=By.ID,value='form2Example11')
-    password = self.driver.find_element(by=By.ID,value='form2Example22')
+    user = self.driver.find_element(by=By.ID,value='mail')
+    password = self.driver.find_element(by=By.ID,value='password')
    
-    submit = self.driver.find_element(by=By.ID, value='submit-button')
+    submit = self.driver.find_element(by=By.ID, value='ingresar')
 
     #populate the form with data
     user.send_keys('filantropia')
@@ -30,7 +30,7 @@ class testNotificationForSend(LiveServerTestCase):
      
     notification = self.driver.find_element(by=By.ID,value='noti')
     notification.click()
-    self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/menu_filantropia/envioAlerta/1/' )
+    self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/menu_filantropia/envioAlerta/56/' )
 
 
 class testNotificationIsSend(LiveServerTestCase):
@@ -45,10 +45,10 @@ class testNotificationIsSend(LiveServerTestCase):
 
   def testNotificationIsSend(self):
 
-    user = self.driver.find_element(by=By.ID,value='form2Example11')
-    password = self.driver.find_element(by=By.ID,value='form2Example22')
+    user = self.driver.find_element(by=By.ID,value='mail')
+    password = self.driver.find_element(by=By.ID,value='password')
    
-    submit = self.driver.find_element(by=By.ID, value='submit-button')
+    submit = self.driver.find_element(by=By.ID, value='ingresar')
 
     #populate the form with data
     user.send_keys('filantropia')
@@ -60,13 +60,13 @@ class testNotificationIsSend(LiveServerTestCase):
     notification = self.driver.find_element(by=By.ID,value='noti')
     notification.click()
 
-    btnSendNoti = self.driver.find_element(by=By.ID,value='sendNoti')
+    btnSendNoti = self.driver.find_element(by=By.ID,value='send')
     btnSendNoti.click()
     
-    #popup =self.driver.find_element(by=By.ID,value='alertC')
+    popup =self.driver.find_element(by=By.ID,value='isSend')
 
     self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/menu_filantropia/' )
-    #assert popup.is_displayed()
+    assert popup.is_displayed()
     
 
     

@@ -16,10 +16,10 @@ class testActivityBUForm(LiveServerTestCase):
 
   def testActivityBUForm(self):
 
-    user = self.driver.find_element(by=By.ID,value='form2Example11')
-    password = self.driver.find_element(by=By.ID,value='form2Example22')
+    user = self.driver.find_element(by=By.ID,value='mail')
+    password = self.driver.find_element(by=By.ID,value='password')
    
-    submit = self.driver.find_element(by=By.ID, value='submit-button')
+    submit = self.driver.find_element(by=By.ID, value='ingresar')
 
     #populate the form with data
     user.send_keys('samu')
@@ -60,10 +60,10 @@ class testActivityCreForm(LiveServerTestCase):
 
   def testActivityCreaForm(self):
 
-    user = self.driver.find_element(by=By.ID,value='form2Example11')
-    password = self.driver.find_element(by=By.ID,value='form2Example22')
+    user = self.driver.find_element(by=By.ID,value='mail')
+    password = self.driver.find_element(by=By.ID,value='password')
    
-    submit = self.driver.find_element(by=By.ID, value='submit-button')
+    submit = self.driver.find_element(by=By.ID, value='ingresar')
 
     #populate the form with data
     user.send_keys('crea')
