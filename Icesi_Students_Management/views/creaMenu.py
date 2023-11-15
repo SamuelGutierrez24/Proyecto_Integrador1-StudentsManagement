@@ -1,6 +1,13 @@
 from django.shortcuts import render, redirect
 from ..models import *
 
+# def rol_check(user):
+#     return user.rol == 2
+#
+#
+# @login_required
+# @user_passes_test(rol_check, "/signin/")
+
 def CreaMenu(request):
 
 

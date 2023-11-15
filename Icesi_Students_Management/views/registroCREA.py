@@ -7,6 +7,7 @@ from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Alerta
 from Icesi_Students_Management.models import HistoryActivityAssistance
 from Icesi_Students_Management.forms import CreaForm
+from django.contrib.auth.decorators import user_passes_test, login_required
 
 def registerC(request):
     if request.method == 'GET':

@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Carrera(models.Model):
     nameCarrera = models.CharField(max_length=50)
-    carreraID = models.CharField(primary_key=True, max_length=15, default="0")
+    carreraID = models.CharField(primary_key=True, max_length=15)
     precioMatricula = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     def str(self):
         return self.name
@@ -56,7 +56,21 @@ class Status(models.Model):
         return self.type
 
 class Semester(models.Model):
-    name = models.CharField(max_length=200)
+    SEMESTER_CHOICES = [
+        ('Primer Semestre', 'Primer Semestre'),
+        ('Segundo Semestre', 'Segundo Semestre'),
+        ('Tercer Semestre', 'Tercer Semestre'),
+        ('Cuarto Semestre', 'Cuarto Semestre'),
+        ('Quinto Semestre', 'Quinto Semestre'),
+        ('Sexto Semestre', 'Sexto Semestre'),
+        ('Septimo Semestre', 'Septimo Semestre'),
+        ('Octavo Semestre', 'Octavo Semestre'),
+        ('Noveno Semestre', 'Noveno Semestre'),
+        ('Decimo Semestre', 'Decimo Semestre'),
+        ('Onceavo Semestre', 'Onceavo Semestre'),
+        ('Doceavo Semestre', 'Doceavo Semestre'),
+    ]
+    name = models.CharField(max_length=200, choices=SEMESTER_CHOICES)
     def __str__(self):
         return self.name
 
