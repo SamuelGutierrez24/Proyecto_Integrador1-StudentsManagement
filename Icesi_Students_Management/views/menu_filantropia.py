@@ -6,14 +6,14 @@ from django.urls import reverse
 from Icesi_Students_Management.models import Alerta
 from ..forms import envioMensaje
 from ..forms import modificarAlerta
+from django.contrib.auth.decorators import user_passes_test, login_required
 
-
-def rol_check(user):
-    return user.rol == 2
-
-
+# def rol_check(user):
+#     return user.rol == 2
+#
+#
 # @login_required
-# @user_passes_test(rol_check)
+# @user_passes_test(rol_check, "/signin/")
 def menu(request):
     if request.method == 'GET':
         

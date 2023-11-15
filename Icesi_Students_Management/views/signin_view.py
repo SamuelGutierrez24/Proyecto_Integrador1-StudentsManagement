@@ -10,10 +10,7 @@ def signin(request):
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is not None:
-            if user.rol == 0:
-                login(request, user)
-                return redirect('home')
-            elif user.rol == 2:
+            if user.rol == 2:
                 login(request, user)
                 return redirect('menu filantropia')
             elif user.rol == 3:
