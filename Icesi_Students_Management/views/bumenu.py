@@ -3,7 +3,7 @@ from ..models import *
 from django.contrib.auth.decorators import user_passes_test, login_required
 
 # def rol_check(user):
-#     return user.rol == 2
+#     return user.rol == 3
 #
 #
 # @login_required
