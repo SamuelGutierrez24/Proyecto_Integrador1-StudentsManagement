@@ -131,7 +131,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% elif message.tags == 'success' %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="send">
       {{ message }}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -144,7 +144,7 @@
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form.as_p }}
-          <button type="submit">Editar</button>
+          <button type="submit" id="edit">Editar</button>
           <a href="/contabilidad/buscarEstud.html" class="btn btn-custom custom-btn" id="btn1"><b>Regresar</b></a>
           <br>
           <br>

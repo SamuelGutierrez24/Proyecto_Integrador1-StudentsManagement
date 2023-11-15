@@ -47,7 +47,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% elif message.tags == 'success' %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -66,11 +66,11 @@
             <div class="login">
                 <h2><b>Inicio de Sesión</b></h2>
                 <div class="input">
-                    <input type="text" class="input1" placeholder="Correo" name="username" required>
+                    <input type="text" class="input1" placeholder="Correo"id='mail' name="username" required>
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div class="input">
-                    <input type="password" class="input1" placeholder="Contraseña" name="password" required>
+                    <input type="password" class="input1" placeholder="Contraseña" id="password" name="password" required>
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <div class="button">
