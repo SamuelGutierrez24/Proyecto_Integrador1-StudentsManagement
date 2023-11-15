@@ -189,23 +189,8 @@ class addStudent(forms.Form):
                              max_length=100,
                              widget=forms.TextInput(attrs={'placeholder': 'Ingrese el codigo del estudiante', 'col': '10', 'size': '50'}))
 
-    SEMESTER_CHOICES = [
-        ('1', 'Primer Semestre'),
-        ('2', 'Segundo Semestre'),
-        ('3', 'Tercer Semestre'),
-        ('4', 'Cuarto Semestre'),
-        ('5', 'Quinto Semestre'),
-        ('6', 'Sexto Semestre'),
-        ('7', 'Septimo Semestre'),
-        ('8', 'Octavo Semestre'),
-        ('9', 'Noveno Semestre'),
-        ('10', 'Decimo Semestre'),
-        ('11', 'Onceavo Semestre'),
-        ('12', 'Doceavo Semestre'),
-    ]
-
-    semester = forms.ChoiceField(
-        label='Semestre en el que se encuentra', choices=SEMESTER_CHOICES)
+    semesterOptions = Semester.SEMESTER_CHOICES
+    semester = forms.ChoiceField(label='Semestre en el que se encuentra', choices=semesterOptions)
     
     careers = Carrera.objects.all()
     careerOption = [(career.carreraID, career.nameCarrera) for career in careers]
