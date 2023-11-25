@@ -50,8 +50,6 @@ def sendAlert(request, noti_id):
             emailMessage.attach('Alerta_Estudiante.pdf', seguimientoBeca.read(), 'application/pdf')
             emailMessage.send(fail_silently=False)
             messages.success(request, 'Alerta enviada con éxito')
-            notificacion = get_object_or_404(Alerta, id=noti_id)
-            notificacion.delete()
         return redirect('/menu_filantropia')
             
     else:

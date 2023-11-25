@@ -118,15 +118,19 @@
                                     {% for notificaciones in notificaciones %}
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <tr>
-                                                <div style="display: flex;">
-                                                    <td style="border: none; ">
+                                            {% if notificaciones.isRead %}
+                                                <tr class="table-secondary">
+                                            {% else %}
+                                                <tr class="table-light">
+                                            {% endif %}
+                                                <td style="border: none; ">
+                                                    <div style="display: flex;">
                                                         {{notificaciones.title}}
                                                         <button name="noti" value={{notificaciones.id}} style="border: none; float: right;" id="noti">
                                                             <i class="bi bi-eye"></i>  
                                                         </button>
-                                                    </td>
-                                                </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </form>
                                     {% endfor %}
@@ -134,6 +138,7 @@
                             </table>
                         </div>
                     </div>
+                    
                 </div>
             </section>
         </section>
