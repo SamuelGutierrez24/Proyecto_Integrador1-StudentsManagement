@@ -1,14 +1,9 @@
 from django.shortcuts import render, redirect
 from Icesi_Students_Management.models import Student
 from Icesi_Students_Management.forms import addStudent
-from Icesi_Students_Management.models import InformacionFinanciera
-from Icesi_Students_Management.models import SeguimientoBeca
-from Icesi_Students_Management.models import Carrera, Semester
 from django.contrib import messages
-import datetime
 
-def agregar(request):
-    careers = Carrera.objects.all()
+def agregarInformacionEscrita(request):
     if request.method == 'POST':
         form = addStudent(request.POST)
         print(request.POST)
@@ -19,7 +14,9 @@ def agregar(request):
             codigo = form.cleaned_data['Codigo']
             studentCode = Student.objects.filter(code=codigo).exists()
             if studentCode:
-                return render(request, 'agregar_estudiante.html', {'form': addStudent, 'error': "El código ya está en uso"})
+                messages.error(request, 'Cuidado! El codigo del estudiante ya esta en uso')
+                
+                return render(request, 'agregar_estudiante.html', {'form': addStudent})
             else:
                 # Redirigir a la vista agregar_estudiante2.html
                 return redirect('agregar estudiante 2')
