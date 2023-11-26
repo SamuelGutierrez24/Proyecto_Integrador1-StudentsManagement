@@ -86,32 +86,37 @@
                           </form>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 " style="background-color: #6c788e; border-radius: 25px;" >
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <br>
-                    <div class = "tableFixHead  ">
+                    <div class="tableFixHead">
                         <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
                             <thead>
                                 <tr>
-                                    <th class="text-center" style="background-color: #6c788e; border: none; border-radius: 25px;">
+                                    <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
                                         Notificaciones
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for notificaciones in notificaciones %}
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <tr>
-                                            <div style="display: flex;">
-                                                <td style="border: none; ">
-                                                    {{notificaciones.title}}  
-                                                    <button name="noti" value={{notificaciones.id}} style="border: none; float: right;">
-                                                        <i class="bi bi-eye"></i>  
-                                                    </button>
-                                                </td>
-                                            </div>
-                                        </tr>
-                                    </form>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {% if notificaciones.isRead %}
+                                    <tr class="table-secondary">
+                                        {% else %}
+                                    <tr class="table-light">
+                                        {% endif %}
+                                        <div style="display: flex;">
+                                            <td style="border: none; ">
+                                            {{notificaciones.title}}
+                                            <button name="noti" value={{notificaciones.id}}
+                                                style="border: none; float: right;" id="noti">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                </form>
                                 {% endfor %}
                             </tbody>
                         </table>

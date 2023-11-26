@@ -33,6 +33,8 @@ def menu(request):
         id = request.POST["noti"]
         print(id)
         noti = Alerta.objects.all().filter(id =  id).first()
+        noti.isRead = True
+        noti.save()
 
         return render(request, 'notification.html', {'noti': noti})
 
