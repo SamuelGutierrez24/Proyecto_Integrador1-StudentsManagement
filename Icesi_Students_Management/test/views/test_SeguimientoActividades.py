@@ -7,6 +7,7 @@ from Icesi_Students_Management.models import Becas
 from Icesi_Students_Management.forms import ActivityForm
 from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Semester
+from Icesi_Students_Management.models import Carrera
 # Create your tests here.
 class registroActividadTestCase(TestCase):
 
@@ -17,7 +18,8 @@ class registroActividadTestCase(TestCase):
         beca = Becas.objects.create(type = 'Completa', percentage = '100', description='Beca completa', alimentacion= True, transporte = True)
         estudiante = Student.objects.create(id= 2, name = 'Luis', lastName = 'Pinillos', code = 'A00301045', email='luis@gmail.com', beca_id= '1')
         semester = Semester.objects.create(name='2023-1')
-        seguimientoBeca = SeguimientoBeca.objects.create(testimonio = 'Agradecido', studentID = estudiante, SemesterID = semester)
+        carrera = Carrera.objects.create(nameCarrera = 'Ingenieria de sistemas', carreraID = '1', precioMatricula= 10000000)
+        seguimientoBeca = SeguimientoBeca.objects.create(testimonio = 'Agradecido', studentID = estudiante, SemesterID = semester, carreraID=carrera)
         activity = Actividad.objects.create(nombre='Porrismo')
         asistencia = AsistenciasActividad.objects.create(seguimientoID=seguimientoBeca,ActividadID=activity)
         self.assertEquals(asistencia.ActividadID,activity)
@@ -32,15 +34,14 @@ class registroActividadTestCase(TestCase):
         beca = Becas.objects.create(type = 'Completa', percentage = '100', description='Beca completa', alimentacion= True, transporte = True)
         estudiante = Student.objects.create(id= 2, name = 'Luis', lastName = 'Pinillos', code = 'A00301045', email='luis@gmail.com', beca_id= '1')
         semester = Semester.objects.create(name='2023-1')
-        seguimientoBeca = SeguimientoBeca.objects.create(testimonio = 'Agradecido', studentID = estudiante, SemesterID = semester)
-        activity = Actividad.objects.create(nombre='Porrismo')
+        carrera = Carrera.objects.create(nameCarrera = 'Ingenieria de sistemas', carreraID = '1', precioMatricula= 10000000)
+        seguimientoBeca = SeguimientoBeca.objects.create(testimonio = 'Agradecido', studentID = estudiante, SemesterID = semester, carreraID=carrera)
+        activity = Actividad.objects.create(id = '1', nombre='Porrismo', tipo= 1)
         data= {
             'student': 'A00381035', 
             'activity': '1',
 
         }
-
         form = ActivityForm(data=data)
-        
         self.assertTrue(form.is_valid())
 

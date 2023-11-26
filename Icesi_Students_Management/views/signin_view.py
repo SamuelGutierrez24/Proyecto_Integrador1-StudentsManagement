@@ -1,19 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 def signin(request):
+
     if request.method == "GET":
         return render(request, 'signin.html')
     else:
-        
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        print(user.rol)
         if user is not None:
-            if user.rol == 0:
-                login(request, user)
-                return redirect('home')
-            elif user.rol == 2:
+            if user.rol == 2:
                 login(request, user)
                 return redirect('menu filantropia')
             elif user.rol == 3:
@@ -25,9 +22,12 @@ def signin(request):
             elif user.rol == 5:
                 login(request, user)
                 return redirect('menuBalanceAcademico')
+            elif user.rol == 6:
+                return redirect('crea')
             else:
-                print("No puede entrear")
+                return render(request, 'signin.html', {
+                    'error': 'Rol de usuario no valido'
+                })
         else:
-            return render(request, 'signin.html', {
-                'error': 'Usuario y/o contrasena incorrecta'
-            })
+            messages.error(request,"Usuario y/o contrasena incorrecta")
+            return render(request, 'signin.html')

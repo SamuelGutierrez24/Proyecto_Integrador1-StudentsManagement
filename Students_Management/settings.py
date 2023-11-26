@@ -133,3 +133,10 @@ AUTH_USER_MODEL = "Icesi_Students_Management.User"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Icesi_Students_Management/media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'filantropiaicesi@gmail.com'
+EMAIL_HOST_PASSWORD = 'kaxz umrt odcn hmsf'
+EMAIL_USE_TLS = True

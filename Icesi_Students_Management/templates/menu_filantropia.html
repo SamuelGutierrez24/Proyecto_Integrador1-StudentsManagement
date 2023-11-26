@@ -1,105 +1,145 @@
 <!DOCTYPE html>
 <html>
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-    {% block content %}
+{% block content %}
 
-    <head>
-        <style>
-            .tableFixHead {
-                overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
-                height: 500px; /* gives an initial height of 200px to the table */
-            }
-            .tableFixHead thead th {
-                position: sticky; /* make the table heads sticky */
-                top: 0px; /* table head will be placed from the top of the table and sticks to it */
-            }
-            table {
-                border-collapse: collapse; /* make the table borders collapse to each other */
-                width: 100%;
-            }
-            th,
-            td {
-                padding: 8px 16px;
-                border: 1px solid #ccc;
-            }
-            th {
-                background: #eee;
-            } 
-        </style>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <main class="container py-5">
-            <section class="card" style="background-color: #cfd5e1;height: 40rem;">
-                <div class="card-header" style="background-color: #6C788E;">
-                    <a class="btn" href="/" style="float: right; background-color: #a6aec1">
-                        <b>Log Out</b>
-                    </a>
-                </div>
-                <section class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+<head>
+    <style>
+        .tableFixHead {
+            overflow-y: auto;
+            /* make the table scrollable if height is more than 200 px  */
+            height: 500px;
+            /* gives an initial height of 200px to the table */
+        }
 
-                            <div style="text-align: start;">
-                                <h1>
-                                    Menu
-                                </h1>
-                            </div>
+        .tableFixHead thead th {
+            position: sticky;
+            /* make the table heads sticky */
+            top: 0px;
+            /* table head will be placed from the top of the table and sticks to it */
+        }
 
-                            <div class="d-grid gap-2">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="d-grid gap-4 col-5 mx-auto">
-                                    <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/agregar_estudiante/">
-                                        <b>Agregar Estudiante</b>
-                                    </a>
-                                    <a class="btn" style="background-color: #a6aec1;" href="/generar_reportes/">
-                                        <b>Generar Reportes</b>
-                                    </a>
-                                    <a class="btn" style="background-color: #a6aec1;" href="/solicitar_informacion/">
-                                        <b>Solicitar Actualizacion de Informacion</b>
-                                    </a>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                            </div>
+        table {
+            border-collapse: collapse;
+            /* make the table borders collapse to each other */
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background: #eee;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block tituloPagina %}
+    <title>Filantropia</title>
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <main class="container py-5">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="isNotSend">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="isSend">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <section class="card" style="background-color: #cfd5e1;height: 40rem;">
+            <div class="card-header" style="background-color: #6C788E;">
+                <a class="btn" href="/" style="float: right; background-color: #a6aec1">
+                    <b>Log Out</b>
+                </a>
+            </div>
+            <section class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+
+                        <div style="text-align: start;">
+                            <h1>
+                                Menu
+                            </h1>
                         </div>
-                        
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+
+                        <div class="d-grid gap-2">
                             <br>
-                            <div class = "tableFixHead">
-                                <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
-                                                Notificaciones
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for notificaciones in notificaciones %}
-                                            <tr>
-                                                <td  onclick="" >
-                                                    {{notificaciones.title}}
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="d-grid gap-4 col-5 mx-auto">
+                                <a class="btn" id="add_student" style="background-color: #a6aec1;" href="/menu_filantropia/agregar_estudiante/">
+                                    <b>Agregar Estudiante</b>
+                                </a>
+                                <a class="btn" style="background-color: #a6aec1;" href="envioReportes.html">
+                                    <b>Generar Reportes</b>
+                                </a>
+                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/solicitudInformacion/">
+                                    <b>Solicitar Actualizacion de Informacion</b>
+                                </a>
                             </div>
+                            <br>
+                            <br>
+                            <br>
                         </div>
                     </div>
-                </section>
-            </section>
-        </main>
-    </body>
 
-    {% endblock %}
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <br>
+                        <div class="tableFixHead">
+                            <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                            Notificaciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for notificaciones in notificaciones %}
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <tr>
+                                                <div style="display: flex;">
+                                                    <td style="border: none; ">
+                                                        {{notificaciones.title}}
+                                                        <button name="noti" value={{notificaciones.id}} style="border: none; float: right;" id="noti">
+                                                            <i class="bi bi-eye"></i>  
+                                                        </button>
+                                                    </td>
+                                                </div>
+                                            </tr>
+                                        </form>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+
+{% endblock %}
+
 </html>

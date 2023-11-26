@@ -2,7 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from Icesi_Students_Management.models import *
 from django.db.models import Q
 from django.http import Http404
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+# def rol_check(user):
+#     return user.rol == 4
+#
+#
+# @login_required
+# @user_passes_test(rol_check, "/signin/")
 def menuContabilidad(request):
     return render(request, 'menuContabilidad.html')   
 
