@@ -18,4 +18,4 @@ def menu(request):
             notifi.append(noti)
     
     notifi.reverse()    
-    return render(request, 'menuBalanceAcademico.html', {'notificaciones': notifi})
+    return render(request, 'balanceAcademicoCAMBIOS.html', {'notificaciones': notifi})

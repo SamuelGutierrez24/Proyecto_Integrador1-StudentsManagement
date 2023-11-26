@@ -10,13 +10,19 @@ from Icesi_Students_Management.models import User
 from Icesi_Students_Management.forms import ActivityForm
 
 def registroA(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+    for noti in notificaciones:
+        if(noti.type==2):
+            notifi.append(noti)
+    notifi.reverse() 
     
     if request.method == 'GET':
         print('enviando formulario')
         return render(request, 'registroActividad.html',{
                 'form': ActivityForm,
-                "studentInfo": ""
-
+                "studentInfo": "",
+                'notificaciones': notifi
                 })
     else:
         studentToVerify = request.POST['student']
@@ -26,7 +32,8 @@ def registroA(request):
              return  render(request, 'registroActividad.html',{
                 'form': ActivityForm,
                 "studentInfo": "",
-                "error": 'El estudiante no existe'
+                "error": 'El estudiante no existe',
+                'notificaciones': notifi
                 })
         else:
             print(request.POST)
@@ -41,7 +48,8 @@ def registroA(request):
                     'form': form,
                     "studentInfo": "true",
                     "nombre": student.name,
-                    "apellido": student.lastName
+                    "apellido": student.lastName,
+                    'notificaciones': notifi
                     })
 
             else:    
@@ -63,7 +71,8 @@ def registroA(request):
                     'form': form,
                     "studentInfo": "true",
                     "nombre": student.name,
-                    "apellido": student.lastName
+                    "apellido": student.lastName,
+                    'notificaciones': notifi
                     })
                 else:
                     print('No esta')
@@ -72,7 +81,8 @@ def registroA(request):
                     return render(request, 'registroActividad.html',{
                     'form': ActivityForm,
                     "alert":True,
-                    "studentInfo": ""
+                    "studentInfo": "",
+                    'notificaciones': notifi
                     })
             
                 

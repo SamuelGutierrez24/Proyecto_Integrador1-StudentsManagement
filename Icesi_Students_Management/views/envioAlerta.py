@@ -4,6 +4,12 @@ from ..forms import envioMensaje
 from django.contrib import messages
 
 def enviarMensaje(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if(noti.type==4):
+            notifi.append(noti)
     if request.method == 'POST':
         form = envioMensaje(request.POST)
         if form.is_valid():
@@ -13,4 +19,4 @@ def enviarMensaje(request):
     else:
         form = envioMensaje()
 
-    return render(request, 'envioAlerta.html', {'form': form})
+    return render(request, 'envioAlerta.html', {'form': form,'notificaciones': notifi})

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from Icesi_Students_Management.models import Student
+from Icesi_Students_Management.models import Student, Alerta
 from Icesi_Students_Management.models import Becas
 from Icesi_Students_Management.forms import addStudent
 from Icesi_Students_Management.models import InformacionFinanciera
@@ -9,6 +9,12 @@ from django.contrib import messages
 import datetime
 
 def agregar(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if(noti.type==4):
+            notifi.append(noti)
     becas = Becas.objects.all()
     careers = Carrera.objects.all()
     if request.method == 'POST':
@@ -81,4 +87,4 @@ def agregar(request):
                 return redirect('menu filantropia')
             
             
-    return render(request, 'agregar_estudiante.html', {'form': addStudent, 'Becas': becas})
+    return render(request, 'agregar_estudiante.html', {'form': addStudent, 'Becas': becas, 'notificaciones': notifi})

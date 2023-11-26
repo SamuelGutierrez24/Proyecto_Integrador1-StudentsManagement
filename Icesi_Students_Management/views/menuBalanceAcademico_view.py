@@ -9,4 +9,4 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 # @login_required
 # @user_passes_test(rol_check, "/signin/")
 def menuBalanceAcademico(request):
-    return render(request, 'menuBalanceAcademico.html')
+    return render(request, 'menuBalanceAcademicoCAMBIOS.html')
