@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <main class="container py-5">
+        <section class="card" style="background-color: #cfd5e1;height: 40rem;">
+            <div class="card-header" style="background-color: #6C788E;">
+                <a class="btn" style="background-color: #a6aec1; float: left;" href="/menu_filantropia/agregar_estudiante2/">
+                    <b>Volver</b>
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div style="text-align: start;">
+                        <h1>
+                            Agregar Estudiante
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <br>
+                            <i>Nombre: {{prev_form_data.Nombre}} {{prev_form_data.Apellido}}</i>
+                            <br>
+                            <i>Codigo: {{prev_form_data.Codigo}}</i>
+                            <br>
+                            <i>Email: {{prev_form_data.Email}}</i>
+                            <br>
+                            <i>Beca: {{beca_form_data.type}} {{beca_form_data.percentage}}% {% if beca_form_data.alimentacion %} <i class="fas fa-bacon"></i> {% endif %} {% if beca_form_data.transporte %} <i class="fas fa-bus"></i> {% endif %}</i>
+                        </div>
+                    </div>
+                    <form action="/menu_filantropia/agregar_estudiante3/" method="post">
+                        <div class="row">
+                            {% csrf_token %}
+                            <div style="text-align: center;">
+                                <button type="submit" name="cancelar">
+                                    Cancelar
+                                </button>
+                                <button type="submit" name="confirmar">
+                                    Confirmar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+{% endblock %}
+
+</html>

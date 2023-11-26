@@ -27,6 +27,8 @@ import Icesi_Students_Management.views.bumenu as buMenu
 import Icesi_Students_Management.views.registroActividades as registroA
 import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
+import Icesi_Students_Management.views.agregar_estudiante2 as agregar_estudiante2
+import Icesi_Students_Management.views.agregar_estudiante3 as agregar_estudiante3
 
 
 urlpatterns = [
@@ -46,6 +48,8 @@ urlpatterns = [
     path('bienestarUniversitario/',buMenu.menu, name='bienestarUniversitario'),
     path('bienestarUniversitario/registroActividades',registroA.registroA, name='registroActividades'),
     path('menu_filantropia/', menu_filantropia.menu, name='menu filantropia'),
-    path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregar, name='agregar estudiante'),
+    path('menu_filantropia/agregar_estudiante/', agregar_estudiante.agregarInformacionEscrita, name='agregar estudiante'),
+    path('menu_filantropia/agregar_estudiante2/', agregar_estudiante2.agregarInformacionBoton, name='agregar estudiante 2'),
+    path('menu_filantropia/agregar_estudiante3/', agregar_estudiante3.agregarEstudiante, name='agregar estudiante 3'),
     path('', include('Icesi_Students_Management.urls'))
 ]
