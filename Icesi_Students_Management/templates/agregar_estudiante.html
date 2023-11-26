@@ -5,51 +5,9 @@
 {% block content %}
 
 <head>
-    <style>
-        .tableFixHead {
-            overflow-y: auto;
-            height: 425px;
-        }
-
-        .tableFixHead thead th {
-            position: sticky;
-            top: 0px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            padding: 8px 16px;
-            border: 1px solid #ccc;
-        }
-
-        th {
-            background: #eee;
-        }
-
-        .buttonSelect {
-            padding: 8px 16px;
-            width: 100%;
-        }
-
-        .selected {
-            background-color: #6c788e;
-            color: white;
-            padding: 8px 16px;
-            width: 100%;
-        }
-
-        #boton:hover{
-            background-color: #6c788e;
-            color: white;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     {% block tituloPagina %}
     <title>Agregar estudiantes</title>
@@ -58,6 +16,21 @@
 
 <body>
     <main class="container py-5">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="isNotSend">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="isSend">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
         <section class="card" style="background-color: #cfd5e1;height: 40rem;">
             <div class="card-header" style="background-color: #6C788E;">
                 <a class="btn" style="background-color: #a6aec1; float: left;" href="/menu_filantropia/">
@@ -76,72 +49,20 @@
                                 <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                                     <div class="d-grid gap-2">
                                         {% csrf_token %}
-                                        <i style="color: red;">{{ error }}</i>
-                                        <br>
-                                        <br>
                                         {{ form }}
                                         <br>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                    <br>
-                                    <div class="tableFixHead">
-                                        <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
-                                                        Becas
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for becas in Becas %}
-                                                    <tr>
-                                                        <td>
-                                                            <button type="submit" class="buttonSelect" name="selected_button" value="{{ becas.id }}" id="boton" onclick="handleButtonClick(this)">
-                                                                {{ becas.type }}
-                                                                &nbsp; &nbsp; &nbsp;
-                                                                {{ becas.percentage }}% <i class="fas fa-money-bill"></i>
-                                                                {% if becas.alimentacion %}
-                                                                &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
-                                                                {% endif %}
-                                                                {% if becas.transporte %}
-                                                                &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
-                                                                {% endif %}
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="submit">
+                                    Siguiente
+                                </button>
                             </div>
                         </form>
                 </div>
         </section>
     </main>
-    <input type="hidden" id="selected_button_input" name="selected_button" value="{% if request.session.selected_button %}{{ request.session.selected_button }}{% endif %}">
-    <script>
-    // Función para manejar el clic en los botones
-    function handleButtonClick(button) {
-        // Eliminar la clase "selected" de cualquier otro botón
-        var buttons = document.querySelectorAll(".buttonSelect");
-        buttons.forEach(function (btn) {
-            btn.classList.remove("selected");
-        });
-
-        // Agregar la clase "selected" al botón clickeado
-        button.classList.add("selected");
-
-        // Actualizar el valor en el campo oculto
-        var selectedButtonValue = button.value;
-        document.querySelector("#selected_button_input").value = selectedButtonValue;
-
-        // Agregar una línea para imprimir el valor del botón en la consola
-        console.log("Valor del botón seleccionado: " + selectedButtonValue);
-    }
-    </script>
 </body>
 
 {% endblock %}

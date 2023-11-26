@@ -3,8 +3,6 @@ from Icesi_Students_Management.models import *
 from Icesi_Students_Management.forms import *
 from django.urls import reverse
 
-
-
 class ProductoModelTestCase(TestCase):
   def test_creacion_de_beca(self):
     beca = Becas.objects.create(type = "Completa", percentage = "10", description = "Aqui deberia de haber texto asi es", alimentacion = True,transporte = True)
@@ -34,6 +32,16 @@ class VistaProductoTestCase(TestCase):
     
   def test_vista_agregar_estudiante(self):
     response = self.client.get(reverse('agregar estudiante'))
+    print(response)
+    self.assertEqual(response.status_code, 200)
+  
+  def test_vista_agregar_estudiante2(self):
+    response = self.client.get(reverse('agregar estudiante 2'))
+    print(response)
+    self.assertEqual(response.status_code, 200)
+  
+  def test_vista_agregar_estudiante3(self):
+    response = self.client.get(reverse('agregar estudiante 3'))
     print(response)
     self.assertEqual(response.status_code, 200)
 
