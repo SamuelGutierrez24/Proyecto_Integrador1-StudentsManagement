@@ -87,13 +87,15 @@
                             <br>
                             <br>
                             <div class="d-grid gap-4 col-5 mx-auto">
-                                <a class="btn" id="add_student" style="background-color: #a6aec1;" href="/menu_filantropia/agregar_estudiante/">
+                                <a class="btn" id="add_student" style="background-color: #a6aec1;"
+                                    href="/menu_filantropia/agregar_estudiante/">
                                     <b>Agregar Estudiante</b>
                                 </a>
                                 <a class="btn" style="background-color: #a6aec1;" href="envioReportes.html">
                                     <b>Generar Reportes</b>
                                 </a>
-                                <a class="btn" style="background-color: #a6aec1;" href="/menu_filantropia/solicitudInformacion/">
+                                <a class="btn" style="background-color: #a6aec1;"
+                                    href="/menu_filantropia/solicitudInformacion/">
                                     <b>Solicitar Actualizacion de Informacion</b>
                                 </a>
                             </div>
@@ -116,24 +118,30 @@
                                 </thead>
                                 <tbody>
                                     {% for notificaciones in notificaciones %}
-                                        <form method="POST">
-                                            {% csrf_token %}
-                                            <tr>
-                                                <div style="display: flex;">
-                                                    <td style="border: none; ">
-                                                        {{notificaciones.title}}
-                                                        <button name="noti" value={{notificaciones.id}} style="border: none; float: right;" id="noti">
-                                                            <i class="bi bi-eye"></i>  
-                                                        </button>
-                                                    </td>
-                                                </div>
-                                            </tr>
-                                        </form>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {% if notificaciones.isRead %}
+                                        <tr class="table-secondary">
+                                            {% else %}
+                                        <tr class="table-light">
+                                            {% endif %}
+                                            <div style="display: flex;">
+                                                <td style="border: none; ">
+                                                {{notificaciones.title}}
+                                                <button name="noti" value={{notificaciones.id}}
+                                                    style="border: none; float: right;" id="noti">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </form>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
                 </div>
             </section>
         </section>

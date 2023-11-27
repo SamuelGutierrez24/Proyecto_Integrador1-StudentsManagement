@@ -24,10 +24,13 @@ def menu(request):
             if(noti.type==4):
                 notifi.append(noti)
 
-        return render(request, 'menu_filantropia.html', {'notificaciones': notifi})
+        return render(request, 'menu_filantropia.html', {'notificaciones': reversed(notifi)})
     else:
         
         id = request.POST["noti"]
+        notification = Alerta.objects.all().get(id = id)
+        notification.isRead = True
+        notification.save()
         print(id)
 
         return redirect(reverse('envioAlerta', kwargs={'noti_id': id}))

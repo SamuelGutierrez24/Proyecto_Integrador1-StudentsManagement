@@ -175,10 +175,12 @@ class Alerta(models.Model):
         ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
         ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
         FILANTROPIA =  4,('Actualización de actividades no academicas de un estudiante')
+        CREA = 5,('Actualización de Actividades del CREA')
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)
     StudentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    isRead = models.BooleanField(default=False)
     def __str__(self):
         return self.title
     
