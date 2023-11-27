@@ -21,7 +21,6 @@ class SigninTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signin.html')
 
-
     def test_invalid_post_request(self):
         data = {
             'username': 'user1',
@@ -83,9 +82,9 @@ class SigninTestCase(TestCase):
     def test_invalid_rol(self):
         data = {
             'username': 'user7',
-            'password': 'password7',
+            'password': 'password7'
         }
         response = self.client.post(reverse('signin'), data)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signin.html')
-        self.assertContains(response, 'No puede ingresar. Su usuario no tiene un rol asignado')
+        self.assertContains(response, 'Rol de usuario no valido')

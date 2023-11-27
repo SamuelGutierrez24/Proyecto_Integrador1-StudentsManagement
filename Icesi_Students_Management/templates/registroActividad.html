@@ -210,9 +210,11 @@
     </header>
 
     {% if alert is True %}
-    <div class="alert" id="alertBU">
-        <span class="closebtn" onclick="location.href='./'">&times;</span>
+    <br>
+    <br>
+    <div class="alert alert-success alert-dismissible fade show " id="alertBU">
         <strong>Notificación Enviada</strong> Se registro el reporte de información.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="location.href='./'"></button>
     </div>
     {% endif %}
     <div class="container my-5 shadow"

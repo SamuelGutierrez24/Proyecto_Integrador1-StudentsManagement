@@ -35,7 +35,7 @@ class RegisterTestCase(TestCase):
             'phoneNumber': '987654321'
         })
         self.assertEqual(response.status_code, 200)  # Registration form should be rendered again
-        self.assertContains(response, 'Contrasenas son distintas')
+        self.assertContains(response, 'Contraseñas son distintas')
 
     def test_register_missing_fields(self):
         response = self.client.post(reverse('signup'), {

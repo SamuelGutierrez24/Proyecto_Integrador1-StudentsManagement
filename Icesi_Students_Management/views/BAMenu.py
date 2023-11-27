@@ -6,12 +6,13 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 from django.urls import reverse
 from django.http import HttpResponse
 
-# def rol_check(user):
-#     return user.rol == 5
-#
-#
-# @login_required
-# @user_passes_test(rol_check, "/signin/")
+
+def rol_check(user):
+    return user.rol == 5
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 
 def menu(request):
     estudiante = Student.objects.all()

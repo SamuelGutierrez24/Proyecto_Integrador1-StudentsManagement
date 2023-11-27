@@ -1,13 +1,6 @@
-from django.test import TestCase, Client
+from django.test import TestCase
+from Icesi_Students_Management.forms import *
 from django.urls import reverse
-from Icesi_Students_Management.models import Actividad
-from Icesi_Students_Management.models import AsistenciaCREA
-from Icesi_Students_Management.models import Student
-from Icesi_Students_Management.models import Becas
-from Icesi_Students_Management.forms import CreaForm
-from Icesi_Students_Management.models import SeguimientoBeca
-from Icesi_Students_Management.models import Semester
-from Icesi_Students_Management.models import Carrera
 # Create your tests here.
 class registroActividadTestCase(TestCase):
 
@@ -26,6 +19,14 @@ class registroActividadTestCase(TestCase):
         self.assertEqual(asistencia.seguimiento,seguimientoBeca)
 
     def test_vista_registrarActividad(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=6)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('crea'))
+
         response = self.client.get(reverse('registerCrea'))
         print(response)
         self.assertEquals(response.status_code,200)

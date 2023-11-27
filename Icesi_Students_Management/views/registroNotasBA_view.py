@@ -1,10 +1,20 @@
 from django.shortcuts import render, redirect
 from Icesi_Students_Management.models import Student, Materia, BalanceAcademico, Status, Nota, SeguimientoBeca, Alerta
 import pandas as pd
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 5
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def registroNotasBA(request):
     return render(request, 'registroNotasBA.html')
 
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def RegMateria(request):
     notificaciones = Alerta.objects.all()
     notifi = []

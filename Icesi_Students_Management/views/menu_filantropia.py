@@ -43,6 +43,7 @@ def testimonio(request):
 
 
 def menu(request):
+
     if request.method == 'GET':
         form = envioMensaje(request.POST)
         notificaciones = Alerta.objects.all()

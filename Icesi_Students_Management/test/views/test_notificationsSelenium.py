@@ -30,7 +30,7 @@ class testNotificationForSend(LiveServerTestCase):
      
     notification = self.driver.find_element(by=By.ID,value='noti')
     notification.click()
-    self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/menu_filantropia/envioAlerta/56/' )
+    self.assertEqual(self.driver.current_url,'http://127.0.0.1:8000/menu_filantropia/envioAlerta' )
 
 
 class testNotificationIsSend(LiveServerTestCase):

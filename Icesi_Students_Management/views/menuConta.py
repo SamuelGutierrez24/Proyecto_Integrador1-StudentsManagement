@@ -8,12 +8,13 @@ from django.urls import reverse
 from Icesi_Students_Management.models import *
 from django.db.models import Q
 
-# def rol_check(user):
-#     return user.rol == 4
-#
-#
-# @login_required
-# @user_passes_test(rol_check, "/signin/")
+
+def rol_check(user):
+    return user.rol == 4
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 
 def menuContabilidad(request):
     estudiante = Student.objects.all()
@@ -30,14 +31,7 @@ def menuContabilidad(request):
         if (noti.type == 1):
             notifi.append(noti)
     notifi.reverse()
-    return render(request, 'menuContabilidad.html', {"estudiante": estudiante,'notificaciones': notifi})
-
-def eliminar_estudiante(request, code):
-    estudiante = get_object_or_404(Student, code=code)
-    infoFinan = get_object_or_404(InformacionFinanciera, studentID=code)
-    estudiante.delete()
-    infoFinan.delete()
-    return redirect('/contabilidad')
+    return render(request, 'menuContabilidad.html', {'estudiante': estudiante,'notificaciones': notifi})
 
 def ver_noti(request, id):
     try:

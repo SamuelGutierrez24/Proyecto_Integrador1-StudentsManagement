@@ -31,6 +31,8 @@ import Icesi_Students_Management.views.menu_filantropia as menu_filantropia
 import Icesi_Students_Management.views.agregar_estudiante as agregar_estudiante
 import Icesi_Students_Management.views.agregar_estudiante2 as agregar_estudiante2
 import Icesi_Students_Management.views.agregar_estudiante3 as agregar_estudiante3
+import Icesi_Students_Management.views.agregar_estudiante2 as agregar_estudiante2
+import Icesi_Students_Management.views.agregar_estudiante3 as agregar_estudiante3
 from Icesi_Students_Management.views import notificacionEditable
 from Icesi_Students_Management.views import envioAlerta
 from Icesi_Students_Management.views import envioReportes
