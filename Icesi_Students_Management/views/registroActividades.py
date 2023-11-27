@@ -2,20 +2,35 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from Icesi_Students_Management.models import Student
 from Icesi_Students_Management.models import Actividad
+from Icesi_Students_Management.models import HistoryActivityAssistance
 from Icesi_Students_Management.models import AsistenciasActividad
 from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Alerta
 from Icesi_Students_Management.models import User
 from Icesi_Students_Management.forms import ActivityForm
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 3
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def registroA(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+    for noti in notificaciones:
+        if(noti.type==2):
+            notifi.append(noti)
+    notifi.reverse() 
     
     if request.method == 'GET':
         print('enviando formulario')
         return render(request, 'registroActividad.html',{
                 'form': ActivityForm,
-                "studentInfo": ""
-
+                "studentInfo": "",
+                'notificaciones': notifi
                 })
     else:
         studentToVerify = request.POST['student']
@@ -25,7 +40,8 @@ def registroA(request):
              return  render(request, 'registroActividad.html',{
                 'form': ActivityForm,
                 "studentInfo": "",
-                "error": 'El estudiante no existe'
+                "error": 'El estudiante no existe',
+                'notificaciones': notifi
                 })
         else:
             print(request.POST)
@@ -34,13 +50,14 @@ def registroA(request):
             if(action=='buscar'):
                 Vstudent = request.POST['student']
                 student = Student.objects.all().get(code=Vstudent)
-                actividad = Actividad.objects.all().get(id=request.POST['activity'])
-                form = ActivityForm(initial={'student': student,'activity': actividad})
+                #actividad = Actividad.objects.all().get(id=request.POST['activity'])
+                form = ActivityForm(initial={'student': student})
                 return render(request, 'registroActividad.html',{
                     'form': form,
                     "studentInfo": "true",
                     "nombre": student.name,
-                    "apellido": student.lastName
+                    "apellido": student.lastName,
+                    'notificaciones': notifi
                     })
 
             else:    
@@ -53,6 +70,8 @@ def registroA(request):
 
                 asistencia = AsistenciasActividad.objects.create(seguimientoID = seguimiento, ActividadID = actividad )
                 asistencia.save()
+                history = HistoryActivityAssistance.objects.create(student=student,activity=actividad)
+                history.save()
                 form = ActivityForm(initial={'student': session})
                 if('Chk' in request.POST):
                     print('Si esta')
@@ -60,16 +79,18 @@ def registroA(request):
                     'form': form,
                     "studentInfo": "true",
                     "nombre": student.name,
-                    "apellido": student.lastName
+                    "apellido": student.lastName,
+                    'notificaciones': notifi
                     })
                 else:
                     print('No esta')
-                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del estudiante' + request.POST['student'])
+                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del estudiante' + request.POST['student'], StudentID = Student.objects.all().get(code = Vstudent))
                     alert.save()
                     return render(request, 'registroActividad.html',{
                     'form': ActivityForm,
                     "alert":True,
-                    "studentInfo": ""
+                    "studentInfo": "",
+                    'notificaciones': notifi
                     })
             
                 

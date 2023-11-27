@@ -189,17 +189,60 @@ class addStudent(forms.Form):
                              max_length=100,
                              widget=forms.TextInput(attrs={'placeholder': 'Ingrese el codigo del estudiante', 'col': '10', 'size': '50'}))
 
+    semesterOptions = Semester.SEMESTER_CHOICES
+    semester = forms.ChoiceField(label='Semestre en el que se encuentra', choices=semesterOptions)
+    
+    careers = Carrera.objects.all()
+    careerOption = [(career.carreraID, career.nameCarrera) for career in careers]
+
+    # Agregar el campo de selección de carrera
+    career = forms.ChoiceField(
+        label='Carrera:',
+        choices=careerOption,
+        widget=forms.Select(attrs={'placeholder': 'Seleccione la carrera del estudiante'})
+    )
+
     class Meta:
         model = Student
-        fields = ['Nombre', 'Apellido', 'Email', 'Codigo']
-
+        fields = ['Nombre', 'Apellido', 'Email', 'Codigo','semester','career']
 
 class envioMensaje(forms.ModelForm):
-    title = forms.CharField(label="Titulo", max_length=20, required=False)
-    type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, required=False)
-    description = forms.CharField(label="Mensaje", max_length=20, required=False, widget=forms.Textarea)
+    title = forms.CharField(label="Titulo", max_length=400, widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    type = forms.ChoiceField(label="Destinatario", choices=Alerta.Type_alert.choices, widget=forms.Select)
+    description = forms.CharField(label="Mensaje", max_length=10000, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
 
     class Meta:
         model = Alerta
         fields = ['title', 'type', 'description']
 
+class enviarReporte(forms.Form):
+    title = forms.CharField(label="Titulo", max_length=70, required=False)
+    allDonor = forms.BooleanField(
+        label="Enviar seguimiento de beca a todos los donadores?", required=False)
+    email = forms.EmailField(label="Correo Destinatario", widget=forms.TextInput(
+        attrs={'placeholder': 'ejemplo@gmail.com'}), required=False)
+    description = forms.CharField(
+        label="Mensaje", max_length=500, required=False, widget=forms.Textarea)
+    informacionAcademica = forms.BooleanField(label="Informacion academica", required=False)
+    informacionFinanciera = forms.BooleanField(label="Informacion financiera", required=False)
+    informacionNoAcademica = forms.BooleanField(label="Informacion no academica", required=False)
+    testimonioEstudiante = forms.BooleanField(label="Testimonio del estudiante", required=False)
+    class Meta:
+        fields = ['title', 'allDonor','email', 'description', 'informacionAcademica', 'informacionFinanciera', 'informacionNoAcademica', 'testimonioEstudiante']
+
+class modificarAlerta(forms.ModelForm):
+    Title = forms.CharField(label="Titulo", widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+    Type = forms.ChoiceField(label="Tipo", choices=Alerta.Type_alert.choices, widget=forms.Select)
+    Description = forms.CharField(label="Descripcion", widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
+    Email = forms.EmailField(label="Correo Donante", widget=forms.TextInput(attrs={'col': '10', 'size': '60'}))
+
+    class Meta:
+        model = Alerta
+        fields = ['Title', 'Type', 'Description', 'Email']
+
+class TestimonyForm(forms.ModelForm):
+    testimonio = forms.CharField(label="Testimonio", max_length=10000, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
+
+    class Meta:
+        model = SeguimientoBeca
+        fields = ['testimonio']

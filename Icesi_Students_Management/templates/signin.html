@@ -1,115 +1,102 @@
 <!DOCTYPE html>
+{% load static%}
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Management</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <title>Inicio de Sesión</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
 </head>
 
 <body>
-  {% load static %}
-  <section class="h-100 gradient-form" style="background-color: #eee;">
+    <style>
+        .login #ingresar {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 15px;
+        }
 
-    {% if messages %}
-    {% for message in messages %}
-    {% if message.tags == 'error' %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% elif message.tags == 'success' %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endif %}
-    {% endfor %}
-    {% endif %}
+        #ingresar {
+            width: 100%;
+            height: 40px;
+            background-color: #337AB7;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 7px;
+            color: #fff;
+        }
 
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-10">
-          <div class="card text-black" style="border-radius: 25px;">
-            <div class="row g-0">
-              <div class="col-lg-6">
-                <div class="card-body p-md-5 mx-md-4">
-
-                  <div class="text-center mb-5">
-                    <img src="{% static 'logo_icesi_grispng.png' %}" style="width: 250px;" alt="logo">
-                  </div>
-                  <div class="text-center">
-                    <h4 class="mt-1 mb-5 pb-1">STUDENT MANAGEMENT</h4>
-                  </div>
-
-                  <form action="/signin/" method="POST">
-                    {% csrf_token %}
-
-
-
-                    <div class="form-outline mb-4">
-                      <h6 style="color: red; font-size: 15px;">
-                        {{error}}
-                      </h6>
-                    </div>
-
-                    <p>Porfavor ingresa a tu cuenta</p>
-
-                    <div class="form-outline mb-4">
-                      <input type="username" id="form2Example11" class="form-control" placeholder="Usuario"
-                        name="username" />
-                    </div>
-
-                    <div class="form-outline mb-4">
-                      <input type="password" id="form2Example22" class="form-control" placeholder="Contraseña"
-                        name="password" />
-                    </div>
-
-                    <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-block fa-lg gradient-custom-2 mb-3" type="submit"
-                        style="background-color:#6C788E; color:white">Ingresar</button>
-                      <a class="text-muted" href="#!"></a>
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center pb-4">
-                      <p class="mb-0 me-2">¿No tienes una cuenta?</p>
-                      <button id="signupBtn" type="button" class="btn btn-outline-danger">Crear cuenta</button>
-                    </div>
-
-                  </form>
-
-                </div>
-              </div>
-              <div class="col-lg-6 align-items-center">
-                <div
-                  style="background-color:#6C788E; width: 537px; height: 748px; border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
-                </div>
-              </div>
-            </div>
-          </div>
+        #ingresar:hover {
+            background-color: #1F4E75;
+        }
+    </style>
+    <div class="background">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
     </div>
-    </div>
-  </section>
+    <section class="home">
+        <div class="content">
+            <a href="#">Universidad Icesi</a>
+            <h2>Bienvenid@!</h2>
+            <h3><b>Seguimiento de estudiantes</b></h3>
+        </div>
+        <form action="/signin/" method="POST">
+            {% csrf_token %}
+            <div class="login">
+                <h2><b>Inicio de Sesión</b></h2>
+                <div class="input">
+                    <input type="text" class="input1" placeholder="Usuario"id='mail' name="username" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="input">
+                    <input type="password" class="input1" placeholder="Contraseña" id="password" name="password" required>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="button">
+                    <button class="btn" type="submit" id="ingresar">Ingresar</button>
+                    <a class="text-muted" href="#!"></a>
+                </div>
+                <div class="sign-up">
+                    <p>¿No tienes una cuenta?</p>
+                    <a href="#" id="signupBtn"> Registrar </a>
+                </div>
+            </div>
+        </form>
+    </section>
 </body>
 
 </html>
-
 <script>
-  const signupBtn = document.getElementById('signupBtn');
+    const signupBtn = document.getElementById('signupBtn');
 
-  signupBtn.addEventListener('click', function () {
-    location.href = '/signup';
-  });
+    signupBtn.addEventListener('click', function () {
+        location.href = '/signup';
+    });
 
 
-  function dismissAlert(alertId) {
-    document.getElementById('alert-' + alertId).style.display = 'none';
-  }
+    function dismissAlert(alertId) {
+        document.getElementById('alert-' + alertId).style.display = 'none';
+    }
 
 </script>

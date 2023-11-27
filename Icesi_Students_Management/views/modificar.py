@@ -2,8 +2,24 @@ from django.shortcuts import render, redirect, get_object_or_404
 from Icesi_Students_Management.models import *
 from ..forms import registrarInfoFinanciera, registrarInfoFinancieraModificar
 from django.contrib import messages
+from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 4
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def modificarInfo(request, code):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if (noti.type == 1):
+            notifi.append(noti)
+    notifi.reverse()
     tieneInfo = InformacionFinanciera.objects.filter(
         studentID=code).exists()
 
@@ -14,7 +30,8 @@ def modificarInfo(request, code):
         data = {
             'form': registrarInfoFinancieraModificar(instance=estudiante),
             'tieneInfo': tieneInfo,
-            'historial': historial
+            'historial': historial,
+            'notificaciones': notifi
         }
 
         if request.method == 'POST':
@@ -67,7 +84,7 @@ def modificarInfo(request, code):
                     descripcionAlerta = f"Gasto {request.POST['categoriaGasto']}: -{instancia.gasto} Fecha: {request.POST['fecha']}"
                     titleAlerta = f"Nuevo gasto registrado para el estudiante con código: {code}"
                     typeAlerta = 4
-                    alertaGenerada = Alerta(title=titleAlerta, type=typeAlerta, description=descripcionAlerta)
+                    alertaGenerada = Alerta(title=titleAlerta, type=typeAlerta, description=descripcionAlerta, StudentID = Student.objects.all().get(code=code))
                     alertaGenerada.save()
 
                     instancia.gasto = 0
@@ -75,11 +92,11 @@ def modificarInfo(request, code):
 
                     messages.success(request, 'Gastos registrados correctamente!')
                     messages.success(request, 'Actualización enviada a filantropía!')
-
-                    return redirect('/contabilidad/buscarEstud.html')
+                    url = reverse('modificarInfo', args=[code])
+                    return redirect(url)
             data["form"] = formulario
     else:
         messages.error(request, 'No se ha registrado la Información Financiera del estudiante')
-        return redirect('/contabilidad/buscarEstud.html')
+        return redirect('/contabilidad')
     
     return render(request, 'modificar.html', data)

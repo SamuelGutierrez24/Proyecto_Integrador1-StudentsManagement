@@ -51,7 +51,21 @@ class Status(models.Model):
         return self.type
 
 class Semester(models.Model):
-    name = models.CharField(max_length=200)
+    SEMESTER_CHOICES = [
+        ('Primer Semestre', 'Primer Semestre'),
+        ('Segundo Semestre', 'Segundo Semestre'),
+        ('Tercer Semestre', 'Tercer Semestre'),
+        ('Cuarto Semestre', 'Cuarto Semestre'),
+        ('Quinto Semestre', 'Quinto Semestre'),
+        ('Sexto Semestre', 'Sexto Semestre'),
+        ('Septimo Semestre', 'Septimo Semestre'),
+        ('Octavo Semestre', 'Octavo Semestre'),
+        ('Noveno Semestre', 'Noveno Semestre'),
+        ('Decimo Semestre', 'Decimo Semestre'),
+        ('Onceavo Semestre', 'Onceavo Semestre'),
+        ('Doceavo Semestre', 'Doceavo Semestre'),
+    ]
+    name = models.CharField(max_length=200, choices=SEMESTER_CHOICES)
     def __str__(self):
         return self.name
 
@@ -63,7 +77,6 @@ class SeguimientoBeca(models.Model):
         Semester, on_delete=models.CASCADE, default=None)
     carreraID = models.ForeignKey(
         Carrera, on_delete=models.CASCADE, default=None)
-
 
 class InformacionFinanciera(models.Model):
     informeID = models.AutoField(primary_key=True)
@@ -86,7 +99,6 @@ class InformacionFinanciera(models.Model):
     def str(self):
         return self.studentID
 
-
 class HistorialGastos(models.Model):
     informacion_financiera = models.ForeignKey(
         InformacionFinanciera, on_delete=models.CASCADE)
@@ -97,7 +109,6 @@ class HistorialGastos(models.Model):
 
     def _str_(self):
         return self.descripcion
-
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=35, unique=True)
@@ -150,20 +161,20 @@ class User(AbstractUser):
 
     rol = models.IntegerField(default=Role.RNULL,choices=Role.choices)
 
-
 class Alerta(models.Model):
     title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
         NNULL = 0, ('None')
-        ACTUALIZE_CONTA = 1, ('Actualizacion de informacion contabilidad')
-        ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
-        ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
-        FILANTROPIA =  4,('Actualización de actividades no academicas de un estudiante')
-        CREA =  5,('Actualización de actividades del CREA')
-
+        ACTUALIZE_CONTA = 1, ('Oficina de Contabilidad')
+        ACTUALIZE_BU = 2, ('Oficina de Bienestar Universitario')
+        ACTUALIZE_DIRECTOR = 3, ('Oficina de Balance Academico')
+        FILANTROPIA =  4,('Oficina de Filantropía')
+        CREA = 5, ('Oficina de CREA')
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)
+    StudentID = models.ForeignKey(Student, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    isRead = models.BooleanField(default=False)
     def __str__(self):
         return self.title
     
@@ -177,7 +188,15 @@ class AsistenciaCREA(models.Model):
     date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.activity
+        return self.activity.nombre
+    
+class HistoryActivityAssistance(models.Model):
+    date = models.DateField(auto_now=True)
+    student = models.ForeignKey(Student,on_delete=models.CASCADE,default=None)
+    activity = models.ForeignKey(Actividad, on_delete=models.CASCADE,default=None)
+    
+    def __str__(self):
+        return "Cambios en:" + self.student.name
 
 
 

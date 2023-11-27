@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            font-size: 30px;
+        }
+
+        h2 {
+            color: #666666;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Agregado para posicionar la imagen de forma absoluta con respecto a este contenedor */
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .student-name {
+            font-size: 20px;
+            margin-right: 20px;
+        }
+
+        .student-code {
+            font-size: 16px;
+            color: #999999;
+        }
+
+        #image {
+            max-width: 10px;
+            height: auto;
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!--<img src="Icesi_Students_Management/media/logo_icesi.png" alt="Logo Icesi" id="image"/>-->
+        <h1 style="text-align: center;">Alerta Estudiante</h1>
+        <div class="student-info">
+            <span class="student-name">Se ha generado una notificaci&oacute;n del estudiante con nombre:
+                <b>{{student.name}} {{student.lastName}}</b></span>&nbsp;<span
+                class="student-code">{{student.code}}.&nbsp;</span>
+        </div>
+        <h2> Titulo de la alerta</h2>
+        <p>{{Title}}</p>
+        <h2>Tipo de Alerta</h2>
+        {{Type}}
+        <h2>Descripcion:</h2>
+        {{Description}}
+    </div>
+</body>
+
+</html>

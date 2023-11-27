@@ -5,15 +5,31 @@ from Icesi_Students_Management.models import Actividad
 from Icesi_Students_Management.models import AsistenciaCREA
 from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Alerta
-from Icesi_Students_Management.models import User
+from Icesi_Students_Management.models import HistoryActivityAssistance
 from Icesi_Students_Management.forms import CreaForm
+from django.contrib.auth.decorators import user_passes_test, login_required
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 6
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def registerC(request):
     if request.method == 'GET':
+        notificaciones = Alerta.objects.all()
+        notifi = []
+
+        for noti in notificaciones:
+            if(noti.type==5):
+                notifi.append(noti)
 
         return render(request, 'registroCREA.html',{
                 'form': CreaForm,
-                "studentInfo": ""
+                "studentInfo": "",
+                'notificaciones': reversed(notifi)
          })
     else:
         if verifyItem(request.POST['student']):
@@ -28,6 +44,8 @@ def registerC(request):
                 reason = request.POST['reason']
                 assistance = AsistenciaCREA.objects.create( activity= activity, seguimiento= followUp, reason = reason)
                 assistance.save()
+                history = HistoryActivityAssistance.objects.create(student=student,activity=activity)
+                history.save()
                 form = CreaForm(initial={'student': studentCode})
                 if('Chk' in request.POST):
                     print('Si esta')
@@ -39,7 +57,7 @@ def registerC(request):
                     })
                 else:
                     print('No esta')
-                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del CREA del estudiante' + request.POST['student'])
+                    alert = Alerta.objects.create(title = 'Registro Actividad', type = 4, description = 'Se actualizaron las actividades del CREA del estudiante' + request.POST['student'], StudentID = Student.objects.all().get(code = studentCode))
                     alert.save()
                     return render(request, 'registroCREA.html',{
                     'form': CreaForm,

@@ -1,14 +1,21 @@
 from django.shortcuts import render, redirect
 from Icesi_Students_Management.models import Student
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 5
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def buscarEstudiante(request):
     if request.method == 'POST':
         codigo_estudiante = request.POST.get('inputBuscarEstud')
 
         # Buscar al estudiante por su nombre en la base de datos
         estudiante = Student.objects.all().filter(code=codigo_estudiante).exists()
-        print(estudiante)
-        
+
         if estudiante == False:
             return  render(request, 'buscarEstudiante.html',{
                 "error": 'El estudiante no existe'
@@ -20,5 +27,5 @@ def buscarEstudiante(request):
 
             request.session['estudData'] = {'nombre': nombre, 'apellido': apellido, 'codigo': codigo}
             return redirect('registroNotasBA.html')
-    
+
     return render(request, 'buscarEstudiante.html')

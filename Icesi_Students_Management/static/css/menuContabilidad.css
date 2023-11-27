@@ -57,3 +57,53 @@ table {
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
 }
+
+.navbar.navbar-dark.bg-dark.fixed-top {
+    background-color: #2C6698 !important;
+}
+.navbar_name{
+    color:#495661;
+}
+
+/* Añade esto a tu hoja de estilo CSS */
+.tableFixHead {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #f0f0f0; /* Puedes personalizar los colores aquí */
+}
+
+.tableFixHead::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.tableFixHead::-webkit-scrollbar-thumb {
+    background-color: #888888; /* Color del thumb */
+}
+
+.tableFixHead::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Color de la pista */
+}
+
+.offcanvas {
+    background-color: white !important;
+}
+
+/* Estilo para el cuerpo del offcanvas */
+.offcanvas-body {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Estilo para la tabla dentro del offcanvas */
+.tableFixHead {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+}
+
+/* Estilo para las filas de la tabla */
+.table tbody {
+    overflow: hidden;
+}
+

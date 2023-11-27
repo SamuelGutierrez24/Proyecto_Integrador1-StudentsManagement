@@ -1,15 +1,77 @@
 <!DOCTYPE html>
+<html lang="es">
 {% load static %}
 
-<html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaces a Bootstrap 5 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Enlace CSS Local -->
+    <link rel="stylesheet" href="/static/css/menuContabilidad.css">
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
+    <title>Registro de Actividad No Academica</title>
+</head>
+
+<body style="background-color: #fcfdff;">
     <style>
+        .navbar.navbar-dark.bg-dark.fixed-top {
+            background-color: #2C6698 !important;
+        }
+
+        .navbar_name {
+            color: #495661;
+        }
+
+        /* Añade esto a tu hoja de estilo CSS */
         .tableFixHead {
-            overflow-y: auto;
-            /* make the table scrollable if height is more than 200 px  */
-            height: 700px;
-            /* gives an initial height of 200px to the table */
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            /* Puedes personalizar los colores aquí */
+        }
+
+        .tableFixHead::-webkit-scrollbar {
+            width: 8px;
+            /* Ancho del scrollbar */
+        }
+
+        .tableFixHead::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            /* Color del thumb */
+        }
+
+        .tableFixHead::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            /* Color de la pista */
+        }
+
+        .offcanvas {
+            background-color: white !important;
+        }
+
+        /* Estilo para el cuerpo del offcanvas */
+        .offcanvas-body {
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+        }
+
+        /* Estilo para la tabla dentro del offcanvas */
+        .tableFixHead {
+            overflow-y: scroll;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Estilo para las filas de la tabla */
+        .table tbody {
+            overflow: hidden;
         }
 
         .tableFixHead thead th {
@@ -25,47 +87,138 @@
             width: 100%;
         }
 
-        th,
-        td {
-            padding: 8px 16px;
-            border: 1px solid #ccc;
-        }
-
         th {
             background: #eee;
         }
-    </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar una Actividad</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'CSS/registroActividad.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-</head>
 
-<body>
-    <nav class="navbar navbar-dark" style="background-color: #6c788e;" style="height: max-content;">
-        <div class="container-fluid">
-            <a class="navbar-brand ms-1 " href="#">
-                <img src="{% static './icesi-dark.png'%}" alt="" width="200" height="70"
-                    class="d-inline-block align-text-top">
-            </a>
-            <a class="navbar-brand ms-3">
-                <b onclick="location.href='./'">Bienestar Universitario</b>
-            </a>
-            <a class="navbar-brand ms-auto">
-                <i class="bi bi-door-closed" onclick="location.href='./'"></i>
-            </a>
-        </div>
-    </nav>
+        #tabla th,
+        #tabla td {
+            text-align: center;
+            width: 50px;
+        }
+
+        #search,
+        #BtnRegist {
+            margin-top: 5%;
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+        }
+
+        #search:hover,
+        #BtnRegist:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        #btnSend {
+
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        #id_student {
+            width: 50%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_activity {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }   
+    </style>
+    <header class="bg-primary text-white p-4">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" style="font-size: 30px;">
+                    <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
+                    <h1 class="ms-3 mb-0">Bienestar Universitario</h1>
+                </a>
+                <a href="/bienestarUniversitario" tabindex="-1" class="ms-auto me-4 text-decoration-none text-light">
+                    <i class="fas fa-arrow-left me-1"></i> Regresar
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header" style="background-color: #2C6698 !important;">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Bandeja de notificaciones</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body"
+                        style="width: 335px; height: 550px; overflow: hidden; background-color: white !important;">
+                        <div class="tableFixHead" style="overflow-y: scroll; height: 100%; width: 104%;">
+                            <table class="table table-striped">
+                                <tbody style="overflow: scroll;">
+                                    {% for notificaciones in notificaciones %}
+                                    <tr>
+                                        <td>{{notificaciones.title}}</td>
+                                        <td style="text-align: right;">
+                                            <button type="button" class="btn btn-dark">
+                                                <a href="{% url 'ver_noti' notificaciones.id %}"
+                                                    style="text-decoration: none; color: black;">
+                                                    <i class="fas fa-eye" style="color: #70BAFA;"></i>
+                                                </a>
+                                            </button>
+                                            <button type="button" class="btn btn-dark">
+                                                <a href="{% url 'eliminar_noti' notificaciones.id %}"
+                                                    style="text-decoration: none; color: black;">
+                                                    <i class="fas fa-trash" style="color: #dc3545;"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+        </nav>
+    </header>
+
     {% if alert is True %}
-    <div class="alert">
-        <span class="closebtn" onclick="location.href='./'">&times;</span>
+    <br>
+    <br>
+    <div class="alert alert-success alert-dismissible fade show " id="alertBU">
         <strong>Notificación Enviada</strong> Se registro el reporte de información.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="location.href='./'"></button>
     </div>
     {% endif %}
-    <div class="container my-5 " style="background-color: #cfd5e1; border-radius: 25px; text-align: center; height: 600px; align-items: center; display: flex; justify-content: center; flex-direction: column;">
+    <div class="container my-5 shadow"
+        style="background-color: rgb(229, 239, 249); border-radius: 25px; text-align: center; height: 60%; align-items: center; display: flex; justify-content: center; flex-direction: column;">
         <br>
         <b>
             <h2>Registrar</h2>
@@ -83,10 +236,18 @@
                 <form action="/bienestarUniversitario/registroActividades" method="post"
                     style="border-radius: 25px; margin: 0 auto; display: block;">
                     {% csrf_token %}
-                    {{ error }}
-                    <p><strong style="font-size: 18px;">{{form.as_p}}</strong></p>
-                    
-                    <button type="submit" name='action' value="buscar"> <b>Buscar</button>
+                    <label style="color: red; font-style: italic;">
+                        {{ error }}
+                    </label>
+                    <div class="form-group" id="Codigo">
+                        <label for="{{ form.student.id_for_label }}"><strong style="font-size: 22px;">Codigo del
+                                estudiante:</strong></label>
+                        <br>
+                        <br>
+                        {{ form.student }}
+                    </div>
+
+                    <button type="submit" id="search" name='action' value="buscar"> <b>Buscar</button>
                     <br>
                     <br>
                 </form>
@@ -107,19 +268,32 @@
                         style="border-radius: 25px; margin: 0 auto; display: block;">
                         {% csrf_token %}
                         {{ error }}
-                        <p><strong style="font-size: 18px;">{{form.as_p}}</strong></p>
-                        <br>
-                        <br>
+                        <div class="form-group">
+                            <label for="{{ form.student.id_for_label }}"><strong style="font-size: 18px;">Codigo del
+                                    estudiante:</strong></label>
+                            <br>
+                            <br>
+                            {{ form.student }}
+                            <br>
+                            <br>
+                            <label for="{{ form.activity.id_for_label }}"> <strong> Selecciona una actividad:
+                                </strong></label>
+                            <br>
+                            <br>
+                            {{ form.activity }}
+                            <br>
+                            <br>
+                        </div>
                         <div class="form-check">
                             <input class="form-check-input" name="Chk" type="checkbox" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                ¿Desea registrar otra Actividad?
+                            <label class="form-check-label" for="flexCheckDefault"><strong>
+                                    ¿Desea registrar otra Actividad?</strong>
                             </label>
                         </div>
                         <br>
                         <br>
                         <br>
-                        <button type="submit" name='action' value="registrar"> <b> Registrar</button>
+                        <button type="submit" id="btnSend" name='action' value="registrar"> <b> Registrar</button>
                     </form>
                     <br>
                     <br>
@@ -129,16 +303,25 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4" style="grid-column: 2;width: 100%; background-color: #6c788e; border-radius: 25px; margin: auto;">
-                <div>
-                    <p><strong style="font-size: 22px;">Informacion del estudiante:</strong></p>
-                    <strong style="font-size: 14px;">Nombre: </strong>{{nombre}}<br>
-                    <strong style="font-size: 14px;">Apellido: </strong>{{apellido}}<br>
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 shadow"
+                style="grid-column: 2;width: 100%; background-color: #2C6698; border-radius: 25px; margin: auto; border: 2px solid grey; ">
+                <div style="background-color: #2C6698; padding: 15px; border-radius: 10px; color: white;">
+                    <p style="font-size: 26px;"><strong>Información del estudiante:</strong></p>
+
+                    <p style="font-size: 20px;">
+                        <strong>Nombre:</strong> {{nombre}}
+                    </p>
+
+                    <p style="font-size: 20px;">
+                        <strong>Apellido:</strong> {{apellido}}
+                    </p>
                 </div>
+
             </div>
             {% endif %}
             {% endblock %}
         </div>
     </div>
 </body>
+
 </html>

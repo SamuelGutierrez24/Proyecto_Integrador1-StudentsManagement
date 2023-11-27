@@ -1,5 +1,5 @@
 from django.test import TestCase
-from Icesi_Students_Management.models import BalanceAcademico, Status, Materia, Nota, SeguimientoBeca, Student, Semester, Becas, Carrera, Alerta
+from Icesi_Students_Management.forms import *
 from django.urls import reverse
 
 class BalanceAcademicoModelTestCase(TestCase):
@@ -49,16 +49,40 @@ class BalanceAcademicoModelTestCase(TestCase):
 class VistaBalanceAcademicoTestCase(TestCase):
 
   def test_vista_menuBalanceAcademico(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=5)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menuBalanceAcademico'))
+
     response = self.client.get(reverse('menuBalanceAcademico'))
     print(response)
     self.assertEqual(response.status_code, 200)
     
   def test_vista_buscarEstudiante(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=5)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menuBalanceAcademico'))
+
     response = self.client.get(reverse('buscarEstudiante'))
     print(response)
     self.assertEqual(response.status_code, 200)
   
   def test_vista_registroNotas(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=5)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menuBalanceAcademico'))
+
     # ----------------------------------------------------------------------- #
     # Variables necesarias para que la vista registroNotasBA pueda hacer la validacion inicial de la info del estudiante que llega por medio de estudData
     statusPrueba = Status.objects.create(type = "Materia en Curso")
@@ -82,6 +106,13 @@ class VistaBalanceAcademicoTestCase(TestCase):
 
 class RegistroBalanceAcademicoTestCase(TestCase):
   def test_crear_registro(self):
+      self.user2 = User.objects.create_user(username='user2', password='password2', rol=5)
+      data = {
+        'username': 'user2',
+        'password': 'password2'
+      }
+      response = self.client.post(reverse('signin'), data)
+      self.assertRedirects(response, reverse('menuBalanceAcademico'))
       # Preparar los datos para la solicitud POST
       
       # ----------------------------------------------------------------------- #
@@ -119,6 +150,14 @@ class RegistroBalanceAcademicoTestCase(TestCase):
       self.assertEqual(registro.statusID.type, 'Materia en Curso')
         
   def test_notificar_actualizacion(self):
+      self.user2 = User.objects.create_user(username='user2', password='password2', rol=5)
+      data = {
+        'username': 'user2',
+        'password': 'password2'
+      }
+      response = self.client.post(reverse('signin'), data)
+      self.assertRedirects(response, reverse('menuBalanceAcademico'))
+
     # Preparar los datos para la solicitud POST
         
       # ----------------------------------------------------------------------- #
@@ -179,6 +218,14 @@ class RegistroBalanceAcademicoTestCase(TestCase):
         
       # ----------------------------------------------------------------------- #
       # Variables necesarias para que la vista registroNotasBA pueda hacer la validacion inicial de la info del estudiante que llega por medio de estudData
+      self.user2 = User.objects.create_user(username='user2', password='password2', rol=5)
+      data = {
+          'username': 'user2',
+          'password': 'password2'
+      }
+      response = self.client.post(reverse('signin'), data)
+      self.assertRedirects(response, reverse('menuBalanceAcademico'))
+
       becaPrueba = Becas.objects.create(type = "Alimentos", percentage = 100, description = "descTest", alimentacion = True, transporte = False)
       estudiantePrueba = Student.objects.create(id = 4, name = "Kevin", lastName = "Loachamin", code = "A00100004", email = "test@gmail.com", beca = becaPrueba)
       semestrePrueba = Semester.objects.create(name = "5")
