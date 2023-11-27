@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
             name='Carrera',
             fields=[
                 ('nameCarrera', models.CharField(max_length=50)),
-                ('carreraID', models.CharField(default='0', max_length=15, primary_key=True, serialize=False)),
+                ('carreraID', models.CharField(max_length=15, primary_key=True, serialize=False)),
                 ('precioMatricula', models.DecimalField(decimal_places=2, default=0.0, max_digits=30)),
             ],
         ),
