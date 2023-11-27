@@ -2,7 +2,15 @@ from django.shortcuts import render, redirect
 from Icesi_Students_Management.models import Student
 from Icesi_Students_Management.forms import addStudent
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 2
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def agregarInformacionEscrita(request):
     if request.method == 'POST':
         form = addStudent(request.POST)
@@ -15,7 +23,7 @@ def agregarInformacionEscrita(request):
             studentCode = Student.objects.filter(code=codigo).exists()
             if studentCode:
                 messages.error(request, 'Cuidado! El codigo del estudiante ya esta en uso')
-                
+
                 return render(request, 'agregar_estudiante.html', {'form': addStudent})
             else:
                 # Redirigir a la vista agregar_estudiante2.html

@@ -4,15 +4,18 @@ from django.db.models import Q
 from django.http import Http404
 from django.contrib.auth.decorators import user_passes_test, login_required
 
-# def rol_check(user):
-#     return user.rol == 4
-#
-#
-# @login_required
-# @user_passes_test(rol_check, "/signin/")
+
+def rol_check(user):
+    return user.rol == 4
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def menuContabilidad(request):
     return render(request, 'menuContabilidad.html')   
 
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def menu(request):
     notificaciones = Alerta.objects.all()
     notifi = []
@@ -23,6 +26,8 @@ def menu(request):
     notifi.reverse()
     return render(request, 'menuContabilidad.html', {'notificaciones': notifi})
 
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def ver_noti(request, id):
     try:
         noti = Alerta.objects.get(id=id)
@@ -31,6 +36,8 @@ def ver_noti(request, id):
 
     return render(request, 'notificacion.html', {'noti': noti})
 
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def eliminar_noti(request,id):
     notificacion = get_object_or_404(Alerta, id=id)
     notificacion.delete()

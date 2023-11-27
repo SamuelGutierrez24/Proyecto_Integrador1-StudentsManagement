@@ -6,7 +6,15 @@ from django.conf import settings
 from django.core.files.base import ContentFile
 from ..models import *
 from .utils import createPDF
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 2
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def sendAlert(request, noti_id):
     if request.method == 'POST':
         form = modificarAlerta(request.POST, request.FILES)

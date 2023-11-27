@@ -3,7 +3,15 @@ from Icesi_Students_Management.models import *
 from ..forms import registrarInfoFinanciera, registrarInfoFinancieraModificar
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 4
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def modificarInfo(request, code):
     tieneInfo = InformacionFinanciera.objects.filter(
         studentID=code).exists()
