@@ -72,6 +72,22 @@
         .table tbody {
             overflow: hidden;
         }
+
+        #search{
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: 5%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+        }
+
+        #search:hover{
+            background-color: #3a83c4 !important;
+            color: white;
+        }
     </style>
 
     <body>
@@ -133,7 +149,7 @@
         </div>
         {% endif %}
         <div class="container my-5 "
-            style="background-color: #cfd5e1; border-radius: 25px; text-align: center; height: 800px; align-items: center; display: flex; justify-content: center; flex-direction: column;">
+            style="background-color: #cfd5e1; border-radius: 25px; text-align: center; height: fit-content; align-items: center; display: flex; justify-content: center; flex-direction: column;">
             <br>
             <b>
                 <br>
@@ -167,9 +183,7 @@
                             <br>
                             <br>
                         </div>
-
-
-                        <button type="submit" name='action' value="search" id="search"> <b>Buscar</button>
+                        <button type="submit" name='action' value="search" id="search"> Buscar</button>
                         <br>
                         <br>
                     </form>

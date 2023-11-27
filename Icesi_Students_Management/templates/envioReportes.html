@@ -12,8 +12,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Enlace CSS Local -->
-    <link rel="stylesheet" href="/static/css/menuContabilidad.css">
     <title>Envio Reportes</title>
     <script>
         $(document).ready(function () {
@@ -117,19 +115,10 @@
             overflow: hidden;
         }
 
-        .my-form {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
         /* Estilos para los campos del formulario */
         .my-form input,
         .my-form select {
-            width: 100%;
+            width: 50%;
             padding: 12px;
             margin-bottom: 20px;
             border: 1px solid #ced4da;
@@ -145,32 +134,91 @@
             font-weight: bold;
         }
 
-        /* Estilos para el botón del formulario */
-        .my-form button {
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .my-form button:hover {
-            background-color: #0056b3;
-        }
-
         /* Estilos para las alertas del formulario */
         .my-form .alert {
             margin-bottom: 20px;
+        }
+
+        #title {
+            width: 100%;
+        }
+
+        #email {
+            width: 100%;
+        }
+
+        .input-container input {
+            width: 100%;
+        }
+
+        .col .input-container,
+        .col .description-container {
+            width: 100%;
         }
 
         /* Estilos adicionales para mejorar la apariencia */
         body {
             background-color: #f8f9fa;
         }
-        
+
+        #id_description {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            scrollbar-color: darkgray lightgray;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_allDonor,
+        #id_informacionAcademica,
+        #id_informacionFinanciera,
+        #id_informacionNoAcademica,
+        #id_testimonioEstudiante {
+            width: 17px;
+            height: 17px;
+            margin-top: 1%;
+            margin-right: 1%;
+        }
+
+        #id_description::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #id_description::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            border-radius: 10px;
+        }
+
+        #id_description::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        #btnSend {
+            margin-left: 85%;
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
     </style>
     <header class="bg-primary text-white p-4">
         <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -200,18 +248,29 @@
                             <table class="table table-striped">
                                 <tbody style="overflow: scroll;">
                                     {% for notificaciones in notificaciones %}
-                                    <tr>
-                                        <td>{{notificaciones.title}}</td>
-                                        <td>
-                                            <a href="{% url 'ver_noti' notificaciones.id %}">
-                                                <button class="editar-btn" id="verbtn"><i
-                                                        class="fas fa-eye"></i></button>
-                                            </a>
-                                            <a href="{% url 'eliminar_noti' notificaciones.id %}">
-                                                <button class="editar-btn" id="eliminarbtn"><i
-                                                        class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <tr>
+                                            <td>{{notificaciones.title}}</td>
+                                            <td>
+                                                <div class="btn-group" role="group"
+                                                    aria-label="Basic mixed styles example">
+                                                    <button class="btn btn-dark" name="noti" value={{notificaciones.id}}
+                                                        id="noti">
+                                                        <i class="fas fa-eye" style="color: #70BAFA"></i>
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-dark">
+                                                        <a href="{% url 'eliminar_noti' notificaciones.id %}"
+                                                            style="text-decoration: none; color: #dc3545">
+                                                            <i class="fas fa-trash" style="color: #dc3545"></i>
+                                                        </a>
+                                                    </button>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </form>
                                     {% endfor %}
                                 </tbody>
 
@@ -222,7 +281,7 @@
         </nav>
     </header>
     <main class="container my-5">
-        <section class="card" style="background-color: #cfd5e1;height: 53rem;">
+        <section class="card" style="background-color: #cfd5e1;height: 100%;">
             <div class="card-body">
                 <div class="row">
                     {% if messages %}
@@ -246,8 +305,56 @@
                         <form method="POST" action="{% url 'envioReportes'%}" enctype="multipart/form-data" id="form"
                             class="my-form">
                             {% csrf_token %}
-                            {{form.as_p}}
-                            <button type="submit">Enviar</button>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="{{ form.title.id_for_label }}" class="form-label"><b>Titulo:</b></label>
+                                    <div class="input-container">{{ form.title }}</div>
+                                    <label for="{{ form.description.id_for_label }}"
+                                        class="form-label"><b>Mensaje</b></label>
+                                    <div class="description-container">{{ form.description }}</div>
+                                </div>
+
+
+                                <div class="col">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label"><b>Correo
+                                            destinatario:</b></label>
+                                    <div class="input-container">
+                                        {{ form.email }}
+                                    </div>
+                                    <div id="allDonorbtn" style="display: flex;">
+                                        {{form.allDonor }}
+                                        <label for="{{ form.allDonor.id_for_label }}" class="form-label"
+                                            style="display: inline-block; margin-right: 2px;"><b>Envío de
+                                                seguimiento a todos los donantes</b></label>
+                                    </div>
+                                    <label>Seleccione la información que desea enviar:</label>
+                                    <div id="infoAcademic" style="display: flex;">
+                                        {{form.informacionAcademica}}
+                                        <label for="{{ form.informacionAcademica.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Información
+                                                Academica</b></label>
+                                    </div>
+                                    <div id="infoFinan" style="display: flex;">
+                                        {{form.informacionFinanciera}}
+                                        <label for="{{ form.informacionFinanciera.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Información
+                                                Financiera</b></label>
+                                    </div>
+                                    <div id="infoNoAcademic" style="display: flex;">
+                                        {{form.informacionNoAcademica}}
+                                        <label for="{{ form.informacionNoAcademica.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Información No
+                                                Academica</b></label>
+                                    </div>
+                                    <div id="testimonio" style="display: flex;">
+                                        {{form.testimonioEstudiante}}
+                                        <label for="{{ form.testimonioEstudiante.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Testimonio del
+                                                Estudiante</b></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" id="btnSend">Enviar</button>
                         </form>
                     </div>
                 </div>

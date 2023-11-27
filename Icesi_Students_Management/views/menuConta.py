@@ -47,7 +47,7 @@ def ver_noti(request, id):
 
     return render(request, 'notificacion.html', {'noti': noti})
 
-def eliminar_noti(request,id):
+def eliminar_noti(request, id):
     notificacion = get_object_or_404(Alerta, id=id)
     notificacion.delete()
     return redirect('/contabilidad')

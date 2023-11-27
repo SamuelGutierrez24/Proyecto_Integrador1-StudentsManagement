@@ -86,14 +86,14 @@
             width: 100%;
         }
 
-        th,
-        td {
-            padding: 8px 16px;
-            border: 1px solid #ccc;
-        }
-
         th {
             background: #eee;
+        }
+
+        #tabla th,
+        #tabla td {
+            text-align: center;
+            width: 50px;
         }
     </style>
     <header class="bg-primary text-white p-4">
@@ -126,14 +126,19 @@
                                     {% for notificaciones in notificaciones %}
                                     <tr>
                                         <td>{{notificaciones.title}}</td>
-                                        <td>
-                                            <a href="{% url 'ver_noti' notificaciones.id %}">
-                                                <button class="editar-btn" id="verbtn"><i
-                                                        class="fas fa-eye"></i></button>
-                                            </a>
-                                            <a href="{% url 'eliminar_noti' notificaciones.id %}">
-                                                <button class="editar-btn" id="eliminarbtn"><i
-                                                        class="fas fa-trash"></i></button>
+                                        <td style="text-align: right;">
+                                            <button type="button" class="btn btn-dark">
+                                                <a href="{% url 'ver_noti' notificaciones.id %}"
+                                                    style="text-decoration: none; color: black;">
+                                                    <i class="fas fa-eye" style="color: #70BAFA;"></i>
+                                                </a>
+                                            </button>
+                                            <button type="button" class="btn btn-dark">
+                                                <a href="{% url 'eliminar_noti' notificaciones.id %}"
+                                                    style="text-decoration: none; color: black;">
+                                                    <i class="fas fa-trash" style="color: #dc3545;"></i>
+                                                </a>
+                                            </button>
                                         </td>
                                     </tr>
                                     {% endfor %}

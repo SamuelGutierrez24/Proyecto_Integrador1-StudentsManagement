@@ -126,8 +126,74 @@
         }
 
         body {
-            background-color: #f3f6fc!important;
-            /* Cambié el color de fondo a un tono más oscuro */
+            background-color: #f3f6fc !important;
+        }
+
+        #id_title {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_type {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_description {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            scrollbar-color: darkgray lightgray;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_description::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #id_description::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            border-radius: 10px;
+        }
+
+        #id_description::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        #btnSend {
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
         }
     </style>
 
@@ -139,7 +205,7 @@
                         <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
                         <h1 class="ms-3 mb-0">Filantropía</h1>
                     </a>
-                    <button type="button" class="btn btn-dark ms-auto me-2" onclick="cerrarSesion()"
+                    <button type="button" class="btn btn-dark ms-auto me-2" onclick="location.href='/logout'"
                         style="background-color: #2C6698 !important; border-color: #2C6698 !important;">
                         <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
                     </button>
@@ -234,19 +300,81 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a href="/menu_filantropia/solicitudInformacion/">
-                            <button class="btn btn-dark" id="infobtn">
-                                <h2 style="color: black; font-weight: bold;">Solicitar Información</h2>
-                                <br>
-                                <img src="{% static './Images/mensaje.png'%}" alt="Estudiante" width="512px"
-                                    height="512px">
-                            </button>
-                        </a>
+                        <button type="button" class="btn btn-dark" id="infobtn" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <h2 style="color: black; font-weight: bold;">Solicitar Información</h2>
+                            <br>
+                            <img src="{% static './Images/mensaje.png'%}" alt="Estudiante" width="512px" height="512px">
+                        </button>
                     </div>
                 </div>
                 <br>
             </div>
         </main>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitar Información</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row my-2">
+                                <div class="col">
+                                    <div class="d-grid gap-2">
+                                        <div class="form-group">
+                                            {% csrf_token %}
+                                            <label for="{{ form.Title.id_for_label }}"><b>Título:</b></label>
+                                            <br>
+                                            {{ form.title }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.Type.id_for_label }}"><b>Destinatario:</b></label>
+                                            <br>
+                                            {{ form.type }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.Description.id_for_label }}"><b>Descripción:</b></label>
+                                            <br>
+                                            {{ form.description }}
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div style="text-align: center;">
+                                            <button type="submit" id="btnSend">
+                                                Enviar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const exampleModal = document.getElementById('exampleModal')
+            if (exampleModal) {
+                exampleModal.addEventListener('show.bs.modal', event => {
+                    // Button that triggered the modal
+                    const button = event.relatedTarget
+                    // Extract info from data-bs-* attributes
+                    const recipient = button.getAttribute('data-bs-whatever')
+                    // If necessary, you could initiate an Ajax request here
+                    // and then do the updating in a callback.
+
+                    // Update the modal's content.
+                    const modalTitle = exampleModal.querySelector('.modal-title')
+                    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+                    modalTitle.textContent = `Solicitud de información`
+                    modalBodyInput.value = recipient
+                })
+            }
+        </script>
     </body>
 
 </html>
