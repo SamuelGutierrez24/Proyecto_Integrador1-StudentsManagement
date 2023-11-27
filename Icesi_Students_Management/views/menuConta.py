@@ -47,7 +47,51 @@ def ver_noti(request, id):
 
     return render(request, 'notificacion.html', {'noti': noti})
 
+def ver_noti_crea(request, id):
+    try:
+        noti = Alerta.objects.get(id=id)
+    except Alerta.DoesNotExist:
+        raise Http404("Notificación no encontrada")
+
+    return render(request, 'notificacionCrea.html', {'noti': noti})
+
+def ver_noti_bienestar(request, id):
+    try:
+        noti = Alerta.objects.get(id=id)
+    except Alerta.DoesNotExist:
+        raise Http404("Notificación no encontrada")
+
+    return render(request, 'notificacionBienestar.html', {'noti': noti})
+
+def ver_noti_balance(request, id):
+    try:
+        noti = Alerta.objects.get(id=id)
+    except Alerta.DoesNotExist:
+        raise Http404("Notificación no encontrada")
+
+    return render(request, 'notificacionBalance.html', {'noti': noti})
+
 def eliminar_noti(request, id):
     notificacion = get_object_or_404(Alerta, id=id)
     notificacion.delete()
     return redirect('/contabilidad')
+
+def eliminar_noti_filantropia(request, id):
+    notificacion = get_object_or_404(Alerta, id=id)
+    notificacion.delete()
+    return redirect('/menu_filantropia')
+
+def eliminar_noti_crea(request, id):
+    notificacion = get_object_or_404(Alerta, id=id)
+    notificacion.delete()
+    return redirect('/Crea')
+
+def eliminar_noti_ba(request, id):
+    notificacion = get_object_or_404(Alerta, id=id)
+    notificacion.delete()
+    return redirect('/BalanceAcademico')
+
+def eliminar_noti_bu(request, id):
+    notificacion = get_object_or_404(Alerta, id=id)
+    notificacion.delete()
+    return redirect('/bienestarUniversitario')

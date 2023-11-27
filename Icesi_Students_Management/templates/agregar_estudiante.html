@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Enlace CSS Local -->
     <link rel="stylesheet" href="/static/css/menuContabilidad.css">
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
     <title>Agregar Estudiante</title>
 </head>
 
@@ -88,12 +89,6 @@
             width: 100%;
         }
 
-        th,
-        td {
-            padding: 8px 16px;
-            border: 1px solid #ccc;
-        }
-
         th {
             background: #eee;
         }
@@ -113,6 +108,30 @@
         #boton:hover {
             background-color: #6c788e;
             color: white;
+        }
+
+        .tableFixHead::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .tableFixHead::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .tableFixHead::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 6px;
+        }
+
+        .tableFixHead {
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+        }
+
+        #tabla th,
+        #tabla td {
+            text-align: center;
+            width: 50px;
         }
     </style>
 
@@ -148,15 +167,20 @@
                                     <tbody style="overflow: scroll;">
                                         {% for notificaciones in notificaciones %}
                                         <tr>
-                                            <td>{{notificaciones.title}}</td>
-                                            <td>
-                                                <a href="{% url 'ver_noti' notificaciones.id %}">
-                                                    <button class="editar-btn" id="verbtn"><i
-                                                            class="fas fa-eye"></i></button>
-                                                </a>
-                                                <a href="{% url 'eliminar_noti' notificaciones.id %}">
-                                                    <button class="editar-btn" id="eliminarbtn"><i
-                                                            class="fas fa-trash"></i></button>
+                                            <td style="width: 70%;">{{notificaciones.title}}</td>
+                                            <td style="text-align: right;">
+                                                <button type="button" class="btn btn-dark">
+                                                    <a href="{% url 'ver_noti' notificaciones.id %}"
+                                                        style="text-decoration: none; color: black;">
+                                                        <i class="fas fa-eye" style="color: #70BAFA;"></i>
+                                                    </a>
+                                                </button>
+                                                <button type="button" class="btn btn-dark">
+                                                    <a href="{% url 'eliminar_noti' notificaciones.id %}"
+                                                        style="text-decoration: none; color: black;">
+                                                        <i class="fas fa-trash" style="color: #dc3545;"></i>
+                                                    </a>
+                                                </button>
                                             </td>
                                         </tr>
                                         {% endfor %}

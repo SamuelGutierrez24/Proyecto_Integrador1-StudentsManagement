@@ -55,18 +55,3 @@ def menu(request):
         id = request.POST["noti"]
 
         return redirect(reverse('envioAlerta', kwargs={'noti_id': id}))
-
-
-def ver_notiFilantropia(request, id):
-    try:
-        noti = Alerta.objects.get(id=id)
-    except Alerta.DoesNotExist:
-        raise Http404("Notificación no encontrada")
-
-    return render(request, 'notificacion.html', {'noti': noti})
-
-
-def eliminar_notiFilantropia(request, id):
-    notificacion = get_object_or_404(Alerta, id=id)
-    notificacion.delete()
-    return redirect('/menu_filantropia')

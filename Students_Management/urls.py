@@ -58,5 +58,13 @@ urlpatterns = [
     path('menu_filantropia/envioReportes.html', envioReportes.sendReport, name='envioReportes'),
     path('menu_filantropia/solicitudInformacion/', envioAlerta.enviarMensaje, name='solicitudInformacion'),
     path('menu_filantropia/envioAlerta/<int:noti_id>/', notificacionEditable.alerta, name='envioAlerta'),
-    path('menu_filantropia/envioNotificacionDonador/<int:noti_id>/', sendEditableNotification.sendAlert, name='sendMessageToDonor')
+    path('menu_filantropia/envioNotificacionDonador/<int:noti_id>/', sendEditableNotification.sendAlert, name='sendMessageToDonor'),
+    
+    path('contabilidad/eliminar_noti_filantropia/<id>/', menuConta.eliminar_noti_filantropia, name='eliminar_noti_filantropia'),
+    path('contabilidad/eliminar_noti_crea/<id>/', menuConta.eliminar_noti_crea, name='eliminar_noti_crea'),
+    path('contabilidad/eliminar_noti_ba/<id>/', menuConta.eliminar_noti_ba, name='eliminar_noti_ba'),
+    path('contabilidad/eliminar_noti_bu/<id>/', menuConta.eliminar_noti_bu, name='eliminar_noti_bu'),
+    path('contabilidad/ver-noti_crea/<int:id>/', menuConta.ver_noti_crea, name='ver_noti_crea'),
+    path('contabilidad/ver-noti_bienestar/<int:id>/', menuConta.ver_noti_bienestar, name='ver_noti_bienestar'),
+    path('contabilidad/ver-noti_balance/<int:id>/', menuConta.ver_noti_balance, name='ver_noti_balance')
 ]

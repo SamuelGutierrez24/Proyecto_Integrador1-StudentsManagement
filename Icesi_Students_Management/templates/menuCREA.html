@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Enlace CSS Local -->
     <link rel="stylesheet" href="/static/css/menuContabilidad.css">
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
     <title>Balance Academico</title>
 </head>
 
@@ -78,10 +79,14 @@
             height: 50px;
             background-color: #2C6698 !important;
             border-radius: 15px;
-            margin-top: -100%;
             color: white;
             font-weight: bold;
             border: #2C6698 !important;
+        }
+
+        #BtnRegistC:hover {
+            background-color: #3a83c4 !important;
+            color: white;
         }
     </style>
 
@@ -119,13 +124,13 @@
                                             <td>{{notificaciones.title}}</td>
                                             <td style="text-align: right;">
                                                 <button type="button" class="btn btn-dark">
-                                                    <a href="{% url 'ver_noti' notificaciones.id %}"
+                                                    <a href="{% url 'ver_noti_crea' notificaciones.id %}"
                                                         style="text-decoration: none; color: black;">
                                                         <i class="fas fa-eye" style="color: #70BAFA;"></i>
                                                     </a>
                                                 </button>
                                                 <button type="button" class="btn btn-dark">
-                                                    <a href="{% url 'eliminar_noti' notificaciones.id %}"
+                                                    <a href="{% url 'eliminar_noti_crea' notificaciones.id %}"
                                                         style="text-decoration: none; color: black;">
                                                         <i class="fas fa-trash" style="color: #dc3545;"></i>
                                                     </a>
