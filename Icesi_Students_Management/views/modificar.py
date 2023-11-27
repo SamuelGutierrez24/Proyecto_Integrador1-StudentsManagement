@@ -13,6 +13,13 @@ def rol_check(user):
 @login_required
 @user_passes_test(rol_check, "/signin/")
 def modificarInfo(request, code):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if (noti.type == 1):
+            notifi.append(noti)
+    notifi.reverse()
     tieneInfo = InformacionFinanciera.objects.filter(
         studentID=code).exists()
 
@@ -23,7 +30,8 @@ def modificarInfo(request, code):
         data = {
             'form': registrarInfoFinancieraModificar(instance=estudiante),
             'tieneInfo': tieneInfo,
-            'historial': historial
+            'historial': historial,
+            'notificaciones': notifi
         }
 
         if request.method == 'POST':
@@ -89,6 +97,6 @@ def modificarInfo(request, code):
             data["form"] = formulario
     else:
         messages.error(request, 'No se ha registrado la Información Financiera del estudiante')
-        return redirect('/contabilidad/buscarEstud.html')
+        return redirect('/contabilidad')
     
     return render(request, 'modificar.html', data)

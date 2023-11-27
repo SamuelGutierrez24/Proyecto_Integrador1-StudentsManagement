@@ -16,6 +16,14 @@ def registroNotasBA(request):
 @login_required
 @user_passes_test(rol_check, "/signin/")
 def RegMateria(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if (noti.type == 3):
+            notifi.append(noti)
+    notifi.reverse()
+    
     #Toma de datos basicos del estudiante (Variables otorgadas por la pagina buscarEstudiante)
     estudName = request.session['estudData']['nombre']
     estudLastName = request.session['estudData']['apellido']

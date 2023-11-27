@@ -239,3 +239,10 @@ class modificarAlerta(forms.ModelForm):
     class Meta:
         model = Alerta
         fields = ['Title', 'Type', 'Description', 'Email']
+
+class TestimonyForm(forms.ModelForm):
+    testimonio = forms.CharField(label="Testimonio", max_length=10000, required=False, widget=forms.Textarea(attrs={'col': '50', 'size': '80', 'rows': '8'}))
+
+    class Meta:
+        model = SeguimientoBeca
+        fields = ['testimonio']

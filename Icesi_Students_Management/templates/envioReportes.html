@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html>
-{% extends 'base.html' %}
-
-{% block content %}
+<html lang="es">
+{% load static %}
 
 <head>
-    <style>
-        .readonly-field {
-            background-color: #f2f2f2;
-            /* Cambia el color de fondo a gris claro */
-            color: #666;
-            /* Cambia el color del texto a un tono más oscuro */
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    {% block tituloPagina %}
+    <!-- Enlaces a Bootstrap 5 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
     <title>Envio Reportes</title>
-    {% endblock %}
     <script>
         $(document).ready(function () {
             // Maneja el cambio en el checkbox "todosDonantes"
@@ -36,44 +30,260 @@
                 }
             });
             $('#id_todosLosCampos').change(function () {
-            var academico = $('#id_informacionAcademica');
-            if ($(this).prop('checked')) {
-                $('#id_informacionAcademica').prop('checked', true);
-                $('#id_informacionFinanciera').prop('checked', true);
-                $('#id_informacionNoAcademica').prop('checked', true);
-                $('#id_testimonioEstudiante').prop('checked', true);
-                academico.addClass('readonly-field');
-            } else {
-                academico.removeClass('readonly-field');
-            }
-        });
+                var academico = $('#id_informacionAcademica');
+                if ($(this).prop('checked')) {
+                    $('#id_informacionAcademica').prop('checked', true);
+                    $('#id_informacionFinanciera').prop('checked', true);
+                    $('#id_informacionNoAcademica').prop('checked', true);
+                    $('#id_testimonioEstudiante').prop('checked', true);
+                    academico.addClass('readonly-field');
+                } else {
+                    academico.removeClass('readonly-field');
+                }
+            });
             $('#id_informacionAcademica, #id_informacionFinanciera, #id_informacionNoAcademica, #id_testimonioEstudiante').change(function () {
-            if ($('#id_informacionAcademica').prop('checked') &&
-                $('#id_informacionFinanciera').prop('checked') &&
-                $('#id_informacionNoAcademica').prop('checked') &&
-                $('#id_testimonioEstudiante').prop('checked')) {
-                $('#id_todosLosCampos').prop('checked', true);
-            } else {
-                $('#id_todosLosCampos').prop('checked', false);
-            }
-        });
+                if ($('#id_informacionAcademica').prop('checked') &&
+                    $('#id_informacionFinanciera').prop('checked') &&
+                    $('#id_informacionNoAcademica').prop('checked') &&
+                    $('#id_testimonioEstudiante').prop('checked')) {
+                    $('#id_todosLosCampos').prop('checked', true);
+                } else {
+                    $('#id_todosLosCampos').prop('checked', false);
+                }
+            });
             $('#id_informacionAcademica').change(function () {
-            if (!$(this).prop('checked') && $('#id_todosLosCampos').prop('checked')) {
-                $('#id_todosLosCampos').prop('checked', false);
-            }
-        });
+                if (!$(this).prop('checked') && $('#id_todosLosCampos').prop('checked')) {
+                    $('#id_todosLosCampos').prop('checked', false);
+                }
+            });
         });
     </script>
 </head>
 
-<body>
-    <main class="container my-5">
-        <section class="card" style="background-color: #cfd5e1;height: 53rem;">
-            <div class="card-header" style="background-color: #6C788E;">
-                <a class="btn" style="background-color: #a6aec1; float: left;" href="/menu_filantropia/">
-                    <b>Volver</b>
+<body style="background-color: #fcfdff;">
+    <style>
+        .navbar.navbar-dark.bg-dark.fixed-top {
+            background-color: #2C6698 !important;
+        }
+
+        .navbar_name {
+            color: #495661;
+        }
+
+        /* Añade esto a tu hoja de estilo CSS */
+        .tableFixHead {
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            /* Puedes personalizar los colores aquí */
+        }
+
+        .tableFixHead::-webkit-scrollbar {
+            width: 8px;
+            /* Ancho del scrollbar */
+        }
+
+        .tableFixHead::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            /* Color del thumb */
+        }
+
+        .tableFixHead::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            /* Color de la pista */
+        }
+
+        .offcanvas {
+            background-color: white !important;
+        }
+
+        /* Estilo para el cuerpo del offcanvas */
+        .offcanvas-body {
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+        }
+
+        /* Estilo para la tabla dentro del offcanvas */
+        .tableFixHead {
+            overflow-y: scroll;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Estilo para las filas de la tabla */
+        .table tbody {
+            overflow: hidden;
+        }
+
+        /* Estilos para los campos del formulario */
+        .my-form input,
+        .my-form select {
+            width: 50%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Estilos para las etiquetas de los campos */
+        .my-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Estilos para las alertas del formulario */
+        .my-form .alert {
+            margin-bottom: 20px;
+        }
+
+        #title {
+            width: 100%;
+        }
+
+        #email {
+            width: 100%;
+        }
+
+        .input-container input {
+            width: 100%;
+        }
+
+        .col .input-container,
+        .col .description-container {
+            width: 100%;
+        }
+
+        /* Estilos adicionales para mejorar la apariencia */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        #id_description {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            scrollbar-color: darkgray lightgray;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_allDonor,
+        #id_informacionAcademica,
+        #id_informacionFinanciera,
+        #id_informacionNoAcademica,
+        #id_testimonioEstudiante {
+            width: 17px;
+            height: 17px;
+            margin-top: 1%;
+            margin-right: 1%;
+        }
+
+        #id_description::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #id_description::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            border-radius: 10px;
+        }
+
+        #id_description::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        #btnSend {
+            margin-left: 85%;
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+    </style>
+    <header class="bg-primary text-white p-4">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" style="font-size: 30px;">
+                    <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
+                    <h1 class="ms-3 mb-0">Envio de Reporte</h1>
                 </a>
-            </div>
+                <a href="/menu_filantropia" tabindex="-1" class="ms-auto me-4 text-decoration-none text-light">
+                    <i class="fas fa-arrow-left me-1"></i> Regresar
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header" style="background-color: #2C6698 !important;">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Bandeja de notificaciones</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body"
+                        style="width: 335px; height: 550px; overflow: hidden; background-color: white !important;">
+                        <div class="tableFixHead" style="overflow-y: scroll; height: 100%; width: 104%;">
+                            <table class="table table-striped">
+                                <tbody style="overflow: scroll;">
+                                    {% for notificaciones in notificaciones %}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <tr>
+                                            <td>{{notificaciones.title}}</td>
+                                            <td>
+                                                <div class="btn-group" role="group"
+                                                    aria-label="Basic mixed styles example">
+                                                    <button type="button" class="btn btn-dark">
+                                                        <a href="{% url 'ver_noti_filantropia' notificaciones.id %}"
+                                                            style="text-decoration: none; color: black;">
+                                                            <i class="fas fa-eye" style="color: #70BAFA;"></i>
+                                                        </a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">
+                                                        <a href="{% url 'eliminar_noti_filantropia' notificaciones.id %}"
+                                                            style="text-decoration: none; color: #dc3545">
+                                                            <i class="fas fa-trash" style="color: #dc3545"></i>
+                                                        </a>
+                                                    </button>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </form>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+    </header>
+    <main class="container my-5">
+        <section class="card" style="background-color: #cfd5e1;height: 100%;">
             <div class="card-body">
                 <div class="row">
                     {% if messages %}
@@ -91,28 +301,68 @@
                     {% endif %}
                     {% endfor %}
                     {% endif %}
-                    <div style="text-align: start;">
-                        <h1>
-                            Envio de reporte
-                        </h1>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <form method="POST" action="{% url 'envioReportes'%}" enctype="multipart/form-data" >
+                        <form method="POST" action="{% url 'envioReportes'%}" enctype="multipart/form-data" id="form"
+                            class="my-form">
                             {% csrf_token %}
-                            {{form.as_p}}
-                            <button type="submit">Enviar</button>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="{{ form.title.id_for_label }}" class="form-label"><b>Titulo:</b></label>
+                                    <div class="input-container">{{ form.title }}</div>
+                                    <label for="{{ form.description.id_for_label }}"
+                                        class="form-label"><b>Mensaje</b></label>
+                                    <div class="description-container">{{ form.description }}</div>
+                                </div>
+
+
+                                <div class="col">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label"><b>Correo
+                                            destinatario:</b></label>
+                                    <div class="input-container">
+                                        {{ form.email }}
+                                    </div>
+                                    <div id="allDonorbtn" style="display: flex;">
+                                        {{form.allDonor }}
+                                        <label for="{{ form.allDonor.id_for_label }}" class="form-label"
+                                            style="display: inline-block; margin-right: 2px;"><b>Envío de
+                                                seguimiento a todos los donantes</b></label>
+                                    </div>
+                                    <label>Seleccione la información que desea enviar:</label>
+                                    <div id="infoAcademic" style="display: flex;">
+                                        {{form.informacionAcademica}}
+                                        <label for="{{ form.informacionAcademica.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Información
+                                                Academica</b></label>
+                                    </div>
+                                    <div id="infoFinan" style="display: flex;">
+                                        {{form.informacionFinanciera}}
+                                        <label for="{{ form.informacionFinanciera.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Información
+                                                Financiera</b></label>
+                                    </div>
+                                    <div id="infoNoAcademic" style="display: flex;">
+                                        {{form.informacionNoAcademica}}
+                                        <label for="{{ form.informacionNoAcademica.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Información No
+                                                Academica</b></label>
+                                    </div>
+                                    <div id="testimonio" style="display: flex;">
+                                        {{form.testimonioEstudiante}}
+                                        <label for="{{ form.testimonioEstudiante.id_for_label }}"
+                                            style="display: inline-block; margin-right: 2px;"><b>Testimonio del
+                                                Estudiante</b></label>
+                                    </div>
+                                </div>
                             </div>
-                            
+                            <button type="submit" id="btnSend">Enviar</button>
                         </form>
                     </div>
-                    <div class="col"></div>
                 </div>
             </div>
+        </section>
     </main>
 </body>
-
-{% endblock %}
 
 </html>

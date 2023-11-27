@@ -19,10 +19,17 @@ def rol_check(user):
 @user_passes_test(rol_check, "/signin/")
 def registerC(request):
     if request.method == 'GET':
+        notificaciones = Alerta.objects.all()
+        notifi = []
+
+        for noti in notificaciones:
+            if(noti.type==5):
+                notifi.append(noti)
 
         return render(request, 'registroCREA.html',{
                 'form': CreaForm,
-                "studentInfo": ""
+                "studentInfo": "",
+                'notificaciones': reversed(notifi)
          })
     else:
         if verifyItem(request.POST['student']):

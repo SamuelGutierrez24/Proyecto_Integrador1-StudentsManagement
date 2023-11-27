@@ -1,69 +1,324 @@
 <!DOCTYPE html>
-<html lang="en">
-{% block content %}
+<html lang="es">
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificaction</title>
+    <!-- Enlaces a Bootstrap 5 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="{% static './Images/logo_u_icesi.png'%}">
+    <!-- Enlace CSS Local -->
+    <title>Enviar Notificación</title>
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<body style="align-items: baseline; justify-content: baseline;">
 
-    <main class="container my-5 " style="background-color: #cfd5e1; border-radius: 25px; height: 600px; width: 750px;" >
-        <br>
+<body style="background-color: #fcfdff;">
+    <style>
+        .navbar.navbar-dark.bg-dark.fixed-top {
+            background-color: #2C6698 !important;
+        }
 
-        <div class="row" style="height: 40px; width: 750px;">
-            <div class="col-6 text-start">
-                <button style="border: none; background-color: #cfd5e1;border-radius: 15px;" onclick="location.href='/menu_filantropia/'">
-                    <i class="bi bi-arrow-bar-left"></i>
-                </button>
-            </div>
-            <div class="col-6 text-end">
-                <button style="border: none; background-color: #cfd5e1;border-radius: 15px;" onclick="location.href='/menu_filantropia/'">
-                    <i class="bi bi-x"></i>
-                </button>
-            </div>
-        </div>
-        
-        <form method="POST" action="{% url 'sendMessageToDonor' noti.id %}">
-            <div class="row my-2">
-                <div class="col">
-                    <div class="d-grid gap-2">
-                        {% csrf_token %}
-                        <i style="color: red;">{{ error }}</i>
-                        <div class="form-group">
-                            <label for="{{ form.Title.id_for_label }}"><b>Título:</b></label>
-                            <br>
-                            {{ form.Title }}
+        .navbar_name {
+            color: #495661;
+        }
+
+        /* Añade esto a tu hoja de estilo CSS */
+        .tableFixHead {
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            /* Puedes personalizar los colores aquí */
+        }
+
+        .tableFixHead::-webkit-scrollbar {
+            width: 8px;
+            /* Ancho del scrollbar */
+        }
+
+        .tableFixHead::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            /* Color del thumb */
+        }
+
+        .tableFixHead::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            /* Color de la pista */
+        }
+
+        .offcanvas {
+            background-color: white !important;
+        }
+
+        /* Estilo para el cuerpo del offcanvas */
+        .offcanvas-body {
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+        }
+
+        /* Estilo para la tabla dentro del offcanvas */
+        .tableFixHead {
+            overflow-y: scroll;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Estilo para las filas de la tabla */
+        .table tbody {
+            overflow: hidden;
+        }
+
+        #agregarStbtn {
+            border: black !important;
+            background-color: white !important;
+            margin-left: 100px;
+            width: 350px;
+            height: 540px;
+            border: 2px solid #7E8A94 !important;
+        }
+
+        #infobtn {
+            border: black !important;
+            background-color: white !important;
+            margin-left: -38px;
+            width: 350px;
+            height: 540px;
+            border: 2px solid #7E8A94 !important;
+        }
+
+        #envioRebtn {
+            border: black !important;
+            background-color: white !important;
+            width: 350px;
+            height: 540px;
+            border: 2px solid #7E8A94 !important;
+        }
+
+        #agregarStbtn img,
+        #infobtn img,
+        #envioRebtn img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            margin-bottom: 10px;
+        }
+
+        #agregarStbtn:hover,
+        #envioRebtn:hover,
+        #infobtn:hover {
+            background-color: #7E8A94 !important;
+            /* Cambia el color del borde al pasar el mouse sobre el botón */
+        }
+
+        #agregarStbtn img,
+        #envioRebtn img,
+        #infobtn img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            margin-bottom: 10px;
+        }
+
+        body {
+            background-color: #f3f6fc !important;
+        }
+
+        #btnSend {
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #id_Title {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_Email {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_Type {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_Description {
+            width: 100%;
+            resize: none;
+            height: 150px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #f0f0f0;
+            scrollbar-color: darkgray lightgray;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_Description::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #id_Description::-webkit-scrollbar-thumb {
+            background-color: #888888;
+            border-radius: 10px;
+        }
+
+        #id_Description::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        #btnSend {
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+    </style>
+
+    <body>
+        <header class="bg-primary text-white p-4">
+            <nav class="navbar navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" style="font-size: 30px;">
+                        <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
+                        <h1 class="ms-3 mb-0">Enviar Notificación</h1>
+                    </a>
+                    <a href="/menu_filantropia" tabindex="-1" class="ms-auto me-4 text-decoration-none text-light">
+                        <i class="fas fa-arrow-left me-1"></i> Regresar
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                        aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header" style="background-color: #2C6698 !important;">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Bandeja de notificaciones</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
                         </div>
-                        <div class="form-group">
-                            <label for="{{ form.Type.id_for_label }}"><b>Tipo:</b></label>
-                            <br>
-                            {{ form.Type }}
+                        <div class="offcanvas-body"
+                            style="width: 335px; height: 550px; overflow: hidden; background-color: white !important;">
+                            <div class="tableFixHead" style="overflow-y: scroll; height: 100%; width: 104%;">
+                                <table class="table table-striped">
+                                    <tbody style="overflow: scroll;">
+                                        {% for notificaciones in notificaciones %}
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <tr>
+                                                <td>{{notificaciones.title}}</td>
+                                                <td>
+                                                    <div class="btn-group" role="group"
+                                                        aria-label="Basic mixed styles example">
+                                                        <button class="btn btn-dark" name="noti"
+                                                            value={{notificaciones.id}} id="noti">
+                                                            <i class="fas fa-eye" style="color: #70BAFA"></i>
+                                                        </button>
+
+                                                        <button type="button" class="btn btn-dark">
+                                                            <a href="{% url 'eliminar_noti' notificaciones.id %}"
+                                                                style="text-decoration: none; color: #dc3545">
+                                                                <i class="fas fa-trash" style="color: #dc3545"></i>
+                                                            </a>
+                                                        </button>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </form>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="{{ form.Description.id_for_label }}"><b>Descripción:</b></label>
+
+                    </div>
+            </nav>
+        </header>
+        <main class="container my-5 "
+            style="background-color: #cfd5e1; border-radius: 25px; height: 550px; width: 850px;">
+
+            <form method="POST" action="{% url 'sendMessageToDonor' noti.id %}">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="d-grid gap-2">
+                            {% csrf_token %}
                             <br>
-                            {{ form.Description }}
-                        </div>
-                        <div class="form-group">
-                            <label for="{{ form.Email.id_for_label }}"><b>Correo Donante:</b></label>
-                            <br>
-                            {{ form.Email }}
-                        </div>
-                        <p>
+                            <div class="form-group">
+                                <label for="{{ form.Title.id_for_label }}"><b>Título:</b></label>
+                                <br>
+                                {{ form.Title }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.Type.id_for_label }}"><b>Tipo:</b></label>
+                                <br>
+                                {{ form.Type }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.Description.id_for_label }}"><b>Descripción:</b></label>
+                                <br>
+                                {{ form.Description }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.Email.id_for_label }}"><b>Correo Donante:</b></label>
+                                <br>
+                                {{ form.Email }}
+                            </div>
+                            <p>
                             <div style="text-align: center;">
-                                <button type="submit" id="send">
+                                <button type="submit" id="btnSend">
                                     Enviar Informe
                                 </button>
                             </div>
-                        </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </main>
-</body>
-{% endblock %}
+            </form>
+        </main>
+    </body>
+
 </html>

@@ -171,11 +171,11 @@ class Alerta(models.Model):
     title = models.CharField(max_length=40,default='Notificación')
     class Type_alert(models.IntegerChoices):
         NNULL = 0, ('None')
-        ACTUALIZE_CONTA = 1, ('Actualizacion de informacion contabilidad')
-        ACTUALIZE_BU = 2, ('Actualizacion de informacion Bienestar Universitario')
-        ACTUALIZE_DIRECTOR = 3, ('Actualizacion de informacion Director de programa')
-        FILANTROPIA =  4,('Actualización de actividades no academicas de un estudiante')
-        CREA = 5,('Actualización de Actividades del CREA')
+        ACTUALIZE_CONTA = 1, ('Oficina de Contabilidad')
+        ACTUALIZE_BU = 2, ('Oficina de Bienestar Universitario')
+        ACTUALIZE_DIRECTOR = 3, ('Oficina de Balance Academico')
+        FILANTROPIA =  4,('Oficina de Filantropía')
+        CREA = 5, ('Oficina de CREA')
 
     type = models.IntegerField(default=Type_alert.NNULL, choices=Type_alert.choices)
     description = models.TextField(blank=True)

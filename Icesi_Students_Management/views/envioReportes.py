@@ -16,6 +16,12 @@ def rol_check(user):
 @login_required
 @user_passes_test(rol_check, "/signin/")
 def sendReport(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if(noti.type==4):
+            notifi.append(noti)
     if request.method == 'POST':
         form = enviarReporte(request.POST, request.FILES)
         if form.is_valid():
@@ -158,7 +164,7 @@ def sendReport(request):
                 return redirect('envioReportes.html')
     else:
         return render(request, 'envioReportes.html', {
-            'form': enviarReporte
+            'form': enviarReporte,'notificaciones': notifi
         })                 
                     
                     
