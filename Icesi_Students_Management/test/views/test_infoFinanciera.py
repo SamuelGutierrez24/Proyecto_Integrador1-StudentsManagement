@@ -7,6 +7,14 @@ from Icesi_Students_Management.forms import registrarInfoFinanciera
 class InfofinancieraTestCase(TestCase):
 
     def test_Creacion_Info_Financiera(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=4)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('menuContabilidad'))
+
         # Carreras
         carrera = Carrera.objects.create(nameCarrera="Ingenieria de Sistemas", carreraID="SIS-007", precioMatricula=12730000)
 
@@ -67,26 +75,65 @@ class InfofinancieraTestCase(TestCase):
 
     
     def test_vista_menuConta(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=4)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('menuContabilidad'))
+
         response = self.client.get(reverse('menuContabilidad'))
         print(response)
         self.assertEquals(response.status_code,200)
 
     def test_vista_infoFinanciera(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=4)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('menuContabilidad'))
+
         response = self.client.get(reverse('infoFinanciera'))
         print(response)
         self.assertEquals(response.status_code,200)
 
     def test_vista_buscarEstud(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=4)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('menuContabilidad'))
+
         response = self.client.get(reverse('buscarEstud'))
         print(response)
         self.assertEquals(response.status_code,200)
 
     def test_vista_modificar(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=4)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('menuContabilidad'))
+
         response = self.client.get(reverse('modificarInfo', kwargs={'code': 'A00381323'}))
         print(response)
         self.assertEquals(response.status_code,302)#Se coloca 302 debido a que este significa found, lo cual nos dice que se encontro la url con el codigo dado
 
     def test_Actualizacion_Info_Financiera(self):
+        self.user2 = User.objects.create_user(username='user2', password='password2', rol=4)
+        data = {
+            'username': 'user2',
+            'password': 'password2'
+        }
+        response = self.client.post(reverse('signin'), data)
+        self.assertRedirects(response, reverse('menuContabilidad'))
 
         # Carreras
         carrera = Carrera.objects.create(nameCarrera="Ingenieria de Sistemas", carreraID="SIS-007", precioMatricula=12730000)

@@ -1,11 +1,18 @@
 from django.test import TestCase
-from Icesi_Students_Management.models import *
 from Icesi_Students_Management.forms import *
 from django.urls import reverse
 
 class VistaProductoTestCase(TestCase):
 
   def test_vista_notificacionEditable(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=2)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menu filantropia'))
+
     beca = Becas.objects.create(type = 'Completa', percentage = '100', description='Beca completa', alimentacion= True, transporte = True)
     donante = Donante.objects.create(name = 'Kevin', lastName = 'Loachamin', email='Santiago.J.Belalcazar@gmail.com', typeBecas = beca)
     estudiante = Student.objects.create(id= 2, name = 'Luis', lastName = 'Pinillos', code = 'A00301045', email='luis@gmail.com', beca_id= '1')

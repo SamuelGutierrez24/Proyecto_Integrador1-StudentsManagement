@@ -2,7 +2,15 @@ from django.shortcuts import render
 from Icesi_Students_Management.models import Alerta, Student, Donante
 from Icesi_Students_Management.forms import modificarAlerta
 from django.contrib.sessions.models import Session
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 2
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def alerta(request, noti_id):
     error = ""
     noti = Alerta.objects.get(id=noti_id)

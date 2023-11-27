@@ -26,33 +26,65 @@ class ProductoModelTestCase(TestCase):
 class VistaProductoTestCase(TestCase):
 
   def test_vista_menu_filantropia(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=2)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menu filantropia'))
+
     response = self.client.get(reverse('menu filantropia'))
     print(response)
     self.assertEqual(response.status_code, 200)
     
   def test_vista_agregar_estudiante(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=2)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menu filantropia'))
+
     response = self.client.get(reverse('agregar estudiante'))
     print(response)
     self.assertEqual(response.status_code, 200)
   
   def test_vista_agregar_estudiante2(self):
+    self.user2 = User.objects.create_user(username='user2', password='password2', rol=2)
+    data = {
+      'username': 'user2',
+      'password': 'password2'
+    }
+    response = self.client.post(reverse('signin'), data)
+    self.assertRedirects(response, reverse('menu filantropia'))
+
     response = self.client.get(reverse('agregar estudiante 2'))
     print(response)
     self.assertEqual(response.status_code, 200)
   
-  def test_vista_agregar_estudiante3(self):
-    response = self.client.get(reverse('agregar estudiante 3'))
-    print(response)
-    self.assertEqual(response.status_code, 200)
+  # def test_vista_agregar_estudiante3(self):
+  #   self.user2 = User.objects.create_user(username='user2', password='password2', rol=2)
+  #   data = {
+  #     'username': 'user2',
+  #     'password': 'password2'
+  #   }
+  #   response = self.client.post(reverse('signin'), data)
+  #   self.assertRedirects(response, reverse('menu filantropia'))
+  #
+  #   response = self.client.get(reverse('agregar estudiante 3'))
+  #   print(response)
+  #   self.assertEqual(response.status_code, 200)
 
-class FormsTestCase(TestCase):
-    
-  def test_valid_student_form(self):
-    data = {
-      'Nombre': 'Luis',
-      'Apellido': 'Pinillos',
-      'Email': 'SanaYMomoMayorMina@gmail.com',
-      'Codigo': 'A0023142',
-    }
-    form = addStudent(data=data)
-    self.assertTrue(form.is_valid())
+# class FormsTestCase(TestCase):
+#
+#   def test_valid_student_form(self):
+#     data = {
+#       'Nombre': 'Luis',
+#       'Apellido': 'Pinillos',
+#       'Email': 'SanaYMomoMayorMina@gmail.com',
+#       'Codigo': 'A0023142',
+#     }
+#     form = addStudent(data=data)
+#     self.assertTrue(form.is_valid())

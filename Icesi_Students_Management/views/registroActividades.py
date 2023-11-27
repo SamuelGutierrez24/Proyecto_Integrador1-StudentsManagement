@@ -8,7 +8,15 @@ from Icesi_Students_Management.models import SeguimientoBeca
 from Icesi_Students_Management.models import Alerta
 from Icesi_Students_Management.models import User
 from Icesi_Students_Management.forms import ActivityForm
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+
+def rol_check(user):
+    return user.rol == 3
+
+
+@login_required
+@user_passes_test(rol_check, "/signin/")
 def registroA(request):
     
     if request.method == 'GET':
