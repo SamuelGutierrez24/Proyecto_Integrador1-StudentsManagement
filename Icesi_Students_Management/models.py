@@ -57,18 +57,18 @@ class Status(models.Model):
 
 class Semester(models.Model):
     SEMESTER_CHOICES = [
-        ('Primer Semestre', 'Primer Semestre'),
-        ('Segundo Semestre', 'Segundo Semestre'),
-        ('Tercer Semestre', 'Tercer Semestre'),
-        ('Cuarto Semestre', 'Cuarto Semestre'),
-        ('Quinto Semestre', 'Quinto Semestre'),
-        ('Sexto Semestre', 'Sexto Semestre'),
-        ('Septimo Semestre', 'Septimo Semestre'),
-        ('Octavo Semestre', 'Octavo Semestre'),
-        ('Noveno Semestre', 'Noveno Semestre'),
-        ('Decimo Semestre', 'Decimo Semestre'),
-        ('Onceavo Semestre', 'Onceavo Semestre'),
-        ('Doceavo Semestre', 'Doceavo Semestre'),
+        ('Primer Semestre', '2023-1'),
+        ('Segundo Semestre', '2022-2'),
+        ('Tercer Semestre', '2022-1'),
+        ('Cuarto Semestre', '2021-2'),
+        ('Quinto Semestre', '2021-1'),
+        ('Sexto Semestre', '2020-2'),
+        ('Septimo Semestre', '2020-1'),
+        ('Octavo Semestre', '2019-2'),
+        ('Noveno Semestre', '2019-1'),
+        ('Decimo Semestre', '2018-2'),
+        ('Onceavo Semestre', '2018-1'),
+        ('Doceavo Semestre', '2017-2'),
     ]
     name = models.CharField(max_length=200, choices=SEMESTER_CHOICES)
     def __str__(self):
