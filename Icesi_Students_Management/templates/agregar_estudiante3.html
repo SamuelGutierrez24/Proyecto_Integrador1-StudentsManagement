@@ -82,13 +82,37 @@
             width: 50px;
         }
 
+        .my-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .my-form span {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .my-form input,
+        .my-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+
         #btnSend {
             margin-left: 0%;
             width: 150px;
             height: 50px;
             background-color: #2C6698 !important;
             border-radius: 15px;
-            margin-top: 15%;
+            margin-top: 10%;
             color: white;
             font-weight: bold;
             border: #2C6698 !important;
@@ -173,40 +197,44 @@
         </nav>
     </header>
     <main class="container py-5">
-        <section class="card" style="background-color: #cfd5e1;height: 40rem;">
-            <div class="card-header" style="background-color: #6C788E;">
-                
+        <section class="card shadow" style="background-color: rgb(229, 239, 249); height: 40rem; border: 2px solid gray;">
+            <div class="card-header" style="background-color: #2C6698;">
+                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 100%">100%</div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="row">
-                        <div class="col">
+                        <div class="col my-form">
                             <br>
-                            <i><b>Nombre:</b></i>
                             <br>
-                            <i>{{prev_form_data.Nombre}} {{prev_form_data.Apellido}}</i>
+                            <label><b>Nombre:</b></label>
                             <br>
-                            <i><b>Codigo:</b></i>
+                            <span style="font-size: 18px;">{{prev_form_data.Nombre}} {{prev_form_data.Apellido}}</span>
                             <br>
-                            <i>{{prev_form_data.Codigo}}</i>
+                            <label><b>Codigo:</b></label>
                             <br>
-                            <i><b>Email:</b></i>
+                            <span style="font-size: 18px;">{{prev_form_data.Codigo}}</span>
                             <br>
-                            <i>{{prev_form_data.Email}}</i>
+                            <label><b>Email:</b></label>
+                            <br>
+                            <span style="font-size: 18px;">{{prev_form_data.Email}}</span>
                         </div>
-                        <div class="col">
+                        <div class="col my-form">
                             <br>
-                            <i><b>Semestre:</b></i>
                             <br>
-                            <i>{{prev_form_data.semester}}</i>
+                            <label><b>Semestre:</b></label>
                             <br>
-                            <i><b>Carrera:</b></i>
+                            <span style="font-size: 18px;">{{prev_form_data.semester}}</span>
                             <br>
-                            <i>{{prev_form_data.career}}</i>
+                            <label><b>Carrera:</b></label>
                             <br>
-                            <i><b>Beca:</b></i>
+                            <span style="font-size: 18px;">{{prev_form_data.career}}</span>
                             <br>
-                            <i>{{beca_form_data.type}} {{beca_form_data.percentage}}% {% if beca_form_data.alimentacion %} <i class="fas fa-bacon"></i> {% endif %} {% if beca_form_data.transporte %} <i class="fas fa-bus"></i> {% endif %}</i>
+                            <label><b>Beca:</b></label>
+                            <br>
+                            <span style="font-size: 18px;">{{beca_form_data.type}} {{beca_form_data.percentage}}% <i class="fas fa-money-bill"></i> {% if beca_form_data.alimentacion %} &nbsp; &nbsp; <i class="fas fa-bacon"></i> {% endif %} {% if beca_form_data.transporte %} &nbsp; &nbsp; <i class="fas fa-bus"></i> {% endif %}</span>
                         </div>
                     </div>
                     <form action="/menu_filantropia/agregar_estudiante3/" method="post">
