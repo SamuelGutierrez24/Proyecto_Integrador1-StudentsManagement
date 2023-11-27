@@ -1,14 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
 class Carrera(models.Model):
     nameCarrera = models.CharField(max_length=50)
     carreraID = models.CharField(primary_key=True, max_length=15)
     precioMatricula = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     def str(self):
         return self.name
-
 
 class Becas(models.Model):
     type = models.CharField(max_length=30)
@@ -19,7 +17,6 @@ class Becas(models.Model):
 
     def str(self):
         return self.type
-
 
 class Student(models.Model):
     id = models.IntegerField(
@@ -35,14 +32,12 @@ class Student(models.Model):
     def __str__(self):
         return self.code
 
-
 class Materia(models.Model):
     materia_code = models.CharField(max_length=20, default="None")
     nombre = models.CharField(max_length=20, default="None")
     creditos =models.PositiveIntegerField(default=0)
     def str(self):
         return self.nombre
-
 
 class Status(models.Model):
     StatusID = models.AutoField(primary_key=True, default=None)
@@ -73,7 +68,6 @@ class Semester(models.Model):
     name = models.CharField(max_length=200, choices=SEMESTER_CHOICES)
     def __str__(self):
         return self.name
-
 
 class SeguimientoBeca(models.Model):
     testimonio = models.CharField(max_length=100, default="")
