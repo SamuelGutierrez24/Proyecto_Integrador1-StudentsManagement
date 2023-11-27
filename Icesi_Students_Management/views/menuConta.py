@@ -55,6 +55,14 @@ def ver_noti_crea(request, id):
 
     return render(request, 'notificacionCrea.html', {'noti': noti})
 
+def ver_noti_filantropia(request, id):
+    try:
+        noti = Alerta.objects.get(id=id)
+    except Alerta.DoesNotExist:
+        raise Http404("Notificación no encontrada")
+
+    return render(request, 'notificacionFilantropia.html', {'noti': noti})
+
 def ver_noti_bienestar(request, id):
     try:
         noti = Alerta.objects.get(id=id)

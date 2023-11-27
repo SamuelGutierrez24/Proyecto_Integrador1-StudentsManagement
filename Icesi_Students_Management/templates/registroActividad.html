@@ -97,7 +97,8 @@
             width: 50px;
         }
 
-        #search, #BtnRegist {
+        #search,
+        #BtnRegist {
             margin-top: 5%;
             width: 150px;
             height: 50px;
@@ -108,10 +109,49 @@
             border: #2C6698 !important;
         }
 
-        #search:hover, #BtnRegist:hover {
+        #search:hover,
+        #BtnRegist:hover {
             background-color: #3a83c4 !important;
             color: white;
         }
+
+        #btnSend {
+
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        #id_student {
+            width: 50%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_activity {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }   
     </style>
     <header class="bg-primary text-white p-4">
         <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -175,7 +215,8 @@
         <strong>Notificación Enviada</strong> Se registro el reporte de información.
     </div>
     {% endif %}
-    <div class="container my-5 " style="background-color: #cfd5e1; border-radius: 25px; text-align: center; height: 60%; align-items: center; display: flex; justify-content: center; flex-direction: column;">
+    <div class="container my-5 shadow"
+        style="background-color: rgb(229, 239, 249); border-radius: 25px; text-align: center; height: 60%; align-items: center; display: flex; justify-content: center; flex-direction: column;">
         <br>
         <b>
             <h2>Registrar</h2>
@@ -193,15 +234,17 @@
                 <form action="/bienestarUniversitario/registroActividades" method="post"
                     style="border-radius: 25px; margin: 0 auto; display: block;">
                     {% csrf_token %}
-                    {{ error }}
+                    <label style="color: red; font-style: italic;">
+                        {{ error }}
+                    </label>
                     <div class="form-group" id="Codigo">
-                        <label for="{{ form.student.id_for_label }}"><strong style="font-size: 22px;">Codigo del estudiante:</strong></label>
+                        <label for="{{ form.student.id_for_label }}"><strong style="font-size: 22px;">Codigo del
+                                estudiante:</strong></label>
+                        <br>
                         <br>
                         {{ form.student }}
-                        <br>
-                        <br>
                     </div>
-                    
+
                     <button type="submit" id="search" name='action' value="buscar"> <b>Buscar</button>
                     <br>
                     <br>
@@ -224,13 +267,15 @@
                         {% csrf_token %}
                         {{ error }}
                         <div class="form-group">
-                            <label for="{{ form.student.id_for_label }}"><strong style="font-size: 18px;">Codigo del estudiante:</strong></label>
+                            <label for="{{ form.student.id_for_label }}"><strong style="font-size: 18px;">Codigo del
+                                    estudiante:</strong></label>
                             <br>
                             <br>
                             {{ form.student }}
                             <br>
                             <br>
-                            <label for="{{ form.activity.id_for_label }}">Selecciona una actividad:</label>
+                            <label for="{{ form.activity.id_for_label }}"> <strong> Selecciona una actividad:
+                                </strong></label>
                             <br>
                             <br>
                             {{ form.activity }}
@@ -239,14 +284,14 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" name="Chk" type="checkbox" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                ¿Desea registrar otra Actividad?
+                            <label class="form-check-label" for="flexCheckDefault"><strong>
+                                    ¿Desea registrar otra Actividad?</strong>
                             </label>
                         </div>
                         <br>
                         <br>
                         <br>
-                        <button type="submit" id="BtnRegist" name='action' value="registrar"> <b> Registrar</button>
+                        <button type="submit" id="btnSend" name='action' value="registrar"> <b> Registrar</button>
                     </form>
                     <br>
                     <br>
@@ -256,16 +301,25 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4" style="grid-column: 2;width: 100%; background-color: #2C6698; border-radius: 25px; margin: auto; color: white;">
-                <div>
-                    <p style="font-size: 23px;">Informacion del estudiante</p>
-                    <p style="font-size: 16px;">Nombre: {{nombre}}</p>
-                    <p style="font-size: 16px;">Apellido: {{apellido}}</p>
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 shadow"
+                style="grid-column: 2;width: 100%; background-color: #2C6698; border-radius: 25px; margin: auto; border: 2px solid grey; ">
+                <div style="background-color: #2C6698; padding: 15px; border-radius: 10px; color: white;">
+                    <p style="font-size: 26px;"><strong>Información del estudiante:</strong></p>
+
+                    <p style="font-size: 20px;">
+                        <strong>Nombre:</strong> {{nombre}}
+                    </p>
+
+                    <p style="font-size: 20px;">
+                        <strong>Apellido:</strong> {{apellido}}
+                    </p>
                 </div>
+
             </div>
             {% endif %}
             {% endblock %}
         </div>
     </div>
 </body>
+
 </html>

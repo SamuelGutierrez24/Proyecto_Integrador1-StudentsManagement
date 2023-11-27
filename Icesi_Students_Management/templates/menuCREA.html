@@ -74,19 +74,17 @@
             overflow: hidden;
         }
 
-        #BtnRegistC {
-            width: 150px;
-            height: 50px;
-            background-color: #2C6698 !important;
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-            border: #2C6698 !important;
+        #BtnRegistAct img {
+            max-width: 40%;
+            max-height: 40%;
+            height: auto;
+            width: auto;
+            margin-bottom: 10%;
         }
 
-        #BtnRegistC:hover {
-            background-color: #3a83c4 !important;
-            color: white;
+        #BtnRegistAct:hover {
+            background-color: #7E8A94 !important;
+            /* Cambia el color del borde al pasar el mouse sobre el botón */
         }
     </style>
 
@@ -147,57 +145,50 @@
                     </div>
             </nav>
         </header>
-        <div class="container my-5">
-            <section class="card" style="background-color: #cfd5e1;height: 100%;">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                            <div class="d-grid gap-2">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <button class="btn" type="button" onclick="location.href='register'" id="BtnRegistC">
-                                    <b>Registrar Actividad del
-                                        CREA</b></button>
-                                <br>
-                                <br>
-                                <form>
-
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
+        <div class="container-fluid my-5 shadow" style="border: 2px solid grey; border-radius: 25px; padding: 0.5em;width: 95%;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="d-grid gap-2">
+                        <a style="text-decoration: none; color: inherit; display: block; position: relative;">
                             <br>
-                            <div class="tableFixHead  ">
-                                <table class="table table-striped"
-                                    style="background-color: #2C6698; border-radius: 25px;">
-                                    <thead>
-                                        <tr>
-                                            <th style="background-color: #2C6698; border-radius: 25px;">
-                                                <h2
-                                                    style="font-size: 20px; text-align: center; font-weight: bold; margin-top: 1%; color: white;">
-                                                    Historial
-                                                </h2>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="overflow: scroll;">
-                                        {% for historial in history %}
-                                        <tr>
-                                            <div style="display: flex; ">
-                                                <td>Se agrego asistencia del estudiante {{historial.student.name}} en
-                                                    {{historial.activity.nombre}}</td>
-                                            </div>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            <br>
+                            <br>
+                            <button class="btn btn-dark shadow" id="BtnRegistAct" type="button" onclick="location.href='register'" style="background-color: white; border: 1px solid #cfd5e1; width: 100%;">
+                                <h2 style="color: black; font-weight: bold;">Registrar Actividad Del Crea   </h2>
+                                <br>
+                                <img src="{% static './Images/imagenCrea.png'%}" alt="Estudiante" width="512px" height="512px">
+                            </button>
+                        </a>
+                        <br>
                     </div>
                 </div>
-            </section>
+                <div class="col-lg-6">
+                    <br>
+                    <div class="tableFixHead" style="overflow: auto; max-height: fit-content;">
+                        <table class="table table-striped shadow" style="background-color: #2C6698; border-radius: 25px; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background-color: #2C6698; border-radius: 25px;">
+                                        <h2 style="font-size: 20px; text-align: center; font-weight: bold; margin-top: 1%; color: white;">
+                                            Historial
+                                        </h2>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for historial in history %}
+                                <tr>
+                                    <div style="display: flex; ">
+                                        <td>Se agrego asistencia del estudiante {{historial.student.name}} en {{historial.activity.nombre}}</td>
+                                    </div>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>

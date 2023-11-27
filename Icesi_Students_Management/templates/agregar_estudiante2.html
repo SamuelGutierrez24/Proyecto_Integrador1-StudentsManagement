@@ -12,29 +12,6 @@
             color: #495661;
         }
 
-        /* Añade esto a tu hoja de estilo CSS */
-        .tableFixHead {
-            overflow-y: scroll;
-            scrollbar-width: thin;
-            scrollbar-color: #888888 #f0f0f0;
-            /* Puedes personalizar los colores aquí */
-        }
-
-        .tableFixHead::-webkit-scrollbar {
-            width: 8px;
-            /* Ancho del scrollbar */
-        }
-
-        .tableFixHead::-webkit-scrollbar-thumb {
-            background-color: #888888;
-            /* Color del thumb */
-        }
-
-        .tableFixHead::-webkit-scrollbar-track {
-            background-color: #f0f0f0;
-            /* Color de la pista */
-        }
-
         .offcanvas {
             background-color: white !important;
         }
@@ -46,91 +23,46 @@
             overflow: hidden !important;
         }
 
-        /* Estilo para la tabla dentro del offcanvas */
         .tableFixHead {
-            overflow-y: scroll;
-            height: 100%;
+            overflow-y: auto;
+            height: 600px;
+        }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0px;
+        }
+
+        table {
+            border-collapse: collapse;
             width: 100%;
         }
 
-        /* Estilo para las filas de la tabla */
-        .table tbody {
-            overflow: hidden;
+        th,
+        td {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
         }
 
-        .tableFixHead::-webkit-scrollbar {
-            width: 12px;
+        th {
+            background: #eee;
         }
 
-        .tableFixHead::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .tableFixHead::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 6px;
-        }
-
-        .tableFixHead {
-            scrollbar-width: thin;
-            scrollbar-color: #888 #f1f1f1;
-        }
-
-        #tabla th,
-        #tabla td {
-            text-align: center;
-            width: 50px;
-        }
-
-        /* Estilos para los campos del formulario */
-        .my-form input,
-        .my-form select {
-            width: 50%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        /* Estilos para las etiquetas de los campos */
-        .my-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        /* Estilos para las alertas del formulario */
-        .my-form .alert {
-            margin-bottom: 20px;
-        }
-
-        .input-container input {
+        .buttonSelect {
+            padding: 8px 16px;
             width: 100%;
         }
 
-        .col .input-container {
+        .selected {
+            background-color: #6c788e;
+            color: white;
+            padding: 8px 16px;
             width: 100%;
         }
 
-        /* Estilos adicionales para mejorar la apariencia */
-        body {
-            background-color: #f8f9fa;
-        }
-
-        #id_Nombre,
-        #id_Apellido,
-        #id_Email,
-        #id_Codigo,
-        #id_semester,
-        #id_career {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
+        #boton:hover{
+            background-color: #6c788e;
+            color: white;
         }
 
         #btnSend {
@@ -139,7 +71,7 @@
             height: 50px;
             background-color: #2C6698 !important;
             border-radius: 15px;
-            margin-top: 7.5%;
+            margin-top: 15%;
             color: white;
             font-weight: bold;
             border: #2C6698 !important;
@@ -166,7 +98,7 @@
     <title>Agregar Estudiante</title>
 </head>
 
-<body style="background-color: #fcfdff;">
+<body>
     <header class="bg-primary text-white p-4">
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
@@ -174,7 +106,8 @@
                     <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
                     <h1 class="ms-3 mb-0">Agregar Estudiante</h1>
                 </a>
-                <a href="/menu_filantropia/" tabindex="-1" class="ms-auto me-4 text-decoration-none text-light">
+                <a href="/menu_filantropia/agregar_estudiante/" tabindex="-1"
+                    class="ms-auto me-4 text-decoration-none text-light">
                     <i class="fas fa-arrow-left me-1"></i> Regresar
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -215,11 +148,11 @@
                                     </tr>
                                     {% endfor %}
                                 </tbody>
+
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
         </nav>
     </header>
     <main class="container py-5">
@@ -240,50 +173,91 @@
         {% endif %}
         <section class="card" style="background-color: #cfd5e1;height: 40rem;">
             <div class="card-header" style="background-color: #6C788E;">
-
+                
             </div>
             <div class="card-body">
-                <div class="row">
-                    <form action="/menu_filantropia/agregar_estudiante/" method="post" style="border-radius: 25px; margin: 0 auto; display: block;" id="primer_formulario" class="my-form">
-                        {% csrf_token %}
-                        <div class="row" style="margin-top: 2.5%;">
-                            <div class="col">
-                                <div class="d-grid gap-3">
-                                    <label for="{{ form.Nombre.id_for_label }}"
-                                        class="form-label"><b>Nombre:</b></label>
-                                    <div class="input-container">{{ form.Nombre }}</div>
-                                    <label for="{{ form.Apellido.id_for_label }}"
-                                        class="form-label"><b>Apellido:</b></label>
-                                    <div class="input-container">{{ form.Apellido }}</div>
-                                    <label for="{{ form.Email.id_for_label }}" class="form-label"><b>Email:</b></label>
-                                    <div class="input-container">{{ form.Email }}</div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-grid gap-3">
-                                    <label for="{{ form.Codigo.id_for_label }}"
-                                        class="form-label"><b>Codigo:</b></label>
-                                    <div class="input-container">{{ form.Codigo }}</div>
-                                    <label for="{{ form.semester.id_for_label }}" class="form-label"><b>Semestre en el
-                                            que se encuentra:</b></label>
-                                    <div class="input-container">{{ form.semester }}</div>
-                                    <label for="{{ form.career.id_for_label }}"
-                                        class="form-label"><b>Carrera:</b></label>
-                                    <div class="input-container">{{ form.career }}</div>
-                                </div>
+                <form action="/menu_filantropia/agregar_estudiante2/" method="post" style="border-radius: 25px; margin: 0 auto; display: block;" id="segundo_formulario">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <br>
+                            {% csrf_token %}
+                            <div class="tableFixHead">
+                                <table class="table table-striped" style="background-color: #6c788e; border-radius: 25px;">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="background-color: #6c788e; border-radius: 25px;">
+                                                Becas
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for becas in Becas %}
+                                            <tr>
+                                                <td>
+                                                    <button type="button" class="buttonSelect" name="selected_button" value="{{ becas.id }}" id="boton" onclick="handleButtonClick(this)">
+                                                        {{ becas.type }}
+                                                        &nbsp; &nbsp; &nbsp;
+                                                        {{ becas.percentage }}% <i class="fas fa-money-bill"></i>
+                                                        {% if becas.alimentacion %}
+                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bacon"></i>
+                                                        {% endif %}
+                                                        {% if becas.transporte %}
+                                                        &nbsp; &nbsp; &nbsp; <i class="fas fa-bus"></i>
+                                                        {% endif %}
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <div style="text-align: center;">
-                                <button type="submit" id="btnSend">
-                                    Siguiente
-                                </button>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <input type="hidden" id="selected_button_input" name="selected_button" value="{% if request.session.selected_button %}{{ request.session.selected_button }}{% endif %}">
+                        <div style="text-align: center;">
+                            <button type="submit" onclick="updateSessionValue()" id="btnSend">
+                                Siguiente
+                            </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
         </section>
     </main>
+    <script>
+    
+    // Función para manejar el clic en los botones
+    function handleButtonClick(button) {
+        // Eliminar la clase "selected" de cualquier otro botón
+        var buttons = document.querySelectorAll(".buttonSelect");
+        buttons.forEach(function (btn) {
+            btn.classList.remove("selected");
+        });
+
+        // Agregar la clase "selected" al botón clickeado
+        button.classList.add("selected");
+
+        // Actualizar el valor en el campo oculto
+        var selectedButtonValue = button.value;
+        document.querySelector("#selected_button_input").value = selectedButtonValue;
+
+
+        // Agregar una línea para imprimir el valor del botón en la consola
+        console.log("Contenido del campo oculto: " + document.querySelector("#selected_button_input").value);
+    }
+
+    function updateSessionValue() {
+        // Obtener el valor del botón seleccionado
+        var selectedButtonValue = document.querySelector(".buttonSelect.selected").value;
+
+        // Actualizar el valor en el campo oculto
+        document.querySelector("#selected_button_input").value = selectedButtonValue;
+
+        // Enviar el formulario
+        document.getElementById("segundo_formulario").submit();
+    }
+
+    </script>
 </body>
 
 </html>

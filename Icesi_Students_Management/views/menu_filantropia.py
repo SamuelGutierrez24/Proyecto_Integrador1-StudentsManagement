@@ -29,6 +29,19 @@ def enviarMensaje(request):
     return render(request, 'envioAlerta.html', {'form': form})
 
 
+def testimonio(request):
+    notificaciones = Alerta.objects.all()
+    notifi = []
+
+    for noti in notificaciones:
+        if (noti.type == 4):
+            notifi.append(noti)
+
+    return render(request, 'testimonio.html', {
+        'notificaciones': notifi
+    })
+
+
 def menu(request):
     if request.method == 'GET':
         form = envioMensaje(request.POST)
@@ -38,7 +51,7 @@ def menu(request):
         for noti in notificaciones:
             if (noti.type == 4):
                 notifi.append(noti)
-
+                notifi.reverse()
         return render(request, 'menu_filantropia.html', {'notificaciones': notifi, 'form': form})
     else:
         form = envioMensaje(request.POST)

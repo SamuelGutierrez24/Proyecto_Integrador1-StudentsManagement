@@ -57,7 +57,7 @@
         .table tbody {
             overflow: hidden;
         }
-
+        
         .tableFixHead::-webkit-scrollbar {
             width: 12px;
         }
@@ -82,64 +82,13 @@
             width: 50px;
         }
 
-        /* Estilos para los campos del formulario */
-        .my-form input,
-        .my-form select {
-            width: 50%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        /* Estilos para las etiquetas de los campos */
-        .my-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        /* Estilos para las alertas del formulario */
-        .my-form .alert {
-            margin-bottom: 20px;
-        }
-
-        .input-container input {
-            width: 100%;
-        }
-
-        .col .input-container {
-            width: 100%;
-        }
-
-        /* Estilos adicionales para mejorar la apariencia */
-        body {
-            background-color: #f8f9fa;
-        }
-
-        #id_Nombre,
-        #id_Apellido,
-        #id_Email,
-        #id_Codigo,
-        #id_semester,
-        #id_career {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
         #btnSend {
             margin-left: 0%;
             width: 150px;
             height: 50px;
             background-color: #2C6698 !important;
             border-radius: 15px;
-            margin-top: 7.5%;
+            margin-top: 15%;
             color: white;
             font-weight: bold;
             border: #2C6698 !important;
@@ -166,7 +115,7 @@
     <title>Agregar Estudiante</title>
 </head>
 
-<body style="background-color: #fcfdff;">
+<body>
     <header class="bg-primary text-white p-4">
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
@@ -174,7 +123,8 @@
                     <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
                     <h1 class="ms-3 mb-0">Agregar Estudiante</h1>
                 </a>
-                <a href="/menu_filantropia/" tabindex="-1" class="ms-auto me-4 text-decoration-none text-light">
+                <a href="/menu_filantropia/agregar_estudiante2/" tabindex="-1"
+                    class="ms-auto me-4 text-decoration-none text-light">
                     <i class="fas fa-arrow-left me-1"></i> Regresar
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -215,73 +165,65 @@
                                     </tr>
                                     {% endfor %}
                                 </tbody>
+
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
         </nav>
     </header>
     <main class="container py-5">
-        {% if messages %}
-        {% for message in messages %}
-        {% if message.tags == 'error' %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="isNotSend">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% elif message.tags == 'success' %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="isSend">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
         <section class="card" style="background-color: #cfd5e1;height: 40rem;">
             <div class="card-header" style="background-color: #6C788E;">
-
+                
             </div>
             <div class="card-body">
                 <div class="row">
-                    <form action="/menu_filantropia/agregar_estudiante/" method="post" style="border-radius: 25px; margin: 0 auto; display: block;" id="primer_formulario" class="my-form">
-                        {% csrf_token %}
-                        <div class="row" style="margin-top: 2.5%;">
-                            <div class="col">
-                                <div class="d-grid gap-3">
-                                    <label for="{{ form.Nombre.id_for_label }}"
-                                        class="form-label"><b>Nombre:</b></label>
-                                    <div class="input-container">{{ form.Nombre }}</div>
-                                    <label for="{{ form.Apellido.id_for_label }}"
-                                        class="form-label"><b>Apellido:</b></label>
-                                    <div class="input-container">{{ form.Apellido }}</div>
-                                    <label for="{{ form.Email.id_for_label }}" class="form-label"><b>Email:</b></label>
-                                    <div class="input-container">{{ form.Email }}</div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-grid gap-3">
-                                    <label for="{{ form.Codigo.id_for_label }}"
-                                        class="form-label"><b>Codigo:</b></label>
-                                    <div class="input-container">{{ form.Codigo }}</div>
-                                    <label for="{{ form.semester.id_for_label }}" class="form-label"><b>Semestre en el
-                                            que se encuentra:</b></label>
-                                    <div class="input-container">{{ form.semester }}</div>
-                                    <label for="{{ form.career.id_for_label }}"
-                                        class="form-label"><b>Carrera:</b></label>
-                                    <div class="input-container">{{ form.career }}</div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <i><b>Nombre:</b></i>
+                            <br>
+                            <i>{{prev_form_data.Nombre}} {{prev_form_data.Apellido}}</i>
+                            <br>
+                            <i><b>Codigo:</b></i>
+                            <br>
+                            <i>{{prev_form_data.Codigo}}</i>
+                            <br>
+                            <i><b>Email:</b></i>
+                            <br>
+                            <i>{{prev_form_data.Email}}</i>
                         </div>
+                        <div class="col">
+                            <br>
+                            <i><b>Semestre:</b></i>
+                            <br>
+                            <i>{{prev_form_data.semester}}</i>
+                            <br>
+                            <i><b>Carrera:</b></i>
+                            <br>
+                            <i>{{prev_form_data.career}}</i>
+                            <br>
+                            <i><b>Beca:</b></i>
+                            <br>
+                            <i>{{beca_form_data.type}} {{beca_form_data.percentage}}% {% if beca_form_data.alimentacion %} <i class="fas fa-bacon"></i> {% endif %} {% if beca_form_data.transporte %} <i class="fas fa-bus"></i> {% endif %}</i>
+                        </div>
+                    </div>
+                    <form action="/menu_filantropia/agregar_estudiante3/" method="post">
                         <div class="row">
+                            {% csrf_token %}
                             <div style="text-align: center;">
-                                <button type="submit" id="btnSend">
-                                    Siguiente
+                                <button type="submit" name="cancelar" id="btnSend" style="margin-right: 2%;">
+                                    Cancelar
+                                </button>
+                                <button type="submit" name="confirmar" id="btnSend" style="margin-left: 2%;">
+                                    Confirmar
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
         </section>
     </main>
 </body>

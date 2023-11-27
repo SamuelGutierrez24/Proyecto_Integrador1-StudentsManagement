@@ -89,6 +89,43 @@
             background-color: #3a83c4 !important;
             color: white;
         }
+        #btnSend {
+            
+            width: 150px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            margin-top: -100%;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #btnSend:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        #id_student {
+            width: 50%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #id_activity{
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
     </style>
 
     <body>
@@ -149,8 +186,8 @@
             <strong>Notificación Enviada</strong> Se registro el reporte de información.
         </div>
         {% endif %}
-        <div class="container my-5 "
-            style="background-color: #cfd5e1; border-radius: 25px; text-align: center; height: fit-content; align-items: center; display: flex; justify-content: center; flex-direction: column;">
+        <div class="container my-5 shadow"
+            style="background-color: rgb(229, 239, 249); border: 2px solid grey;padding: 0.5em;width: 95%;border-radius: 25px; text-align: center; height: fit-content; align-items: center; display: flex; justify-content: center; flex-direction: column;">
             <br>
             <b>
                 <br>
@@ -162,27 +199,21 @@
             <div class="row" style="width: 100%; height: 90%;">
                 <br>
                 <br>
-                <br>
-                <br>
-                <br>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <form action="/Crea/register" method="post"
                         style="border-radius: 25px; margin: 0 auto; display: block;">
                         {% csrf_token %}
-                        {{ error }}
-
-                        <br>
-                        <br>
-                        <br>
+                        <label style="color: red; font-style: italic;">
+                            {{ error }}
+                        </label>
                         <br>
                         <br>
                         <div class="form-group">
                             <label for="{{ form.student.id_for_label }}"><strong style="font-size: 22px;">Codigo del
                                     estudiante:</strong></label>
                             <br>
+                            <br>
                             {{ form.student }}
-                            <br>
-                            <br>
                         </div>
                         <button type="submit" name='action' value="search" id="search"> Buscar</button>
                         <br>
@@ -213,13 +244,13 @@
                                 {{ form.student }}
                                 <br>
                                 <br>
-                                <label for="{{ form.activity.id_for_label }}">Selecciona una actividad:</label>
+                                <label for="{{ form.activity.id_for_label }}"><strong>Selecciona una actividad:</strong></label>
                                 <br>
                                 <br>
                                 {{ form.activity }}
                                 <br>
                                 <br>
-                                <label for="{{ form.reason.id_for_label }}">Motivo:</label>
+                                <label for="{{ form.reason.id_for_label }}"><strong> Motivo: </strong></label>
                                 <br>
                                 <br>
                                 {{ form.reason }}
@@ -228,24 +259,32 @@
 
                             <div class="form-check">
                                 <input class="form-check-input" name="Chk" type="checkbox" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault"><strong>
                                     ¿Desea registrar otra Actividad?
+                                    </strong>
                                 </label>
                             </div>
                             <br>
                             <br>
-                            <button type="submit" name='action' value="registrar" id="Btnregist"> <b> Registrar</button>
+                            <button type="submit" name='action' value="registrar" id="btnSend"> <b> Registrar</button>
                         </form>
                     </div>
                 </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"
-                    style="grid-column: 2;width: 100%; background-color: #6c788e; border-radius: 25px; margin: auto;">
-                    <div>
-                        <p><strong style="font-size: 22px;">Informacion del estudiante:</strong></p>
-                        <strong style="font-size: 14px;">Nombre: </strong>{{nombre}}<br>
-                        <strong style="font-size: 14px;">Apellido: </strong>{{apellido}}<br>
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 shadow"
+                    style="grid-column: 2;width: 100%; background-color: #2C6698; border-radius: 25px; margin: auto; border: 2px solid grey; ">
+                    <div style="background-color: #2C6698; padding: 15px; border-radius: 10px; color: white;">
+                        <p style="font-size: 26px;"><strong>Información del estudiante:</strong></p>
+                        
+                        <p style="font-size: 20px;">
+                            <strong>Nombre:</strong> {{nombre}}
+                        </p>
+                        
+                        <p style="font-size: 20px;">
+                            <strong>Apellido:</strong> {{apellido}}
+                        </p>
                     </div>
+                    
                 </div>
                 {% endif %}
                 {% endblock %}

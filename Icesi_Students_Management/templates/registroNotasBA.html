@@ -203,6 +203,75 @@
             background-color: #cc0000;
             color: white;
         }
+
+
+        #SubirNotas, #Retroceder {
+            width: 100px;
+            height: 50px;
+            background-color: #2C6698 !important;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #SubirNotas:hover, #Retroceder:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        #anadirM {
+            background-color: #2C6698 !important;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+        }
+
+        #anadirM:hover{
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        #SubirX {
+            width: 75px;
+            height: 25px;
+            background-color: #2C6698 !important;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            border: #2C6698 !important;
+
+        }
+
+        #SubirX:hover {
+            background-color: #3a83c4 !important;
+            color: white;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        label {
+            font-weight: bold;
+        }
     </style>
     <!-- Sección superior -->
     <header class="bg-primary text-white p-4">
@@ -211,6 +280,9 @@
                 <a class="navbar-brand d-flex align-items-center" style="font-size: 30px;">
                     <img src="{% static './Images/icesi.png'%}" alt="Logo Icesi" width="165" height="50">
                     <h1 class="ms-3 mb-0">Registro de Notas</h1>
+                </a>
+                <a href="/BalanceAcademico" tabindex="-1" class="ms-auto me-4 text-decoration-none text-light">
+                    <i class="fas fa-arrow-left me-1"></i> Regresar
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
@@ -281,94 +353,62 @@
                                 <div id="materias">
                                     {% if detalles|length == 0 %}
                                     <div>
-                                        <label for="codMateria{{ ultimoContador }}" style="margin-top: 5%;">Codigo de la
-                                            materia:</label>
-                                        <br>
-                                        <input type="text" id="codMateria{{ ultimoContador }}"
-                                            name="codMateria{{ ultimoContador }}" required style="width: 70%;"
-                                            class="campo-deshabilitable">
-                                        <br>
-                                        <label for="nombreMateria{{ ultimoContador }}" style="margin-top: 5%;">Nombre de
-                                            la materia:</label>
-                                        <br>
-                                        <input type="text" id="nombreMateria{{ ultimoContador }}"
-                                            name="nombreMateria{{ ultimoContador }}" required style="width: 70%;"
-                                            class="campo-deshabilitable">
-                                        <br>
-                                        <label for="creditosMateria{{ ultimoContador }}"
-                                            style="margin-top: 5%;">Creditos de la materia:</label>
-                                        <br>
-                                        <input type="number" id="creditosMateria{{ ultimoContador }}"
-                                            name="creditosMateria{{ ultimoContador }}" required min="0" step="1"
-                                            style="width: 10%;" class="campo-deshabilitable">
-                                        <br>
-                                        <label for="estatusMateria{{ ultimoContador }}" style="margin-top: 5%;">Estatus
-                                            de la materia:</label>
-                                        <br>
-                                        <select id="estatusMateria{{ ultimoContador }}"
-                                            name="estatusMateria{{ ultimoContador }}" required style="width: 70%;"
-                                            class="campo-deshabilitable">
-                                            <option value="" disabled selected>Selecciona una opción</option>
-                                            <option value="Materia Cancelada">Materia Cancelada</option>
-                                            <option value="Materia en Curso">Materia en Curso</option>
-                                            <option value="Materia completada">Materia completada</option>
-                                        </select>
-                                        <br>
-                                        <label for="Nota{{ ultimoContador }}" style="margin-top: 5%;">Nota
-                                            final:</label>
-                                        <br>
-                                        <input type="number" id="Nota{{ ultimoContador }}"
-                                            name="Nota{{ ultimoContador }}" required min="0.0" max="5.0" step="0.1"
-                                            style="width: 10%;" class="campo-deshabilitable">
-                                        <br>
-                                    </div>
+                                            <label for="codMateria{{ ultimoContador }}" style="margin-top: 5%;">Codigo de la materia:</label>
+                                            <br>
+                                            <input type="text" id="codMateria{{ ultimoContador }}" name="codMateria{{ ultimoContador }}" required style="width: 70%;" class="campo-deshabilitable">
+                                            <br>
+                                            <label for="nombreMateria{{ ultimoContador }}" style="margin-top: 5%;">Nombre de la materia:</label>
+                                            <br>
+                                            <input type="text" id="nombreMateria{{ ultimoContador }}" name="nombreMateria{{ ultimoContador }}" required style="width: 70%;" class="campo-deshabilitable">
+                                            <br>
+                                            <label for="creditosMateria{{ ultimoContador }}" style="margin-top: 5%;">Creditos de la materia:</label>
+                                            <br>
+                                            <input type="number" id="creditosMateria{{ ultimoContador }}" name="creditosMateria{{ ultimoContador }}" required min="0" step="1" style="width: 10%;" class="campo-deshabilitable">
+                                            <br>
+                                            <label for="estatusMateria{{ ultimoContador }}" style="margin-top: 5%;">Estatus de la materia:</label>
+                                            <br>
+                                            <select id="estatusMateria{{ ultimoContador }}" name="estatusMateria{{ ultimoContador }}" required style="width: 70%;" class="campo-deshabilitable">
+                                                <option value="" disabled selected>Selecciona una opción</option>
+                                                <option value="Materia Cancelada">Materia Cancelada</option>
+                                                <option value="Materia en Curso">Materia en Curso</option>
+                                                <option value="Materia completada">Materia completada</option>
+                                            </select>
+                                            <br>
+                                            <label for="Nota{{ ultimoContador }}" style="margin-top: 5%;">Nota final:</label>
+                                            <br>
+                                            <input type="number" id="Nota{{ ultimoContador }}" name="Nota{{ ultimoContador }}" required min="0.0" max="5.0" step="0.1" style="width: 10%;" class="campo-deshabilitable">
+                                            <br>
+                                        </div>
                                     {% else %}
-                                    {% for detalle in detalles %}
-                                    <div>
-                                        <label for="codMateria{{ forloop.counter }}" style="margin-top: 5%;">Codigo de
-                                            la materia:</label>
-                                        <br>
-                                        <input type="text" id="codMateria{{ forloop.counter }}"
-                                            name="codMateria{{ forloop.counter }}" required style="width: 70%;"
-                                            value="{{ detalle.CodigoMateria }}" class="campo-deshabilitable">
-                                        <br>
-                                        <label for="nombreMateria{{ forloop.counter }}" style="margin-top: 5%;">Nombre
-                                            de la materia:</label>
-                                        <br>
-                                        <input type="text" id="nombreMateria{{ forloop.counter }}"
-                                            name="nombreMateria{{ forloop.counter }}" required style="width: 70%;"
-                                            value="{{ detalle.NombreMateria }}" class="campo-deshabilitable">
-                                        <br>
-                                        <label for="creditosMateria{{ forloop.counter }}"
-                                            style="margin-top: 5%;">Creditos de la materia:</label>
-                                        <br>
-                                        <input type="number" id="creditosMateria{{ forloop.counter }}"
-                                            name="creditosMateria{{ forloop.counter }}" required min="0" step="1"
-                                            style="width: 10%;" value="{{ detalle.CreditosMateria }}"
-                                            class="campo-deshabilitable">
-                                        <br>
-                                        <label for="estatusMateria{{ forloop.counter }}" style="margin-top: 5%;">Estatus
-                                            de la materia:</label>
-                                        <br>
-                                        <select id="estatusMateria{{ forloop.counter }}"
-                                            name="estatusMateria{{ forloop.counter }}" required style="width: 70%;"
-                                            data-estatus="{{ detalle.EstatusMateria }}" class="campo-deshabilitable">
-                                            <option value="" disabled selected>Selecciona una opción</option>
-                                            <option value="Materia Cancelada">Materia Cancelada</option>
-                                            <option value="Materia en Curso">Materia en Curso</option>
-                                            <option value="Materia completada">Materia completada</option>
-                                        </select>
-                                        <br>
-                                        <label for="Nota{{ forloop.counter }}" style="margin-top: 5%;">Nota
-                                            final:</label>
-                                        <br>
-                                        <input type="number" id="Nota{{ forloop.counter }}"
-                                            name="Nota{{ forloop.counter }}" required min="0.0" max="5.0" step="0.1"
-                                            style="width: 10%;" value="{{ detalle.NotaFinal }}"
-                                            class="campo-deshabilitable">
-                                        <br>
-                                    </div>
-                                    {% endfor %}
+                                        {% for detalle in detalles %}
+                                            <div>
+                                                <label for="codMateria{{ forloop.counter }}" style="margin-top: 5%;">Codigo de la materia:</label>
+                                                <br>
+                                                <input type="text" id="codMateria{{ forloop.counter }}" name="codMateria{{ forloop.counter }}" required style="width: 70%;" value="{{ detalle.CodigoMateria }}" class="campo-deshabilitable">
+                                                <br>
+                                                <label for="nombreMateria{{ forloop.counter }}" style="margin-top: 5%;">Nombre de la materia:</label>
+                                                <br>
+                                                <input type="text" id="nombreMateria{{ forloop.counter }}" name="nombreMateria{{ forloop.counter }}" required style="width: 70%;" value="{{ detalle.NombreMateria }}" class="campo-deshabilitable">
+                                                <br>
+                                                <label for="creditosMateria{{ forloop.counter }}" style="margin-top: 5%;">Creditos de la materia:</label>
+                                                <br>
+                                                <input type="number" id="creditosMateria{{ forloop.counter }}" name="creditosMateria{{ forloop.counter }}" required min="0" step="1" style="width: 10%;" value="{{ detalle.CreditosMateria }}" class="campo-deshabilitable">
+                                                <br>
+                                                <label for="estatusMateria{{ forloop.counter }}" style="margin-top: 5%;">Estatus de la materia:</label>
+                                                <br>
+                                                <select id="estatusMateria{{ forloop.counter }}" name="estatusMateria{{ forloop.counter }}" required style="width: 70%;" data-estatus="{{ detalle.EstatusMateria }}" class="campo-deshabilitable">
+                                                    <option value="" disabled selected>Selecciona una opción</option>
+                                                    <option value="Materia Cancelada">Materia Cancelada</option>
+                                                    <option value="Materia en Curso">Materia en Curso</option>
+                                                    <option value="Materia completada">Materia completada</option>
+                                                </select>
+                                                <br>
+                                                <label for="Nota{{ forloop.counter }}" style="margin-top: 5%;">Nota final:</label>
+                                                <br>
+                                                <input type="number" id="Nota{{ forloop.counter }}" name="Nota{{ forloop.counter }}" required min="0.0" max="5.0" step="0.1" style="width: 10%;" value="{{ detalle.NotaFinal }}" class="campo-deshabilitable">
+                                                <br>
+                                            </div>
+                                        {% endfor %}
                                     {% endif %}
                                 </div>
                                 <label for="Añadir nueva materia" style="margin-top: 5%;">Añadir nueva materia</label>
@@ -377,13 +417,10 @@
                                 <br>
                                 <label for="Añadir archivo">Añadir archivo</label>
                                 <input type="file" name="file" accept=".xlsx" onchange="habilitarCampos(this)">
-                                <button type="submit" class="btn btn-success btn-sm" id="SubirNotas">Subir</button>
-                                <br>
                                 <br>
                                 <br>
                                 <button type="submit" class="btn btn-success btn-sm" id="SubirNotas">Subir</button>
-                                <a href="/BalanceAcademico" class="btn btn-success btn-sm" id="Retroceder"
-                                    style="margin-left: 10%;">Atras</a>
+                                <a href="/BalanceAcademico" class="btn btn-success btn-sm" id="Retroceder" style="margin-left: 10%;" >Atras</a>
                             </form>
                         </div>
                     </div>
